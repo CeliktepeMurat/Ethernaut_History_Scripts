@@ -41,7 +41,7 @@ const getData = async () => {
       instance:
         log.topics[0] === EVENT_TYPE_SIG.create_instance
           ? decodeParam('address', log.data).toString()
-          : input_data,
+          : decodeParam('address', input_data).toString(),
       level:
         log.topics[0] === EVENT_TYPE_SIG.create_instance
           ? decodeParam('address', input_data).toString()
