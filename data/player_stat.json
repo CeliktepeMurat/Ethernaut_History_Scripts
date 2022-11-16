@@ -17,8 +17,8 @@
       "solved_instances": 1
     },
     "0x6Ecb1e890b68DFa299DdD4856cf30a3d38867B47": {
-      "created_instances": 1,
-      "solved_instances": 0
+      "created_instances": 5,
+      "solved_instances": 4
     },
     "0x6F4e3e11cc67DC66Ea3108F0aB50fd3c1b8722a9": {
       "created_instances": 2,
@@ -37,8 +37,8 @@
       "solved_instances": 1
     },
     "0xDfc9831413FaD4cCf0438412311ee44Aa3314A12": {
-      "created_instances": 3,
-      "solved_instances": 2
+      "created_instances": 4,
+      "solved_instances": 3
     },
     "0x53DaB8458d869389e5cF3a29cF3B3B3c7f5C8d7a": {
       "created_instances": 1,
@@ -53,12 +53,12 @@
       "solved_instances": 0
     },
     "0x7e9AD6305Cd765D3D8Bffa575EC786Ded93de5ac": {
-      "created_instances": 2,
-      "solved_instances": 0
+      "created_instances": 5,
+      "solved_instances": 1
     },
     "0x209fB18d50cA1cFC85972703c0051d8758afD970": {
-      "created_instances": 2,
-      "solved_instances": 1
+      "created_instances": 3,
+      "solved_instances": 2
     },
     "0x52656f41F0008D9441839d0F021c7851502f765c": {
       "created_instances": 1,
@@ -81,8 +81,8 @@
       "solved_instances": 1
     },
     "0x8626f6940E2eb28930eFb4CeF49B2d1F2C9C1199": {
-      "created_instances": 2,
-      "solved_instances": 1
+      "created_instances": 4,
+      "solved_instances": 2
     },
     "0x21FdB12Ff835fc665fB845F8798024a6058976D9": {
       "created_instances": 3,
@@ -113,8 +113,8 @@
       "solved_instances": 3
     },
     "0xf78DEeDEF6c24C447D2d9F36B330c8D5852daf26": {
-      "created_instances": 2,
-      "solved_instances": 1
+      "created_instances": 3,
+      "solved_instances": 3
     },
     "0x5E088aF88c6b5bC49d80788A4CE1387DE14f8Bcb": {
       "created_instances": 1,
@@ -126,11 +126,51 @@
     },
     "0x820A7F6B36700e8ae764Eb50eDb74c98A1F47f74": {
       "created_instances": 1,
-      "solved_instances": 0
+      "solved_instances": 1
     },
     "0xDAD9F37306395ff8E2a028B544Fa2F26D0661c3a": {
       "created_instances": 1,
+      "solved_instances": 1
+    },
+    "0x9448CBef200Cdd9250A5F578ED0C4a8A69239d95": {
+      "created_instances": 3,
+      "solved_instances": 3
+    },
+    "0xEac8221b3457884717B256C44f7E48Ec1dad1d3F": {
+      "created_instances": 1,
       "solved_instances": 0
+    },
+    "0x3f87d31C28328C8A2526F7CaF4Fd083403c8faC8": {
+      "created_instances": 1,
+      "solved_instances": 0
+    },
+    "0xAD68BDc8629DBc969ccA63E325959Fd09E6D03CB": {
+      "created_instances": 3,
+      "solved_instances": 2
+    },
+    "0x51fC8CacB3FbfeBF6C718789CA2FBC255Efed2da": {
+      "created_instances": 2,
+      "solved_instances": 2
+    },
+    "0x8FBF8c717fD49714d864F81D26A2348E85a833dd": {
+      "created_instances": 1,
+      "solved_instances": 1
+    },
+    "0xE9976B324098dC194399f445cDbd989Bc42B4da7": {
+      "created_instances": 1,
+      "solved_instances": 0
+    },
+    "0x98B3a26D5aEcef86EB598fF307680d23eF6F174c": {
+      "created_instances": 1,
+      "solved_instances": 1
+    },
+    "0xbB6d1D48602c275B21812802D30f7d45efe1e481": {
+      "created_instances": 1,
+      "solved_instances": 1
+    },
+    "0xA3A333268805e654bc54E79fa3b39E0d3deae660": {
+      "created_instances": 1,
+      "solved_instances": 1
     }
   }
 }

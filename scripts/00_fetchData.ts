@@ -21,7 +21,7 @@ const getData = async () => {
     toBlock: 7822692,
   });
 
-  for (const log of logs.slice(0, 100)) {
+  for (const log of logs.slice(0, 150)) {
     console.log(`Fetching transaction -> ${log.transactionHash}`);
 
     let txn = await getTxn(log.transactionHash);
@@ -38,8 +38,14 @@ const getData = async () => {
       blockNumber: Number(txn.blockNumber),
       timeStamp: Number(block.timestamp),
       player: String(txn.from),
-      instance: decodeParam('address', log.data).toString(),
-      level: decodeParam('address', input_data).toString(),
+      instance:
+        log.topics[0] === EVENT_TYPE_SIG.create_instance
+          ? decodeParam('address', log.data).toString()
+          : input_data,
+      level:
+        log.topics[0] === EVENT_TYPE_SIG.create_instance
+          ? decodeParam('address', input_data).toString()
+          : decodeParam('address', log.data).toString(),
     };
     GAME_DATA.push(data);
   }

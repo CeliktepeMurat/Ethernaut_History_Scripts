@@ -18,3 +18,6 @@ export const EVENT_TYPE_SIG = {
 export interface PLAYER_STAT {
   [key: string]: { created_instances: number; solved_instances: number };
 }
+export interface LEVEL_FACTORY_STAT {
+  [key: string]: { created_instances: number; solved_instances: number };
+}
