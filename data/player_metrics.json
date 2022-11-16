@@ -5,7 +5,7 @@
         "instance": "0xd285Aa398e183e67c921ead8583B4397453b9EaC",
         "isCompleted": true,
         "timeCreated": 1665070740,
-        "timeSolved": 1665071760
+        "timeCompleted": 1665071760
       }
     },
     "0x3b28B6373FB7E577107F7a766BA20737cEE3666b": {
@@ -13,37 +13,37 @@
         "instance": "0xe09825ffEc0e47966D1fc034c0a4A7dd7fA9496d",
         "isCompleted": true,
         "timeCreated": 1665070980,
-        "timeSolved": 1665071220
+        "timeCompleted": 1665071220
       },
       "0x6F9cf195B9B4c1259E8FCe5b4e30F7142f779DeA": {
         "instance": "0x54241B6C3416b59d7a205372C1188D9D846209c5",
         "isCompleted": true,
         "timeCreated": 1665071388,
-        "timeSolved": 1665076452
+        "timeCompleted": 1665076452
       },
       "0x40F5513a90fb7e2ac2C3E12A6d16B9279D1e94Ed": {
         "instance": "0x454F589a947C63736B99B9D9642579E338E9D2cc",
         "isCompleted": true,
         "timeCreated": 1665075996,
-        "timeSolved": 1665077976
+        "timeCompleted": 1665077976
       },
       "0x466BDd41a04473A01031C9D80f61A9487C7ef488": {
         "instance": "0x455bF182d5df18EB939a542eFa95CbB2A738e133",
         "isCompleted": true,
         "timeCreated": 1665078084,
-        "timeSolved": 1665080040
+        "timeCompleted": 1665080040
       },
       "0xDc0c34CFE029b190Fc4A6eD5219BF809F04E57A3": {
         "instance": "0x4107939F92D143C8E4A98e4F74F4791BdC6D5467",
         "isCompleted": true,
         "timeCreated": 1665081708,
-        "timeSolved": 1665082596
+        "timeCompleted": 1665082596
       },
       "0x25141B6345378e7558634Cf7c2d9B8670baFA417": {
         "instance": "0xB7642AF396d8b2B23C2c174395c36222B5B28a5B",
         "isCompleted": false,
         "timeCreated": 1665082932,
-        "timeSolved": 0
+        "timeCompleted": 0
       }
     },
     "0x0B523cA2EeA9E2287626Dd7b1246E14A68555e41": {
@@ -51,7 +51,7 @@
         "instance": "0xF42E0ffEb806608d24c28702dc5e19FDaA6C0875",
         "isCompleted": true,
         "timeCreated": 1665071184,
-        "timeSolved": 1665078252
+        "timeCompleted": 1665078252
       }
     },
     "0x6Ecb1e890b68DFa299DdD4856cf30a3d38867B47": {
@@ -59,31 +59,31 @@
         "instance": "0xcf244c23D36731C83efD88BD15a5BE8d32A6443B",
         "isCompleted": false,
         "timeCreated": 1665073668,
-        "timeSolved": 0
+        "timeCompleted": 0
       },
       "0xe8F8591475E425BA05336fa27d9810cd0c3eEe69": {
         "instance": "0xDB5F4B997CD30908F175550e9B135580ae008941",
         "isCompleted": true,
         "timeCreated": 1665103044,
-        "timeSolved": 1665103380
+        "timeCompleted": 1665103380
       },
       "0x545d848827bD9e0E30794a9E53f5ab04EA71d78a": {
         "instance": "0x6D196c0415C7ff08f5c555cE723A5976B7349d2D",
         "isCompleted": true,
         "timeCreated": 1665103452,
-        "timeSolved": 1665103932
+        "timeCompleted": 1665103932
       },
       "0x57d122d0355973dA78acF5138aE664548bB2CA2b": {
         "instance": "0x814181adc4bD4515c3bd181f3ca56f691B5d2EA7",
         "isCompleted": true,
         "timeCreated": 1665105120,
-        "timeSolved": 1665106128
+        "timeCompleted": 1665106128
       },
       "0x026330B3Eb548B28F4BACbe101431E74597b0aa6": {
         "instance": "0x2718A111bb7d8Ce6D61218Cef0682dc52BEb8a4b",
         "isCompleted": true,
         "timeCreated": 1665106452,
-        "timeSolved": 1665107112
+        "timeCompleted": 1665107112
       }
     },
     "0x6F4e3e11cc67DC66Ea3108F0aB50fd3c1b8722a9": {
@@ -91,13 +91,13 @@
         "instance": "0xC5c2B8fa26dD3f8E702C6Ba00AB3C61C3233F2cb",
         "isCompleted": true,
         "timeCreated": 1665073812,
-        "timeSolved": 1665074424
+        "timeCompleted": 1665074424
       },
       "0x6F9cf195B9B4c1259E8FCe5b4e30F7142f779DeA": {
         "instance": "0xEB17A134d788B25D9aEf808d3a5e0927b1E9d567",
         "isCompleted": false,
         "timeCreated": 1665074964,
-        "timeSolved": 0
+        "timeCompleted": 0
       }
     },
     "0x29778cda2580032781a444eBF469C95cC7238355": {
@@ -105,13 +105,13 @@
         "instance": "0x5bad5fB9e64BBc622b62Ba160192c706E59B19aF",
         "isCompleted": true,
         "timeCreated": 1665074172,
-        "timeSolved": 1665074784
+        "timeCompleted": 1665074784
       },
       "0x6F9cf195B9B4c1259E8FCe5b4e30F7142f779DeA": {
         "instance": "0x09c1D81E49499408F2a4c1a62a1aDce05498F6D5",
         "isCompleted": true,
         "timeCreated": 1665074652,
-        "timeSolved": 1665078312
+        "timeCompleted": 1665078312
       }
     },
     "0xF552191009a58ef29444835C05B188eA59f88B22": {
@@ -119,13 +119,13 @@
         "instance": "0xC6e63A90CA8625eaCFf1AebC4D1C6d5890bEb277",
         "isCompleted": true,
         "timeCreated": 1665075084,
-        "timeSolved": 1665079872
+        "timeCompleted": 1665079872
       },
       "0xaCB258afa213Db8E0007459f5d3851c112d2fA8d": {
         "instance": "0x835832f047BD979753e28C112ab0c18D98eD3624",
         "isCompleted": false,
         "timeCreated": 1665080052,
-        "timeSolved": 0
+        "timeCompleted": 0
       }
     },
     "0x32D9b5C41d594838d6b993ebAF538fF770a00E30": {
@@ -133,13 +133,13 @@
         "instance": "0xa086F8E1597641dfe3943C383Ca1A0E7E8228639",
         "isCompleted": true,
         "timeCreated": 1665075168,
-        "timeSolved": 1665081552
+        "timeCompleted": 1665081552
       },
       "0x6F9cf195B9B4c1259E8FCe5b4e30F7142f779DeA": {
         "instance": "0x90fc660F7D5D2d8779A365Cd32476c03AA1f72Df",
         "isCompleted": false,
         "timeCreated": 1665081732,
-        "timeSolved": 0
+        "timeCompleted": 0
       }
     },
     "0xDfc9831413FaD4cCf0438412311ee44Aa3314A12": {
@@ -147,25 +147,25 @@
         "instance": "0x2c677b302f506F0374D2032F6690e15136D955B9",
         "isCompleted": true,
         "timeCreated": 1665075372,
-        "timeSolved": 1665084876
+        "timeCompleted": 1665084876
       },
       "0xe8F8591475E425BA05336fa27d9810cd0c3eEe69": {
         "instance": "0x53b0124bADD47D63DE7b2B38d2D7814EC3E2A2cC",
         "isCompleted": true,
         "timeCreated": 1665085068,
-        "timeSolved": 1665092832
+        "timeCompleted": 1665092832
       },
       "0x545d848827bD9e0E30794a9E53f5ab04EA71d78a": {
         "instance": "0x82e2e585f1956Df14ba41bedA2E42a184F466880",
         "isCompleted": true,
         "timeCreated": 1665093420,
-        "timeSolved": 1665095040
+        "timeCompleted": 1665095040
       },
       "0x57d122d0355973dA78acF5138aE664548bB2CA2b": {
         "instance": "0xF1b76b52293d07c9Ad7c85dA301c40A8cB6E5918",
         "isCompleted": false,
         "timeCreated": 1665095184,
-        "timeSolved": 0
+        "timeCompleted": 0
       }
     },
     "0x53DaB8458d869389e5cF3a29cF3B3B3c7f5C8d7a": {
@@ -173,7 +173,7 @@
         "instance": "0x2C4C208219d09a420718067D1794a81501C74106",
         "isCompleted": false,
         "timeCreated": 1665075876,
-        "timeSolved": 0
+        "timeCompleted": 0
       }
     },
     "0x56002839A789a91984Ec8892D5B6f74FA532Ce0b": {
@@ -181,19 +181,19 @@
         "instance": "0x6bEcDe1AE511e3597aEBB6284755a05993b2c116",
         "isCompleted": true,
         "timeCreated": 1665077232,
-        "timeSolved": 1665077880
+        "timeCompleted": 1665077880
       },
       "0xDc0c34CFE029b190Fc4A6eD5219BF809F04E57A3": {
         "instance": "0x58A01ef9C3606E683f0A41f551924Eda5fD4959b",
         "isCompleted": true,
         "timeCreated": 1665085164,
-        "timeSolved": 1665087588
+        "timeCompleted": 1665087588
       },
       "0x31C4D3a9e0ED12A409cF3C84ad145331aB487D3F": {
         "instance": "0x4Bd949a3880732ad22eCd4c08401933fcBcB74A9",
         "isCompleted": false,
         "timeCreated": 1665087696,
-        "timeSolved": 0
+        "timeCompleted": 0
       }
     },
     "0xAef16C42F17F9D53FdE1E94CF1A9103f0acd9a2B": {
@@ -201,13 +201,13 @@
         "instance": "0xdDbF955Cff67bfFD5B89A671270fAC4f20458dCc",
         "isCompleted": false,
         "timeCreated": 1665077364,
-        "timeSolved": 0
+        "timeCompleted": 0
       },
       "0xBd886a37faD1f596221f33ca568122815ED48c81": {
         "instance": "0x9BFb6B0C616FEF79d7860E0619AdF07BDF464bc2",
         "isCompleted": false,
         "timeCreated": 1665077484,
-        "timeSolved": 0
+        "timeCompleted": 0
       }
     },
     "0x7e9AD6305Cd765D3D8Bffa575EC786Ded93de5ac": {
@@ -215,13 +215,13 @@
         "instance": "0x1fD8F0fDbD7Ce15AF6CF7e7fdBec98563fA0141B",
         "isCompleted": false,
         "timeCreated": 1665079632,
-        "timeSolved": 0
+        "timeCompleted": 0
       },
       "0x6F9cf195B9B4c1259E8FCe5b4e30F7142f779DeA": {
         "instance": "0x0479067ea87b638F4f81ccaCe5593727343d823E",
         "isCompleted": true,
         "timeCreated": 1665096324,
-        "timeSolved": 1665108444
+        "timeCompleted": 1665108444
       }
     },
     "0x209fB18d50cA1cFC85972703c0051d8758afD970": {
@@ -229,13 +229,13 @@
         "instance": "0x6341A175C80D8D7c78EF857Ce6997789415C61F4",
         "isCompleted": true,
         "timeCreated": 1665079764,
-        "timeSolved": 1665080388
+        "timeCompleted": 1665080388
       },
       "0x6F9cf195B9B4c1259E8FCe5b4e30F7142f779DeA": {
         "instance": "0x225534cf7dA8401ba119A62015FF87C7Eecaeb54",
         "isCompleted": true,
         "timeCreated": 1665094980,
-        "timeSolved": 1665095532
+        "timeCompleted": 1665095532
       }
     },
     "0x52656f41F0008D9441839d0F021c7851502f765c": {
@@ -243,7 +243,7 @@
         "instance": "0x2697c8E87e56A63fd1ed7461E475dc4B866D5AEf",
         "isCompleted": false,
         "timeCreated": 1665079992,
-        "timeSolved": 0
+        "timeCompleted": 0
       }
     },
     "0x9f7E982Ac727C530441AEE2997EB1DB83C6c7813": {
@@ -251,7 +251,7 @@
         "instance": "0x48203bc08eD3157166E6f625495332175a0EB49c",
         "isCompleted": false,
         "timeCreated": 1665080220,
-        "timeSolved": 0
+        "timeCompleted": 0
       }
     },
     "0x7b3813a943391465Dd62B648529c337e52FbA79b": {
@@ -259,7 +259,7 @@
         "instance": "0x9d42002a1c39C49919F95617Ee3865a1E3DBf943",
         "isCompleted": false,
         "timeCreated": 1665080640,
-        "timeSolved": 0
+        "timeCompleted": 0
       }
     },
     "0xbf6877B0Cc4136Bc4BB0fCDb689e78720b2428A7": {
@@ -267,7 +267,7 @@
         "instance": "0x5f61b71AcfA4B9dEA412a937f43658EA1b05313C",
         "isCompleted": false,
         "timeCreated": 1665080748,
-        "timeSolved": 0
+        "timeCompleted": 0
       }
     },
     "0x2896D655997608bA1f82A83E77f0F403Ba25E26c": {
@@ -275,7 +275,7 @@
         "instance": "0xE7ad70D8332b4271041a75cd0cd8892115f284C8",
         "isCompleted": true,
         "timeCreated": 1665081036,
-        "timeSolved": 1665081468
+        "timeCompleted": 1665081468
       }
     },
     "0x8626f6940E2eb28930eFb4CeF49B2d1F2C9C1199": {
@@ -283,13 +283,13 @@
         "instance": "0xB42d548Be55298C932ac057ee7C5EFf29c75e137",
         "isCompleted": true,
         "timeCreated": 1665081516,
-        "timeSolved": 1665109032
+        "timeCompleted": 1665109032
       },
       "0x6F9cf195B9B4c1259E8FCe5b4e30F7142f779DeA": {
         "instance": "0xD7Df7BC5763A1c9185C1a8eAa8ae9611D9D1a206",
         "isCompleted": false,
         "timeCreated": 1665083232,
-        "timeSolved": 0
+        "timeCompleted": 0
       }
     },
     "0x21FdB12Ff835fc665fB845F8798024a6058976D9": {
@@ -297,13 +297,13 @@
         "instance": "0x193d9f3f6dAACe44A9c1738331d87C5F03E1b10f",
         "isCompleted": true,
         "timeCreated": 1665082176,
-        "timeSolved": 1665085608
+        "timeCompleted": 1665085608
       },
       "0x40b8Df5575a55b2f0c55E6e18838AEC7B82aebD7": {
         "instance": "0xb79296AEfb801B7917a8A606529AcB85D445CB24",
         "isCompleted": true,
         "timeCreated": 1665085776,
-        "timeSolved": 1665090804
+        "timeCompleted": 1665090804
       }
     },
     "0xEd6a35E2c6D965a9B4aCde63BD64d692d6b1832B": {
@@ -311,7 +311,7 @@
         "instance": "0x46397ee86A725b268A450B15B209d018968E5c96",
         "isCompleted": false,
         "timeCreated": 1665082704,
-        "timeSolved": 0
+        "timeCompleted": 0
       }
     },
     "0x4eed9Ce331948932b3Df2817abcFA6F29B043868": {
@@ -319,7 +319,7 @@
         "instance": "0x431da602f17a106f8f1102D32b46fb203b6e35AB",
         "isCompleted": false,
         "timeCreated": 1665083316,
-        "timeSolved": 0
+        "timeCompleted": 0
       }
     },
     "0xD7d83a31940D4e2D7e9d14c6c0afA23978B2eB99": {
@@ -327,25 +327,25 @@
         "instance": "0xa64d7a9d9Ce557Cf81B9BA655F5F17668e9d9ec8",
         "isCompleted": true,
         "timeCreated": 1665083784,
-        "timeSolved": 1665085140
+        "timeCompleted": 1665085140
       },
       "0x6F9cf195B9B4c1259E8FCe5b4e30F7142f779DeA": {
         "instance": "0x99370D5F9C02B98794A4122070BD3f3716201166",
         "isCompleted": true,
         "timeCreated": 1665085308,
-        "timeSolved": 1665086064
+        "timeCompleted": 1665086064
       },
       "0x40F5513a90fb7e2ac2C3E12A6d16B9279D1e94Ed": {
         "instance": "0xe583BE7325c8Bb732eF7a4cd5A0b8786aC650f69",
         "isCompleted": true,
         "timeCreated": 1665086172,
-        "timeSolved": 1665086436
+        "timeCompleted": 1665086436
       },
       "0xae9677ff69efB3C1B9559C8F2A9ED6a2212148e3": {
         "instance": "0x0b28050850daB74AB9D9f95A5052a55D3aef020c",
         "isCompleted": false,
         "timeCreated": 1665086460,
-        "timeSolved": 0
+        "timeCompleted": 0
       }
     },
     "0x034BEBE315946f34d53032F7E6bece7081eDF6ed": {
@@ -353,25 +353,25 @@
         "instance": "0x8ff93b2eBEeb2421a6A804Dbb688CD04eAce6c1C",
         "isCompleted": true,
         "timeCreated": 1665083988,
-        "timeSolved": 1665084444
+        "timeCompleted": 1665084444
       },
       "0x6F9cf195B9B4c1259E8FCe5b4e30F7142f779DeA": {
         "instance": "0x65B0aa0fb6CCAB50CfdB01D5fF12D49FF7C7FA55",
         "isCompleted": true,
         "timeCreated": 1665084924,
-        "timeSolved": 1665086772
+        "timeCompleted": 1665086772
       },
       "0x40F5513a90fb7e2ac2C3E12A6d16B9279D1e94Ed": {
         "instance": "0x41f578284BA93F495fa2E7e5fBf7de529e7C4485",
         "isCompleted": true,
         "timeCreated": 1665087024,
-        "timeSolved": 1665087504
+        "timeCompleted": 1665087504
       },
       "0xae9677ff69efB3C1B9559C8F2A9ED6a2212148e3": {
         "instance": "0x7a6756e21a4Abe52F9eEc2504b206584Daa0472C",
         "isCompleted": false,
         "timeCreated": 1665087588,
-        "timeSolved": 0
+        "timeCompleted": 0
       }
     },
     "0x7C762eC5EA94cf70dAc7F335eC204ff2209e5F0e": {
@@ -379,13 +379,13 @@
         "instance": "0x5250FBd900923F5678652D26b093A8b270A34598",
         "isCompleted": false,
         "timeCreated": 1665086472,
-        "timeSolved": 0
+        "timeCompleted": 0
       },
       "0x6F9cf195B9B4c1259E8FCe5b4e30F7142f779DeA": {
         "instance": "0xFA21a626c79E52381C67115BD43CA3ce9259B59c",
         "isCompleted": false,
         "timeCreated": 1665086700,
-        "timeSolved": 0
+        "timeCompleted": 0
       }
     },
     "0x18Ae0673115844393df9ea16187c4958A64AeDa1": {
@@ -393,19 +393,19 @@
         "instance": "0x2B8a9F76659E7310bB220fFF399563De3B8f6545",
         "isCompleted": true,
         "timeCreated": 1665087876,
-        "timeSolved": 1665088956
+        "timeCompleted": 1665088956
       },
       "0x25141B6345378e7558634Cf7c2d9B8670baFA417": {
         "instance": "0x14D489eE6AB343B3F38f400f609108d0d47145cB",
         "isCompleted": true,
         "timeCreated": 1665090432,
-        "timeSolved": 1665091284
+        "timeCompleted": 1665091284
       },
       "0x40b8Df5575a55b2f0c55E6e18838AEC7B82aebD7": {
         "instance": "0xb039c88BBE781F249A696fFb65f408d58b48F8F9",
         "isCompleted": true,
         "timeCreated": 1665091764,
-        "timeSolved": 1665094476
+        "timeCompleted": 1665094476
       }
     },
     "0xf78DEeDEF6c24C447D2d9F36B330c8D5852daf26": {
@@ -413,19 +413,19 @@
         "instance": "0x2fb6d2214D21Bc5E9AD90ae41363c1211513CfFF",
         "isCompleted": true,
         "timeCreated": 1665090960,
-        "timeSolved": 1665092352
+        "timeCompleted": 1665092352
       },
       "0xD3ebB53C3c2126D14383a6c8519C87106772607e": {
         "instance": "0xf95ef8A0ff1fCBbBDDa88F52fc9ad04D9cF64a8E",
         "isCompleted": true,
         "timeCreated": 1665092532,
-        "timeSolved": 1665098700
+        "timeCompleted": 1665098700
       },
       "0xe8F8591475E425BA05336fa27d9810cd0c3eEe69": {
         "instance": "0x772649312eC6448794756743A5aeb80184C03657",
         "isCompleted": true,
         "timeCreated": 1665098880,
-        "timeSolved": 1665100596
+        "timeCompleted": 1665100596
       }
     },
     "0x5E088aF88c6b5bC49d80788A4CE1387DE14f8Bcb": {
@@ -433,7 +433,7 @@
         "instance": "0xd6fEAF66210310e98D3FA8957c286621390523f4",
         "isCompleted": false,
         "timeCreated": 1665091416,
-        "timeSolved": 0
+        "timeCompleted": 0
       }
     },
     "0xc1FDdD8C8E57a10419A01b1aEC2f4F4F64A2393f": {
@@ -441,7 +441,7 @@
         "instance": "0x63088C1D93E29E77dc1b2f20Cbef57dbF4cf3f76",
         "isCompleted": true,
         "timeCreated": 1665092256,
-        "timeSolved": 1665092448
+        "timeCompleted": 1665092448
       }
     },
     "0x820A7F6B36700e8ae764Eb50eDb74c98A1F47f74": {
@@ -449,7 +449,7 @@
         "instance": "0x0AFd33F1027874802c3AC0952fcc4a4506B3E87D",
         "isCompleted": true,
         "timeCreated": 1665094428,
-        "timeSolved": 1665098016
+        "timeCompleted": 1665098016
       }
     },
     "0xDAD9F37306395ff8E2a028B544Fa2F26D0661c3a": {
@@ -457,7 +457,7 @@
         "instance": "0x246DFc69c9a6b4DdC3A81a7653096F15919C10f5",
         "isCompleted": true,
         "timeCreated": 1665094680,
-        "timeSolved": 1665094944
+        "timeCompleted": 1665094944
       }
     },
     "0x9448CBef200Cdd9250A5F578ED0C4a8A69239d95": {
@@ -465,19 +465,19 @@
         "instance": "0xde3E36C81b1d43088118413EE222648b4C4F3121",
         "isCompleted": true,
         "timeCreated": 1665096672,
-        "timeSolved": 1665097800
+        "timeCompleted": 1665097800
       },
       "0x2aa5685ffd9e8e4897caf92855C1959d82DA5E36": {
         "instance": "0x66b8C9608bE926b899236829Abfb2Ca36766eD85",
         "isCompleted": true,
         "timeCreated": 1665098316,
-        "timeSolved": 1665101400
+        "timeCompleted": 1665101400
       },
       "0xD3ebB53C3c2126D14383a6c8519C87106772607e": {
         "instance": "0x7E2e41c6a4888157E78026Fb7D5AF97fCcF8eA42",
         "isCompleted": true,
         "timeCreated": 1665101880,
-        "timeSolved": 1665108480
+        "timeCompleted": 1665108480
       }
     },
     "0xEac8221b3457884717B256C44f7E48Ec1dad1d3F": {
@@ -485,7 +485,7 @@
         "instance": "0x1776b823992272B5801F2E983EAE68A519A026cb",
         "isCompleted": false,
         "timeCreated": 1665097932,
-        "timeSolved": 0
+        "timeCompleted": 0
       }
     },
     "0x3f87d31C28328C8A2526F7CaF4Fd083403c8faC8": {
@@ -493,7 +493,7 @@
         "instance": "0xC537AeeC6BeA05dc625C22Ed75c3716847B9D17b",
         "isCompleted": false,
         "timeCreated": 1665098112,
-        "timeSolved": 0
+        "timeCompleted": 0
       }
     },
     "0xAD68BDc8629DBc969ccA63E325959Fd09E6D03CB": {
@@ -501,7 +501,7 @@
         "instance": "0x17DEaAc03F04D167fE974B66d2cc3710A98B420a",
         "isCompleted": true,
         "timeCreated": 1665100980,
-        "timeSolved": 1665107832
+        "timeCompleted": 1665107832
       }
     },
     "0x51fC8CacB3FbfeBF6C718789CA2FBC255Efed2da": {
@@ -509,13 +509,13 @@
         "instance": "0x2178166D2efD169188f867Fb4645d24ac86EEc86",
         "isCompleted": true,
         "timeCreated": 1665101832,
-        "timeSolved": 1665104796
+        "timeCompleted": 1665104796
       },
       "0x40F5513a90fb7e2ac2C3E12A6d16B9279D1e94Ed": {
         "instance": "0xcEc630E553b344614C7f28dDbb4be19FaE3A7ac6",
         "isCompleted": true,
         "timeCreated": 1665105888,
-        "timeSolved": 1665106428
+        "timeCompleted": 1665106428
       }
     },
     "0x8FBF8c717fD49714d864F81D26A2348E85a833dd": {
@@ -523,7 +523,7 @@
         "instance": "0x32144A72ca7100254d029B584882FF55EdbBE327",
         "isCompleted": true,
         "timeCreated": 1665104772,
-        "timeSolved": 1665108468
+        "timeCompleted": 1665108468
       }
     },
     "0xE9976B324098dC194399f445cDbd989Bc42B4da7": {
@@ -531,7 +531,7 @@
         "instance": "0x3a0278F5E36651f95aBC6D68946be868d9bE48f8",
         "isCompleted": false,
         "timeCreated": 1665106992,
-        "timeSolved": 0
+        "timeCompleted": 0
       }
     },
     "0x98B3a26D5aEcef86EB598fF307680d23eF6F174c": {
@@ -539,7 +539,7 @@
         "instance": "0x3E5C655AEE641369b01320e92DD2CE48a5f1c7b1",
         "isCompleted": true,
         "timeCreated": 1665107400,
-        "timeSolved": 1665108720
+        "timeCompleted": 1665108720
       }
     },
     "0xbB6d1D48602c275B21812802D30f7d45efe1e481": {
@@ -547,7 +547,7 @@
         "instance": "0x1862937A76c79094A2D5e69b0378AC45428b3195",
         "isCompleted": true,
         "timeCreated": 1665107880,
-        "timeSolved": 1665108036
+        "timeCompleted": 1665108036
       }
     },
     "0xA3A333268805e654bc54E79fa3b39E0d3deae660": {
@@ -555,7 +555,7 @@
         "instance": "0x7A0ecEB8e522d81db7295D122842560b206d5d1F",
         "isCompleted": true,
         "timeCreated": 1665108480,
-        "timeSolved": 1665108960
+        "timeCompleted": 1665108960
       }
     }
   }

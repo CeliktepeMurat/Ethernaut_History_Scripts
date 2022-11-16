@@ -1,11 +1,11 @@
 export interface FETCH_DATA {
   event: string;
-  transactionHash: String;
-  blockNumber: Number;
-  timeStamp: Number;
-  player: String;
-  instance: String;
-  level: String;
+  transactionHash: string;
+  blockNumber: number;
+  timeStamp: number;
+  player: string;
+  instance: string;
+  level: string;
 }
 
 export const EVENT_TYPE_SIG = {
