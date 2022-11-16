@@ -21,3 +21,14 @@ export interface PLAYER_STAT {
 export interface LEVEL_FACTORY_STAT {
   [key: string]: { created_instances: number; solved_instances: number };
 }
+
+export interface PLAYER_METRICS {
+  [key: string]: {
+    [key: string]: {
+      instance: string;
+      isCompleted: boolean;
+      timeCreated: number;
+      timeSolved: number;
+    };
+  };
+}
