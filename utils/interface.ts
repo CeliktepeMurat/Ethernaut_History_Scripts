@@ -28,7 +28,7 @@ export interface PLAYER_METRICS {
       instance: string;
       isCompleted: boolean;
       timeCreated: number;
-      timeSolved: number;
+      timeCompleted: number;
     };
   };
 }
