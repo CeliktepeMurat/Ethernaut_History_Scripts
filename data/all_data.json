@@ -6,8 +6,7 @@
     "timeStamp": 1665070740,
     "player": "0x03826103FF25062F1E002D5B265Ddf36dD59eFb3",
     "instance": "0xd285Aa398e183e67c921ead8583B4397453b9EaC",
-    "level": "0x57d122d0355973dA78acF5138aE664548bB2CA2b",
-    "status": true
+    "level": "0x57d122d0355973dA78acF5138aE664548bB2CA2b"
   },
   {
     "event": "create_instance",
@@ -16,8 +15,7 @@
     "timeStamp": 1665070980,
     "player": "0x3b28B6373FB7E577107F7a766BA20737cEE3666b",
     "instance": "0xe09825ffEc0e47966D1fc034c0a4A7dd7fA9496d",
-    "level": "0xBd886a37faD1f596221f33ca568122815ED48c81",
-    "status": true
+    "level": "0xBd886a37faD1f596221f33ca568122815ED48c81"
   },
   {
     "event": "create_instance",
@@ -26,8 +24,7 @@
     "timeStamp": 1665071184,
     "player": "0x0B523cA2EeA9E2287626Dd7b1246E14A68555e41",
     "instance": "0xF42E0ffEb806608d24c28702dc5e19FDaA6C0875",
-    "level": "0xae9677ff69efB3C1B9559C8F2A9ED6a2212148e3",
-    "status": true
+    "level": "0xae9677ff69efB3C1B9559C8F2A9ED6a2212148e3"
   },
   {
     "event": "solve_instance",
@@ -36,8 +33,7 @@
     "timeStamp": 1665071220,
     "player": "0x3b28B6373FB7E577107F7a766BA20737cEE3666b",
     "instance": "0xBd886a37faD1f596221f33ca568122815ED48c81",
-    "level": "0xe09825ffEc0e47966D1fc034c0a4A7dd7fA9496d",
-    "status": true
+    "level": "0xe09825ffEc0e47966D1fc034c0a4A7dd7fA9496d"
   },
   {
     "event": "create_instance",
@@ -46,8 +42,7 @@
     "timeStamp": 1665071388,
     "player": "0x3b28B6373FB7E577107F7a766BA20737cEE3666b",
     "instance": "0x54241B6C3416b59d7a205372C1188D9D846209c5",
-    "level": "0x6F9cf195B9B4c1259E8FCe5b4e30F7142f779DeA",
-    "status": true
+    "level": "0x6F9cf195B9B4c1259E8FCe5b4e30F7142f779DeA"
   },
   {
     "event": "create_instance",
@@ -56,8 +51,7 @@
     "timeStamp": 1665071424,
     "player": "0x03826103FF25062F1E002D5B265Ddf36dD59eFb3",
     "instance": "0x0354405E35a477766AE6fec602f6f268D5938af4",
-    "level": "0x57d122d0355973dA78acF5138aE664548bB2CA2b",
-    "status": true
+    "level": "0x57d122d0355973dA78acF5138aE664548bB2CA2b"
   },
   {
     "event": "solve_instance",
@@ -66,8 +60,7 @@
     "timeStamp": 1665071760,
     "player": "0x03826103FF25062F1E002D5B265Ddf36dD59eFb3",
     "instance": "0x57d122d0355973dA78acF5138aE664548bB2CA2b",
-    "level": "0x0354405E35a477766AE6fec602f6f268D5938af4",
-    "status": true
+    "level": "0x0354405E35a477766AE6fec602f6f268D5938af4"
   },
   {
     "event": "solve_instance",
@@ -76,8 +69,7 @@
     "timeStamp": 1665073416,
     "player": "0xB802b1d2D1CD2Ca3a97fD11C4E67dD7bC5Ab9BD8",
     "instance": "0xba6F0B5784B6580790584A553f6e4a3483a915c3",
-    "level": "0xa0d17C7dE1C7Ff1B276740D92cB6df4021036791",
-    "status": true
+    "level": "0xa0d17C7dE1C7Ff1B276740D92cB6df4021036791"
   },
   {
     "event": "create_instance",
@@ -86,8 +78,7 @@
     "timeStamp": 1665073668,
     "player": "0x6Ecb1e890b68DFa299DdD4856cf30a3d38867B47",
     "instance": "0xcf244c23D36731C83efD88BD15a5BE8d32A6443B",
-    "level": "0xD3ebB53C3c2126D14383a6c8519C87106772607e",
-    "status": true
+    "level": "0xD3ebB53C3c2126D14383a6c8519C87106772607e"
   },
   {
     "event": "create_instance",
@@ -96,8 +87,7 @@
     "timeStamp": 1665073812,
     "player": "0x6F4e3e11cc67DC66Ea3108F0aB50fd3c1b8722a9",
     "instance": "0xC5c2B8fa26dD3f8E702C6Ba00AB3C61C3233F2cb",
-    "level": "0xBd886a37faD1f596221f33ca568122815ED48c81",
-    "status": true
+    "level": "0xBd886a37faD1f596221f33ca568122815ED48c81"
   },
   {
     "event": "create_instance",
@@ -106,8 +96,7 @@
     "timeStamp": 1665074172,
     "player": "0x29778cda2580032781a444eBF469C95cC7238355",
     "instance": "0x5bad5fB9e64BBc622b62Ba160192c706E59B19aF",
-    "level": "0xBd886a37faD1f596221f33ca568122815ED48c81",
-    "status": true
+    "level": "0xBd886a37faD1f596221f33ca568122815ED48c81"
   },
   {
     "event": "solve_instance",
@@ -116,8 +105,7 @@
     "timeStamp": 1665074424,
     "player": "0x6F4e3e11cc67DC66Ea3108F0aB50fd3c1b8722a9",
     "instance": "0xBd886a37faD1f596221f33ca568122815ED48c81",
-    "level": "0xC5c2B8fa26dD3f8E702C6Ba00AB3C61C3233F2cb",
-    "status": true
+    "level": "0xC5c2B8fa26dD3f8E702C6Ba00AB3C61C3233F2cb"
   },
   {
     "event": "create_instance",
@@ -126,8 +114,7 @@
     "timeStamp": 1665074652,
     "player": "0x29778cda2580032781a444eBF469C95cC7238355",
     "instance": "0x09c1D81E49499408F2a4c1a62a1aDce05498F6D5",
-    "level": "0x6F9cf195B9B4c1259E8FCe5b4e30F7142f779DeA",
-    "status": true
+    "level": "0x6F9cf195B9B4c1259E8FCe5b4e30F7142f779DeA"
   },
   {
     "event": "solve_instance",
@@ -136,8 +123,7 @@
     "timeStamp": 1665074784,
     "player": "0x29778cda2580032781a444eBF469C95cC7238355",
     "instance": "0xBd886a37faD1f596221f33ca568122815ED48c81",
-    "level": "0x5bad5fB9e64BBc622b62Ba160192c706E59B19aF",
-    "status": true
+    "level": "0x5bad5fB9e64BBc622b62Ba160192c706E59B19aF"
   },
   {
     "event": "create_instance",
@@ -146,8 +132,7 @@
     "timeStamp": 1665074964,
     "player": "0x6F4e3e11cc67DC66Ea3108F0aB50fd3c1b8722a9",
     "instance": "0xEB17A134d788B25D9aEf808d3a5e0927b1E9d567",
-    "level": "0x6F9cf195B9B4c1259E8FCe5b4e30F7142f779DeA",
-    "status": true
+    "level": "0x6F9cf195B9B4c1259E8FCe5b4e30F7142f779DeA"
   },
   {
     "event": "create_instance",
@@ -156,8 +141,7 @@
     "timeStamp": 1665075084,
     "player": "0xF552191009a58ef29444835C05B188eA59f88B22",
     "instance": "0xC6e63A90CA8625eaCFf1AebC4D1C6d5890bEb277",
-    "level": "0x026330B3Eb548B28F4BACbe101431E74597b0aa6",
-    "status": true
+    "level": "0x026330B3Eb548B28F4BACbe101431E74597b0aa6"
   },
   {
     "event": "create_instance",
@@ -166,8 +150,7 @@
     "timeStamp": 1665075168,
     "player": "0x32D9b5C41d594838d6b993ebAF538fF770a00E30",
     "instance": "0xa086F8E1597641dfe3943C383Ca1A0E7E8228639",
-    "level": "0xBd886a37faD1f596221f33ca568122815ED48c81",
-    "status": true
+    "level": "0xBd886a37faD1f596221f33ca568122815ED48c81"
   },
   {
     "event": "create_instance",
@@ -176,8 +159,7 @@
     "timeStamp": 1665075372,
     "player": "0xDfc9831413FaD4cCf0438412311ee44Aa3314A12",
     "instance": "0x2c677b302f506F0374D2032F6690e15136D955B9",
-    "level": "0xD3ebB53C3c2126D14383a6c8519C87106772607e",
-    "status": true
+    "level": "0xD3ebB53C3c2126D14383a6c8519C87106772607e"
   },
   {
     "event": "create_instance",
@@ -186,8 +168,7 @@
     "timeStamp": 1665075876,
     "player": "0x53DaB8458d869389e5cF3a29cF3B3B3c7f5C8d7a",
     "instance": "0x2C4C208219d09a420718067D1794a81501C74106",
-    "level": "0xBd886a37faD1f596221f33ca568122815ED48c81",
-    "status": true
+    "level": "0xBd886a37faD1f596221f33ca568122815ED48c81"
   },
   {
     "event": "create_instance",
@@ -196,8 +177,7 @@
     "timeStamp": 1665075924,
     "player": "0x29778cda2580032781a444eBF469C95cC7238355",
     "instance": "0x8dB91210633CE0CC31a6AB17c11610Cf1644e0EE",
-    "level": "0x6F9cf195B9B4c1259E8FCe5b4e30F7142f779DeA",
-    "status": true
+    "level": "0x6F9cf195B9B4c1259E8FCe5b4e30F7142f779DeA"
   },
   {
     "event": "create_instance",
@@ -206,8 +186,7 @@
     "timeStamp": 1665075996,
     "player": "0x3b28B6373FB7E577107F7a766BA20737cEE3666b",
     "instance": "0x454F589a947C63736B99B9D9642579E338E9D2cc",
-    "level": "0x40F5513a90fb7e2ac2C3E12A6d16B9279D1e94Ed",
-    "status": true
+    "level": "0x40F5513a90fb7e2ac2C3E12A6d16B9279D1e94Ed"
   },
   {
     "event": "solve_instance",
@@ -216,8 +195,7 @@
     "timeStamp": 1665076452,
     "player": "0x3b28B6373FB7E577107F7a766BA20737cEE3666b",
     "instance": "0x6F9cf195B9B4c1259E8FCe5b4e30F7142f779DeA",
-    "level": "0x54241B6C3416b59d7a205372C1188D9D846209c5",
-    "status": true
+    "level": "0x54241B6C3416b59d7a205372C1188D9D846209c5"
   },
   {
     "event": "create_instance",
@@ -226,8 +204,7 @@
     "timeStamp": 1665077232,
     "player": "0x56002839A789a91984Ec8892D5B6f74FA532Ce0b",
     "instance": "0x6bEcDe1AE511e3597aEBB6284755a05993b2c116",
-    "level": "0x466BDd41a04473A01031C9D80f61A9487C7ef488",
-    "status": true
+    "level": "0x466BDd41a04473A01031C9D80f61A9487C7ef488"
   },
   {
     "event": "create_instance",
@@ -236,8 +213,7 @@
     "timeStamp": 1665077364,
     "player": "0xAef16C42F17F9D53FdE1E94CF1A9103f0acd9a2B",
     "instance": "0xdDbF955Cff67bfFD5B89A671270fAC4f20458dCc",
-    "level": "0xe1B98E88F060a661029158b0c45c2B8424C9c83f",
-    "status": true
+    "level": "0xe1B98E88F060a661029158b0c45c2B8424C9c83f"
   },
   {
     "event": "create_instance",
@@ -246,8 +222,7 @@
     "timeStamp": 1665077484,
     "player": "0xAef16C42F17F9D53FdE1E94CF1A9103f0acd9a2B",
     "instance": "0x9BFb6B0C616FEF79d7860E0619AdF07BDF464bc2",
-    "level": "0xBd886a37faD1f596221f33ca568122815ED48c81",
-    "status": true
+    "level": "0xBd886a37faD1f596221f33ca568122815ED48c81"
   },
   {
     "event": "create_instance",
@@ -256,8 +231,7 @@
     "timeStamp": 1665077484,
     "player": "0xAef16C42F17F9D53FdE1E94CF1A9103f0acd9a2B",
     "instance": "0x2AC821148bA364aC932c4e07E09b731cb82759e7",
-    "level": "0xBd886a37faD1f596221f33ca568122815ED48c81",
-    "status": true
+    "level": "0xBd886a37faD1f596221f33ca568122815ED48c81"
   },
   {
     "event": "solve_instance",
@@ -266,8 +240,7 @@
     "timeStamp": 1665077880,
     "player": "0x56002839A789a91984Ec8892D5B6f74FA532Ce0b",
     "instance": "0x466BDd41a04473A01031C9D80f61A9487C7ef488",
-    "level": "0x6bEcDe1AE511e3597aEBB6284755a05993b2c116",
-    "status": true
+    "level": "0x6bEcDe1AE511e3597aEBB6284755a05993b2c116"
   },
   {
     "event": "solve_instance",
@@ -276,8 +249,7 @@
     "timeStamp": 1665077976,
     "player": "0x3b28B6373FB7E577107F7a766BA20737cEE3666b",
     "instance": "0x40F5513a90fb7e2ac2C3E12A6d16B9279D1e94Ed",
-    "level": "0x454F589a947C63736B99B9D9642579E338E9D2cc",
-    "status": true
+    "level": "0x454F589a947C63736B99B9D9642579E338E9D2cc"
   },
   {
     "event": "create_instance",
@@ -286,8 +258,7 @@
     "timeStamp": 1665078084,
     "player": "0x3b28B6373FB7E577107F7a766BA20737cEE3666b",
     "instance": "0x455bF182d5df18EB939a542eFa95CbB2A738e133",
-    "level": "0x466BDd41a04473A01031C9D80f61A9487C7ef488",
-    "status": true
+    "level": "0x466BDd41a04473A01031C9D80f61A9487C7ef488"
   },
   {
     "event": "solve_instance",
@@ -296,8 +267,7 @@
     "timeStamp": 1665078252,
     "player": "0x0B523cA2EeA9E2287626Dd7b1246E14A68555e41",
     "instance": "0xae9677ff69efB3C1B9559C8F2A9ED6a2212148e3",
-    "level": "0xF42E0ffEb806608d24c28702dc5e19FDaA6C0875",
-    "status": true
+    "level": "0xF42E0ffEb806608d24c28702dc5e19FDaA6C0875"
   },
   {
     "event": "solve_instance",
@@ -306,8 +276,7 @@
     "timeStamp": 1665078312,
     "player": "0x29778cda2580032781a444eBF469C95cC7238355",
     "instance": "0x6F9cf195B9B4c1259E8FCe5b4e30F7142f779DeA",
-    "level": "0x8dB91210633CE0CC31a6AB17c11610Cf1644e0EE",
-    "status": true
+    "level": "0x8dB91210633CE0CC31a6AB17c11610Cf1644e0EE"
   },
   {
     "event": "create_instance",
@@ -316,8 +285,7 @@
     "timeStamp": 1665079632,
     "player": "0x7e9AD6305Cd765D3D8Bffa575EC786Ded93de5ac",
     "instance": "0x1fD8F0fDbD7Ce15AF6CF7e7fdBec98563fA0141B",
-    "level": "0xBd886a37faD1f596221f33ca568122815ED48c81",
-    "status": true
+    "level": "0xBd886a37faD1f596221f33ca568122815ED48c81"
   },
   {
     "event": "create_instance",
@@ -326,8 +294,7 @@
     "timeStamp": 1665079656,
     "player": "0x7e9AD6305Cd765D3D8Bffa575EC786Ded93de5ac",
     "instance": "0xb3a97b835Ea6032954c4F0d09077991d11A1e0E1",
-    "level": "0xBd886a37faD1f596221f33ca568122815ED48c81",
-    "status": true
+    "level": "0xBd886a37faD1f596221f33ca568122815ED48c81"
   },
   {
     "event": "create_instance",
@@ -336,8 +303,7 @@
     "timeStamp": 1665079764,
     "player": "0x209fB18d50cA1cFC85972703c0051d8758afD970",
     "instance": "0x6341A175C80D8D7c78EF857Ce6997789415C61F4",
-    "level": "0xBd886a37faD1f596221f33ca568122815ED48c81",
-    "status": true
+    "level": "0xBd886a37faD1f596221f33ca568122815ED48c81"
   },
   {
     "event": "create_instance",
@@ -346,8 +312,7 @@
     "timeStamp": 1665079848,
     "player": "0x209fB18d50cA1cFC85972703c0051d8758afD970",
     "instance": "0x0C90B213D06a1457Be8c71BFd21522302569dDb3",
-    "level": "0xBd886a37faD1f596221f33ca568122815ED48c81",
-    "status": true
+    "level": "0xBd886a37faD1f596221f33ca568122815ED48c81"
   },
   {
     "event": "solve_instance",
@@ -356,8 +321,7 @@
     "timeStamp": 1665079872,
     "player": "0xF552191009a58ef29444835C05B188eA59f88B22",
     "instance": "0x026330B3Eb548B28F4BACbe101431E74597b0aa6",
-    "level": "0xC6e63A90CA8625eaCFf1AebC4D1C6d5890bEb277",
-    "status": true
+    "level": "0xC6e63A90CA8625eaCFf1AebC4D1C6d5890bEb277"
   },
   {
     "event": "create_instance",
@@ -366,8 +330,7 @@
     "timeStamp": 1665079992,
     "player": "0x52656f41F0008D9441839d0F021c7851502f765c",
     "instance": "0x2697c8E87e56A63fd1ed7461E475dc4B866D5AEf",
-    "level": "0xBd886a37faD1f596221f33ca568122815ED48c81",
-    "status": true
+    "level": "0xBd886a37faD1f596221f33ca568122815ED48c81"
   },
   {
     "event": "solve_instance",
@@ -376,8 +339,7 @@
     "timeStamp": 1665080040,
     "player": "0x3b28B6373FB7E577107F7a766BA20737cEE3666b",
     "instance": "0x466BDd41a04473A01031C9D80f61A9487C7ef488",
-    "level": "0x455bF182d5df18EB939a542eFa95CbB2A738e133",
-    "status": true
+    "level": "0x455bF182d5df18EB939a542eFa95CbB2A738e133"
   },
   {
     "event": "create_instance",
@@ -386,8 +348,7 @@
     "timeStamp": 1665080052,
     "player": "0xF552191009a58ef29444835C05B188eA59f88B22",
     "instance": "0x835832f047BD979753e28C112ab0c18D98eD3624",
-    "level": "0xaCB258afa213Db8E0007459f5d3851c112d2fA8d",
-    "status": true
+    "level": "0xaCB258afa213Db8E0007459f5d3851c112d2fA8d"
   },
   {
     "event": "create_instance",
@@ -396,8 +357,7 @@
     "timeStamp": 1665080220,
     "player": "0x9f7E982Ac727C530441AEE2997EB1DB83C6c7813",
     "instance": "0x48203bc08eD3157166E6f625495332175a0EB49c",
-    "level": "0xBd886a37faD1f596221f33ca568122815ED48c81",
-    "status": true
+    "level": "0xBd886a37faD1f596221f33ca568122815ED48c81"
   },
   {
     "event": "solve_instance",
@@ -406,8 +366,7 @@
     "timeStamp": 1665080388,
     "player": "0x209fB18d50cA1cFC85972703c0051d8758afD970",
     "instance": "0xBd886a37faD1f596221f33ca568122815ED48c81",
-    "level": "0x0C90B213D06a1457Be8c71BFd21522302569dDb3",
-    "status": true
+    "level": "0x0C90B213D06a1457Be8c71BFd21522302569dDb3"
   },
   {
     "event": "create_instance",
@@ -416,8 +375,7 @@
     "timeStamp": 1665080640,
     "player": "0x7b3813a943391465Dd62B648529c337e52FbA79b",
     "instance": "0x9d42002a1c39C49919F95617Ee3865a1E3DBf943",
-    "level": "0x2aa5685ffd9e8e4897caf92855C1959d82DA5E36",
-    "status": true
+    "level": "0x2aa5685ffd9e8e4897caf92855C1959d82DA5E36"
   },
   {
     "event": "create_instance",
@@ -426,8 +384,7 @@
     "timeStamp": 1665080748,
     "player": "0xbf6877B0Cc4136Bc4BB0fCDb689e78720b2428A7",
     "instance": "0x5f61b71AcfA4B9dEA412a937f43658EA1b05313C",
-    "level": "0x31C4D3a9e0ED12A409cF3C84ad145331aB487D3F",
-    "status": true
+    "level": "0x31C4D3a9e0ED12A409cF3C84ad145331aB487D3F"
   },
   {
     "event": "create_instance",
@@ -436,8 +393,7 @@
     "timeStamp": 1665081036,
     "player": "0x2896D655997608bA1f82A83E77f0F403Ba25E26c",
     "instance": "0xE7ad70D8332b4271041a75cd0cd8892115f284C8",
-    "level": "0x31C4D3a9e0ED12A409cF3C84ad145331aB487D3F",
-    "status": true
+    "level": "0x31C4D3a9e0ED12A409cF3C84ad145331aB487D3F"
   },
   {
     "event": "solve_instance",
@@ -446,8 +402,7 @@
     "timeStamp": 1665081468,
     "player": "0x2896D655997608bA1f82A83E77f0F403Ba25E26c",
     "instance": "0x31C4D3a9e0ED12A409cF3C84ad145331aB487D3F",
-    "level": "0xE7ad70D8332b4271041a75cd0cd8892115f284C8",
-    "status": true
+    "level": "0xE7ad70D8332b4271041a75cd0cd8892115f284C8"
   },
   {
     "event": "create_instance",
@@ -456,8 +411,7 @@
     "timeStamp": 1665081516,
     "player": "0x8626f6940E2eb28930eFb4CeF49B2d1F2C9C1199",
     "instance": "0xB42d548Be55298C932ac057ee7C5EFf29c75e137",
-    "level": "0xBd886a37faD1f596221f33ca568122815ED48c81",
-    "status": true
+    "level": "0xBd886a37faD1f596221f33ca568122815ED48c81"
   },
   {
     "event": "solve_instance",
@@ -466,8 +420,7 @@
     "timeStamp": 1665081552,
     "player": "0x32D9b5C41d594838d6b993ebAF538fF770a00E30",
     "instance": "0xBd886a37faD1f596221f33ca568122815ED48c81",
-    "level": "0xa086F8E1597641dfe3943C383Ca1A0E7E8228639",
-    "status": true
+    "level": "0xa086F8E1597641dfe3943C383Ca1A0E7E8228639"
   },
   {
     "event": "create_instance",
@@ -476,8 +429,7 @@
     "timeStamp": 1665081708,
     "player": "0x3b28B6373FB7E577107F7a766BA20737cEE3666b",
     "instance": "0x4107939F92D143C8E4A98e4F74F4791BdC6D5467",
-    "level": "0xDc0c34CFE029b190Fc4A6eD5219BF809F04E57A3",
-    "status": true
+    "level": "0xDc0c34CFE029b190Fc4A6eD5219BF809F04E57A3"
   },
   {
     "event": "create_instance",
@@ -486,8 +438,7 @@
     "timeStamp": 1665081732,
     "player": "0x32D9b5C41d594838d6b993ebAF538fF770a00E30",
     "instance": "0x90fc660F7D5D2d8779A365Cd32476c03AA1f72Df",
-    "level": "0x6F9cf195B9B4c1259E8FCe5b4e30F7142f779DeA",
-    "status": true
+    "level": "0x6F9cf195B9B4c1259E8FCe5b4e30F7142f779DeA"
   },
   {
     "event": "create_instance",
@@ -496,8 +447,7 @@
     "timeStamp": 1665082176,
     "player": "0x21FdB12Ff835fc665fB845F8798024a6058976D9",
     "instance": "0x193d9f3f6dAACe44A9c1738331d87C5F03E1b10f",
-    "level": "0x25141B6345378e7558634Cf7c2d9B8670baFA417",
-    "status": true
+    "level": "0x25141B6345378e7558634Cf7c2d9B8670baFA417"
   },
   {
     "event": "solve_instance",
@@ -506,8 +456,7 @@
     "timeStamp": 1665082476,
     "player": "0x8626f6940E2eb28930eFb4CeF49B2d1F2C9C1199",
     "instance": "0xBd886a37faD1f596221f33ca568122815ED48c81",
-    "level": "0xB42d548Be55298C932ac057ee7C5EFf29c75e137",
-    "status": true
+    "level": "0xB42d548Be55298C932ac057ee7C5EFf29c75e137"
   },
   {
     "event": "solve_instance",
@@ -516,8 +465,7 @@
     "timeStamp": 1665082596,
     "player": "0x3b28B6373FB7E577107F7a766BA20737cEE3666b",
     "instance": "0xDc0c34CFE029b190Fc4A6eD5219BF809F04E57A3",
-    "level": "0x4107939F92D143C8E4A98e4F74F4791BdC6D5467",
-    "status": true
+    "level": "0x4107939F92D143C8E4A98e4F74F4791BdC6D5467"
   },
   {
     "event": "create_instance",
@@ -526,8 +474,7 @@
     "timeStamp": 1665082704,
     "player": "0xEd6a35E2c6D965a9B4aCde63BD64d692d6b1832B",
     "instance": "0x46397ee86A725b268A450B15B209d018968E5c96",
-    "level": "0xe1B98E88F060a661029158b0c45c2B8424C9c83f",
-    "status": true
+    "level": "0xe1B98E88F060a661029158b0c45c2B8424C9c83f"
   },
   {
     "event": "create_instance",
@@ -536,8 +483,7 @@
     "timeStamp": 1665082932,
     "player": "0x3b28B6373FB7E577107F7a766BA20737cEE3666b",
     "instance": "0xB7642AF396d8b2B23C2c174395c36222B5B28a5B",
-    "level": "0x25141B6345378e7558634Cf7c2d9B8670baFA417",
-    "status": true
+    "level": "0x25141B6345378e7558634Cf7c2d9B8670baFA417"
   },
   {
     "event": "create_instance",
@@ -546,8 +492,7 @@
     "timeStamp": 1665083184,
     "player": "0xF552191009a58ef29444835C05B188eA59f88B22",
     "instance": "0xaBE225391211D4c2343cfe5d84d187EF28BcBBaD",
-    "level": "0xaCB258afa213Db8E0007459f5d3851c112d2fA8d",
-    "status": true
+    "level": "0xaCB258afa213Db8E0007459f5d3851c112d2fA8d"
   },
   {
     "event": "create_instance",
@@ -556,8 +501,7 @@
     "timeStamp": 1665083232,
     "player": "0x8626f6940E2eb28930eFb4CeF49B2d1F2C9C1199",
     "instance": "0xD7Df7BC5763A1c9185C1a8eAa8ae9611D9D1a206",
-    "level": "0x6F9cf195B9B4c1259E8FCe5b4e30F7142f779DeA",
-    "status": true
+    "level": "0x6F9cf195B9B4c1259E8FCe5b4e30F7142f779DeA"
   },
   {
     "event": "create_instance",
@@ -566,8 +510,7 @@
     "timeStamp": 1665083316,
     "player": "0x4eed9Ce331948932b3Df2817abcFA6F29B043868",
     "instance": "0x431da602f17a106f8f1102D32b46fb203b6e35AB",
-    "level": "0x6F9cf195B9B4c1259E8FCe5b4e30F7142f779DeA",
-    "status": true
+    "level": "0x6F9cf195B9B4c1259E8FCe5b4e30F7142f779DeA"
   },
   {
     "event": "create_instance",
@@ -576,8 +519,7 @@
     "timeStamp": 1665083784,
     "player": "0xD7d83a31940D4e2D7e9d14c6c0afA23978B2eB99",
     "instance": "0xa64d7a9d9Ce557Cf81B9BA655F5F17668e9d9ec8",
-    "level": "0xBd886a37faD1f596221f33ca568122815ED48c81",
-    "status": true
+    "level": "0xBd886a37faD1f596221f33ca568122815ED48c81"
   },
   {
     "event": "create_instance",
@@ -586,8 +528,7 @@
     "timeStamp": 1665083988,
     "player": "0x034BEBE315946f34d53032F7E6bece7081eDF6ed",
     "instance": "0x8ff93b2eBEeb2421a6A804Dbb688CD04eAce6c1C",
-    "level": "0xBd886a37faD1f596221f33ca568122815ED48c81",
-    "status": true
+    "level": "0xBd886a37faD1f596221f33ca568122815ED48c81"
   },
   {
     "event": "create_instance",
@@ -596,8 +537,7 @@
     "timeStamp": 1665084120,
     "player": "0x4eed9Ce331948932b3Df2817abcFA6F29B043868",
     "instance": "0x17A06Bd6a6198DAE8c02999B6a1958cCd4C7207B",
-    "level": "0x6F9cf195B9B4c1259E8FCe5b4e30F7142f779DeA",
-    "status": true
+    "level": "0x6F9cf195B9B4c1259E8FCe5b4e30F7142f779DeA"
   },
   {
     "event": "solve_instance",
@@ -606,8 +546,7 @@
     "timeStamp": 1665084444,
     "player": "0x034BEBE315946f34d53032F7E6bece7081eDF6ed",
     "instance": "0xBd886a37faD1f596221f33ca568122815ED48c81",
-    "level": "0x8ff93b2eBEeb2421a6A804Dbb688CD04eAce6c1C",
-    "status": true
+    "level": "0x8ff93b2eBEeb2421a6A804Dbb688CD04eAce6c1C"
   },
   {
     "event": "solve_instance",
@@ -616,8 +555,7 @@
     "timeStamp": 1665084876,
     "player": "0xDfc9831413FaD4cCf0438412311ee44Aa3314A12",
     "instance": "0xD3ebB53C3c2126D14383a6c8519C87106772607e",
-    "level": "0x2c677b302f506F0374D2032F6690e15136D955B9",
-    "status": true
+    "level": "0x2c677b302f506F0374D2032F6690e15136D955B9"
   },
   {
     "event": "create_instance",
@@ -626,8 +564,7 @@
     "timeStamp": 1665084924,
     "player": "0x034BEBE315946f34d53032F7E6bece7081eDF6ed",
     "instance": "0x65B0aa0fb6CCAB50CfdB01D5fF12D49FF7C7FA55",
-    "level": "0x6F9cf195B9B4c1259E8FCe5b4e30F7142f779DeA",
-    "status": true
+    "level": "0x6F9cf195B9B4c1259E8FCe5b4e30F7142f779DeA"
   },
   {
     "event": "create_instance",
@@ -636,8 +573,7 @@
     "timeStamp": 1665085068,
     "player": "0xDfc9831413FaD4cCf0438412311ee44Aa3314A12",
     "instance": "0x53b0124bADD47D63DE7b2B38d2D7814EC3E2A2cC",
-    "level": "0xe8F8591475E425BA05336fa27d9810cd0c3eEe69",
-    "status": true
+    "level": "0xe8F8591475E425BA05336fa27d9810cd0c3eEe69"
   },
   {
     "event": "solve_instance",
@@ -646,8 +582,7 @@
     "timeStamp": 1665085140,
     "player": "0xD7d83a31940D4e2D7e9d14c6c0afA23978B2eB99",
     "instance": "0xBd886a37faD1f596221f33ca568122815ED48c81",
-    "level": "0xa64d7a9d9Ce557Cf81B9BA655F5F17668e9d9ec8",
-    "status": true
+    "level": "0xa64d7a9d9Ce557Cf81B9BA655F5F17668e9d9ec8"
   },
   {
     "event": "create_instance",
@@ -656,8 +591,7 @@
     "timeStamp": 1665085164,
     "player": "0x56002839A789a91984Ec8892D5B6f74FA532Ce0b",
     "instance": "0x58A01ef9C3606E683f0A41f551924Eda5fD4959b",
-    "level": "0xDc0c34CFE029b190Fc4A6eD5219BF809F04E57A3",
-    "status": true
+    "level": "0xDc0c34CFE029b190Fc4A6eD5219BF809F04E57A3"
   },
   {
     "event": "create_instance",
@@ -666,8 +600,7 @@
     "timeStamp": 1665085308,
     "player": "0xD7d83a31940D4e2D7e9d14c6c0afA23978B2eB99",
     "instance": "0x99370D5F9C02B98794A4122070BD3f3716201166",
-    "level": "0x6F9cf195B9B4c1259E8FCe5b4e30F7142f779DeA",
-    "status": true
+    "level": "0x6F9cf195B9B4c1259E8FCe5b4e30F7142f779DeA"
   },
   {
     "event": "solve_instance",
@@ -676,8 +609,7 @@
     "timeStamp": 1665085608,
     "player": "0x21FdB12Ff835fc665fB845F8798024a6058976D9",
     "instance": "0x25141B6345378e7558634Cf7c2d9B8670baFA417",
-    "level": "0x193d9f3f6dAACe44A9c1738331d87C5F03E1b10f",
-    "status": true
+    "level": "0x193d9f3f6dAACe44A9c1738331d87C5F03E1b10f"
   },
   {
     "event": "create_instance",
@@ -686,8 +618,7 @@
     "timeStamp": 1665085776,
     "player": "0x21FdB12Ff835fc665fB845F8798024a6058976D9",
     "instance": "0xb79296AEfb801B7917a8A606529AcB85D445CB24",
-    "level": "0x40b8Df5575a55b2f0c55E6e18838AEC7B82aebD7",
-    "status": true
+    "level": "0x40b8Df5575a55b2f0c55E6e18838AEC7B82aebD7"
   },
   {
     "event": "solve_instance",
@@ -696,8 +627,7 @@
     "timeStamp": 1665086064,
     "player": "0xD7d83a31940D4e2D7e9d14c6c0afA23978B2eB99",
     "instance": "0x6F9cf195B9B4c1259E8FCe5b4e30F7142f779DeA",
-    "level": "0x99370D5F9C02B98794A4122070BD3f3716201166",
-    "status": true
+    "level": "0x99370D5F9C02B98794A4122070BD3f3716201166"
   },
   {
     "event": "create_instance",
@@ -706,8 +636,7 @@
     "timeStamp": 1665086172,
     "player": "0xD7d83a31940D4e2D7e9d14c6c0afA23978B2eB99",
     "instance": "0xe583BE7325c8Bb732eF7a4cd5A0b8786aC650f69",
-    "level": "0x40F5513a90fb7e2ac2C3E12A6d16B9279D1e94Ed",
-    "status": true
+    "level": "0x40F5513a90fb7e2ac2C3E12A6d16B9279D1e94Ed"
   },
   {
     "event": "solve_instance",
@@ -716,8 +645,7 @@
     "timeStamp": 1665086436,
     "player": "0xD7d83a31940D4e2D7e9d14c6c0afA23978B2eB99",
     "instance": "0x40F5513a90fb7e2ac2C3E12A6d16B9279D1e94Ed",
-    "level": "0xe583BE7325c8Bb732eF7a4cd5A0b8786aC650f69",
-    "status": true
+    "level": "0xe583BE7325c8Bb732eF7a4cd5A0b8786aC650f69"
   },
   {
     "event": "create_instance",
@@ -726,8 +654,7 @@
     "timeStamp": 1665086460,
     "player": "0xD7d83a31940D4e2D7e9d14c6c0afA23978B2eB99",
     "instance": "0x0b28050850daB74AB9D9f95A5052a55D3aef020c",
-    "level": "0xae9677ff69efB3C1B9559C8F2A9ED6a2212148e3",
-    "status": true
+    "level": "0xae9677ff69efB3C1B9559C8F2A9ED6a2212148e3"
   },
   {
     "event": "create_instance",
@@ -736,8 +663,7 @@
     "timeStamp": 1665086472,
     "player": "0x7C762eC5EA94cf70dAc7F335eC204ff2209e5F0e",
     "instance": "0x5250FBd900923F5678652D26b093A8b270A34598",
-    "level": "0xBd886a37faD1f596221f33ca568122815ED48c81",
-    "status": true
+    "level": "0xBd886a37faD1f596221f33ca568122815ED48c81"
   },
   {
     "event": "create_instance",
@@ -746,8 +672,7 @@
     "timeStamp": 1665086700,
     "player": "0x7C762eC5EA94cf70dAc7F335eC204ff2209e5F0e",
     "instance": "0xFA21a626c79E52381C67115BD43CA3ce9259B59c",
-    "level": "0x6F9cf195B9B4c1259E8FCe5b4e30F7142f779DeA",
-    "status": true
+    "level": "0x6F9cf195B9B4c1259E8FCe5b4e30F7142f779DeA"
   },
   {
     "event": "solve_instance",
@@ -756,8 +681,7 @@
     "timeStamp": 1665086772,
     "player": "0x034BEBE315946f34d53032F7E6bece7081eDF6ed",
     "instance": "0x6F9cf195B9B4c1259E8FCe5b4e30F7142f779DeA",
-    "level": "0x65B0aa0fb6CCAB50CfdB01D5fF12D49FF7C7FA55",
-    "status": true
+    "level": "0x65B0aa0fb6CCAB50CfdB01D5fF12D49FF7C7FA55"
   },
   {
     "event": "create_instance",
@@ -766,8 +690,7 @@
     "timeStamp": 1665087024,
     "player": "0x034BEBE315946f34d53032F7E6bece7081eDF6ed",
     "instance": "0x41f578284BA93F495fa2E7e5fBf7de529e7C4485",
-    "level": "0x40F5513a90fb7e2ac2C3E12A6d16B9279D1e94Ed",
-    "status": true
+    "level": "0x40F5513a90fb7e2ac2C3E12A6d16B9279D1e94Ed"
   },
   {
     "event": "solve_instance",
@@ -776,8 +699,7 @@
     "timeStamp": 1665087504,
     "player": "0x034BEBE315946f34d53032F7E6bece7081eDF6ed",
     "instance": "0x40F5513a90fb7e2ac2C3E12A6d16B9279D1e94Ed",
-    "level": "0x41f578284BA93F495fa2E7e5fBf7de529e7C4485",
-    "status": true
+    "level": "0x41f578284BA93F495fa2E7e5fBf7de529e7C4485"
   },
   {
     "event": "create_instance",
@@ -786,8 +708,7 @@
     "timeStamp": 1665087588,
     "player": "0x034BEBE315946f34d53032F7E6bece7081eDF6ed",
     "instance": "0x7a6756e21a4Abe52F9eEc2504b206584Daa0472C",
-    "level": "0xae9677ff69efB3C1B9559C8F2A9ED6a2212148e3",
-    "status": true
+    "level": "0xae9677ff69efB3C1B9559C8F2A9ED6a2212148e3"
   },
   {
     "event": "solve_instance",
@@ -796,8 +717,7 @@
     "timeStamp": 1665087588,
     "player": "0x56002839A789a91984Ec8892D5B6f74FA532Ce0b",
     "instance": "0xDc0c34CFE029b190Fc4A6eD5219BF809F04E57A3",
-    "level": "0x58A01ef9C3606E683f0A41f551924Eda5fD4959b",
-    "status": true
+    "level": "0x58A01ef9C3606E683f0A41f551924Eda5fD4959b"
   },
   {
     "event": "create_instance",
@@ -806,8 +726,7 @@
     "timeStamp": 1665087696,
     "player": "0x56002839A789a91984Ec8892D5B6f74FA532Ce0b",
     "instance": "0x4Bd949a3880732ad22eCd4c08401933fcBcB74A9",
-    "level": "0x31C4D3a9e0ED12A409cF3C84ad145331aB487D3F",
-    "status": true
+    "level": "0x31C4D3a9e0ED12A409cF3C84ad145331aB487D3F"
   },
   {
     "event": "create_instance",
@@ -816,8 +735,7 @@
     "timeStamp": 1665087876,
     "player": "0x18Ae0673115844393df9ea16187c4958A64AeDa1",
     "instance": "0x2B8a9F76659E7310bB220fFF399563De3B8f6545",
-    "level": "0xDc0c34CFE029b190Fc4A6eD5219BF809F04E57A3",
-    "status": true
+    "level": "0xDc0c34CFE029b190Fc4A6eD5219BF809F04E57A3"
   },
   {
     "event": "solve_instance",
@@ -826,8 +744,7 @@
     "timeStamp": 1665088956,
     "player": "0x18Ae0673115844393df9ea16187c4958A64AeDa1",
     "instance": "0xDc0c34CFE029b190Fc4A6eD5219BF809F04E57A3",
-    "level": "0x2B8a9F76659E7310bB220fFF399563De3B8f6545",
-    "status": true
+    "level": "0x2B8a9F76659E7310bB220fFF399563De3B8f6545"
   },
   {
     "event": "solve_instance",
@@ -836,8 +753,7 @@
     "timeStamp": 1665089904,
     "player": "0x21FdB12Ff835fc665fB845F8798024a6058976D9",
     "instance": "0x40b8Df5575a55b2f0c55E6e18838AEC7B82aebD7",
-    "level": "0xb79296AEfb801B7917a8A606529AcB85D445CB24",
-    "status": true
+    "level": "0xb79296AEfb801B7917a8A606529AcB85D445CB24"
   },
   {
     "event": "create_instance",
@@ -846,8 +762,7 @@
     "timeStamp": 1665090432,
     "player": "0x18Ae0673115844393df9ea16187c4958A64AeDa1",
     "instance": "0x14D489eE6AB343B3F38f400f609108d0d47145cB",
-    "level": "0x25141B6345378e7558634Cf7c2d9B8670baFA417",
-    "status": true
+    "level": "0x25141B6345378e7558634Cf7c2d9B8670baFA417"
   },
   {
     "event": "create_instance",
@@ -856,8 +771,7 @@
     "timeStamp": 1665090636,
     "player": "0x21FdB12Ff835fc665fB845F8798024a6058976D9",
     "instance": "0x79d603cDC80E13AAb37da2f19E2cec6437Fc8893",
-    "level": "0x40b8Df5575a55b2f0c55E6e18838AEC7B82aebD7",
-    "status": true
+    "level": "0x40b8Df5575a55b2f0c55E6e18838AEC7B82aebD7"
   },
   {
     "event": "solve_instance",
@@ -866,8 +780,7 @@
     "timeStamp": 1665090804,
     "player": "0x21FdB12Ff835fc665fB845F8798024a6058976D9",
     "instance": "0x40b8Df5575a55b2f0c55E6e18838AEC7B82aebD7",
-    "level": "0x79d603cDC80E13AAb37da2f19E2cec6437Fc8893",
-    "status": true
+    "level": "0x79d603cDC80E13AAb37da2f19E2cec6437Fc8893"
   },
   {
     "event": "create_instance",
@@ -876,8 +789,7 @@
     "timeStamp": 1665090960,
     "player": "0xf78DEeDEF6c24C447D2d9F36B330c8D5852daf26",
     "instance": "0x2fb6d2214D21Bc5E9AD90ae41363c1211513CfFF",
-    "level": "0x2aa5685ffd9e8e4897caf92855C1959d82DA5E36",
-    "status": true
+    "level": "0x2aa5685ffd9e8e4897caf92855C1959d82DA5E36"
   },
   {
     "event": "solve_instance",
@@ -886,8 +798,7 @@
     "timeStamp": 1665091284,
     "player": "0x18Ae0673115844393df9ea16187c4958A64AeDa1",
     "instance": "0x25141B6345378e7558634Cf7c2d9B8670baFA417",
-    "level": "0x14D489eE6AB343B3F38f400f609108d0d47145cB",
-    "status": true
+    "level": "0x14D489eE6AB343B3F38f400f609108d0d47145cB"
   },
   {
     "event": "create_instance",
@@ -896,8 +807,7 @@
     "timeStamp": 1665091416,
     "player": "0x5E088aF88c6b5bC49d80788A4CE1387DE14f8Bcb",
     "instance": "0xd6fEAF66210310e98D3FA8957c286621390523f4",
-    "level": "0xBd886a37faD1f596221f33ca568122815ED48c81",
-    "status": true
+    "level": "0xBd886a37faD1f596221f33ca568122815ED48c81"
   },
   {
     "event": "create_instance",
@@ -906,8 +816,7 @@
     "timeStamp": 1665091764,
     "player": "0x18Ae0673115844393df9ea16187c4958A64AeDa1",
     "instance": "0xb039c88BBE781F249A696fFb65f408d58b48F8F9",
-    "level": "0x40b8Df5575a55b2f0c55E6e18838AEC7B82aebD7",
-    "status": true
+    "level": "0x40b8Df5575a55b2f0c55E6e18838AEC7B82aebD7"
   },
   {
     "event": "create_instance",
@@ -916,8 +825,7 @@
     "timeStamp": 1665092256,
     "player": "0xc1FDdD8C8E57a10419A01b1aEC2f4F4F64A2393f",
     "instance": "0x63088C1D93E29E77dc1b2f20Cbef57dbF4cf3f76",
-    "level": "0xBd886a37faD1f596221f33ca568122815ED48c81",
-    "status": true
+    "level": "0xBd886a37faD1f596221f33ca568122815ED48c81"
   },
   {
     "event": "solve_instance",
@@ -926,8 +834,7 @@
     "timeStamp": 1665092352,
     "player": "0xf78DEeDEF6c24C447D2d9F36B330c8D5852daf26",
     "instance": "0x2aa5685ffd9e8e4897caf92855C1959d82DA5E36",
-    "level": "0x2fb6d2214D21Bc5E9AD90ae41363c1211513CfFF",
-    "status": true
+    "level": "0x2fb6d2214D21Bc5E9AD90ae41363c1211513CfFF"
   },
   {
     "event": "solve_instance",
@@ -936,8 +843,7 @@
     "timeStamp": 1665092448,
     "player": "0xc1FDdD8C8E57a10419A01b1aEC2f4F4F64A2393f",
     "instance": "0xBd886a37faD1f596221f33ca568122815ED48c81",
-    "level": "0x63088C1D93E29E77dc1b2f20Cbef57dbF4cf3f76",
-    "status": true
+    "level": "0x63088C1D93E29E77dc1b2f20Cbef57dbF4cf3f76"
   },
   {
     "event": "create_instance",
@@ -946,8 +852,7 @@
     "timeStamp": 1665092532,
     "player": "0xf78DEeDEF6c24C447D2d9F36B330c8D5852daf26",
     "instance": "0xf95ef8A0ff1fCBbBDDa88F52fc9ad04D9cF64a8E",
-    "level": "0xD3ebB53C3c2126D14383a6c8519C87106772607e",
-    "status": true
+    "level": "0xD3ebB53C3c2126D14383a6c8519C87106772607e"
   },
   {
     "event": "solve_instance",
@@ -956,8 +861,7 @@
     "timeStamp": 1665092832,
     "player": "0xDfc9831413FaD4cCf0438412311ee44Aa3314A12",
     "instance": "0xe8F8591475E425BA05336fa27d9810cd0c3eEe69",
-    "level": "0x53b0124bADD47D63DE7b2B38d2D7814EC3E2A2cC",
-    "status": true
+    "level": "0x53b0124bADD47D63DE7b2B38d2D7814EC3E2A2cC"
   },
   {
     "event": "create_instance",
@@ -966,8 +870,7 @@
     "timeStamp": 1665093420,
     "player": "0xDfc9831413FaD4cCf0438412311ee44Aa3314A12",
     "instance": "0x82e2e585f1956Df14ba41bedA2E42a184F466880",
-    "level": "0x545d848827bD9e0E30794a9E53f5ab04EA71d78a",
-    "status": true
+    "level": "0x545d848827bD9e0E30794a9E53f5ab04EA71d78a"
   },
   {
     "event": "create_instance",
@@ -976,8 +879,7 @@
     "timeStamp": 1665094428,
     "player": "0x820A7F6B36700e8ae764Eb50eDb74c98A1F47f74",
     "instance": "0x0AFd33F1027874802c3AC0952fcc4a4506B3E87D",
-    "level": "0x31C4D3a9e0ED12A409cF3C84ad145331aB487D3F",
-    "status": true
+    "level": "0x31C4D3a9e0ED12A409cF3C84ad145331aB487D3F"
   },
   {
     "event": "solve_instance",
@@ -986,8 +888,7 @@
     "timeStamp": 1665094476,
     "player": "0x18Ae0673115844393df9ea16187c4958A64AeDa1",
     "instance": "0x40b8Df5575a55b2f0c55E6e18838AEC7B82aebD7",
-    "level": "0xb039c88BBE781F249A696fFb65f408d58b48F8F9",
-    "status": true
+    "level": "0xb039c88BBE781F249A696fFb65f408d58b48F8F9"
   },
   {
     "event": "create_instance",
@@ -996,7 +897,6 @@
     "timeStamp": 1665094680,
     "player": "0xDAD9F37306395ff8E2a028B544Fa2F26D0661c3a",
     "instance": "0x246DFc69c9a6b4DdC3A81a7653096F15919C10f5",
-    "level": "0x40F5513a90fb7e2ac2C3E12A6d16B9279D1e94Ed",
-    "status": true
+    "level": "0x40F5513a90fb7e2ac2C3E12A6d16B9279D1e94Ed"
   }
 ]

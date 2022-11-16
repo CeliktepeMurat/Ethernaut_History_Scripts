@@ -25,7 +25,6 @@ const getData = async () => {
     console.log(`Fetching transaction -> ${log.transactionHash}`);
 
     let txn = await getTxn(log.transactionHash);
-    let txnReceipt = await getTransactionReceipt(log.transactionHash);
     let block = await getBlock(txn.blockNumber as number);
 
     let input_data = '0x' + txn.input.slice(10); // remove method signature
@@ -41,7 +40,6 @@ const getData = async () => {
       player: String(txn.from),
       instance: decodeParam('address', log.data).toString(),
       level: decodeParam('address', input_data).toString(),
-      status: txnReceipt.status,
     };
     GAME_DATA.push(data);
   }
@@ -60,11 +58,6 @@ const getBlock = async (blockNumber: number) => {
 const getTxn = async (txnHash: string) => {
   let txn = await web3.eth.getTransaction(txnHash);
   return txn;
-};
-
-const getTransactionReceipt = async (txnHash: string) => {
-  let txnReceipt = await web3.eth.getTransactionReceipt(txnHash);
-  return txnReceipt;
 };
 
 const storeData = (path: string, data: FETCH_DATA[]) => {
