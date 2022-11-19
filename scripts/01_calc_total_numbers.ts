@@ -23,8 +23,8 @@ const main = async () => {
           Total_Number_Of_Instance_Solved: 0,
           Total_Number_Of_Instances_Failed: 0,
         };
-
-  for (const data of all_data.slice(10000)) {
+  //each time there should be for 10000 calls
+  for (const data of all_data.slice(0, 9999)) {
     console.log('Instance -> ', data.instance);
 
     try {
