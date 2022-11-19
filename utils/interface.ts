@@ -14,6 +14,11 @@ export const EVENT_TYPE_SIG = {
   solve_instance:
     '0x9dfdf7e3e630f506a3dfe38cdbe34e196353364235df33e5a3b588488d9a1e78',
 };
+export interface TOTAL_NUMBERS_STAT {
+  Total_Number_Of_Instances_Created: number;
+  Total_Number_Of_Instance_Solved: number;
+  Total_Number_Of_Instances_Failed: number;
+}
 
 export interface PLAYER_STAT {
   [key: string]: { created_instances: number; solved_instances: number };
