@@ -1,4 +1,15 @@
 import fs from 'fs';
+import Web3 from 'web3';
+import dotenv from 'dotenv';
+dotenv.config();
+
+const web3 = new Web3(
+  new Web3.providers.HttpProvider(
+    'https://goerli.infura.io/v3/' + process.env.INFURA_API_KEY
+  )
+);
+
+const ETHERNAUT_CONTRACT = process.env.ETHERNAUT_CONTRACT as string;
 
 export const loadFetchedData = (path: string) => {
   try {
@@ -10,4 +21,26 @@ export const loadFetchedData = (path: string) => {
 
 export const storeData = (path: string, data: {}) => {
   fs.writeFileSync(path, JSON.stringify(data, null, 2));
+};
+
+export const isCompleted = async (
+  SLOT: number,
+  INDEX: number,
+  instance: string
+): Promise<boolean> => {
+  let newKey = web3.utils.hexToNumberString(
+    web3.utils.keccak256(
+      web3.eth.abi.encodeParameters(['address', 'uint256'], [instance, SLOT])
+    )
+  );
+  let bigNumberFromKey = web3.utils.toBN(newKey).add(web3.utils.toBN(INDEX));
+  let POSITION = web3.utils.toHex(bigNumberFromKey);
+
+  let slot = await web3.eth.getStorageAt(ETHERNAUT_CONTRACT, POSITION);
+  console.log(slot);
+
+  let isCompleted = slot.slice(2, 26);
+  //let level = '0x' + slot.slice(26, 66);
+
+  return isCompleted.at(-1) === '1' ? true : false;
 };
