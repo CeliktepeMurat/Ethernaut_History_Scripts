@@ -17,7 +17,7 @@ let GAME_DATA: FETCH_DATA[] = [];
 const getData = async () => {
   let logs = await web3.eth.getPastLogs({
     address: ETHERNAUT_CONTRACT,
-    fromBlock: 7945001,
+    fromBlock: 7632928,
     toBlock: 7978269,
   });
 
@@ -49,13 +49,9 @@ const getData = async () => {
             : decodeParam('address', log.data).toString(),
       };
       GAME_DATA.push(data);
-      if (GAME_DATA.length === 10) {
-        storeData(ALL_DATA_PATH, GAME_DATA);
-        GAME_DATA = [];
-      }
     } catch (error) {}
   }
-  //storeData(ALL_DATA_PATH, GAME_DATA);
+  storeData(ALL_DATA_PATH, GAME_DATA);
 };
 
 const decodeParam = (type: string, param: string) => {
