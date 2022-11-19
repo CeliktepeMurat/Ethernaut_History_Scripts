@@ -2,9 +2,9 @@
 
 All historical data are being saved to JSON files under data folder.
 
-Transactions Batch -> {
+Transactions Batch -> `{
 "fromBlock": 7632928,
-"toBlock": 7773000
-}
+"toBlock": 7978269
+}`
 
-Total Txns -> 18746
+Total Txns -> `18746`
