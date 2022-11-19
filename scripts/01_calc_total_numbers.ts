@@ -8,6 +8,7 @@ const TOTAL_INSTANCE_NUMBERS_PATHS = `./data/total_instance_numbers.json`;
 
 const main = () => {
   const all_data = loadFetchedData(ALL_DATA_PATH);
+  console.log(all_data.length);
 
   const created_instances = filterCreateInstance(all_data);
   const solved_instances = filterSubmitInstance(all_data);

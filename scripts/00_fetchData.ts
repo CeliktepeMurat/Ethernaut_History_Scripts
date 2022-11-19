@@ -6,7 +6,7 @@ dotenv.config();
 
 const web3 = new Web3(
   new Web3.providers.HttpProvider(
-    'https://goerli.infura.io/v3/' + process.env.INFURA_KEY
+    'https://goerli.infura.io/v3/70d29955425b432ab33c38ddd470b584'
   )
 );
 const ALL_DATA_PATH = `./data/all_data.json`;
@@ -17,37 +17,39 @@ let GAME_DATA: FETCH_DATA[] = [];
 const getData = async () => {
   let logs = await web3.eth.getPastLogs({
     address: ETHERNAUT_CONTRACT,
-    fromBlock: 7722692,
-    toBlock: 7822692,
+    fromBlock: 7632928,
+    toBlock: 7978269,
   });
 
-  for (const log of logs.slice(0, 150)) {
-    console.log(`Fetching transaction -> ${log.transactionHash}`);
+  for (const log of logs) {
+    try {
+      console.log(`Fetching transaction -> ${log.transactionHash}`);
 
-    let txn = await getTxn(log.transactionHash);
-    let block = await getBlock(txn.blockNumber as number);
+      let txn = await getTxn(log.transactionHash);
+      let block = await getBlock(txn.blockNumber as number);
 
-    let input_data = '0x' + txn.input.slice(10); // remove method signature
+      let input_data = '0x' + txn.input.slice(10); // remove method signature
 
-    let data = {
-      event:
-        log.topics[0] === EVENT_TYPE_SIG.create_instance
-          ? 'create_instance'
-          : 'solve_instance',
-      transactionHash: String(txn.hash),
-      blockNumber: Number(txn.blockNumber),
-      timeStamp: Number(block.timestamp),
-      player: String(txn.from),
-      instance:
-        log.topics[0] === EVENT_TYPE_SIG.create_instance
-          ? decodeParam('address', log.data).toString()
-          : decodeParam('address', input_data).toString(),
-      level:
-        log.topics[0] === EVENT_TYPE_SIG.create_instance
-          ? decodeParam('address', input_data).toString()
-          : decodeParam('address', log.data).toString(),
-    };
-    GAME_DATA.push(data);
+      let data = {
+        event:
+          log.topics[0] === EVENT_TYPE_SIG.create_instance
+            ? 'create_instance'
+            : 'solve_instance',
+        transactionHash: String(txn.hash),
+        blockNumber: Number(txn.blockNumber),
+        timeStamp: Number(block.timestamp),
+        player: String(txn.from),
+        instance:
+          log.topics[0] === EVENT_TYPE_SIG.create_instance
+            ? decodeParam('address', log.data).toString()
+            : decodeParam('address', input_data).toString(),
+        level:
+          log.topics[0] === EVENT_TYPE_SIG.create_instance
+            ? decodeParam('address', input_data).toString()
+            : decodeParam('address', log.data).toString(),
+      };
+      GAME_DATA.push(data);
+    } catch (error) {}
   }
   storeData(ALL_DATA_PATH, GAME_DATA);
 };
