@@ -6,12 +6,12 @@ dotenv.config();
 
 const web3 = new Web3(
   new Web3.providers.HttpProvider(
-    'https://goerli.infura.io/v3/70d29955425b432ab33c38ddd470b584'
+    'https://goerli.infura.io/v3/' + process.env.INFURA_API_KEY
   )
 );
 const ALL_DATA_PATH = `./data/all_data.json`;
 
-const ETHERNAUT_CONTRACT = '0x42E7014a9D1f6765e76fA2e69532d808F2fe27E3';
+const ETHERNAUT_CONTRACT = process.env.ETHERNAUT_CONTRACT as string;
 let GAME_DATA: FETCH_DATA[] = [];
 
 const getData = async () => {
