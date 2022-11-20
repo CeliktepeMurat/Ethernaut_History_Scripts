@@ -17,7 +17,6 @@ export const EVENT_TYPE_SIG = {
 export interface TOTAL_NUMBERS_STAT {
   Total_Number_Of_Instances_Created: number;
   Total_Number_Of_Instance_Solved: number;
-  Total_Number_Of_Instances_Failed: number;
 }
 
 export interface PLAYER_STAT {
