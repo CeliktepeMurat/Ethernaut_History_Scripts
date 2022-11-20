@@ -15,6 +15,8 @@ const ETHERNAUT_CONTRACT = process.env.ETHERNAUT_CONTRACT as string;
 let GAME_DATA: FETCH_DATA[] = [];
 
 const getData = async () => {
+  // The block interval should be max 10000 blocks - because of infura rate limit
+  // For each time, script will fetch up to 10000 logs
   let logs = await web3.eth.getPastLogs({
     address: ETHERNAUT_CONTRACT,
     fromBlock: 7632928,
