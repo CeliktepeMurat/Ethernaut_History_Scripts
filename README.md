@@ -12,6 +12,8 @@ Transactions Batch ->
 
 Total Txns -> `18746`
 
+> Depending on web3 provider, block interval should be set properly. In the case of Infura provider, since it has 10k rate limit, block numbers should be arranged for having up to 5k logs each time. Because, for every log, script's making 2 calls (`getTxn` and `getBlock`).
+
 # Scripts
 - `fetch:all_data` -> Fetchs all logs, corresponding transactions and blocks in range of given `fromBlock` and `toBlock` params. It saves data in the following format:
   
