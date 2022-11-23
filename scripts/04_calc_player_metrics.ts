@@ -18,31 +18,47 @@ const main = () => {
     let player = data.player.toString();
     let level = data.level.toString();
     let instance = data.instance.toString();
+
     if (player_metrics[player] !== undefined) {
       if (player_metrics[player][level] !== undefined) {
         if (data.event === 'solve_instance') {
-          player_metrics[player][level].isCompleted = true;
-          player_metrics[player][level].timeCompleted = data.timeStamp;
-        }
-      } else {
-        if (data.event === 'create_instance') {
-          player_metrics[player][level] = {
-            instance,
+          player_metrics[player][level].forEach((instance_data) => {
+            if (instance_data.instance === instance) {
+              instance_data.isCompleted = true;
+              instance_data.timeCompleted = data.timeStamp;
+            }
+          });
+        } else {
+          player_metrics[player][level].push({
+            instance: instance,
             isCompleted: false,
             timeCreated: data.timeStamp,
             timeCompleted: 0,
-          };
+          });
+        }
+      } else {
+        if (data.event === 'create_instance') {
+          player_metrics[player][level] = [
+            {
+              instance,
+              isCompleted: false,
+              timeCreated: data.timeStamp,
+              timeCompleted: 0,
+            },
+          ];
         }
       }
     } else {
       if (data.event === 'create_instance') {
         player_metrics[player] = {};
-        player_metrics[player][level] = {
-          instance,
-          isCompleted: false,
-          timeCreated: data.timeStamp,
-          timeCompleted: 0,
-        };
+        player_metrics[player][level] = [
+          {
+            instance,
+            isCompleted: false,
+            timeCreated: data.timeStamp,
+            timeCompleted: 0,
+          },
+        ];
       }
     }
   });

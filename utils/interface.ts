@@ -28,11 +28,13 @@ export interface LEVEL_FACTORY_STAT {
 
 export interface PLAYER_METRICS {
   [key: string]: {
-    [key: string]: {
-      instance: string;
-      isCompleted: boolean;
-      timeCreated: number;
-      timeCompleted: number;
-    };
+    [key: string]: [
+      {
+        instance: string;
+        isCompleted: boolean;
+        timeCreated: number;
+        timeCompleted: number;
+      }
+    ];
   };
 }
