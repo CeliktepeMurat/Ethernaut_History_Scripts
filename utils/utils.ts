@@ -5,7 +5,7 @@ dotenv.config();
 
 const web3 = new Web3(
   new Web3.providers.HttpProvider(
-    'https://goerli.infura.io/v3/' + process.env.INFURA_API_KEY
+    'https://goerli.infura.io/v3/' + process.env.API_KEY
   )
 );
 
