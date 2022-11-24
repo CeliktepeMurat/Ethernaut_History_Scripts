@@ -7,7 +7,7 @@
     "fetch:all_data": "npx ts-node scripts/00_fetchData.ts",
     "calc:total_nums": "npx ts-node scripts/01_calc_total_numbers.ts",
     "calc:player_stats": "npx ts-node scripts/02_calc_player_stat.ts",
-    "calc:level_stats": "npx ts-node scripts/03_calc_level_stats.ts",
+    "calc:level_stats": "npx ts-node scripts/03_calc_level_stat.ts",
     "calc:player_metrics": "npx ts-node scripts/04_calc_player_metrics.ts"
   },
   "author": "murat",
