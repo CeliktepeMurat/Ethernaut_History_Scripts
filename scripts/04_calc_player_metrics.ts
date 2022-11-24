@@ -7,14 +7,14 @@ const ALL_DATA_PATH = `./data/all_data.json`;
 const PLAYER_METRICS_PATH = `./data/player_metrics.json`;
 
 const main = () => {
-  const all_data = loadFetchedData(ALL_DATA_PATH);
+  const all_data: FETCH_DATA[] = loadFetchedData(ALL_DATA_PATH);
 
   let player_metrics: PLAYER_METRICS =
     loadFetchedData(PLAYER_METRICS_PATH).player_metrics !== undefined
       ? loadFetchedData(PLAYER_METRICS_PATH).player_metrics
       : {};
 
-  all_data.forEach((data: FETCH_DATA) => {
+  for (const data of all_data) {
     let player = data.player.toString();
     let level = data.level.toString();
     let instance = data.instance.toString();
@@ -61,7 +61,7 @@ const main = () => {
         ];
       }
     }
-  });
+  }
 
   storeData(PLAYER_METRICS_PATH, { player_metrics });
 };
