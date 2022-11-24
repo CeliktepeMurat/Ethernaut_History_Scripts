@@ -458,19 +458,6 @@
   {
     "inputs": [
       {
-        "internalType": "address[]",
-        "name": "_players",
-        "type": "address[]"
-      }
-    ],
-    "name": "savePlayers",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
         "internalType": "address",
         "name": "instance",
         "type": "address"
@@ -517,6 +504,57 @@
   {
     "inputs": [
       {
+        "internalType": "address[]",
+        "name": "_levels",
+        "type": "address[]"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "_noOfAdditionalInstancesCreated",
+        "type": "uint256[]"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "_noOfAdditionalInstancesCompleted",
+        "type": "uint256[]"
+      }
+    ],
+    "name": "updateAllLevelData",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address[]",
+        "name": "_players",
+        "type": "address[]"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "_noOfAdditionalInstancesCreatedByPlayer",
+        "type": "uint256[]"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "_noOfAdditionalInstancesCompletedByPlayer",
+        "type": "uint256[]"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "_noOfAdditionalLevelsCompletedByPlayer",
+        "type": "uint256[]"
+      }
+    ],
+    "name": "updateAllPlayerData",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
         "internalType": "uint256",
         "name": "_noOfAdditionalInstancesCreatedGlobally",
         "type": "uint256"
@@ -528,6 +566,72 @@
       }
     ],
     "name": "updateGlobalData",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address[]",
+        "name": "_players",
+        "type": "address[]"
+      },
+      {
+        "internalType": "address[]",
+        "name": "_levels",
+        "type": "address[]"
+      },
+      {
+        "internalType": "address[]",
+        "name": "_instances",
+        "type": "address[]"
+      },
+      {
+        "internalType": "bool[]",
+        "name": "_isCompleted",
+        "type": "bool[]"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "_timeCompleted",
+        "type": "uint256[]"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "_timeCreated",
+        "type": "uint256[]"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "_timeSubmitted",
+        "type": "uint256[]"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "_levelFirstCompletedTime",
+        "type": "uint256[]"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "_levelFirstInstanceCreationTime",
+        "type": "uint256[]"
+      }
+    ],
+    "name": "updatePlayerStatsData",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address[]",
+        "name": "_players",
+        "type": "address[]"
+      }
+    ],
+    "name": "updatePlayers",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
