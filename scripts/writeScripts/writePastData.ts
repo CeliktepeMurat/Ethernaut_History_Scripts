@@ -10,7 +10,7 @@ dotenv.config();
 const PROVIDER = ethers.providers.getDefaultProvider('http://localhost:8545');
 const SIGNER = new ethers.Wallet(process.env.PRIV_KEY as string, PROVIDER);
 
-const PROXY_STAT = '0xf19e93c0B2B43e69b9b95F833161580480882a42';
+const PROXY_STAT = '0x7ae0655F0Ee1e7752D7C62493CEa1E69A810e2ed';
 const statistics = new ethers.Contract(PROXY_STAT, STATISTICS_ABI, SIGNER);
 
 const main = async () => {
