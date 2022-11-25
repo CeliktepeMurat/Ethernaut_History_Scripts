@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 import STATISTICS_ABI from '../../utils/ABIs/statistics_abi.json';
-import { loadFetchedData } from '../../utils/utils';
+import { getImpersonatedSigner, loadFetchedData } from '../../utils/utils';
 import { ethers } from 'ethers';
 import { PLAYER_METRICS, PLAYER_STAT } from '../../utils/interface';
 dotenv.config();
@@ -8,11 +8,8 @@ dotenv.config();
 const PLAYER_METRICS_PATH = `./data/player_metrics.json`;
 const PLAYER_STAT_PATH = `./data/player_stat.json`;
 
-const PROVIDER = ethers.providers.getDefaultProvider('http://localhost:8545');
-const SIGNER = new ethers.Wallet(process.env.PRIV_KEY as string, PROVIDER);
-
-const PROXY_STAT = '0xf19e93c0B2B43e69b9b95F833161580480882a42';
-const statistics = new ethers.Contract(PROXY_STAT, STATISTICS_ABI, SIGNER);
+const PROXY_STAT = '0x5D78E927D12cf3F46E5fB771bFA33aA22689AD3B';
+const OWNER = '0x09902A56d04a9446601a0d451E07459dC5aF0820';
 
 let players: string[] = [];
 let noOfAdditionalInstancesCreatedByPlayer: number[] = [];
@@ -20,17 +17,24 @@ let noOfAdditionalInstancesCompletedByPlayer: number[] = [];
 let noOfAdditionalLevelsCompletedByPlayer: number[] = [];
 
 const main = async () => {
+  const impersonatedSigner = await getImpersonatedSigner(OWNER);
+
+  const statistics = new ethers.Contract(
+    PROXY_STAT,
+    STATISTICS_ABI,
+    impersonatedSigner
+  );
+
   getNumberOfLevelsCompletedByPlayer(); // Get the number of levels completed by each player
   getNumberOfInstances(); // Get the number of instances created and solved by each player
 
-  const limit = 100;
+  const limit = 500;
   const MAX = players.length;
 
   const txn = await statistics.updateAllPlayerData(
     players.slice(0, limit),
     noOfAdditionalInstancesCreatedByPlayer.slice(0, limit),
-    noOfAdditionalInstancesCompletedByPlayer.slice(0, limit),
-    noOfAdditionalLevelsCompletedByPlayer.slice(0, limit)
+    noOfAdditionalInstancesCompletedByPlayer.slice(0, limit)
   );
 
   console.log(await txn.wait());
