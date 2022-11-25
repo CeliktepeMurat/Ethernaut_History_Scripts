@@ -3,6 +3,10 @@ import STATISTICS_ABI from '../../utils/ABIs/statistics_abi.json';
 import { loadFetchedData } from '../../utils/utils';
 import { ethers } from 'ethers';
 import { PLAYER_METRICS, PLAYER_STAT } from '../../utils/interface';
+import _levelMapping from "../../data/levelMapping.json";
+
+const levelMapping: any = _levelMapping;
+
 dotenv.config();
 
 const PLAYER_METRICS_PATH = `./data/player_metrics.json`;
@@ -11,7 +15,7 @@ const PLAYER_STAT_PATH = `./data/player_stat.json`;
 const PROVIDER = ethers.providers.getDefaultProvider('http://localhost:8545');
 const SIGNER = new ethers.Wallet(process.env.PRIV_KEY as string, PROVIDER);
 
-const PROXY_STAT = '0xf19e93c0B2B43e69b9b95F833161580480882a42';
+const PROXY_STAT = '0x7ae0655F0Ee1e7752D7C62493CEa1E69A810e2ed';
 const statistics = new ethers.Contract(PROXY_STAT, STATISTICS_ABI, SIGNER);
 
 let players: string[] = [];
@@ -20,6 +24,8 @@ let noOfAdditionalInstancesCompletedByPlayer: number[] = [];
 let noOfAdditionalLevelsCompletedByPlayer: number[] = [];
 
 const main = async () => {
+  updateNoOfLevelsCompletedByPlayers()
+  return;
   getNumberOfLevelsCompletedByPlayer(); // Get the number of levels completed by each player
   getNumberOfInstances(); // Get the number of instances created and solved by each player
 
@@ -52,6 +58,47 @@ const getNumberOfInstances = () => {
     );
   }
 };
+
+const updateNoOfLevelsCompletedByPlayers = async () => { 
+  const allData = loadFetchedData(PLAYER_METRICS_PATH).player_metrics
+  const allPlayers = Object.keys(allData);
+  const levelsSolvedByPlayers = []
+  for (let player of allPlayers) {
+    const levelsSolvedByPlayer = getLevelsSolvedByAPlayer(allData[player])
+    levelsSolvedByPlayers.push(levelsSolvedByPlayer)
+  }
+  const txn = await statistics.updateLevelsCompletedByPlayers(
+    allPlayers.slice(0,10),
+    levelsSolvedByPlayers.slice(0,10)
+  )
+  await txn.wait()
+  console.log("Finished")
+}
+
+const getLevelsSolvedByAPlayer = (levelsCreatedByPlayer:string[]) => { 
+  const levelAddresses = Object.keys(levelsCreatedByPlayer)
+  const levelsSolvedByPlayer = []
+  let levelAddress: any;
+  for (levelAddress of levelAddresses) { 
+    const instancesSolvedByPlayer = levelsCreatedByPlayer[levelAddress]
+    if (isAnyInstanceSolvedByPlayer(instancesSolvedByPlayer)) { 
+      if (!levelMapping[levelAddress]) { 
+        throw Error("Level address not found in levelMapping.json")
+      }
+      levelsSolvedByPlayer.push(levelMapping[levelAddress])
+    }
+  }
+  return levelsSolvedByPlayer;
+}
+
+function isAnyInstanceSolvedByPlayer(instances: any) {
+  for (const instance of instances) {
+    if (instance.isCompleted) {
+      return true;
+    }
+  }
+  return false;
+}
 
 const getNumberOfLevelsCompletedByPlayer = () => {
   const player_metrics: PLAYER_METRICS =
