@@ -67,8 +67,9 @@ const saveLevelsData = async () => {
     noOfCreatedInstances,
     noOfSolvedInstances
   );
-  await txn.wait()
-  console.log("Finished")
+  const receivedTxn = await txn.wait()
+  console.log('Gas Used -> ', receivedTxn.gasUsed.toString());
+  console.log('Gas price -> ', receivedTxn.effectiveGasPrice.toString());
 }
 
 main();
