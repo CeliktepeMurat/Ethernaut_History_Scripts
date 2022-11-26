@@ -20,7 +20,8 @@ const main = async () => {
   );
 
   await savePlayers(statistics);
-  //await saveGlobalNumbers();
+  //await saveGlobalNumbers(statistics);
+  //await saveLevelsData(statistics);
 };
 
 const saveGlobalNumbers = async (statistics: Contract) => {
