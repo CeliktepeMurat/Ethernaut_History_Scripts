@@ -38,3 +38,10 @@ export interface PLAYER_METRICS {
     ];
   };
 }
+
+export interface INSTANCE {
+  instance: string;
+  isCompleted: boolean;
+  timeCreated: number;
+  timeCompleted: number;
+}
