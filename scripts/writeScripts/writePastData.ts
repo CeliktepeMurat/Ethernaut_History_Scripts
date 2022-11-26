@@ -3,17 +3,19 @@ import STATISTICS_ABI from '../../utils/ABIs/statistics_abi.json';
 import { loadFetchedData } from '../../utils/utils';
 import { ethers } from 'ethers';
 import { TOTAL_NUMBERS_STAT } from '../../utils/interface';
+import levelMapping from "../../data/levelMapping.json";
+
 dotenv.config();
 
 const PROVIDER = ethers.providers.getDefaultProvider('http://localhost:8545');
 const SIGNER = new ethers.Wallet(process.env.PRIV_KEY as string, PROVIDER);
 
-const PROXY_STAT = '0xf19e93c0B2B43e69b9b95F833161580480882a42';
+const PROXY_STAT = '0x7ae0655F0Ee1e7752D7C62493CEa1E69A810e2ed';
 const statistics = new ethers.Contract(PROXY_STAT, STATISTICS_ABI, SIGNER);
 
 const main = async () => {
-  await savePlayers();
-  //await saveGlobalNumbers();
+  // await savePlayers();
+  await saveLevelsData();
 };
 
 const saveGlobalNumbers = async () => {
@@ -41,5 +43,33 @@ const savePlayers = async () => {
   console.log('Gas Used -> ', receivedTxn.gasUsed.toString());
   console.log('Gas price -> ', receivedTxn.effectiveGasPrice.toString());
 };
+
+const saveLevelsData = async () => { 
+  const ALL_LEVELS_PATH = `./data/level_stat.json`;
+  const levels = loadFetchedData(ALL_LEVELS_PATH).level_stat;
+  const levelAddressesOld = Object.keys(levels);
+  const levelAddressesNew = []
+  const noOfCreatedInstances = []
+  const noOfSolvedInstances = []
+  for (let i = 0; i < levelAddressesOld.length; i++) { 
+    //@ts-ignore
+    levelAddressesNew.push(levelMapping[levelAddressesOld[i]])
+    noOfCreatedInstances.push(levels[levelAddressesOld[i]].created_instances)
+    noOfSolvedInstances.push(levels[levelAddressesOld[i]].solved_instances)
+  }
+  console.log(
+    levelAddressesNew,
+    noOfCreatedInstances,
+    noOfSolvedInstances
+  )
+  const txn = await statistics.updateAllLevelData(
+    levelAddressesNew,
+    noOfCreatedInstances,
+    noOfSolvedInstances
+  );
+  const receivedTxn = await txn.wait()
+  console.log('Gas Used -> ', receivedTxn.gasUsed.toString());
+  console.log('Gas price -> ', receivedTxn.effectiveGasPrice.toString());
+}
 
 main();
