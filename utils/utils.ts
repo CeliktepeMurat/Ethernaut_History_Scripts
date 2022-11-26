@@ -1,6 +1,7 @@
 import fs from 'fs';
 import Web3 from 'web3';
 import dotenv from 'dotenv';
+import hre from 'hardhat';
 dotenv.config();
 
 const web3 = new Web3(
@@ -43,4 +44,12 @@ export const isCompleted = async (
   //let level = '0x' + slot.slice(26, 66);
 
   return isCompleted.at(-1) === '1' ? true : false;
+};
+
+export const getImpersonatedSigner = async (address: string) => {
+  await hre.network.provider.request({
+    method: 'hardhat_impersonateAccount',
+    params: [address],
+  });
+  return hre.ethers.provider.getSigner(address);
 };
