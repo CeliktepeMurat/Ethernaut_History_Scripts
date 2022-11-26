@@ -8,7 +8,7 @@ dotenv.config();
 const PLAYER_METRICS_PATH = `./data/player_metrics.json`;
 const PLAYER_STAT_PATH = `./data/player_stat.json`;
 
-const PROXY_STAT = '0x5D78E927D12cf3F46E5fB771bFA33aA22689AD3B';
+const PROXY_STAT = '0x90bf78BC9276D8e0820F3545e3Fa3Ba3147B8735';
 const OWNER = '0x09902A56d04a9446601a0d451E07459dC5aF0820';
 
 let players: string[] = [];

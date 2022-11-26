@@ -7,7 +7,7 @@ import levelMapping from '../../data/levelMapping.json';
 
 dotenv.config();
 
-const PROXY_STAT = '0x5D78E927D12cf3F46E5fB771bFA33aA22689AD3B';
+const PROXY_STAT = '0x90bf78BC9276D8e0820F3545e3Fa3Ba3147B8735';
 const OWNER = '0x09902A56d04a9446601a0d451E07459dC5aF0820';
 
 const main = async () => {
@@ -20,8 +20,8 @@ const main = async () => {
   );
 
   await savePlayers(statistics);
-  //await saveGlobalNumbers(statistics);
-  //await saveLevelsData(statistics);
+  await saveGlobalNumbers(statistics);
+  await saveLevelsData(statistics);
 };
 
 const saveGlobalNumbers = async (statistics: Contract) => {
@@ -63,7 +63,7 @@ const saveLevelsData = async (statistics: Contract) => {
     noOfCreatedInstances.push(levels[levelAddressesOld[i]].created_instances);
     noOfSolvedInstances.push(levels[levelAddressesOld[i]].solved_instances);
   }
-  console.log(levelAddressesNew, noOfCreatedInstances, noOfSolvedInstances);
+
   const txn = await statistics.updateAllLevelData(
     levelAddressesNew,
     noOfCreatedInstances,
