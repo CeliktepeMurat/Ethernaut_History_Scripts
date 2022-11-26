@@ -32,6 +32,30 @@ const main = async () => {
     impersonatedSigner
   );
 
+  fillPlayerStat(); // fill the arrays with data
+
+  const limit = 10;
+  const MAX = players.length;
+
+  const txn = await statistics.updatePlayersData(
+    players.slice(0, limit),
+    levels.slice(0, limit),
+    instances.slice(0, limit),
+    isCompleted.slice(0, limit),
+    timeCompleted.slice(0, limit),
+    timeCreated.slice(0, limit),
+    totalSubmission.slice(0, limit),
+    levelFirstCompletedTime.slice(0, limit),
+    levelFirstInstanceCreationTime.slice(0, limit)
+  );
+
+  console.log(await txn.wait());
+  let receivedTxn = await txn.wait();
+  console.log('Gas Used -> ', receivedTxn.gasUsed.toString());
+  console.log('Gas price -> ', receivedTxn.effectiveGasPrice.toString());
+};
+
+const fillPlayerStat = () => {
   let player_metrics = Object.keys(playerMetrics);
   let level_metrics = Object.values(playerMetrics);
 
