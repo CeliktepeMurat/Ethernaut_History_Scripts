@@ -48,21 +48,19 @@ const savePlayers = async (statistics: Contract) => {
 };
 
 const saveLevelsData = async (statistics: Contract) => {
-  const ALL_LEVELS_PATH = `./data/level_stat.json`;
-  const LEVEL_MAPPING = `./data/levelMapping.json`;
+  const LEVEL_STATS_PATH = `./data/level_stat.json`;
+  const level_stats = loadFetchedData(LEVEL_STATS_PATH).level_stat;
 
-  const levels = loadFetchedData(ALL_LEVELS_PATH).level_stat;
-  const level_mapping: { [old_address: string]: string } =
-    loadFetchedData(LEVEL_MAPPING);
-  const levelAddressesOld = Object.keys(levels);
+  const levelAddresses = Object.keys(level_stats);
 
   const levelAddressesNew = [];
   const noOfCreatedInstances = [];
   const noOfSolvedInstances = [];
-  for (let i = 0; i < levelAddressesOld.length; i++) {
-    levelAddressesNew.push(level_mapping[levelAddressesOld[i]]);
-    noOfCreatedInstances.push(levels[levelAddressesOld[i]].created_instances);
-    noOfSolvedInstances.push(levels[levelAddressesOld[i]].solved_instances);
+
+  for (let i = 0; i < levelAddresses.length; i++) {
+    levelAddressesNew.push(levelAddresses[i]);
+    noOfCreatedInstances.push(level_stats[levelAddresses[i]].created_instances);
+    noOfSolvedInstances.push(level_stats[levelAddresses[i]].solved_instances);
   }
 
   const txn = await statistics.updateAllLevelData(

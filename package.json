@@ -9,6 +9,7 @@
     "calc:player_stats": "npx ts-node scripts/02_calc_player_stat.ts",
     "calc:level_stats": "npx ts-node scripts/03_calc_level_stat.ts",
     "calc:player_metrics": "npx ts-node scripts/04_calc_player_metrics.ts",
+    "map:new_levels": "npx ts-node scripts/05_map_newLevels.ts",
     "write:past_data": "npx hardhat run scripts/writeScripts/00_exec_batch.ts",
     "write:player_stat": "npx hardhat run scripts/writeScripts/01_exec_batch.ts",
     "write:player_metrics": "npx hardhat run scripts/writeScripts/02_exec_batch.ts"
