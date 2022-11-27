@@ -4,7 +4,6 @@ import { getImpersonatedSigner, loadFetchedData } from '../../utils/utils';
 import { Contract, ethers } from 'ethers';
 import { TOTAL_NUMBERS_STAT } from '../../utils/interface';
 import { OWNER, PROXY_STAT } from '../../utils/constant';
-import levelMapping from '../../data/levelMapping.json';
 
 dotenv.config();
 
@@ -50,14 +49,18 @@ const savePlayers = async (statistics: Contract) => {
 
 const saveLevelsData = async (statistics: Contract) => {
   const ALL_LEVELS_PATH = `./data/level_stat.json`;
+  const LEVEL_MAPPING = `./data/levelMapping.json`;
+
   const levels = loadFetchedData(ALL_LEVELS_PATH).level_stat;
+  const level_mapping: { [old_address: string]: string } =
+    loadFetchedData(LEVEL_MAPPING);
   const levelAddressesOld = Object.keys(levels);
+
   const levelAddressesNew = [];
   const noOfCreatedInstances = [];
   const noOfSolvedInstances = [];
   for (let i = 0; i < levelAddressesOld.length; i++) {
-    //@ts-ignore
-    levelAddressesNew.push(levelMapping[levelAddressesOld[i]]);
+    levelAddressesNew.push(level_mapping[levelAddressesOld[i]]);
     noOfCreatedInstances.push(levels[levelAddressesOld[i]].created_instances);
     noOfSolvedInstances.push(levels[levelAddressesOld[i]].solved_instances);
   }
