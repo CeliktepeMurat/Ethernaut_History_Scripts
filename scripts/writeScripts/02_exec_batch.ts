@@ -3,14 +3,12 @@ import { ethers } from 'ethers';
 import STATISTICS_ABI from '../../utils/ABIs/statistics_abi.json';
 import { getImpersonatedSigner, loadFetchedData } from '../../utils/utils';
 import { INSTANCE, PLAYER_METRICS } from '../../utils/interface';
+import { OWNER, PROXY_STAT } from '../../utils/constant';
 dotenv.config();
 
 const PLAYER_METRICS_PATH = `./data/player_metrics.json`;
 const playerMetrics: PLAYER_METRICS =
   loadFetchedData(PLAYER_METRICS_PATH).player_metrics;
-
-const PROXY_STAT = '0x90bf78BC9276D8e0820F3545e3Fa3Ba3147B8735';
-const OWNER = '0x09902A56d04a9446601a0d451E07459dC5aF0820';
 
 // PARAMS
 let players: string[] = [];
@@ -34,7 +32,7 @@ const main = async () => {
 
   fillPlayerStat(); // fill the arrays with data
 
-  const limit = 100;
+  const limit = 10;
   const MAX = players.length;
 
   const txn = await statistics.updatePlayersData(
