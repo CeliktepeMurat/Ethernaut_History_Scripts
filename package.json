@@ -8,7 +8,10 @@
     "calc:total_nums": "npx ts-node scripts/01_calc_total_numbers.ts",
     "calc:player_stats": "npx ts-node scripts/02_calc_player_stat.ts",
     "calc:level_stats": "npx ts-node scripts/03_calc_level_stat.ts",
-    "calc:player_metrics": "npx ts-node scripts/04_calc_player_metrics.ts"
+    "calc:player_metrics": "npx ts-node scripts/04_calc_player_metrics.ts",
+    "write:past_data": "npx hardhat run scripts/writeScripts/00_exec_batch.ts",
+    "write:player_stat": "npx hardhat run scripts/writeScripts/01_exec_batch.ts",
+    "write:player_metrics": "npx hardhat run scripts/writeScripts/02_exec_batch.ts"
   },
   "author": "murat",
   "license": "MIT",
