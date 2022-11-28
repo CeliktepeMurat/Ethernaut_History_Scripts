@@ -1,7 +1,7 @@
 import Web3 from 'web3';
 import dotenv from 'dotenv';
 import fs from 'fs';
-import { FETCH_DATA, EVENT_TYPE_SIG } from '../utils/interface';
+import { FETCH_DATA, EVENT_TYPE_SIG } from '../../utils/interface';
 dotenv.config();
 
 const web3 = new Web3(
