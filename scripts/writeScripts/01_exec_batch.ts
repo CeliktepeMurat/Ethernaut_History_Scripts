@@ -12,7 +12,6 @@ const PLAYER_STAT_PATH = `./data/player_stat.json`;
 let players: string[] = [];
 let noOfAdditionalInstancesCreatedByPlayer: number[] = [];
 let noOfAdditionalInstancesCompletedByPlayer: number[] = [];
-let noOfAdditionalLevelsCompletedByPlayer: number[] = [];
 
 const main = async () => {
   const impersonatedSigner = await getImpersonatedSigner(OWNER);
@@ -53,26 +52,6 @@ const getNumberOfInstances = () => {
     noOfAdditionalInstancesCompletedByPlayer.push(
       player_stats[player].solved_instances
     );
-  }
-};
-
-const getNumberOfLevelsCompletedByPlayer = () => {
-  const player_metrics: PLAYER_METRICS =
-    loadFetchedData(PLAYER_METRICS_PATH).player_metrics;
-
-  for (let player in player_metrics) {
-    let numberOfLevelsCompleted = 0;
-
-    for (const level in player_metrics[player]) {
-      for (const instance of player_metrics[player][level]) {
-        if (instance.isCompleted) {
-          numberOfLevelsCompleted++;
-          break;
-        }
-      }
-    }
-    noOfAdditionalLevelsCompletedByPlayer.push(numberOfLevelsCompleted);
-    players.push(player);
   }
 };
 

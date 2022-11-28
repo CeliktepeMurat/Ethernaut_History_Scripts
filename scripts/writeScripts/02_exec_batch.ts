@@ -20,6 +20,7 @@ let timeCreated: number[][] = [];
 let totalSubmission: number[][][] = [];
 let levelFirstCompletedTime: number[][] = [];
 let levelFirstInstanceCreationTime: number[][] = [];
+let noOfAdditionalLevelsCompletedByPlayer: number[] = [];
 
 const main = async () => {
   const impersonatedSigner = await getImpersonatedSigner(OWNER);
@@ -31,13 +32,16 @@ const main = async () => {
   );
 
   fillPlayerStat(); // fill the arrays with data
-  updatePlayerStatsData(statistics);
+  getNumberOfLevelsCompletedByPlayer()
+
+  await updatePlayerStatsData(statistics);
+  await updateNumberOfLevelsCompletedByPlayer(statistics);
 };
 
 const updatePlayerStatsData = async (statistics: any) => { 
-   const limit = 10;
+    const limit = 10;
     const MAX = players.length;
-   const txn = await statistics.updatePlayerStatsData(
+    const txn = await statistics.updatePlayerStatsData(
     players.slice(0, limit),
     levels.slice(0, limit),
     instances.slice(0, limit),
@@ -97,5 +101,35 @@ const fillPlayerStat = () => {
     }
   }
 };
+
+const updateNumberOfLevelsCompletedByPlayer = async (statistics: any) => { 
+  const txn = await statistics.updateLevelsCompletedByPlayers(
+    players,
+    noOfAdditionalLevelsCompletedByPlayer
+  )
+  let receivedTxn = await txn.wait();
+  reportGas(receivedTxn);
+}
+
+const getNumberOfLevelsCompletedByPlayer = () => {
+  const player_metrics: PLAYER_METRICS =
+    loadFetchedData(PLAYER_METRICS_PATH).player_metrics;
+
+  for (let player in player_metrics) {
+    let numberOfLevelsCompleted = 0;
+
+    for (const level in player_metrics[player]) {
+      for (const instance of player_metrics[player][level]) {
+        if (instance.isCompleted) {
+          numberOfLevelsCompleted++;
+          break;
+        }
+      }
+    }
+    noOfAdditionalLevelsCompletedByPlayer.push(numberOfLevelsCompleted);
+    players.push(player);
+  }
+};
+
 
 main();
