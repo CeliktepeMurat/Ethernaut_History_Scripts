@@ -31,9 +31,7 @@ const saveGlobalNumbers = async (statistics: Contract) => {
     total_numbers.Total_Number_Of_Instance_Solved
   );
   let receivedTxn = await txn.wait();
-  console.log(receivedTxn);
-  console.log('Gas Used -> ', receivedTxn.gasUsed.toString());
-  console.log('Gas price -> ', receivedTxn.effectiveGasPrice.toString());
+  reportGas(receivedTxn)
 };
 
 const savePlayers = async (statistics: Contract) => {
