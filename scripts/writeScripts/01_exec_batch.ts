@@ -1,15 +1,13 @@
 import dotenv from 'dotenv';
 import STATISTICS_ABI from '../../utils/ABIs/statistics_abi.json';
-import {
-  getImpersonatedSigner,
-  loadFetchedData,
-  reportGas,
-} from '../../utils/utils';
+import { getImpersonatedSigner, loadFetchedData, reportGas } from '../../utils/utils';
 import { ethers } from 'ethers';
-import { PLAYER_STAT } from '../../utils/interface';
+import { PLAYER_METRICS, PLAYER_STAT } from '../../utils/interface';
 import { OWNER, PROXY_STAT } from '../../utils/constant';
+import { batchAndRun } from '../runner/batchAndRun';
 dotenv.config();
 
+const PLAYER_METRICS_PATH = `./data/player_metrics.json`;
 const PLAYER_STAT_PATH = `./data/player_stat.json`;
 
 let players: string[] = [];
@@ -25,28 +23,27 @@ const main = async () => {
     impersonatedSigner
   );
 
+  // 1891
   getNumberOfInstances(); // Get the number of instances created and solved by each player
-
-  await updateAllPlayersGlobalData(statistics);
+  await batchAndRun(updateAllPlayersGlobalData(statistics), 200, 1891);
 };
 
-const updateAllPlayersGlobalData = async (statistics: any) => {
-  const limit = 500;
-  const MAX = players.length;
-
+const updateAllPlayersGlobalData = (statistics: any) => async (start: number, end: number) => { 
+  console.log('start', start);
+  console.log('end', end);
   const txn = await statistics.updateAllPlayersGlobalData(
-    players.slice(0, limit),
-    noOfAdditionalInstancesCreatedByPlayer.slice(0, limit),
-    noOfAdditionalInstancesCompletedByPlayer.slice(0, limit)
+    players.slice(start, end),
+    noOfAdditionalInstancesCreatedByPlayer.slice(start, end),
+    noOfAdditionalInstancesCompletedByPlayer.slice(start, end)
   );
   let receivedTxn = await txn.wait();
-  reportGas(receivedTxn);
-};
+  reportGas(receivedTxn)
+}
 
 const getNumberOfInstances = () => {
   const player_stats: PLAYER_STAT =
     loadFetchedData(PLAYER_STAT_PATH).player_stat;
-
+  players = Object.keys(player_stats);
   for (const player in player_stats) {
     noOfAdditionalInstancesCreatedByPlayer.push(
       player_stats[player].created_instances
@@ -54,7 +51,6 @@ const getNumberOfInstances = () => {
     noOfAdditionalInstancesCompletedByPlayer.push(
       player_stats[player].solved_instances
     );
-    players.push(player);
   }
 };
 
