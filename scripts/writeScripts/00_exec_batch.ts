@@ -21,8 +21,8 @@ const main = async () => {
   );
 
   await savePlayers(statistics);
-  await saveGlobalNumbers(statistics);
-  await saveLevelsData(statistics);
+  // await saveGlobalNumbers(statistics);
+  // await saveLevelsData(statistics);
 };
 
 const saveGlobalNumbers = async (statistics: Contract) => {
