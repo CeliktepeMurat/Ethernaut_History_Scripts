@@ -31,11 +31,13 @@ const main = async () => {
   );
 
   fillPlayerStat(); // fill the arrays with data
+  updatePlayerStatsData(statistics);
+};
 
-  const limit = 10;
-  const MAX = players.length;
-
-  const txn = await statistics.updatePlayersData(
+const updatePlayerStatsData = async (statistics: any) => { 
+   const limit = 10;
+    const MAX = players.length;
+   const txn = await statistics.updatePlayerStatsData(
     players.slice(0, limit),
     levels.slice(0, limit),
     instances.slice(0, limit),
@@ -48,7 +50,7 @@ const main = async () => {
   );
   let receivedTxn = await txn.wait();
   reportGas(receivedTxn);
-};
+}
 
 const fillPlayerStat = () => {
   let player_metrics = Object.keys(playerMetrics);

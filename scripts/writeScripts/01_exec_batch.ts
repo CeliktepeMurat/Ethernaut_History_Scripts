@@ -25,18 +25,22 @@ const main = async () => {
 
   getNumberOfLevelsCompletedByPlayer(); // Get the number of levels completed by each player
   getNumberOfInstances(); // Get the number of instances created and solved by each player
+  
+  await updateAllPlayersGlobalData(statistics)
+};
 
+const updateAllPlayersGlobalData = async (statistics:any) => { 
   const limit = 500;
   const MAX = players.length;
 
-  const txn = await statistics.updateAllPlayerData(
+  const txn = await statistics.updateAllPlayersGlobalData(
     players.slice(0, limit),
     noOfAdditionalInstancesCreatedByPlayer.slice(0, limit),
     noOfAdditionalInstancesCompletedByPlayer.slice(0, limit)
   );
   let receivedTxn = await txn.wait();
   reportGas(receivedTxn)
-};
+}
 
 const getNumberOfInstances = () => {
   const player_stats: PLAYER_STAT =
