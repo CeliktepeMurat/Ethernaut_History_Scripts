@@ -20,7 +20,6 @@ let timeCreated: number[][] = [];
 let totalSubmission: number[][][] = [];
 let levelFirstCompletedTime: number[][] = [];
 let levelFirstInstanceCreationTime: number[][] = [];
-let noOfAdditionalLevelsCompletedByPlayer: number[] = [];
 
 const main = async () => {
   const impersonatedSigner = await getImpersonatedSigner(OWNER);
@@ -32,10 +31,9 @@ const main = async () => {
   );
 
   fillPlayerStat(); // fill the arrays with data
-  getNumberOfLevelsCompletedByPlayer()
 
   await updatePlayerStatsData(statistics);
-  await updateNumberOfLevelsCompletedByPlayer(statistics);
+  await updateNoOfLevelsCompletedByPlayers(statistics);
 };
 
 const updatePlayerStatsData = async (statistics: any) => { 
@@ -102,34 +100,41 @@ const fillPlayerStat = () => {
   }
 };
 
-const updateNumberOfLevelsCompletedByPlayer = async (statistics: any) => { 
+const updateNoOfLevelsCompletedByPlayers = async (statistics:any) => { 
+  const allData = loadFetchedData(PLAYER_METRICS_PATH).player_metrics
+  const allPlayers = Object.keys(allData);
+  const levelsSolvedByPlayers = []
+  for (let player of allPlayers) {
+    const levelsSolvedByPlayer = getLevelsSolvedByAPlayer(allData[player])
+    levelsSolvedByPlayers.push(levelsSolvedByPlayer)
+  }
   const txn = await statistics.updateLevelsCompletedByPlayers(
-    players,
-    noOfAdditionalLevelsCompletedByPlayer
+    allPlayers.slice(0,10),
+    levelsSolvedByPlayers.slice(0,10)
   )
-  let receivedTxn = await txn.wait();
-  reportGas(receivedTxn);
+  await txn.wait()
 }
 
-const getNumberOfLevelsCompletedByPlayer = () => {
-  const player_metrics: PLAYER_METRICS =
-    loadFetchedData(PLAYER_METRICS_PATH).player_metrics;
-
-  for (let player in player_metrics) {
-    let numberOfLevelsCompleted = 0;
-
-    for (const level in player_metrics[player]) {
-      for (const instance of player_metrics[player][level]) {
-        if (instance.isCompleted) {
-          numberOfLevelsCompleted++;
-          break;
-        }
-      }
+const getLevelsSolvedByAPlayer = (levelsCreatedByPlayer:string[]) => { 
+  const levelAddresses = Object.keys(levelsCreatedByPlayer)
+  const levelsSolvedByPlayer = []
+  let levelAddress: any;
+  for (levelAddress of levelAddresses) { 
+    const instancesSolvedByPlayer = levelsCreatedByPlayer[levelAddress]
+    if (isAnyInstanceSolvedByPlayer(instancesSolvedByPlayer)) { 
+      levelsSolvedByPlayer.push(levelAddress)
     }
-    noOfAdditionalLevelsCompletedByPlayer.push(numberOfLevelsCompleted);
-    players.push(player);
   }
-};
+  return levelsSolvedByPlayer;
+}
 
+function isAnyInstanceSolvedByPlayer(instances: any) {
+  for (const instance of instances) {
+    if (instance.isCompleted) {
+      return true;
+    }
+  }
+  return false;
+}
 
 main();
