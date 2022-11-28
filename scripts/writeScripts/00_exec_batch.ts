@@ -21,9 +21,9 @@ const main = async () => {
     impersonatedSigner
   );
 
-  await batchAndRun(savePlayers(statistics), 200, 1891);
+  // await batchAndRun(savePlayers(statistics), 200, 1891);
   // await saveGlobalNumbers(statistics);
-  // await saveLevelsData(statistics);
+  await saveLevelsData(statistics);
 };
 
 const savePlayers = (statistics: Contract) => async (start:number, end:number) => {
@@ -48,7 +48,7 @@ const saveGlobalNumbers = async (statistics: Contract) => {
   reportGas(receivedTxn);
 };
 
-const saveLevelsData = async (statistics: Contract) => {
+const saveLevelsData = async (statistics: Contract) =>  {
   const LEVEL_STATS_PATH = `./data/level_stat.json`;
   const level_stats = loadFetchedData(LEVEL_STATS_PATH).level_stat;
 
