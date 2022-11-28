@@ -568,24 +568,6 @@
   {
     "inputs": [
       {
-        "internalType": "address",
-        "name": "_player",
-        "type": "address"
-      },
-      {
-        "internalType": "address[]",
-        "name": "_levels",
-        "type": "address[]"
-      }
-    ],
-    "name": "updateLevelsCompletedByPlayer",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
         "internalType": "address[]",
         "name": "_players",
         "type": "address[]"
@@ -650,112 +632,6 @@
       }
     ],
     "name": "updatePlayerStatsData",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_player",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_level",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_instance",
-        "type": "address"
-      },
-      {
-        "internalType": "bool",
-        "name": "_isCompleted",
-        "type": "bool"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_timeCompleted",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_timeCreated",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256[]",
-        "name": "_timeSubmitted",
-        "type": "uint256[]"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_levelFirstCompletedTime",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_levelFirstInstanceCreationTime",
-        "type": "uint256"
-      }
-    ],
-    "name": "updatePlayerStatsDataForALevel",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_player",
-        "type": "address"
-      },
-      {
-        "internalType": "address[]",
-        "name": "_levels",
-        "type": "address[]"
-      },
-      {
-        "internalType": "address[]",
-        "name": "_instances",
-        "type": "address[]"
-      },
-      {
-        "internalType": "bool[]",
-        "name": "_isCompleted",
-        "type": "bool[]"
-      },
-      {
-        "internalType": "uint256[]",
-        "name": "_timeCompleted",
-        "type": "uint256[]"
-      },
-      {
-        "internalType": "uint256[]",
-        "name": "_timeCreated",
-        "type": "uint256[]"
-      },
-      {
-        "internalType": "uint256[][]",
-        "name": "_timeSubmitted",
-        "type": "uint256[][]"
-      },
-      {
-        "internalType": "uint256[]",
-        "name": "_levelFirstCompletedTime",
-        "type": "uint256[]"
-      },
-      {
-        "internalType": "uint256[]",
-        "name": "_levelFirstInstanceCreationTime",
-        "type": "uint256[]"
-      }
-    ],
-    "name": "updatePlayerStatsDataForAPlayer",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
