@@ -1,6 +1,10 @@
 import dotenv from 'dotenv';
 import STATISTICS_ABI from '../../utils/ABIs/statistics_abi.json';
-import { getImpersonatedSigner, loadFetchedData, reportGas } from '../../utils/utils';
+import {
+  getImpersonatedSigner,
+  loadFetchedData,
+  reportGas,
+} from '../../utils/utils';
 import { Contract, ethers } from 'ethers';
 import { TOTAL_NUMBERS_STAT } from '../../utils/interface';
 import { OWNER, PROXY_STAT } from '../../utils/constant';
@@ -31,7 +35,7 @@ const saveGlobalNumbers = async (statistics: Contract) => {
     total_numbers.Total_Number_Of_Instance_Solved
   );
   let receivedTxn = await txn.wait();
-  reportGas(receivedTxn)
+  reportGas(receivedTxn);
 };
 
 const savePlayers = async (statistics: Contract) => {

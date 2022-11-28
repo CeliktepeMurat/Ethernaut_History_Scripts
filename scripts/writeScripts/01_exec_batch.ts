@@ -1,12 +1,15 @@
 import dotenv from 'dotenv';
 import STATISTICS_ABI from '../../utils/ABIs/statistics_abi.json';
-import { getImpersonatedSigner, loadFetchedData, reportGas } from '../../utils/utils';
+import {
+  getImpersonatedSigner,
+  loadFetchedData,
+  reportGas,
+} from '../../utils/utils';
 import { ethers } from 'ethers';
-import { PLAYER_METRICS, PLAYER_STAT } from '../../utils/interface';
+import { PLAYER_STAT } from '../../utils/interface';
 import { OWNER, PROXY_STAT } from '../../utils/constant';
 dotenv.config();
 
-const PLAYER_METRICS_PATH = `./data/player_metrics.json`;
 const PLAYER_STAT_PATH = `./data/player_stat.json`;
 
 let players: string[] = [];
@@ -23,11 +26,11 @@ const main = async () => {
   );
 
   getNumberOfInstances(); // Get the number of instances created and solved by each player
-  
-  await updateAllPlayersGlobalData(statistics)
+
+  await updateAllPlayersGlobalData(statistics);
 };
 
-const updateAllPlayersGlobalData = async (statistics:any) => { 
+const updateAllPlayersGlobalData = async (statistics: any) => {
   const limit = 500;
   const MAX = players.length;
 
@@ -37,8 +40,8 @@ const updateAllPlayersGlobalData = async (statistics:any) => {
     noOfAdditionalInstancesCompletedByPlayer.slice(0, limit)
   );
   let receivedTxn = await txn.wait();
-  reportGas(receivedTxn)
-}
+  reportGas(receivedTxn);
+};
 
 const getNumberOfInstances = () => {
   const player_stats: PLAYER_STAT =
@@ -51,6 +54,7 @@ const getNumberOfInstances = () => {
     noOfAdditionalInstancesCompletedByPlayer.push(
       player_stats[player].solved_instances
     );
+    players.push(player);
   }
 };
 

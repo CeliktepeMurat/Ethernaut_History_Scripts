@@ -558,11 +558,6 @@
         "internalType": "uint256",
         "name": "_noOfAdditionalInstancesCompletedGlobally",
         "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_noOfAdditionalFailedSubmissionsGlobally",
-        "type": "uint256"
       }
     ],
     "name": "updateGlobalData",

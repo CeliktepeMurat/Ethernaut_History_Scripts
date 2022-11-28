@@ -1,7 +1,11 @@
 import dotenv from 'dotenv';
 import { ethers } from 'ethers';
 import STATISTICS_ABI from '../../utils/ABIs/statistics_abi.json';
-import { getImpersonatedSigner, loadFetchedData, reportGas } from '../../utils/utils';
+import {
+  getImpersonatedSigner,
+  loadFetchedData,
+  reportGas,
+} from '../../utils/utils';
 import { INSTANCE, PLAYER_METRICS } from '../../utils/interface';
 import { OWNER, PROXY_STAT } from '../../utils/constant';
 dotenv.config();
@@ -36,10 +40,10 @@ const main = async () => {
   await updateNoOfLevelsCompletedByPlayers(statistics);
 };
 
-const updatePlayerStatsData = async (statistics: any) => { 
-    const limit = 10;
-    const MAX = players.length;
-    const txn = await statistics.updatePlayerStatsData(
+const updatePlayerStatsData = async (statistics: any) => {
+  const limit = 10;
+  const MAX = players.length;
+  const txn = await statistics.updatePlayerStatsData(
     players.slice(0, limit),
     levels.slice(0, limit),
     instances.slice(0, limit),
@@ -52,7 +56,7 @@ const updatePlayerStatsData = async (statistics: any) => {
   );
   let receivedTxn = await txn.wait();
   reportGas(receivedTxn);
-}
+};
 
 const fillPlayerStat = () => {
   let player_metrics = Object.keys(playerMetrics);
@@ -100,33 +104,33 @@ const fillPlayerStat = () => {
   }
 };
 
-const updateNoOfLevelsCompletedByPlayers = async (statistics:any) => { 
-  const allData = loadFetchedData(PLAYER_METRICS_PATH).player_metrics
+const updateNoOfLevelsCompletedByPlayers = async (statistics: any) => {
+  const allData = loadFetchedData(PLAYER_METRICS_PATH).player_metrics;
   const allPlayers = Object.keys(allData);
-  const levelsSolvedByPlayers = []
+  const levelsSolvedByPlayers = [];
   for (let player of allPlayers) {
-    const levelsSolvedByPlayer = getLevelsSolvedByAPlayer(allData[player])
-    levelsSolvedByPlayers.push(levelsSolvedByPlayer)
+    const levelsSolvedByPlayer = getLevelsSolvedByAPlayer(allData[player]);
+    levelsSolvedByPlayers.push(levelsSolvedByPlayer);
   }
   const txn = await statistics.updateLevelsCompletedByPlayers(
-    allPlayers.slice(0,10),
-    levelsSolvedByPlayers.slice(0,10)
-  )
-  await txn.wait()
-}
+    allPlayers.slice(0, 10),
+    levelsSolvedByPlayers.slice(0, 10)
+  );
+  await txn.wait();
+};
 
-const getLevelsSolvedByAPlayer = (levelsCreatedByPlayer:string[]) => { 
-  const levelAddresses = Object.keys(levelsCreatedByPlayer)
-  const levelsSolvedByPlayer = []
+const getLevelsSolvedByAPlayer = (levelsCreatedByPlayer: string[]) => {
+  const levelAddresses = Object.keys(levelsCreatedByPlayer);
+  const levelsSolvedByPlayer = [];
   let levelAddress: any;
-  for (levelAddress of levelAddresses) { 
-    const instancesSolvedByPlayer = levelsCreatedByPlayer[levelAddress]
-    if (isAnyInstanceSolvedByPlayer(instancesSolvedByPlayer)) { 
-      levelsSolvedByPlayer.push(levelAddress)
+  for (levelAddress of levelAddresses) {
+    const instancesSolvedByPlayer = levelsCreatedByPlayer[levelAddress];
+    if (isAnyInstanceSolvedByPlayer(instancesSolvedByPlayer)) {
+      levelsSolvedByPlayer.push(levelAddress);
     }
   }
   return levelsSolvedByPlayer;
-}
+};
 
 function isAnyInstanceSolvedByPlayer(instances: any) {
   for (const instance of instances) {
