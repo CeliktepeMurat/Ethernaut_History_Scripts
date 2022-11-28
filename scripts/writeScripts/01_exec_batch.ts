@@ -22,7 +22,6 @@ const main = async () => {
     impersonatedSigner
   );
 
-  getNumberOfLevelsCompletedByPlayer(); // Get the number of levels completed by each player
   getNumberOfInstances(); // Get the number of instances created and solved by each player
   
   await updateAllPlayersGlobalData(statistics)
