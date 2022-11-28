@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 import STATISTICS_ABI from '../../utils/ABIs/statistics_abi.json';
-import { getImpersonatedSigner, loadFetchedData } from '../../utils/utils';
+import { getImpersonatedSigner, loadFetchedData, reportGas } from '../../utils/utils';
 import { Contract, ethers } from 'ethers';
 import { TOTAL_NUMBERS_STAT } from '../../utils/interface';
 import { OWNER, PROXY_STAT } from '../../utils/constant';
@@ -42,9 +42,7 @@ const savePlayers = async (statistics: Contract) => {
 
   const txn = await statistics.updatePlayers(players.slice(0, 500));
   let receivedTxn = await txn.wait();
-  console.log(receivedTxn);
-  console.log('Gas Used -> ', receivedTxn.gasUsed.toString());
-  console.log('Gas price -> ', receivedTxn.effectiveGasPrice.toString());
+  reportGas(receivedTxn);
 };
 
 const saveLevelsData = async (statistics: Contract) => {
@@ -69,9 +67,7 @@ const saveLevelsData = async (statistics: Contract) => {
     noOfSolvedInstances
   );
   const receivedTxn = await txn.wait();
-  console.log(receivedTxn);
-  console.log('Gas Used -> ', receivedTxn.gasUsed.toString());
-  console.log('Gas price -> ', receivedTxn.effectiveGasPrice.toString());
+  reportGas(receivedTxn);
 };
 
 main();

@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 import { ethers } from 'ethers';
 import STATISTICS_ABI from '../../utils/ABIs/statistics_abi.json';
-import { getImpersonatedSigner, loadFetchedData } from '../../utils/utils';
+import { getImpersonatedSigner, loadFetchedData, reportGas } from '../../utils/utils';
 import { INSTANCE, PLAYER_METRICS } from '../../utils/interface';
 import { OWNER, PROXY_STAT } from '../../utils/constant';
 dotenv.config();
@@ -46,11 +46,8 @@ const main = async () => {
     levelFirstCompletedTime.slice(0, limit),
     levelFirstInstanceCreationTime.slice(0, limit)
   );
-
-  console.log(await txn.wait());
   let receivedTxn = await txn.wait();
-  console.log('Gas Used -> ', receivedTxn.gasUsed.toString());
-  console.log('Gas price -> ', receivedTxn.effectiveGasPrice.toString());
+  reportGas(receivedTxn);
 };
 
 const fillPlayerStat = () => {
