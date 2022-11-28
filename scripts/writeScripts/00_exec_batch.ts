@@ -21,8 +21,8 @@ const main = async () => {
   );
 
   await savePlayers(statistics);
-  // await saveGlobalNumbers(statistics);
-  // await saveLevelsData(statistics);
+  await saveGlobalNumbers(statistics);
+  await saveLevelsData(statistics);
 };
 
 const saveGlobalNumbers = async (statistics: Contract) => {
@@ -42,7 +42,7 @@ const savePlayers = async (statistics: Contract) => {
   const ALL_PLAYERS_PATH = `./data/all_player_list.json`;
   const players = loadFetchedData(ALL_PLAYERS_PATH).players;
   const MAX = players.length
-  const limit = 10;
+  const limit = 500;
 
   const txn = await statistics.updatePlayers(players.slice(0, limit));
   let receivedTxn = await txn.wait();
