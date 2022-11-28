@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
-import { PLAYER_METRICS } from '../utils/interface';
-import { loadFetchedData, storeData } from '../utils/utils';
+import { PLAYER_METRICS } from '../../utils/interface';
+import { loadFetchedData, storeData } from '../../utils/utils';
 
 dotenv.config();
 

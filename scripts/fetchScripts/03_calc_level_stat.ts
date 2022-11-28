@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
-import { FETCH_DATA, LEVEL_FACTORY_STAT } from '../utils/interface';
-import { loadFetchedData, storeData } from '../utils/utils';
+import { FETCH_DATA, LEVEL_FACTORY_STAT } from '../../utils/interface';
+import { loadFetchedData, storeData } from '../../utils/utils';
 dotenv.config();
 
 const ALL_DATA_PATH = `./data/all_data.json`;
