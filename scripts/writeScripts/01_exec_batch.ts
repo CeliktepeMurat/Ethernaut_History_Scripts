@@ -1,11 +1,12 @@
 import dotenv from 'dotenv';
 import STATISTICS_ABI from '../../utils/ABIs/statistics_abi.json';
 import {
+  getGasPrice,
   getImpersonatedSigner,
   loadFetchedData,
   reportGas,
 } from '../../utils/utils';
-import { ethers } from 'ethers';
+import { Contract, ethers } from 'ethers';
 import { PLAYER_STAT } from '../../utils/interface';
 import { OWNER, PROXY_STAT } from '../../utils/constant';
 dotenv.config();
@@ -25,19 +26,27 @@ const main = async () => {
     impersonatedSigner
   );
 
+  const props = {
+    gasPrice: await getGasPrice(),
+  };
+
   getNumberOfInstances(); // Get the number of instances created and solved by each player
 
-  await updateAllPlayersGlobalData(statistics);
+  await updateAllPlayersGlobalData(statistics, props);
 };
 
-const updateAllPlayersGlobalData = async (statistics: any) => {
+const updateAllPlayersGlobalData = async (
+  statistics: Contract,
+  props: { gasPrice: string }
+) => {
   const limit = 500;
   const MAX = players.length;
 
   const txn = await statistics.updateAllPlayersGlobalData(
     players.slice(0, limit),
     noOfAdditionalInstancesCreatedByPlayer.slice(0, limit),
-    noOfAdditionalInstancesCompletedByPlayer.slice(0, limit)
+    noOfAdditionalInstancesCompletedByPlayer.slice(0, limit),
+    props
   );
   let receivedTxn = await txn.wait();
   reportGas(receivedTxn);

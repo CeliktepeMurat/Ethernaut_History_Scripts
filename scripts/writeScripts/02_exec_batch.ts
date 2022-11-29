@@ -1,7 +1,8 @@
 import dotenv from 'dotenv';
-import { ethers } from 'ethers';
+import { Contract, ethers } from 'ethers';
 import STATISTICS_ABI from '../../utils/ABIs/statistics_abi.json';
 import {
+  getGasPrice,
   getImpersonatedSigner,
   loadFetchedData,
   reportGas,
@@ -34,13 +35,20 @@ const main = async () => {
     impersonatedSigner
   );
 
+  const props = {
+    gasPrice: await getGasPrice(),
+  };
+
   fillPlayerStat(); // fill the arrays with data
 
-  await updatePlayerStatsData(statistics);
-  await updateNoOfLevelsCompletedByPlayers(statistics);
+  await updatePlayerStatsData(statistics, props);
+  await updateNoOfLevelsCompletedByPlayers(statistics, props);
 };
 
-const updatePlayerStatsData = async (statistics: any) => {
+const updatePlayerStatsData = async (
+  statistics: Contract,
+  props: { gasPrice: string }
+) => {
   const limit = 10;
   const MAX = players.length;
   const txn = await statistics.updatePlayerStatsData(
@@ -52,7 +60,8 @@ const updatePlayerStatsData = async (statistics: any) => {
     timeCreated.slice(0, limit),
     totalSubmission.slice(0, limit),
     levelFirstCompletedTime.slice(0, limit),
-    levelFirstInstanceCreationTime.slice(0, limit)
+    levelFirstInstanceCreationTime.slice(0, limit),
+    props
   );
   let receivedTxn = await txn.wait();
   reportGas(receivedTxn);
@@ -104,7 +113,10 @@ const fillPlayerStat = () => {
   }
 };
 
-const updateNoOfLevelsCompletedByPlayers = async (statistics: any) => {
+const updateNoOfLevelsCompletedByPlayers = async (
+  statistics: Contract,
+  props: { gasPrice: string }
+) => {
   const allData = loadFetchedData(PLAYER_METRICS_PATH).player_metrics;
   const allPlayers = Object.keys(allData);
   const levelsSolvedByPlayers = [];
@@ -114,7 +126,8 @@ const updateNoOfLevelsCompletedByPlayers = async (statistics: any) => {
   }
   const txn = await statistics.updateLevelsCompletedByPlayers(
     allPlayers.slice(0, 10),
-    levelsSolvedByPlayers.slice(0, 10)
+    levelsSolvedByPlayers.slice(0, 10),
+    props
   );
   await txn.wait();
 };

@@ -24,6 +24,11 @@ export const storeData = (path: string, data: {}) => {
   fs.writeFileSync(path, JSON.stringify(data, null, 2));
 };
 
+export const getGasPrice = async () => {
+  const gasPrice = await web3.eth.getGasPrice();
+  return gasPrice;
+};
+
 export const isCompleted = async (
   SLOT: number,
   INDEX: number,
@@ -54,8 +59,8 @@ export const getImpersonatedSigner = async (address: string) => {
   return hre.ethers.provider.getSigner(address);
 };
 
-export const reportGas = (receivedTxn: any) => { 
-  console.log(receivedTxn)
+export const reportGas = (receivedTxn: any) => {
+  console.log(receivedTxn);
   console.log('Gas Used -> ', receivedTxn.gasUsed.toString());
   console.log('Gas price -> ', receivedTxn.effectiveGasPrice.toString());
-}
+};
