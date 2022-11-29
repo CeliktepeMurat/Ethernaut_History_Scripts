@@ -25,10 +25,10 @@ const main = async () => {
 
   // 1891
   getNumberOfInstances(); // Get the number of instances created and solved by each player
-  await batchAndRun(updateAllPlayersGlobalData(statistics), 200, 1891);
+  await updateAllPlayersGlobalData(statistics, 0, 100)
 };
 
-const updateAllPlayersGlobalData = (statistics: any) => async (start: number, end: number) => { 
+const updateAllPlayersGlobalData = async (statistics:any, start: number, end: number) => { 
   console.log('start', start);
   console.log('end', end);
   const txn = await statistics.updateAllPlayersGlobalData(

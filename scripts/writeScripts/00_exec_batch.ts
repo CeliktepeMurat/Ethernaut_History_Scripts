@@ -21,12 +21,12 @@ const main = async () => {
     impersonatedSigner
   );
 
-  // await batchAndRun(savePlayers(statistics), 200, 1891);
+  await savePlayers(statistics, 800, 1800)
   // await saveGlobalNumbers(statistics);
-  await saveLevelsData(statistics);
+  // await saveLevelsData(statistics);
 };
 
-const savePlayers = (statistics: Contract) => async (start:number, end:number) => {
+const savePlayers = async (statistics: Contract, start:number, end:number) => {
   const ALL_PLAYERS_PATH = `./data/all_player_list.json`;
   const players = loadFetchedData(ALL_PLAYERS_PATH).players;
   console.log('start', start);

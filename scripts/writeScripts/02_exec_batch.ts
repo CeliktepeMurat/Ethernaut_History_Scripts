@@ -41,18 +41,18 @@ const main = async () => {
 };
 
 const updatePlayerStatsData = async (statistics: any) => {
-  const limit = 10;
-  const MAX = players.length;
+  const start = 110;
+  const end = 120;
   const txn = await statistics.updatePlayerStatsData(
-    players.slice(0, limit),
-    levels.slice(0, limit),
-    instances.slice(0, limit),
-    isCompleted.slice(0, limit),
-    timeCompleted.slice(0, limit),
-    timeCreated.slice(0, limit),
-    totalSubmission.slice(0, limit),
-    levelFirstCompletedTime.slice(0, limit),
-    levelFirstInstanceCreationTime.slice(0, limit)
+    players.slice(start, end),
+    levels.slice(start, end),
+    instances.slice(start, end),
+    isCompleted.slice(start, end),
+    timeCompleted.slice(start, end),
+    timeCreated.slice(start, end),
+    totalSubmission.slice(start, end),
+    levelFirstCompletedTime.slice(start, end),
+    levelFirstInstanceCreationTime.slice(start, end)
   );
   let receivedTxn = await txn.wait();
   reportGas(receivedTxn);
@@ -112,11 +112,14 @@ const updateNoOfLevelsCompletedByPlayers = async (statistics: any) => {
     const levelsSolvedByPlayer = getLevelsSolvedByAPlayer(allData[player]);
     levelsSolvedByPlayers.push(levelsSolvedByPlayer);
   }
+  const start = 50
+  const end = 60
   const txn = await statistics.updateLevelsCompletedByPlayers(
-    allPlayers.slice(0, 10),
-    levelsSolvedByPlayers.slice(0, 10)
+    allPlayers.slice(start, end),
+    levelsSolvedByPlayers.slice(start,end)
   );
-  await txn.wait();
+  const receivedTxn = await txn.wait();
+  reportGas(receivedTxn)
 };
 
 const getLevelsSolvedByAPlayer = (levelsCreatedByPlayer: string[]) => {
