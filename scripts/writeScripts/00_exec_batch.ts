@@ -20,15 +20,11 @@ export const saveGlobalNumbers = async (
   const total_numbers: TOTAL_NUMBERS_STAT =
   loadFetchedData(TOTAL_NUMBERS_PATH).total_stats;
   let txn;
-  try {
-    txn = await statistics.updateGlobalData(
-      total_numbers.Total_Number_Of_Instances_Created,
-      total_numbers.Total_Number_Of_Instance_Solved,
-      props
-    );
-  } catch (e) { 
-    throw new Error("type:single, name:saveGlobalNumbers");
-  }
+  txn = await statistics.updateGlobalData(
+    total_numbers.Total_Number_Of_Instances_Created,
+    total_numbers.Total_Number_Of_Instance_Solved,
+    props
+  );
   let receivedTxn = await txn.wait();
   reportGas(receivedTxn);
 };
@@ -42,11 +38,7 @@ export const savePlayers = async (
   const ALL_PLAYERS_PATH = `./data/all_player_list.json`;
   const players = loadFetchedData(ALL_PLAYERS_PATH).players;
   let txn;
-  try {
-    txn = await statistics.updatePlayers(players.slice(start, end), props);
-  } catch (e) { 
-    throw new Error(`type:batch, name:savePlayers, start:${start}, end:${end}`);
-  }
+  txn = await statistics.updatePlayers(players.slice(start, end), props);
   let receivedTxn = await txn.wait();
   reportGas(receivedTxn);
 };
@@ -70,16 +62,12 @@ export const saveLevelsData = async (
     noOfSolvedInstances.push(level_stats[levelAddresses[i]].solved_instances);
   }
   let txn;
-  try {
-    txn = await statistics.updateAllLevelData(
-      levelAddressesNew,
-      noOfCreatedInstances,
-      noOfSolvedInstances,
-      props
-    );
-  } catch (e) { 
-    throw new Error("type:single, name:saveLevelsData");
-  }
+  txn = await statistics.updateAllLevelData(
+    levelAddressesNew,
+    noOfCreatedInstances,
+    noOfSolvedInstances,
+    props
+  );
   const receivedTxn = await txn.wait();
   reportGas(receivedTxn);
 };

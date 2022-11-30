@@ -1,7 +1,7 @@
 import STATISTICS_ABI from '../../utils/ABIs/statistics_abi.json';
 import {
   getGasPrice,
-  getImpersonatedSigner,
+  getSigner,
 } from '../../utils/utils';
 import { ethers } from 'ethers';
 import { OWNER, PROXY_STAT } from '../../utils/constant';
@@ -15,7 +15,7 @@ const fs = require('fs');
 // updatePlayerStatsData - batch
 // updateNoOfLevelsCompleted - batch
 
-let impersonatedSigner:any, statistics:any, props:any;
+let signer:any, statistics:any, props:any;
 
 async function runFunctions() { 
     if (!isFinished('saveGlobalNumber')) { 
@@ -76,12 +76,12 @@ const runFunctionInBatches = async (fn: Function, fnName:string, total: number, 
 }
 
 const initiate = async () => { 
-    impersonatedSigner = await getImpersonatedSigner(OWNER);
+    signer = await getSigner(OWNER);
 
     statistics = new ethers.Contract(
         PROXY_STAT,
         STATISTICS_ABI,
-        impersonatedSigner
+        signer
     );
 
     props = {
