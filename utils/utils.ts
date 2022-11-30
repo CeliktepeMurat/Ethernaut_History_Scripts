@@ -1,7 +1,9 @@
 import fs from 'fs';
 import Web3 from 'web3';
 import dotenv from 'dotenv';
-import hre from 'hardhat';
+import hardhat from "hardhat";
+
+const { ethers } = hardhat;
 dotenv.config();
 
 const web3 = new Web3(
@@ -52,11 +54,8 @@ export const isCompleted = async (
 };
 
 export const getImpersonatedSigner = async (address: string) => {
-  await hre.network.provider.request({
-    method: 'hardhat_impersonateAccount',
-    params: [address],
-  });
-  return hre.ethers.provider.getSigner(address);
+  const impersonatedSigner = await ethers.getImpersonatedSigner(address);
+  return impersonatedSigner;
 };
 
 export const reportGas = (receivedTxn: any) => {

@@ -12,53 +12,46 @@ import { OWNER, PROXY_STAT } from '../../utils/constant';
 
 dotenv.config();
 
-const main = async () => {
-  const impersonatedSigner = await getImpersonatedSigner(OWNER);
-
-  const statistics = new ethers.Contract(
-    PROXY_STAT,
-    STATISTICS_ABI,
-    impersonatedSigner
-  );
-  const props = {
-    gasPrice: await getGasPrice(),
-  };
-
-  await savePlayers(statistics, props);
-  await saveGlobalNumbers(statistics, props);
-  await saveLevelsData(statistics, props);
-};
-
-const saveGlobalNumbers = async (
+export const saveGlobalNumbers = async (
   statistics: Contract,
   props: { gasPrice: string }
 ) => {
   const TOTAL_NUMBERS_PATH = `./data/total_instance_numbers.json`;
   const total_numbers: TOTAL_NUMBERS_STAT =
-    loadFetchedData(TOTAL_NUMBERS_PATH).total_stats;
-
-  const txn = await statistics.updateGlobalData(
-    total_numbers.Total_Number_Of_Instances_Created,
-    total_numbers.Total_Number_Of_Instance_Solved,
-    props
-  );
+  loadFetchedData(TOTAL_NUMBERS_PATH).total_stats;
+  let txn;
+  try {
+    txn = await statistics.updateGlobalData(
+      total_numbers.Total_Number_Of_Instances_Created,
+      total_numbers.Total_Number_Of_Instance_Solved,
+      props
+    );
+  } catch (e) { 
+    throw new Error("type:single, name:saveGlobalNumbers");
+  }
   let receivedTxn = await txn.wait();
   reportGas(receivedTxn);
 };
 
-const savePlayers = async (
+export const savePlayers = async (
   statistics: Contract,
-  props: { gasPrice: string }
+  props: { gasPrice: string },
+  start:number,
+  end:number
 ) => {
   const ALL_PLAYERS_PATH = `./data/all_player_list.json`;
   const players = loadFetchedData(ALL_PLAYERS_PATH).players;
-
-  const txn = await statistics.updatePlayers(players.slice(0, 100), props);
+  let txn;
+  try {
+    txn = await statistics.updatePlayers(players.slice(start, end), props);
+  } catch (e) { 
+    throw new Error(`type:batch, name:savePlayers, start:${start}, end:${end}`);
+  }
   let receivedTxn = await txn.wait();
   reportGas(receivedTxn);
 };
 
-const saveLevelsData = async (
+export const saveLevelsData = async (
   statistics: Contract,
   props: { gasPrice: string }
 ) => {
@@ -76,15 +69,19 @@ const saveLevelsData = async (
     noOfCreatedInstances.push(level_stats[levelAddresses[i]].created_instances);
     noOfSolvedInstances.push(level_stats[levelAddresses[i]].solved_instances);
   }
-
-  const txn = await statistics.updateAllLevelData(
-    levelAddressesNew,
-    noOfCreatedInstances,
-    noOfSolvedInstances,
-    props
-  );
+  let txn;
+  try {
+    txn = await statistics.updateAllLevelData(
+      levelAddressesNew,
+      noOfCreatedInstances,
+      noOfSolvedInstances,
+      props
+    );
+  } catch (e) { 
+    throw new Error("type:single, name:saveLevelsData");
+  }
   const receivedTxn = await txn.wait();
   reportGas(receivedTxn);
 };
 
-main();
+

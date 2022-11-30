@@ -1,0 +1,24 @@
+{
+  "saveGlobalNumber": {
+    "isFinished": true
+  },
+  "saveLevelsData": {
+    "isFinished": true
+  },
+  "savePlayers": {
+    "isFinished": false,
+    "start": 0
+  },
+  "updateAllPlayersGlobalData": {
+    "isFinished": false,
+    "start": 0
+  },
+  "updatePlayerStatsData": {
+    "isFinished": false,
+    "start": 0
+  },
+  "updateNoOfLevelsCompletedByPlayers": {
+    "isFinished": false,
+    "start": 0
+  }
+}
