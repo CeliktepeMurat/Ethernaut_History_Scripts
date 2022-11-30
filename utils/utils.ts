@@ -1,7 +1,7 @@
 import fs from 'fs';
 import Web3 from 'web3';
 import dotenv from 'dotenv';
-import hardhat from "hardhat";
+import hardhat from 'hardhat';
 
 const { ethers } = hardhat;
 dotenv.config();
@@ -28,6 +28,7 @@ export const storeData = (path: string, data: {}) => {
 
 export const getGasPrice = async () => {
   const gasPrice = await web3.eth.getGasPrice();
+
   return gasPrice;
 };
 
@@ -62,5 +63,5 @@ export const reportGas = (receivedTxn: any) => {
   // console.log(receivedTxn);
   console.log('Gas Used -> ', receivedTxn.gasUsed.toString());
   console.log('Gas price -> ', receivedTxn.effectiveGasPrice.toString());
-  console.log("")
+  console.log('');
 };

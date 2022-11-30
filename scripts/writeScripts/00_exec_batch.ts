@@ -1,7 +1,5 @@
 import dotenv from 'dotenv';
-import {
-  loadFetchedData,
-} from '../../utils/utils';
+import { loadFetchedData } from '../../utils/utils';
 import { Contract } from 'ethers';
 import { TOTAL_NUMBERS_STAT } from '../../utils/interface';
 
@@ -13,8 +11,9 @@ export const saveGlobalNumbers = async (
 ) => {
   const TOTAL_NUMBERS_PATH = `./data/total_instance_numbers.json`;
   const total_numbers: TOTAL_NUMBERS_STAT =
-  loadFetchedData(TOTAL_NUMBERS_PATH).total_stats;
+    loadFetchedData(TOTAL_NUMBERS_PATH).total_stats;
   let txn;
+
   txn = await statistics.updateGlobalData(
     total_numbers.Total_Number_Of_Instances_Created,
     total_numbers.Total_Number_Of_Instance_Solved,
@@ -26,8 +25,8 @@ export const saveGlobalNumbers = async (
 export const savePlayers = async (
   statistics: Contract,
   props: { gasPrice: string },
-  start:number,
-  end:number
+  start: number,
+  end: number
 ) => {
   const ALL_PLAYERS_PATH = `./data/all_player_list.json`;
   const players = loadFetchedData(ALL_PLAYERS_PATH).players;
@@ -63,5 +62,3 @@ export const saveLevelsData = async (
   );
   return txn;
 };
-
-

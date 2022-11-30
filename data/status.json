@@ -1,14 +1,42 @@
 {
   "saveGlobalNumber": {
-    "isFinished": false
+    "isFinished": true,
+    "txInfo": "0xfcc50ed5b99ac756802dfd135251a207bbb2da88a26c971fd0ab16dafae36c10"
   },
   "saveLevelsData": {
-    "isFinished": false
+    "isFinished": true,
+    "txInfo": "0x98fb546046e386c5aa41bab9cab101136c3604db81ab56f5e4478751150c8fc6"
   },
   "savePlayers": {
     "isFinished": false,
-    "start": 0,
-    "txInfo": []
+    "start": 500,
+    "txInfo": [
+      {
+        "start": 0,
+        "end": 100,
+        "txHash": "0x743501745f908da270caca71371c8bdb5e5d6bce25718103169436a1ca05c782"
+      },
+      {
+        "start": 100,
+        "end": 200,
+        "txHash": "0xe9dd625bb0b6c177a83fbbde0adaf61c07888f89f4d524b3ed6d1100d09475ef"
+      },
+      {
+        "start": 200,
+        "end": 300,
+        "txHash": "0xfa8a82759f79840974833d265ebc924134312821d1275a8507ed32247d6c8c2c"
+      },
+      {
+        "start": 300,
+        "end": 400,
+        "txHash": "0xcf0ddf0a2a7fa19dfc3f4a63bac4247cdfd591e8c8995277cec84c6f5fb5083c"
+      },
+      {
+        "start": 400,
+        "end": 500,
+        "txHash": "0x9485bce0cc67ee3ca18928b8d2798065a9522ca945abe8e26c16f9b9beebef00"
+      }
+    ]
   },
   "updateAllPlayersGlobalData": {
     "isFinished": false,
