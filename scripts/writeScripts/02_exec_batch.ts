@@ -1,14 +1,10 @@
 import dotenv from 'dotenv';
-import { Contract, ethers } from 'ethers';
-import STATISTICS_ABI from '../../utils/ABIs/statistics_abi.json';
+import { Contract } from 'ethers';
 import {
-  getGasPrice,
-  getImpersonatedSigner,
   loadFetchedData,
   reportGas,
 } from '../../utils/utils';
 import { INSTANCE, PLAYER_METRICS } from '../../utils/interface';
-import { OWNER, PROXY_STAT } from '../../utils/constant';
 dotenv.config();
 
 const PLAYER_METRICS_PATH = `./data/player_metrics.json`;
@@ -25,32 +21,14 @@ let timeCreated: number[][] = [];
 let totalSubmission: number[][][] = [];
 let levelFirstCompletedTime: number[][] = [];
 let levelFirstInstanceCreationTime: number[][] = [];
+let allData:any;
+let allPlayers:any;
 
-const main = async () => {
-  const impersonatedSigner = await getImpersonatedSigner(OWNER);
-
-  const statistics = new ethers.Contract(
-    PROXY_STAT,
-    STATISTICS_ABI,
-    impersonatedSigner
-  );
-
-  const props = {
-    gasPrice: await getGasPrice(),
-  };
-
-  fillPlayerStat(); // fill the arrays with data
-
-  await updatePlayerStatsData(statistics, props);
-  await updateNoOfLevelsCompletedByPlayers(statistics, props);
-};
-
-const updatePlayerStatsData = async (
+export const updatePlayerStatsData = async (
   statistics: Contract,
   props: { gasPrice: string }
 ) => {
   const limit = 10;
-  const MAX = players.length;
   const txn = await statistics.updatePlayerStatsData(
     players.slice(0, limit),
     levels.slice(0, limit),
@@ -70,6 +48,8 @@ const updatePlayerStatsData = async (
 const fillPlayerStat = () => {
   let player_metrics = Object.keys(playerMetrics);
   let level_metrics = Object.values(playerMetrics);
+  allData = loadFetchedData(PLAYER_METRICS_PATH).player_metrics;
+  allPlayers = Object.keys(allData);
 
   for (let i = 0; i < player_metrics.length; i++) {
     players.push(player_metrics[i]);
@@ -113,12 +93,10 @@ const fillPlayerStat = () => {
   }
 };
 
-const updateNoOfLevelsCompletedByPlayers = async (
+export const updateNoOfLevelsCompletedByPlayers = async (
   statistics: Contract,
   props: { gasPrice: string }
 ) => {
-  const allData = loadFetchedData(PLAYER_METRICS_PATH).player_metrics;
-  const allPlayers = Object.keys(allData);
   const levelsSolvedByPlayers = [];
   for (let player of allPlayers) {
     const levelsSolvedByPlayer = getLevelsSolvedByAPlayer(allData[player]);
@@ -154,4 +132,4 @@ function isAnyInstanceSolvedByPlayer(instances: any) {
   return false;
 }
 
-main();
+fillPlayerStat();
