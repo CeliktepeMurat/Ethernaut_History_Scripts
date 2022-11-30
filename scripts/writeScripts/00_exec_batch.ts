@@ -1,14 +1,9 @@
 import dotenv from 'dotenv';
-import STATISTICS_ABI from '../../utils/ABIs/statistics_abi.json';
 import {
-  getGasPrice,
-  getImpersonatedSigner,
   loadFetchedData,
-  reportGas,
 } from '../../utils/utils';
-import { Contract, ethers } from 'ethers';
+import { Contract } from 'ethers';
 import { TOTAL_NUMBERS_STAT } from '../../utils/interface';
-import { OWNER, PROXY_STAT } from '../../utils/constant';
 
 dotenv.config();
 
@@ -25,8 +20,7 @@ export const saveGlobalNumbers = async (
     total_numbers.Total_Number_Of_Instance_Solved,
     props
   );
-  let receivedTxn = await txn.wait();
-  reportGas(receivedTxn);
+  return txn;
 };
 
 export const savePlayers = async (
@@ -39,8 +33,7 @@ export const savePlayers = async (
   const players = loadFetchedData(ALL_PLAYERS_PATH).players;
   let txn;
   txn = await statistics.updatePlayers(players.slice(start, end), props);
-  let receivedTxn = await txn.wait();
-  reportGas(receivedTxn);
+  return txn;
 };
 
 export const saveLevelsData = async (
@@ -68,8 +61,7 @@ export const saveLevelsData = async (
     noOfSolvedInstances,
     props
   );
-  const receivedTxn = await txn.wait();
-  reportGas(receivedTxn);
+  return txn;
 };
 
 

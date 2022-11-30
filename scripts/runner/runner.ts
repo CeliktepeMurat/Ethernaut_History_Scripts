@@ -19,13 +19,15 @@ let impersonatedSigner:any, statistics:any, props:any;
 
 async function runFunctions() { 
     if (!isFinished('saveGlobalNumber')) { 
-        await saveGlobalNumbers(statistics, props);
-        saveFinishedStatus('saveGlobalNumber');
+        const tx = await saveGlobalNumbers(statistics, props);
+        saveFinishedStatus('saveGlobalNumber', tx.hash);
+        await tx.wait();
     }
 
     if (!isFinished('saveLevelsData')) { 
-        await saveLevelsData(statistics, props);
-        saveFinishedStatus('saveLevelsData');
+        const tx = await saveLevelsData(statistics, props);
+        saveFinishedStatus('saveLevelsData', tx.hash);
+        await tx.wait();
     }
 
     if (!isFinished('savePlayers')) { 
@@ -43,15 +45,30 @@ const isFinished = (fnName:string) => {
     return status[fnName].isFinished;
 }
 
-const saveFinishedStatus = (fnName: string) => {
+const saveFinishedStatus = (fnName: string, txInfo?:any) => {
     const status = JSON.parse(fs.readFileSync(`./data/status.json`).toString());
     status[fnName].isFinished = true;
+    status[fnName] = getUpdatedFnInfo(txInfo, status[fnName]);
     fs.writeFileSync(`./data/status.json`, JSON.stringify(status, null, 2));
 }
 
-const saveStartStatus = (fnName:string, start:number) => { 
+const getUpdatedFnInfo = (txInfo:any, fnStatus:any) => { 
+    if (txInfo) { 
+        if (typeof txInfo === 'string') {
+            fnStatus.txInfo = txInfo;
+        } else { 
+            const currentInfo = fnStatus.txInfo;
+            currentInfo.push(txInfo)
+            fnStatus.txInfo = currentInfo;
+        }
+    }
+    return fnStatus;
+}
+
+const saveStartStatus = (fnName:string, start:number, txData:any) => { 
     const status = JSON.parse(fs.readFileSync(`./data/status.json`).toString());
     status[fnName].start = start;
+    status[fnName] = getUpdatedFnInfo(txData, status[fnName]);
     fs.writeFileSync(`./data/status.json`, JSON.stringify(status, null, 2));
 }
 
@@ -65,12 +82,20 @@ const runFunctionInBatches = async (fn: Function, fnName:string, total: number, 
         console.log(`Running from ${start} to ${start + batchSize}`);
         const end = start + batchSize;
         if (end > total) { 
-            await fn(statistics, props, start, total);
-            saveFinishedStatus(fnName);
+            const tx = await fn(statistics, props, start, total);
+            saveFinishedStatus(fnName, {
+                start,
+                end,
+                txHash: tx.hash,
+            });
             break;
         }
-        await fn(statistics, props, start, end);
-        saveStartStatus(fnName, end);
+        const tx:any = await fn(statistics, props, start, end);
+        saveStartStatus(fnName, end, {
+            start,
+            end,
+            txHash: tx.hash,
+        });
         start = end;
     }
 }
