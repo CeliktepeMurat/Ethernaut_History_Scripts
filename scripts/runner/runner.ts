@@ -5,7 +5,7 @@ import {
 } from '../../utils/utils';
 import { ethers } from 'ethers';
 import { OWNER, PROXY_STAT } from '../../utils/constant';
-import { saveGlobalNumbers, saveLevelsData } from '../writeScripts/00_exec_batch';
+import { saveGlobalNumbers, saveLevelsData, savePlayers } from '../writeScripts/00_exec_batch';
 const fs = require('fs');
 
 // saveGlobalNumber
@@ -15,35 +15,23 @@ const fs = require('fs');
 // updatePlayerStatsData - batch
 // updateNoOfLevelsCompleted - batch
 
-async function run() { 
-    const impersonatedSigner = await getImpersonatedSigner(OWNER);
+let impersonatedSigner:any, statistics:any, props:any;
 
-    const statistics = new ethers.Contract(
-        PROXY_STAT,
-        STATISTICS_ABI,
-        impersonatedSigner
-    );
-
-    const props = {
-        gasPrice: await getGasPrice(),
-    };
-
+async function runFunctions() { 
     if (!isFinished('saveGlobalNumber')) { 
-        try {
-            await saveGlobalNumbers(statistics, props);
-            saveFinishedStatus('saveGlobalNumber');
-        } catch(err) {  
-            console.log("Error in saveGlobalNumber");
-        }
+        await saveGlobalNumbers(statistics, props);
+        saveFinishedStatus('saveGlobalNumber');
     }
 
     if (!isFinished('saveLevelsData')) { 
-        try {
-            await saveLevelsData(statistics, props);
-            saveFinishedStatus('saveLevelsData');
-        } catch(err) {  
-            console.log("Error in saveLevelsData");
-        }
+        await saveLevelsData(statistics, props);
+        saveFinishedStatus('saveLevelsData');
+    }
+
+    if (!isFinished('savePlayers')) { 
+        const start = getStart('savePlayers');
+        await runFunctionInBatches(savePlayers, "savePlayers", 1891, start, 100);
+        saveFinishedStatus('savePlayers');
     }
 }
 
@@ -55,9 +43,15 @@ const isFinished = (fnName:string) => {
     return status[fnName].isFinished;
 }
 
-const saveFinishedStatus = (fnName: string) => { 
+const saveFinishedStatus = (fnName: string) => {
     const status = JSON.parse(fs.readFileSync(`./data/status.json`).toString());
     status[fnName].isFinished = true;
+    fs.writeFileSync(`./data/status.json`, JSON.stringify(status, null, 2));
+}
+
+const saveStartStatus = (fnName:string, start:number) => { 
+    const status = JSON.parse(fs.readFileSync(`./data/status.json`).toString());
+    status[fnName].start = start;
     fs.writeFileSync(`./data/status.json`, JSON.stringify(status, null, 2));
 }
 
@@ -65,5 +59,39 @@ const getStart = (fnName: string) => {
     const status = JSON.parse(fs.readFileSync(`./data/status.json`).toString());
     return status[fnName].start;
 }
- 
+
+const runFunctionInBatches = async (fn: Function, fnName:string, total: number, start:number, batchSize: number) => { 
+    while (start < total) { 
+        console.log(`Running from ${start} to ${start + batchSize}`);
+        const end = start + batchSize;
+        if (end > total) { 
+            await fn(statistics, props, start, total);
+            saveFinishedStatus(fnName);
+            break;
+        }
+        await fn(statistics, props, start, end);
+        saveStartStatus(fnName, end);
+        start = end;
+    }
+}
+
+const initiate = async () => { 
+    impersonatedSigner = await getImpersonatedSigner(OWNER);
+
+    statistics = new ethers.Contract(
+        PROXY_STAT,
+        STATISTICS_ABI,
+        impersonatedSigner
+    );
+
+    props = {
+        gasPrice: await getGasPrice(),
+    };
+}
+
+async function run() { 
+    await initiate();
+    await runFunctions();
+}
+
 run()
