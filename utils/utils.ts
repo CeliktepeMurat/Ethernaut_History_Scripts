@@ -59,7 +59,8 @@ export const getImpersonatedSigner = async (address: string) => {
 };
 
 export const reportGas = (receivedTxn: any) => {
-  console.log(receivedTxn);
+  // console.log(receivedTxn);
   console.log('Gas Used -> ', receivedTxn.gasUsed.toString());
   console.log('Gas price -> ', receivedTxn.effectiveGasPrice.toString());
+  console.log("")
 };

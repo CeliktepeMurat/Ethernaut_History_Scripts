@@ -30,7 +30,6 @@ async function run() {
 
     if (!isFinished('saveGlobalNumber')) { 
         try {
-            console.log("Running saveGlobalNumber");
             await saveGlobalNumbers(statistics, props);
             saveFinishedStatus('saveGlobalNumber');
         } catch(err) {  
@@ -40,7 +39,6 @@ async function run() {
 
     if (!isFinished('saveLevelsData')) { 
         try {
-            console.log("Running saveLevelsData");
             await saveLevelsData(statistics, props);
             saveFinishedStatus('saveLevelsData');
         } catch(err) {  
@@ -51,6 +49,9 @@ async function run() {
 
 const isFinished = (fnName:string) => { 
     const status = JSON.parse(fs.readFileSync(`./data/status.json`).toString());
+    if (!status[fnName].isFinished) { 
+        console.log(`Running ${fnName}`)
+    }
     return status[fnName].isFinished;
 }
 
