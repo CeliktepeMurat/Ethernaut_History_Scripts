@@ -146,6 +146,7 @@ const runFunctionInBatches = async (
         txHash: tx.hash,
       });
       await tx.wait();
+      return;
     }
     console.log(`Running from ${start} to ${end}`);
     const tx = await fn(statistics, props, start, end);
