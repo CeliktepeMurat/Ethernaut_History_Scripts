@@ -42,30 +42,41 @@ const main = async () => {
   fillPlayerStat(); // fill the arrays with data
 
   await updatePlayerStatsData(statistics, props);
-  await updateNoOfLevelsCompletedByPlayers(statistics, props);
+  // await updateNoOfLevelsCompletedByPlayers(statistics, props);
 };
 
 const updatePlayerStatsData = async (
   statistics: Contract,
   props: { gasPrice: string }
 ) => {
-  const limit = 10;
-  const MAX = players.length;
-  const txn = await statistics.updatePlayerStatsData(
-    players.slice(0, limit),
-    levels.slice(0, limit),
-    instances.slice(0, limit),
-    isCompleted.slice(0, limit),
-    timeCompleted.slice(0, limit),
-    timeCreated.slice(0, limit),
-    totalSubmission.slice(0, limit),
-    levelFirstCompletedTime.slice(0, limit),
-    levelFirstInstanceCreationTime.slice(0, limit),
-    props
-  );
-  let receivedTxn = await txn.wait();
-  reportGas(receivedTxn);
+  const players1 = players;
+  const ALL_PLAYERS_PATH = `./data/all_player_list.json`;
+  const players2 = loadFetchedData(ALL_PLAYERS_PATH).players;
+
+  const players1ToWriteToFile = JSON.stringify(getIndexedArrayAsJSON(players1))
+  const players2ToWriteToFile = JSON.stringify(getIndexedArrayAsJSON(players2))
+
+  for (let i = 0; i < players2.length; i++) { 
+    if (players1[i] !== players2[i]) { 
+      console.log(i)
+      console.log("players1[i] !== players2[i]", players1[i], players2[i])
+      break;
+    }
+  }
+
+  const fs = require('fs');
+  fs.writeFileSync('./data/players1.json', players1ToWriteToFile);
+  fs.writeFileSync('./data/players2.json', players2ToWriteToFile);
+
 };
+
+const getIndexedArrayAsJSON = (array: any[]) => { 
+  const indexedArray:any = {};
+  for (let i = 0; i < array.length; i++) {
+    indexedArray[i] = array[i];
+  }
+  return indexedArray;
+}
 
 const fillPlayerStat = () => {
   let player_metrics = Object.keys(playerMetrics);
