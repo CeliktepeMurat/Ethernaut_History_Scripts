@@ -48,13 +48,13 @@ async function runFunctions() {
 
     if (!isFinished('updatePlayerStatsData')) { 
         const start = getStart('updatePlayerStatsData');
-        await runFunctionInBatches(updateAllPlayersGlobalData, "updatePlayerStatsData", TOTAL_NO_OF_PLAYERS, start, SMALL_BATCH);
+        await runFunctionInBatches(updatePlayerStatsData, "updatePlayerStatsData", TOTAL_NO_OF_PLAYERS, start, SMALL_BATCH);
         saveFinishedStatus('updatePlayerStatsData');
     }
 
     if (!isFinished('updateNoOfLevelsCompletedByPlayers')) { 
         const start = getStart('updateNoOfLevelsCompletedByPlayers');
-        await runFunctionInBatches(updateAllPlayersGlobalData, "updateNoOfLevelsCompletedByPlayers", TOTAL_NO_OF_PLAYERS, start, SMALL_BATCH);
+        await runFunctionInBatches(updateNoOfLevelsCompletedByPlayers, "updateNoOfLevelsCompletedByPlayers", TOTAL_NO_OF_PLAYERS, start, SMALL_BATCH);
         saveFinishedStatus('updateNoOfLevelsCompletedByPlayers');
     }
 }
@@ -75,8 +75,14 @@ const saveFinishedStatus = (fnName: string, txInfo?:any) => {
 }
 
 const getUpdatedFnInfo = (txInfo:any, fnStatus:any) => { 
-    if (txInfo) { 
-        fnStatus.txInfo = txInfo;
+    if (txInfo) {
+        if (typeof txInfo === 'string') {
+            fnStatus.txInfo = txInfo;
+        } else {
+            const currentInfo = fnStatus.txInfo;
+            currentInfo.push(txInfo)
+            
+        }
     }
     return fnStatus;
 }
