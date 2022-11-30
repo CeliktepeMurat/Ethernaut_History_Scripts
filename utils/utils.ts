@@ -53,9 +53,9 @@ export const isCompleted = async (
   return isCompleted.at(-1) === '1' ? true : false;
 };
 
-export const getSigner = async (address: string) => {
-  const signer = await ethers.getSigner("0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266");
-  return signer;
+export const getImpersonatedSigner = async (address: string) => {
+  const impersonatedSigner = await ethers.getImpersonatedSigner(address);
+  return impersonatedSigner;
 };
 
 export const reportGas = (receivedTxn: any) => {
