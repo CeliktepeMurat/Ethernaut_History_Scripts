@@ -2,7 +2,6 @@ import dotenv from 'dotenv';
 import { Contract } from 'ethers';
 import {
   loadFetchedData,
-  reportGas,
 } from '../../utils/utils';
 import { INSTANCE, PLAYER_METRICS } from '../../utils/interface';
 dotenv.config();
@@ -30,7 +29,7 @@ export const updatePlayerStatsData = async (
   start: number,
   end: number
 ) => {
-  const txn = await statistics.updatePlayerStatsData(
+  const tx = await statistics.updatePlayerStatsData(
     players.slice(start, end),
     levels.slice(start, end),
     instances.slice(start, end),
@@ -42,8 +41,7 @@ export const updatePlayerStatsData = async (
     levelFirstInstanceCreationTime.slice(start, end),
     props
   );
-  let receivedTxn = await txn.wait();
-  reportGas(receivedTxn);
+  return tx;
 };
 
 const fillPlayerStat = () => {
@@ -105,12 +103,12 @@ export const updateNoOfLevelsCompletedByPlayers = async (
     const levelsSolvedByPlayer = getLevelsSolvedByAPlayer(allData[player]);
     levelsSolvedByPlayers.push(levelsSolvedByPlayer);
   }
-  const txn = await statistics.updateLevelsCompletedByPlayers(
+  const tx = await statistics.updateLevelsCompletedByPlayers(
     allPlayers.slice(start, end),
     levelsSolvedByPlayers.slice(start, end),
     props
   );
-  await txn.wait();
+  return tx;
 };
 
 const getLevelsSolvedByAPlayer = (levelsCreatedByPlayer: string[]) => {
