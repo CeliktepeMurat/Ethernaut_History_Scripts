@@ -12,7 +12,8 @@
     "map:new_levels": "npx ts-node scripts/fetchScripts/05_map_newLevels.ts",
     "write:past_data": "npx hardhat run scripts/writeScripts/00_exec_batch.ts",
     "write:player_stat": "npx hardhat run scripts/writeScripts/01_exec_batch.ts",
-    "write:player_metrics": "npx hardhat run scripts/writeScripts/02_exec_batch.ts"
+    "write:player_metrics": "npx hardhat run scripts/writeScripts/02_exec_batch.ts",
+    "all:localhost": "npx hardhat --network localhost run scripts/runner/runner.ts"
   },
   "author": "murat",
   "license": "MIT",
