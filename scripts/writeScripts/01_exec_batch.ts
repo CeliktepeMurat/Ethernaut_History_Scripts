@@ -1,14 +1,9 @@
 import dotenv from 'dotenv';
-import STATISTICS_ABI from '../../utils/ABIs/statistics_abi.json';
 import {
-  getGasPrice,
-  getImpersonatedSigner,
   loadFetchedData,
-  reportGas,
 } from '../../utils/utils';
-import { Contract, ethers } from 'ethers';
+import { Contract } from 'ethers';
 import { PLAYER_STAT } from '../../utils/interface';
-import { OWNER, PROXY_STAT } from '../../utils/constant';
 dotenv.config();
 
 const PLAYER_STAT_PATH = `./data/player_stat.json`;
@@ -17,39 +12,19 @@ let players: string[] = [];
 let noOfAdditionalInstancesCreatedByPlayer: number[] = [];
 let noOfAdditionalInstancesCompletedByPlayer: number[] = [];
 
-const main = async () => {
-  const impersonatedSigner = await getImpersonatedSigner(OWNER);
-
-  const statistics = new ethers.Contract(
-    PROXY_STAT,
-    STATISTICS_ABI,
-    impersonatedSigner
-  );
-
-  const props = {
-    gasPrice: await getGasPrice(),
-  };
-
-  getNumberOfInstances(); // Get the number of instances created and solved by each player
-
-  await updateAllPlayersGlobalData(statistics, props);
-};
-
-const updateAllPlayersGlobalData = async (
+export const updateAllPlayersGlobalData = async (
   statistics: Contract,
-  props: { gasPrice: string }
+  props: { gasPrice: string },
+  start:number,
+  end:number
 ) => {
-  const limit = 500;
-  const MAX = players.length;
-
-  const txn = await statistics.updateAllPlayersGlobalData(
-    players.slice(0, limit),
-    noOfAdditionalInstancesCreatedByPlayer.slice(0, limit),
-    noOfAdditionalInstancesCompletedByPlayer.slice(0, limit),
+  const tx = await statistics.updateAllPlayersGlobalData(
+    players.slice(start, end),
+    noOfAdditionalInstancesCreatedByPlayer.slice(start, end),
+    noOfAdditionalInstancesCompletedByPlayer.slice(start, end),
     props
   );
-  let receivedTxn = await txn.wait();
-  reportGas(receivedTxn);
+  return tx;
 };
 
 const getNumberOfInstances = () => {
@@ -67,4 +42,4 @@ const getNumberOfInstances = () => {
   }
 };
 
-main();
+getNumberOfInstances();

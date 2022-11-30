@@ -46,6 +46,15 @@ const main = () => {
               timeCompleted: 0,
             },
           ];
+        } else {
+          player_metrics[player][level] = [
+            {
+              instance,
+              isCompleted: true,
+              timeCreated: 0,
+              timeCompleted: data.timeStamp,
+            },
+          ];
         }
       }
     } else {
@@ -57,6 +66,16 @@ const main = () => {
             isCompleted: false,
             timeCreated: data.timeStamp,
             timeCompleted: 0,
+          },
+        ];
+      } else {
+        player_metrics[player] = {};
+        player_metrics[player][level] = [
+          {
+            instance,
+            isCompleted: true,
+            timeCreated: 0,
+            timeCompleted: data.timeStamp,
           },
         ];
       }
