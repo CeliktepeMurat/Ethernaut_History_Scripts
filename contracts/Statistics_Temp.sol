@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 
 // TEMPORARY: This is a temporary contract to store the statistics of the ETHERNAUT GAME
-contract Statistics is Initializable {
+contract Statistics_Temp is Initializable {
     address public ethernaut;
     address[] public players;
     address[] public levels;

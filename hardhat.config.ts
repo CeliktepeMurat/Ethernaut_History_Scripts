@@ -14,7 +14,7 @@ const config: HardhatUserConfig = {
     },
     localhost: {
       timeout: 10000000,
-    }
+    },
   },
 };
 
