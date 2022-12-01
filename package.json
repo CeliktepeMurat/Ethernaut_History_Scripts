@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "compile:contracts": "cd contracts && hardhat clean && hardhat compile",
     "fetch:all_data": "npx ts-node scripts/fetchScripts/00_fetchData.ts",
     "calc:total_nums": "npx ts-node scripts/fetchScripts/01_calc_total_numbers.ts",
     "calc:player_stats": "npx ts-node scripts/fetchScripts/02_calc_player_stat.ts",
@@ -24,6 +25,8 @@
     "hardhat": "^2.12.2"
   },
   "dependencies": {
+    "@openzeppelin/contracts": "^4.8.0",
+    "@openzeppelin/contracts-upgradeable": "^4.8.0",
     "dotenv": "^16.0.3",
     "fs": "^0.0.1-security",
     "web3": "^1.8.1"
