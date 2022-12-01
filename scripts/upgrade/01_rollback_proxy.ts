@@ -13,8 +13,8 @@ dotenv.config();
 const upgradeProxy = async () => {
   const impersonatedProxyAdmin = await getImpersonatedSigner(PROXY_ADMIN);
 
-  // Deploying Temporary Statistics Contract
-  const STATISTICS = await deploy_temp_statistic();
+  // Deploying Exact Version of Statistics Contract
+  const STATISTICS = await deploy_statistic();
 
   const proxyAdmin = await getProxyAdmin();
 
@@ -27,19 +27,17 @@ const upgradeProxy = async () => {
   console.log(colors.green(`Txn Hash >>> ${res.hash}`));
 };
 
-const deploy_temp_statistic = async () => {
-  console.log('Deploying Temporary Statistics Contract...');
+const deploy_statistic = async () => {
+  console.log('Deploying Statistics Contract...');
   const impersonatedSigner = await getImpersonatedSigner(OWNER);
 
   const contract = await ethers.getContractFactory(
-    'Statistics_Temp',
+    'Statistics',
     impersonatedSigner
   );
   const instance = await contract.deploy();
   await instance.deployed();
-  console.log(
-    colors.green(`Temporary Statistics Contract >>> ${instance.address}`)
-  );
+  console.log(colors.green(`Statistics Contract >>> ${instance.address}`));
 
   return instance.address;
 };
