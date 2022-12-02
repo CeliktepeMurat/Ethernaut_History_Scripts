@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "compile:contracts": "cd contracts && hardhat clean && hardhat compile",
     "fetch:all_data": "npx ts-node scripts/fetchScripts/00_fetchData.ts",
     "calc:total_nums": "npx ts-node scripts/fetchScripts/01_calc_total_numbers.ts",
     "calc:player_stats": "npx ts-node scripts/fetchScripts/02_calc_player_stat.ts",
@@ -13,7 +14,9 @@
     "write:past_data": "npx hardhat run scripts/writeScripts/00_exec_batch.ts",
     "write:player_stat": "npx hardhat run scripts/writeScripts/01_exec_batch.ts",
     "write:player_metrics": "npx hardhat run scripts/writeScripts/02_exec_batch.ts",
-    "all:localhost": "npx hardhat --network localhost run scripts/runner/runner.ts"
+    "all:localhost": "npx hardhat --network localhost run scripts/runner/runner.ts",
+    "upgrade:proxy": "npx hardhat run scripts/upgrades/00_upgrade_proxy.ts",
+    "rollback:proxy": "npx hardhat run scripts/upgrades/01_rollback_proxy.ts"
   },
   "author": "murat",
   "license": "MIT",
@@ -24,6 +27,9 @@
     "hardhat": "^2.12.2"
   },
   "dependencies": {
+    "@openzeppelin/contracts": "^4.8.0",
+    "@openzeppelin/contracts-upgradeable": "^4.8.0",
+    "colors": "^1.4.0",
     "dotenv": "^16.0.3",
     "fs": "^0.0.1-security",
     "web3": "^1.8.1"
