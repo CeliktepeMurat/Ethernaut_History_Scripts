@@ -2,7 +2,6 @@
 pragma solidity ^0.8.0;
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 
-// TEMPORARY: This is a temporary contract to store the statistics of the ETHERNAUT GAME
 contract Statistics_Temp is Initializable {
     address public ethernaut;
     address[] public players;
@@ -27,10 +26,8 @@ contract Statistics_Temp is Initializable {
     mapping(address => uint256) private globalNoOfInstancesCompletedByPlayer;
     mapping(address => uint256) private globalNoOfFailedSubmissionsByPlayer;
     mapping(address => Level) private levelStats;
-    mapping(address => mapping(address => uint256))
-        private levelFirstInstanceCreationTime;
-    mapping(address => mapping(address => uint256))
-        private levelFirstCompletionTime;
+    mapping(address => mapping(address => uint256)) private levelFirstInstanceCreationTime;
+    mapping(address => mapping(address => uint256)) private levelFirstCompletionTime;
     mapping(address => mapping(address => LevelInstance)) private playerStats;
     mapping(address => bool) private playerExists;
     mapping(address => bool) private levelExists;
@@ -38,6 +35,7 @@ contract Statistics_Temp is Initializable {
         require(doesLevelExist(level), "Level doesn't exist");
         _;
     }
+
     modifier levelDoesntExistCheck(address level) {
         require(!doesLevelExist(level), "Level already exists");
         _;
@@ -51,6 +49,10 @@ contract Statistics_Temp is Initializable {
             msg.sender == ethernaut,
             "Only Ethernaut can call this function"
         );
+        _;
+    }
+    modifier onlyOwner() {
+        require(msg.sender == 0x09902A56d04a9446601a0d451E07459dC5aF0820, "Only owner can call this function");
         _;
     }
 
@@ -69,7 +71,7 @@ contract Statistics_Temp is Initializable {
             playerExists[player] = true;
         }
         // If it is the first instance of the level
-        if (playerStats[player][level].instance == address(0)) {
+        if(playerStats[player][level].instance == address(0)) {
             levelFirstInstanceCreationTime[player][level] = block.timestamp;
         }
         playerStats[player][level] = LevelInstance(
@@ -85,7 +87,7 @@ contract Statistics_Temp is Initializable {
         globalNoOfInstancesCreated++;
         globalNoOfInstancesCreatedByPlayer[player]++;
     }
-
+    
     function submitSuccess(
         address instance,
         address level,
@@ -104,7 +106,7 @@ contract Statistics_Temp is Initializable {
             "Level already completed"
         );
         // If it is the first submission in the level
-        if (levelFirstCompletionTime[player][level] == 0) {
+        if(levelFirstCompletionTime[player][level] == 0) {
             globalNoOfLevelsCompletedByPlayer[player]++;
             levelFirstCompletionTime[player][level] = block.timestamp;
         }
@@ -224,13 +226,9 @@ contract Statistics_Temp is Initializable {
         levelExistsCheck(level)
         returns (uint256)
     {
-        require(
-            levelFirstCompletionTime[player][level] != 0,
-            "Level not completed"
-        );
+        require(levelFirstCompletionTime[player][level] != 0, "Level not completed");
         return
-            levelFirstCompletionTime[player][level] -
-            levelFirstInstanceCreationTime[player][level];
+            levelFirstCompletionTime[player][level] - levelFirstInstanceCreationTime[player][level];
     }
 
     // Get a specific submission time per level and player
@@ -271,11 +269,7 @@ contract Statistics_Temp is Initializable {
         return globalNoOfInstancesCreated;
     }
 
-    function getTotalNoOfLevelInstancesCompleted()
-        public
-        view
-        returns (uint256)
-    {
+    function getTotalNoOfLevelInstancesCompleted() public view returns (uint256) {
         return globalNoOfInstancesCompleted;
     }
 
@@ -327,9 +321,9 @@ contract Statistics_Temp is Initializable {
      * Functions for filling data to the contract
      */
 
-    function updatePlayers(address[] memory _players) public {
+    function updatePlayers(address[] memory _players) public onlyOwner {
         for (uint256 i = 0; i < _players.length; i++) {
-            if (!playerExists[_players[i]]) {
+            if(!playerExists[_players[i]]) {
                 playerExists[_players[i]] = true;
                 players.push(_players[i]);
             }
@@ -339,7 +333,7 @@ contract Statistics_Temp is Initializable {
     function updateGlobalData(
         uint256 _noOfAdditionalInstancesCreatedGlobally,
         uint256 _noOfAdditionalInstancesCompletedGlobally
-    ) public {
+    ) public onlyOwner {
         globalNoOfInstancesCreated += _noOfAdditionalInstancesCreatedGlobally;
         globalNoOfInstancesCompleted += _noOfAdditionalInstancesCompletedGlobally;
     }
@@ -349,19 +343,15 @@ contract Statistics_Temp is Initializable {
         uint256 _noOfAdditionalInstancesCreatedByPlayer,
         uint256 _noOfAdditionalInstancesCompletedByPlayer
     ) private {
-        globalNoOfInstancesCreatedByPlayer[
-            _player
-        ] += _noOfAdditionalInstancesCreatedByPlayer;
-        globalNoOfInstancesCompletedByPlayer[
-            _player
-        ] += _noOfAdditionalInstancesCompletedByPlayer;
+        globalNoOfInstancesCreatedByPlayer[_player] += _noOfAdditionalInstancesCreatedByPlayer;
+        globalNoOfInstancesCompletedByPlayer[_player] += _noOfAdditionalInstancesCompletedByPlayer;
     }
 
     function updateAllPlayersGlobalData(
         address[] memory _players,
         uint256[] memory _noOfAdditionalInstancesCreatedByPlayer,
         uint256[] memory _noOfAdditionalInstancesCompletedByPlayer
-    ) public {
+    ) public onlyOwner {
         for (uint256 i = 0; i < _players.length; i++) {
             updateSinglePlayerGlobalData(
                 _players[i],
@@ -376,17 +366,15 @@ contract Statistics_Temp is Initializable {
         uint256 _noOfAdditionalInstancesCreated,
         uint256 _noOfAdditionalInstancesCompleted
     ) private {
-        levelStats[_level]
-            .noOfInstancesCreated += _noOfAdditionalInstancesCreated;
-        levelStats[_level]
-            .noOfInstancesSubmitted_Success += _noOfAdditionalInstancesCompleted;
+        levelStats[_level].noOfInstancesCreated += _noOfAdditionalInstancesCreated;
+        levelStats[_level].noOfInstancesSubmitted_Success += _noOfAdditionalInstancesCompleted;
     }
 
     function updateAllLevelData(
         address[] memory _levels,
         uint256[] memory _noOfAdditionalInstancesCreated,
         uint256[] memory _noOfAdditionalInstancesCompleted
-    ) public {
+    ) public onlyOwner {
         for (uint256 i = 0; i < _levels.length; i++) {
             updateSingleLevelData(
                 _levels[i],
@@ -406,7 +394,7 @@ contract Statistics_Temp is Initializable {
         uint256[][][] memory _timeSubmitted,
         uint256[][] memory _levelFirstCompletedTime,
         uint256[][] memory _levelFirstInstanceCreationTime
-    ) public {
+    ) public onlyOwner {
         for (uint256 i = 0; i < _players.length; i++) {
             updatePlayerStatsDataForAPlayer(
                 _players[i],
@@ -432,9 +420,9 @@ contract Statistics_Temp is Initializable {
         uint256[][] memory _timeSubmitted,
         uint256[] memory _levelFirstCompletedTime,
         uint256[] memory _levelFirstInstanceCreationTime
-    ) public {
-        for (uint256 j = 0; j < _levels.length; j++) {
-            if (playerStats[_player][_levels[j]].instance == address(0)) {
+    ) private {
+        for(uint256 j = 0; j < _levels.length; j++) {
+            if(playerStats[_player][_levels[j]].instance == address(0)) {
                 updatePlayerStatsDataForALevel(
                     _player,
                     _levels[j],
@@ -460,57 +448,45 @@ contract Statistics_Temp is Initializable {
         uint256[] memory _timeSubmitted,
         uint256 _levelFirstCompletedTime,
         uint256 _levelFirstInstanceCreationTime
-    ) public {
-        if (playerStats[_player][_level].instance == address(0)) {
+    ) private {
+        if(playerStats[_player][_level].instance == address(0)) {
             playerStats[_player][_level].instance = _instance;
             playerStats[_player][_level].isCompleted = _isCompleted;
             playerStats[_player][_level].timeCompleted = _timeCompleted;
             playerStats[_player][_level].timeCreated = _timeCreated;
-            if (_timeSubmitted.length > 0) {
-                for (uint256 i = 0; i < _timeSubmitted.length; i++) {
-                    playerStats[_player][_level].timeSubmitted.push(
-                        _timeSubmitted[i]
-                    );
+            if(_timeSubmitted.length > 0) {
+                for(uint256 i = 0; i < _timeSubmitted.length; i++) {
+                    playerStats[_player][_level].timeSubmitted.push(_timeSubmitted[i]);
                 }
             }
         }
         // Even if instance is already present
         // we need to update the level first completed time and level first instance creation time
         // because these values are earlier than the ones present in the contract
-        if (_levelFirstCompletedTime != 0) {
-            levelFirstCompletionTime[_player][
-                _level
-            ] = _levelFirstCompletedTime;
+        if(_levelFirstCompletedTime != 0) {
+            levelFirstCompletionTime[_player][_level] = _levelFirstCompletedTime;
         }
-        if (_levelFirstInstanceCreationTime != 0) {
-            levelFirstInstanceCreationTime[_player][
-                _level
-            ] = _levelFirstInstanceCreationTime;
+        if(_levelFirstInstanceCreationTime != 0) {
+            levelFirstInstanceCreationTime[_player][_level] = _levelFirstInstanceCreationTime;
         }
     }
 
-    function updateLevelsCompletedByPlayer(
-        address _player,
-        address[] memory _levels
-    ) public {
-        for (uint256 i = 0; i < _levels.length; i++) {
-            if (levelFirstCompletionTime[_player][_levels[i]] == 0) {
+    function updateLevelsCompletedByPlayer(address _player, address[] memory _levels) private {
+        for(uint256 i = 0; i < _levels.length; i++) {
+            if(levelFirstCompletionTime[_player][_levels[i]] == 0) {
                 globalNoOfLevelsCompletedByPlayer[_player]++;
             }
         }
     }
 
-    function updateLevelsCompletedByPlayers(
-        address[] memory _players,
-        address[][] memory _levels
-    ) public {
-        for (uint256 i = 0; i < _players.length; i++) {
-            for (uint256 j = 0; j < _levels.length; j++) {
-                address[] memory levelsCompletedByPlayer = _levels[j];
-                updateLevelsCompletedByPlayer(
-                    _players[i],
-                    levelsCompletedByPlayer
-                );
+    function updateLevelsCompletedByPlayers(address[] memory _players, address[][] memory _levels) 
+        public 
+        onlyOwner
+    {
+        for(uint256 i = 0; i < _players.length; i++) {
+            for(uint256 j = 0; j < _levels.length; j++) {
+               address[] memory levelsCompletedByPlayer = _levels[j];
+               updateLevelsCompletedByPlayer(_players[i], levelsCompletedByPlayer);
             }
         }
     }
@@ -522,3 +498,9 @@ contract Statistics_Temp is Initializable {
      */
     uint256[45] private __gap;
 }
+
+/**
+ * 1. Checkpoints
+ * 2. Runner function
+ * 3. See if functions can be optimized
+ */
