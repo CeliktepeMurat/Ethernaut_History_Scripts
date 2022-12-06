@@ -16,6 +16,8 @@ export const NETWORKS = {
     url: 'http://localhost',
     port: 8545,
     privKey: '0x' + '0'.repeat(64),
+    from: 0,
+    to: 0,
   },
   GOERLI: {
     name: 'goerli',
@@ -38,18 +40,24 @@ export const NETWORKS = {
     id: '11155111',
     url: `${process.env.SEPOLIA_HOST}`,
     privKey: `${process.env.PRIV_KEY}`,
+    from: 0,
+    to: 0,
   },
   OPTIMISM_GOERLI: {
     name: 'goerli-optimism',
     id: '420',
     url: `${process.env.OPTIMISM_GOERLI_HOST}`,
     privKey: `${process.env.PRIV_KEY}`,
+    from: 0,
+    to: 0,
   },
   ARBITRUM_GOERLI: {
     name: 'goerli-arbitrum',
     id: '421613',
     url: `${process.env.ARBITRUM_GOERLI_HOST}`,
     privKey: `${process.env.PRIV_KEY}`,
+    from: 0,
+    to: 0,
   },
 };
 
