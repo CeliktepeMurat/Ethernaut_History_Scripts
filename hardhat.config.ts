@@ -15,6 +15,10 @@ const config: HardhatUserConfig = {
     localhost: {
       timeout: 10000000,
     },
+    goerli: {
+      url: 'https://eth-goerli.g.alchemy.com/v2/' + process.env.API_KEY,
+      accounts: [process.env.PRIV_KEY as string],
+    },
   },
 };
 

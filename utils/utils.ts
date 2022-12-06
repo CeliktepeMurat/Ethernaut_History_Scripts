@@ -2,6 +2,7 @@ import fs from 'fs';
 import Web3 from 'web3';
 import dotenv from 'dotenv';
 import hardhat from 'hardhat';
+import * as constants from './constant';
 
 const { ethers } = hardhat;
 dotenv.config();
@@ -55,12 +56,22 @@ export const isCompleted = async (
 };
 
 export const getImpersonatedSigner = async (address: string) => {
-  const impersonatedSigner = await ethers.getImpersonatedSigner(address);
-  return impersonatedSigner;
+  if (constants.ACTIVE_NETWORK === constants.NETWORKS.LOCAL) {
+    const impersonatedSigner = await ethers.getImpersonatedSigner(address);
+    return impersonatedSigner;
+  } else {
+    const signer = new ethers.Wallet(
+      process.env.PRIV_KEY as string,
+      new ethers.providers.AlchemyProvider(
+        constants.ACTIVE_NETWORK.name,
+        process.env.API_KEY
+      )
+    );
+    return signer;
+  }
 };
 
 export const reportGas = (receivedTxn: any) => {
-  // console.log(receivedTxn);
   console.log('Gas Used -> ', receivedTxn.gasUsed.toString());
   console.log('Gas price -> ', receivedTxn.effectiveGasPrice.toString());
   console.log('');
