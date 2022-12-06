@@ -1,4 +1,5 @@
 import dotenv from 'dotenv';
+import colors from 'colors';
 import { FETCH_DATA, PLAYER_METRICS } from '../../utils/interface';
 import { loadFetchedData, storeData } from '../../utils/utils';
 import * as constants from '../../utils/constants';
@@ -15,6 +16,7 @@ const main = () => {
       ? loadFetchedData(PLAYER_METRICS_PATH).player_metrics
       : {};
 
+  console.log(colors.gray(`Calculating Player Metrics...`));
   for (const data of all_data) {
     let player = data.player.toString();
     let level = data.level.toString();
@@ -83,7 +85,11 @@ const main = () => {
     }
   }
 
+  console.log(colors.green(`Saving Player Metrics to ${PLAYER_METRICS_PATH}`));
   storeData(PLAYER_METRICS_PATH, { player_metrics });
+
+  console.log('Done');
+  process.exit();
 };
 
 main();

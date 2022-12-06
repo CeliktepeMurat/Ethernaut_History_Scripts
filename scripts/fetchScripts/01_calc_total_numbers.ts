@@ -1,4 +1,5 @@
 import dotenv from 'dotenv';
+import colors from 'colors';
 import { FETCH_DATA } from '../../utils/interface';
 import { loadFetchedData, storeData } from '../../utils/utils';
 import * as constants from '../../utils/constants';
@@ -19,6 +20,7 @@ const main = () => {
           Total_Number_Of_Instance_Solved: 0,
         };
 
+  console.log(colors.gray(`Calculating total numbers...`));
   for (const data of all_data) {
     if (data.event === 'create_instance') {
       total_stats.Total_Number_Of_Instances_Created++;
@@ -26,10 +28,16 @@ const main = () => {
       total_stats.Total_Number_Of_Instance_Solved++;
     }
   }
+  console.log(
+    colors.green(`Saving total numbers to ${TOTAL_INSTANCE_NUMBERS_PATHS}`)
+  );
 
   storeData(TOTAL_INSTANCE_NUMBERS_PATHS, {
     total_stats,
   });
+
+  console.log('Done');
+  process.exit();
 };
 
 main();

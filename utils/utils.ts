@@ -9,25 +9,26 @@ import * as constants from './constants';
 const { ethers } = hardhat;
 dotenv.config();
 
-let provider;
+export const getWeb3 = () => {
+  let provider;
 
-if (constants.ACTIVE_NETWORK === constants.NETWORKS.LOCAL) {
-  // @ts-ignore
-  const providerUrl = `${constants.ACTIVE_NETWORK.url}:${constants.ACTIVE_NETWORK.port}`;
-  console.log(colors.gray(`connecting web3 to '${providerUrl}'...`));
-  provider = new Web3.providers.HttpProvider(providerUrl);
-} else {
-  console.log(
-    colors.gray(`connecting web3 to '${constants.ACTIVE_NETWORK.name}'...`)
-  );
-  provider = new HDWalletProvider(
-    constants.ACTIVE_NETWORK.privKey,
-    constants.ACTIVE_NETWORK.url
-  );
-}
-export const web3 = new Web3(provider);
+  if (constants.ACTIVE_NETWORK === constants.NETWORKS.LOCAL) {
+    // @ts-ignore
+    const providerUrl = `${constants.ACTIVE_NETWORK.url}:${constants.ACTIVE_NETWORK.port}`;
+    console.log(colors.gray(`connecting web3 to '${providerUrl}'...`));
+    provider = new Web3.providers.HttpProvider(providerUrl);
+  } else {
+    console.log(
+      colors.gray(`connecting web3 to '${constants.ACTIVE_NETWORK.name}'...`)
+    );
+    provider = new HDWalletProvider(
+      constants.ACTIVE_NETWORK.privKey,
+      constants.ACTIVE_NETWORK.url
+    );
+  }
 
-const ETHERNAUT_CONTRACT = process.env.ETHERNAUT_CONTRACT as string;
+  return new Web3(provider);
+};
 
 export const loadFetchedData = (path: string) => {
   try {
@@ -41,32 +42,10 @@ export const storeData = (path: string, data: {}) => {
   fs.writeFileSync(path, JSON.stringify(data, null, 2));
 };
 
-export const getGasPrice = async () => {
+export const getGasPrice = async (web3: Web3) => {
   const gasPrice = await web3.eth.getGasPrice();
 
   return gasPrice;
-};
-
-export const isCompleted = async (
-  SLOT: number,
-  INDEX: number,
-  instance: string
-): Promise<boolean> => {
-  let newKey = web3.utils.hexToNumberString(
-    web3.utils.keccak256(
-      web3.eth.abi.encodeParameters(['address', 'uint256'], [instance, SLOT])
-    )
-  );
-  let bigNumberFromKey = web3.utils.toBN(newKey).add(web3.utils.toBN(INDEX));
-  let POSITION = web3.utils.toHex(bigNumberFromKey);
-
-  let slot = await web3.eth.getStorageAt(ETHERNAUT_CONTRACT, POSITION);
-  console.log(slot);
-
-  let isCompleted = slot.slice(2, 26);
-  //let level = '0x' + slot.slice(26, 66);
-
-  return isCompleted.at(-1) === '1' ? true : false;
 };
 
 export const getImpersonatedSigner = async (address: string) => {
@@ -90,3 +69,25 @@ export const reportGas = (receivedTxn: any) => {
   console.log('Gas price -> ', receivedTxn.effectiveGasPrice.toString());
   console.log('');
 };
+
+/* export const isCompleted = async (
+  SLOT: number,
+  INDEX: number,
+  instance: string
+): Promise<boolean> => {
+  let newKey = web3.utils.hexToNumberString(
+    web3.utils.keccak256(
+      web3.eth.abi.encodeParameters(['address', 'uint256'], [instance, SLOT])
+    )
+  );
+  let bigNumberFromKey = web3.utils.toBN(newKey).add(web3.utils.toBN(INDEX));
+  let POSITION = web3.utils.toHex(bigNumberFromKey);
+
+  let slot = await web3.eth.getStorageAt(ETHERNAUT_CONTRACT, POSITION);
+  console.log(slot);
+
+  let isCompleted = slot.slice(2, 26);
+  //let level = '0x' + slot.slice(26, 66);
+
+  return isCompleted.at(-1) === '1' ? true : false;
+}; */

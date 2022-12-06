@@ -1,5 +1,5 @@
 import STATISTICS_ABI from '../../utils/ABIs/statistics_abi.json';
-import { getGasPrice, getImpersonatedSigner } from '../../utils/utils';
+import { getGasPrice, getImpersonatedSigner, getWeb3 } from '../../utils/utils';
 import { ethers } from 'ethers';
 import { OWNER, PROXY_STAT } from '../../utils/constants';
 import {
@@ -13,7 +13,8 @@ import {
   updateNoOfLevelsCompletedByPlayers,
 } from '../writeScripts/02_exec_batch';
 
-const fs = require('fs');
+import fs from 'fs';
+const web3 = getWeb3();
 
 let impersonatedSigner: any, statistics: any, props: any;
 
@@ -172,7 +173,7 @@ const initiate = async () => {
   );
 
   props = {
-    gasPrice: await getGasPrice(),
+    gasPrice: await getGasPrice(web3),
   };
 };
 
