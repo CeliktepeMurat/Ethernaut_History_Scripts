@@ -1,4 +1,5 @@
 import dotenv from 'dotenv';
+import colors from 'colors';
 import { PLAYER_METRICS } from '../../utils/interface';
 import { loadFetchedData, storeData } from '../../utils/utils';
 import * as constants from '../../utils/constants';
@@ -13,9 +14,13 @@ const PLAYER_METRICS_PATH = `./data/${constants.ACTIVE_NETWORK.name}/player_metr
 const main = () => {
   map_levels_and_level_stats();
   map_player_metrics();
+
+  console.log('Done');
+  process.exit();
 };
 
 const map_player_metrics = () => {
+  console.log(colors.green(`Mapping Levels for Player Metrics...`));
   const player_metrics: PLAYER_METRICS =
     loadFetchedData(PLAYER_METRICS_PATH).player_metrics;
   const level_mapping: { [old_address: string]: string } =
@@ -36,6 +41,8 @@ const map_player_metrics = () => {
 };
 
 const map_levels_and_level_stats = () => {
+  console.log(colors.green(`Mapping Levels for Level Stats...`));
+
   const level_stats = loadFetchedData(LEVELS_STATS_PATH).level_stat;
   const all_levels = loadFetchedData(ALL_LEVELS_PATH).levels;
 

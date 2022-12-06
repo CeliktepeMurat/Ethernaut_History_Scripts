@@ -1,4 +1,5 @@
 import dotenv from 'dotenv';
+import colors from 'colors';
 import { FETCH_DATA, LEVEL_FACTORY_STAT } from '../../utils/interface';
 import { loadFetchedData, storeData } from '../../utils/utils';
 import * as constants from '../../utils/constants';
@@ -20,6 +21,7 @@ const main = () => {
       ? loadFetchedData(LEVEL_STAT_PATH).level_stat
       : {};
 
+  console.log(colors.gray(`Calculating Level Stats...`));
   all_data.forEach((data: FETCH_DATA) => {
     let level = data.level.toString();
     if (level_stat[level] !== undefined) {
@@ -34,13 +36,19 @@ const main = () => {
     New_Levels_Set.add(level);
   });
 
+  console.log(colors.green(`Saving Level Stats to ${LEVEL_STAT_PATH}`));
   storeData(LEVEL_STAT_PATH, {
     level_stat,
   });
+
+  console.log(colors.green(`Saving All Levels to ${ALL_LEVELS_PATH}`));
   storeData(ALL_LEVELS_PATH, {
     total_number_of_levels: Array.from(New_Levels_Set).length,
     levels: Array.from(New_Levels_Set),
   });
+
+  console.log('Done');
+  process.exit();
 };
 
 main();

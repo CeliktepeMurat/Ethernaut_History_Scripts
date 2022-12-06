@@ -1,9 +1,11 @@
-import { loadFetchedData, web3 } from '../../utils/utils';
+import { loadFetchedData, getWeb3 } from '../../utils/utils';
 import dotenv from 'dotenv';
 import fs from 'fs';
 import { FETCH_DATA, EVENT_TYPE_SIG } from '../../utils/interface';
 import * as constants from '../../utils/constants';
 dotenv.config();
+
+const web3 = getWeb3();
 
 let ALL_DATA_PATH = `./data/${constants.ACTIVE_NETWORK.name}/all_data.json`;
 
@@ -57,6 +59,9 @@ const getData = async () => {
     }
   }
   storeData(ALL_DATA_PATH, GAME_DATA);
+
+  console.log('Done');
+  process.exit();
 };
 
 const decodeParam = (type: string, param: string) => {

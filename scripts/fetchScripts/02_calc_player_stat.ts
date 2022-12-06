@@ -1,4 +1,5 @@
 import dotenv from 'dotenv';
+import colors from 'colors';
 import { FETCH_DATA, PLAYER_STAT } from '../../utils/interface';
 import { loadFetchedData, storeData } from '../../utils/utils';
 import * as constants from '../../utils/constants';
@@ -19,6 +20,7 @@ const main = () => {
       ? loadFetchedData(PLAYER_STAT_PATH).player_stat
       : {};
 
+  console.log(colors.gray(`Calculating Player Stats...`));
   all_data.forEach((data: FETCH_DATA) => {
     let player = data.player.toString();
     if (player_stat[player] !== undefined) {
@@ -33,13 +35,19 @@ const main = () => {
     New_Player_Set.add(player);
   });
 
+  console.log(colors.green(`Saving Player Stats to ${PLAYER_STAT_PATH}`));
   storeData(PLAYER_STAT_PATH, {
     player_stat,
   });
+
+  console.log(colors.green(`Saving All Players to ${ALL_PLAYERS_PATH}`));
   storeData(ALL_PLAYERS_PATH, {
     total_number_of_players: Array.from(New_Player_Set).length,
     players: Array.from(New_Player_Set),
   });
+
+  console.log('Done');
+  process.exit();
 };
 
 main();
