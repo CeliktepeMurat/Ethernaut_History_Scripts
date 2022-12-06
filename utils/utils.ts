@@ -12,6 +12,7 @@ dotenv.config();
 let provider;
 
 if (constants.ACTIVE_NETWORK === constants.NETWORKS.LOCAL) {
+  // @ts-ignore
   const providerUrl = `${constants.ACTIVE_NETWORK.url}:${constants.ACTIVE_NETWORK.port}`;
   console.log(colors.gray(`connecting web3 to '${providerUrl}'...`));
   provider = new Web3.providers.HttpProvider(providerUrl);
