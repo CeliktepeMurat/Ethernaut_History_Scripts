@@ -1,4 +1,4 @@
-import { web3 } from '../../utils/utils';
+import { loadFetchedData, web3 } from '../../utils/utils';
 import dotenv from 'dotenv';
 import fs from 'fs';
 import { FETCH_DATA, EVENT_TYPE_SIG } from '../../utils/interface';
@@ -15,8 +15,8 @@ const getData = async () => {
   // For each time, script will fetch up to 10000 logs
   let logs = await web3.eth.getPastLogs({
     address: ETHERNAUT_CONTRACT,
-    fromBlock: constants.ACTIVE_NETWORK.from,
-    toBlock: constants.ACTIVE_NETWORK.to,
+    fromBlock: 28218131,
+    toBlock: 29198563,
   });
 
   for (const log of logs) {
@@ -47,7 +47,14 @@ const getData = async () => {
             : decodeParam('address', log.data).toString(),
       };
       GAME_DATA.push(data);
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
+
+    if (GAME_DATA.length === 100) {
+      storeData(ALL_DATA_PATH, GAME_DATA);
+      GAME_DATA = [];
+    }
   }
   storeData(ALL_DATA_PATH, GAME_DATA);
 };
@@ -66,8 +73,15 @@ const getTxn = async (txnHash: string) => {
   return txn;
 };
 
-const storeData = (path: string, data: FETCH_DATA[]) => {
-  fs.writeFileSync(path, JSON.stringify(data, null, 2));
+const storeData = (path: string, new_data: FETCH_DATA[]) => {
+  const old_data =
+    loadFetchedData(ALL_DATA_PATH).length > 0
+      ? loadFetchedData(ALL_DATA_PATH)
+      : [];
+
+  const json = [...old_data, ...new_data];
+
+  fs.writeFileSync(path, JSON.stringify(json, null, 2));
 };
 
 getData();

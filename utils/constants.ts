@@ -32,8 +32,8 @@ export const NETWORKS = {
     id: '80001',
     url: `${process.env.MUMBAI_HOST}`,
     privKey: `${process.env.PRIV_KEY}`,
-    from: 27944454,
-    to: 29205207,
+    from: 28218131,
+    to: 29198563,
   },
   SEPOLIA: {
     name: 'sepolia',
