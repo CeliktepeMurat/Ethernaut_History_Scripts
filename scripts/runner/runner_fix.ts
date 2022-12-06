@@ -2,16 +2,7 @@ import STATISTICS_ABI from '../../utils/ABIs/statistics_abi.json';
 import { getGasPrice, getImpersonatedSigner, getWeb3 } from '../../utils/utils';
 import { ethers } from 'ethers';
 import { OWNER, PROXY_STAT } from '../../utils/constants';
-import {
-  saveGlobalNumbers,
-  saveLevelsData,
-  savePlayers,
-} from '../writeScripts/00_exec_batch';
-import { updateAllPlayersGlobalData } from '../writeScripts/01_exec_batch';
-import {
-  updatePlayerStatsData,
-  updateNoOfLevelsCompletedByPlayers,
-} from '../writeScripts/02_exec_batch';
+import { fixNoOfLevelsCompletedForPlayers } from '../writeScripts/fix_script';
 
 import fs from 'fs';
 const web3 = getWeb3();
@@ -20,19 +11,19 @@ let impersonatedSigner: any, statistics: any, props: any;
 
 const TOTAL_NO_OF_PLAYERS = 1891;
 const BIG_BATCH = 100;
-const SMALL_BATCH = 10;
+
 
 async function runFunctions() {
-  if (!isFinished('updateNoOfLevelsCompletedByPlayers')) {
-    const start = getStart('updateNoOfLevelsCompletedByPlayers');
+  if (!isFinished('fixNoOfLevelsCompletedForPlayers')) {
+    const start = getStart('fixNoOfLevelsCompletedForPlayers');
     await runFunctionInBatches(
-      updateNoOfLevelsCompletedByPlayers,
-      'updateNoOfLevelsCompletedByPlayers',
+      fixNoOfLevelsCompletedForPlayers,
+      'fixNoOfLevelsCompletedForPlayers',
       TOTAL_NO_OF_PLAYERS,
       start,
-      SMALL_BATCH
+      BIG_BATCH
     );
-    saveFinishedStatus('updateNoOfLevelsCompletedByPlayers');
+    saveFinishedStatus('fixNoOfLevelsCompletedForPlayers');
   }
 }
 

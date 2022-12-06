@@ -16,4 +16,18 @@ const fillPlayerStat = () => {
   allPlayers = Object.keys(allData);
 };
 
+export const fixNoOfLevelsCompletedForPlayers = async (
+  statistics: Contract,
+  props: { gasPrice: string },
+  start: number,
+  end:number
+) => {
+  const tx = await statistics.fixNoOfLevelsCompletedForPlayers(
+    allPlayers.slice(start, end),
+    props
+  );
+  return tx;
+};
+
+
 fillPlayerStat();
