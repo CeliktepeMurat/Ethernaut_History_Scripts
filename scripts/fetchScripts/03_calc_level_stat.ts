@@ -1,11 +1,12 @@
 import dotenv from 'dotenv';
 import { FETCH_DATA, LEVEL_FACTORY_STAT } from '../../utils/interface';
 import { loadFetchedData, storeData } from '../../utils/utils';
+import * as constants from '../../utils/constants';
 dotenv.config();
 
-const ALL_DATA_PATH = `./data/all_data.json`;
-const LEVEL_STAT_PATH = `./data/level_stat.json`;
-const ALL_LEVELS_PATH = `./data/all_level_list.json`;
+let ALL_DATA_PATH = `./data/${constants.ACTIVE_NETWORK.name}/all_data.json`;
+const LEVEL_STAT_PATH = `./data/${constants.ACTIVE_NETWORK.name}/level_stat.json`;
+const ALL_LEVELS_PATH = `./data/${constants.ACTIVE_NETWORK.name}/all_level_list.json`;
 
 const old_levels = loadFetchedData(LEVEL_STAT_PATH);
 const New_Levels_Set: Set<string> =

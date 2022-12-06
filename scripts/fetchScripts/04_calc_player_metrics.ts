@@ -1,10 +1,11 @@
 import dotenv from 'dotenv';
 import { FETCH_DATA, PLAYER_METRICS } from '../../utils/interface';
 import { loadFetchedData, storeData } from '../../utils/utils';
+import * as constants from '../../utils/constants';
 dotenv.config();
 
-const ALL_DATA_PATH = `./data/all_data.json`;
-const PLAYER_METRICS_PATH = `./data/player_metrics.json`;
+let ALL_DATA_PATH = `./data/${constants.ACTIVE_NETWORK.name}/all_data.json`;
+const PLAYER_METRICS_PATH = `./data/${constants.ACTIVE_NETWORK.name}/player_metrics.json`;
 
 const main = () => {
   const all_data: FETCH_DATA[] = loadFetchedData(ALL_DATA_PATH);

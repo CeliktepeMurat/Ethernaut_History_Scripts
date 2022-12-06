@@ -1,10 +1,11 @@
 import dotenv from 'dotenv';
 import { FETCH_DATA } from '../../utils/interface';
 import { loadFetchedData, storeData } from '../../utils/utils';
+import * as constants from '../../utils/constants';
 dotenv.config();
 
-const ALL_DATA_PATH = `./data/all_data.json`;
-const TOTAL_INSTANCE_NUMBERS_PATHS = `./data/total_instance_numbers.json`;
+let ALL_DATA_PATH = `./data/${constants.ACTIVE_NETWORK.name}/all_data.json`;
+const TOTAL_INSTANCE_NUMBERS_PATHS = `./data/${constants.ACTIVE_NETWORK.name}/total_instance_numbers.json`;
 const old_numbers = loadFetchedData(TOTAL_INSTANCE_NUMBERS_PATHS);
 
 const main = () => {

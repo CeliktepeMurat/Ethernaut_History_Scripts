@@ -1,11 +1,12 @@
 import dotenv from 'dotenv';
 import { FETCH_DATA, PLAYER_STAT } from '../../utils/interface';
 import { loadFetchedData, storeData } from '../../utils/utils';
+import * as constants from '../../utils/constants';
 dotenv.config();
 
-const ALL_DATA_PATH = `./data/all_data.json`;
-const PLAYER_STAT_PATH = `./data/player_stat.json`;
-const ALL_PLAYERS_PATH = `./data/all_player_list.json`;
+let ALL_DATA_PATH = `./data/${constants.ACTIVE_NETWORK.name}/all_data.json`;
+const PLAYER_STAT_PATH = `./data/${constants.ACTIVE_NETWORK.name}/player_stat.json`;
+const ALL_PLAYERS_PATH = `./data/${constants.ACTIVE_NETWORK.name}/all_player_list.json`;
 
 const old_players = loadFetchedData(ALL_PLAYERS_PATH);
 const New_Player_Set: Set<string> =

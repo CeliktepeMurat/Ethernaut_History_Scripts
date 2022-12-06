@@ -1,13 +1,14 @@
 import dotenv from 'dotenv';
 import { PLAYER_METRICS } from '../../utils/interface';
 import { loadFetchedData, storeData } from '../../utils/utils';
+import * as constants from '../../utils/constants';
 
 dotenv.config();
 
-const LEVELS_STATS_PATH = `./data/level_stat.json`;
-const ALL_LEVELS_PATH = `./data/all_level_list.json`;
-const LEVEL_MAPPING = `./data/levelMapping.json`;
-const PLAYER_METRICS_PATH = `./data/player_metrics.json`;
+const LEVELS_STATS_PATH = `./data/${constants.ACTIVE_NETWORK.name}/level_stat.json`;
+const ALL_LEVELS_PATH = `./data/${constants.ACTIVE_NETWORK.name}/all_level_list.json`;
+const LEVEL_MAPPING = `./data/${constants.ACTIVE_NETWORK.name}/levelMapping.json`;
+const PLAYER_METRICS_PATH = `./data/${constants.ACTIVE_NETWORK.name}/player_metrics.json`;
 
 const main = () => {
   map_levels_and_level_stats();
