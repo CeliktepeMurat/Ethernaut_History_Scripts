@@ -21,8 +21,8 @@ const getData = async () => {
   // For each time, script will fetch up to 10000 logs
   let logs = await web3.eth.getPastLogs({
     address: ETHERNAUT_CONTRACT,
-    fromBlock: 7632928,
-    toBlock: 7978269,
+    fromBlock: 27944454,
+    toBlock: 29205207,
   });
 
   for (const log of logs) {
@@ -73,12 +73,7 @@ const getTxn = async (txnHash: string) => {
 };
 
 const storeData = (path: string, data: FETCH_DATA[]) => {
-  let old_data = fs.readFileSync(path);
-
-  let json = JSON.parse(old_data.toString());
-  json = [...json, ...data];
-
-  fs.writeFileSync(path, JSON.stringify(json, null, 2));
+  fs.writeFileSync(path, JSON.stringify(data, null, 2));
 };
 
 getData();
