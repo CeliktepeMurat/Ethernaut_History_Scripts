@@ -1,7 +1,7 @@
 import STATISTICS_ABI from '../../utils/ABIs/statistics_abi.json';
 import { getGasPrice, getImpersonatedSigner } from '../../utils/utils';
 import { ethers } from 'ethers';
-import { OWNER, PROXY_STAT } from '../../utils/constant';
+import { OWNER, PROXY_STAT } from '../../utils/constants';
 import {
   saveGlobalNumbers,
   saveLevelsData,

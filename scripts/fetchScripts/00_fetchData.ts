@@ -1,15 +1,17 @@
-import Web3 from 'web3';
+import { web3 } from '../../utils/utils';
 import dotenv from 'dotenv';
 import fs from 'fs';
 import { FETCH_DATA, EVENT_TYPE_SIG } from '../../utils/interface';
+import * as constants from '../../utils/constants';
 dotenv.config();
 
-const web3 = new Web3(
-  new Web3.providers.HttpProvider(
-    'https://goerli.infura.io/v3/' + process.env.API_KEY
-  )
-);
-const ALL_DATA_PATH = `./data/all_data.json`;
+let ALL_DATA_PATH = '';
+
+if (constants.ACTIVE_NETWORK === constants.NETWORKS.LOCAL) {
+  ALL_DATA_PATH = `./data/Goerli/all_data.json`;
+} else if (constants.ACTIVE_NETWORK === constants.NETWORKS.MUMBAI) {
+  ALL_DATA_PATH = `./data/Mumbai/all_data_mumbai.json`;
+}
 
 const ETHERNAUT_CONTRACT = process.env.ETHERNAUT_CONTRACT as string;
 let GAME_DATA: FETCH_DATA[] = [];

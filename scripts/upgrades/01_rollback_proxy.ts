@@ -7,7 +7,7 @@ import {
   PROXY_ADMIN,
   PROXY_ADMIN_CONTRACT,
   PROXY_STAT,
-} from '../../utils/constant';
+} from '../../utils/constants';
 dotenv.config();
 
 const upgradeProxy = async () => {

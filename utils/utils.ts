@@ -4,7 +4,7 @@ import colors from 'colors';
 import dotenv from 'dotenv';
 import hardhat from 'hardhat';
 import HDWalletProvider from '@truffle/hdwallet-provider';
-import * as constants from './constant';
+import * as constants from './constants';
 
 const { ethers } = hardhat;
 dotenv.config();
@@ -24,7 +24,7 @@ if (constants.ACTIVE_NETWORK === constants.NETWORKS.LOCAL) {
     constants.ACTIVE_NETWORK.url
   );
 }
-const web3 = new Web3(provider);
+export const web3 = new Web3(provider);
 
 const ETHERNAUT_CONTRACT = process.env.ETHERNAUT_CONTRACT as string;
 
