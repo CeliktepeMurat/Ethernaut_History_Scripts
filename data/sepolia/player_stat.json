@@ -1,0 +1,600 @@
+{
+  "player_stat": {
+    "0xaBe12036bCba9566B99e60BE32598b3F53F525f0": {
+      "created_instances": 10,
+      "solved_instances": 7
+    },
+    "0x997Ef1AeC8E0c9e9d6E018669b193575CB9FdbaD": {
+      "created_instances": 3,
+      "solved_instances": 3
+    },
+    "0xC5ffC9cA48288484357FA9ef287130b0CE4437D4": {
+      "created_instances": 13,
+      "solved_instances": 8
+    },
+    "0x4911CF64F6D4Dc19128e7a29685B59cAA193B8B4": {
+      "created_instances": 4,
+      "solved_instances": 1
+    },
+    "0x5294C6E1242f9201D91884d3C7e238534c46f246": {
+      "created_instances": 17,
+      "solved_instances": 16
+    },
+    "0x7245078486EA3ff183Bf6a616046969f055d85aC": {
+      "created_instances": 3,
+      "solved_instances": 2
+    },
+    "0x004B1063e2458f1B363f6326178216aDfcc928DE": {
+      "created_instances": 6,
+      "solved_instances": 2
+    },
+    "0x25074e70A2c1ACB40703798224Af7569C915322E": {
+      "created_instances": 1,
+      "solved_instances": 1
+    },
+    "0x55bf3DC405848e72216b5135e4E62B41D8554c03": {
+      "created_instances": 2,
+      "solved_instances": 0
+    },
+    "0xCdDfc7d8685dDe52178E0B9F4A6A59D9d1d31B57": {
+      "created_instances": 1,
+      "solved_instances": 0
+    },
+    "0x4206889Ed08c6Cc6aB0550a5eb6DdDd5b8678f66": {
+      "created_instances": 22,
+      "solved_instances": 18
+    },
+    "0xc4f245829f98a45584CEC1d364540061CF642F1d": {
+      "created_instances": 8,
+      "solved_instances": 7
+    },
+    "0xf631BF2668c8C48f88a8a8a0b30eA945D9fb628e": {
+      "created_instances": 2,
+      "solved_instances": 0
+    },
+    "0x516a0b36c7475C0b918eA170513e1802a0AFe4dd": {
+      "created_instances": 8,
+      "solved_instances": 2
+    },
+    "0xA6958E5488Ca25E41Af06e39b13012eC8547843D": {
+      "created_instances": 14,
+      "solved_instances": 11
+    },
+    "0x5228D701bD2c186F2338b34E0C74AFfD0777856E": {
+      "created_instances": 6,
+      "solved_instances": 6
+    },
+    "0xA0eB0E571e183979671FAFb8c5A725702f68D0A0": {
+      "created_instances": 3,
+      "solved_instances": 2
+    },
+    "0x6a517A3991c89F188929C7B28391903B44C94B0e": {
+      "created_instances": 2,
+      "solved_instances": 1
+    },
+    "0xF0A2DE66e7ef46A922c69C3480e0d3aE63061502": {
+      "created_instances": 4,
+      "solved_instances": 4
+    },
+    "0x862570693111DB350a6376c095B7E57c7650E78d": {
+      "created_instances": 3,
+      "solved_instances": 1
+    },
+    "0x09902A56d04a9446601a0d451E07459dC5aF0820": {
+      "created_instances": 3,
+      "solved_instances": 3
+    },
+    "0x32a767806A3C288e057513B5DC46395dcb21DF72": {
+      "created_instances": 4,
+      "solved_instances": 3
+    },
+    "0x25Bf651a048be8420997944C92c80e5064C1c5d6": {
+      "created_instances": 18,
+      "solved_instances": 17
+    },
+    "0x9448CBef200Cdd9250A5F578ED0C4a8A69239d95": {
+      "created_instances": 10,
+      "solved_instances": 7
+    },
+    "0xccBe85b832394Cb90a3EbC88f867de997C994847": {
+      "created_instances": 7,
+      "solved_instances": 5
+    },
+    "0x4089882C0af125EFACF9900A150891175BBc694a": {
+      "created_instances": 47,
+      "solved_instances": 18
+    },
+    "0xf5d70a70415A7201d9A524233706F5418544fB49": {
+      "created_instances": 10,
+      "solved_instances": 8
+    },
+    "0x1d8622b7191116a912e0980e21B3405BDd85d1dB": {
+      "created_instances": 12,
+      "solved_instances": 8
+    },
+    "0xd7C8149e11c2c74e7CF08465d7643E25aEdDC2be": {
+      "created_instances": 3,
+      "solved_instances": 1
+    },
+    "0x48dAcd4CCAAdA0F8Bf2DBfDd4EB7cD89830AFeA1": {
+      "created_instances": 16,
+      "solved_instances": 13
+    },
+    "0x69e9c90D6651DdD3A773Fbd2ced1E81a4d82BdF3": {
+      "created_instances": 12,
+      "solved_instances": 2
+    },
+    "0x4A7b003e86ca14D3A85922c016A773B7adadffd8": {
+      "created_instances": 2,
+      "solved_instances": 1
+    },
+    "0xF1127512bAe6A044EA17207475A362f6C5F00632": {
+      "created_instances": 22,
+      "solved_instances": 10
+    },
+    "0x26235af498A06f4C1E9B91100034743Fb08E9c2b": {
+      "created_instances": 28,
+      "solved_instances": 13
+    },
+    "0xB6ccdEcd1a433a39911D6C5cBfEbC29Ee6FE85FF": {
+      "created_instances": 3,
+      "solved_instances": 0
+    },
+    "0xEa2Ccb3732BACab84F15E80A051E2ce0dE3B9e09": {
+      "created_instances": 2,
+      "solved_instances": 2
+    },
+    "0xc29a151B9804f6D3456036b74A66978290fC8c7D": {
+      "created_instances": 23,
+      "solved_instances": 16
+    },
+    "0xd2cA697bb0114ca4F6A2ed28A5896d280A46d61B": {
+      "created_instances": 5,
+      "solved_instances": 1
+    },
+    "0x93c50abFF33f4681165f67dA7aE62F3c18DaD778": {
+      "created_instances": 72,
+      "solved_instances": 27
+    },
+    "0xD7fF85f956435e48B913CBE3772cA8Cd7DEEC5fc": {
+      "created_instances": 8,
+      "solved_instances": 7
+    },
+    "0xa6802c20d05d089113bB9E642E8A644c7990b1Cf": {
+      "created_instances": 2,
+      "solved_instances": 2
+    },
+    "0xF596dC8AE964Bf427Aa28C79a02C6B94F0536f8C": {
+      "created_instances": 66,
+      "solved_instances": 20
+    },
+    "0x17938bB4e6f2486b0BA12D5d0DBf98e9a5FC61bF": {
+      "created_instances": 4,
+      "solved_instances": 3
+    },
+    "0x49401cEb6bA5413C483CaE3accF261DEA993A25C": {
+      "created_instances": 4,
+      "solved_instances": 1
+    },
+    "0x5d5C409e2D7E67660225Ae62Bc5ff27393952F5e": {
+      "created_instances": 2,
+      "solved_instances": 2
+    },
+    "0x432190afD32eb01Ad7e2b8824fc03070C90caD13": {
+      "created_instances": 2,
+      "solved_instances": 0
+    },
+    "0x524CDee0ac969180E8C11268114E7A5F73FA8754": {
+      "created_instances": 8,
+      "solved_instances": 4
+    },
+    "0x794Ee07888DA45861aFa13E73e6654971467A0f9": {
+      "created_instances": 1,
+      "solved_instances": 0
+    },
+    "0xE01405624c8eBcD65620561257DDD7eB6478B859": {
+      "created_instances": 16,
+      "solved_instances": 1
+    },
+    "0xc4888dd6C1767830B8100B915070b641D43B017b": {
+      "created_instances": 1,
+      "solved_instances": 1
+    },
+    "0x9c7d87f05d2B821a6b1196Ca24A3D898b2b137Eb": {
+      "created_instances": 3,
+      "solved_instances": 2
+    },
+    "0xfB309286Bb3377f632298113486645480389BFaA": {
+      "created_instances": 3,
+      "solved_instances": 2
+    },
+    "0x01cbca97711812AD851d92172DC0B426F06Db3A6": {
+      "created_instances": 1,
+      "solved_instances": 1
+    },
+    "0x87e6eEDeb0494e3E3235F61AE4Cd393ef94F2FB2": {
+      "created_instances": 62,
+      "solved_instances": 15
+    },
+    "0x3Fe9709b1c83Fe191B8eB99CbC3B4Bb47d9E2bcE": {
+      "created_instances": 1,
+      "solved_instances": 0
+    },
+    "0x50A751f45d7f0b19D37500f6F193b7CcE115593b": {
+      "created_instances": 26,
+      "solved_instances": 13
+    },
+    "0xDBB8eA5CC7Abf30afBBa71e74DC8A0c7882872E1": {
+      "created_instances": 5,
+      "solved_instances": 4
+    },
+    "0xcAf617453f17514256d7da948aCF805787ab36D9": {
+      "created_instances": 29,
+      "solved_instances": 24
+    },
+    "0x2F1D704F503bF4b1642cb50AbBE560f2aB3E5AA7": {
+      "created_instances": 2,
+      "solved_instances": 2
+    },
+    "0x77847d1e9207F599861BdAf4DBB082d92219a80C": {
+      "created_instances": 3,
+      "solved_instances": 3
+    },
+    "0xe0a311a380684fB41a9469dC2394300eEd011B56": {
+      "created_instances": 31,
+      "solved_instances": 28
+    },
+    "0x6b0681954ADF831c22045350C7148b9eDD841849": {
+      "created_instances": 7,
+      "solved_instances": 7
+    },
+    "0x06770db1FF1deEe3fa9b38d13bBDfED30b82899D": {
+      "created_instances": 2,
+      "solved_instances": 2
+    },
+    "0x33C3f2A03a8Cb1fC8006e90a5ade2C354cb491D6": {
+      "created_instances": 4,
+      "solved_instances": 4
+    },
+    "0x64F7052D86e2026908C713E6c1b4Ef7908cDcEB6": {
+      "created_instances": 1,
+      "solved_instances": 0
+    },
+    "0x5a6D46040805eE7032d6225E5E8C1aD9F1B32D6b": {
+      "created_instances": 2,
+      "solved_instances": 1
+    },
+    "0xB36EbC3a564a63EAbea0ed0bD9bf9c474eF5b293": {
+      "created_instances": 2,
+      "solved_instances": 1
+    },
+    "0xf5A5DcA2BA89694D52F5C44E2F60b97F405E8bE2": {
+      "created_instances": 31,
+      "solved_instances": 21
+    },
+    "0x7195374cd4651edbBD44E70FC5669908D6Fc8819": {
+      "created_instances": 5,
+      "solved_instances": 5
+    },
+    "0x4c6e2CA4029dd13d60E0D97E34416ECFF8853fa3": {
+      "created_instances": 3,
+      "solved_instances": 3
+    },
+    "0x6EDE5571eE96b6288AacD5d48De974654C946c4f": {
+      "created_instances": 11,
+      "solved_instances": 10
+    },
+    "0xA305fd61EC3Fa291a5f473E2beB3069078544319": {
+      "created_instances": 4,
+      "solved_instances": 4
+    },
+    "0xd01bD3D05cc54eD96726E6f7495E043aA44068f3": {
+      "created_instances": 2,
+      "solved_instances": 0
+    },
+    "0xe418c7c0cb6e7D628248d8B453Fc59B0a6Ed3eDb": {
+      "created_instances": 4,
+      "solved_instances": 3
+    },
+    "0x75f5A376383534F45eED0dAd52eC83C943faF293": {
+      "created_instances": 15,
+      "solved_instances": 13
+    },
+    "0x15b55BD4917f38cCa804e84FF671665D8dD47B23": {
+      "created_instances": 2,
+      "solved_instances": 1
+    },
+    "0x9abc68099182f48114b4eE076BC7d3E4620dfCD5": {
+      "created_instances": 23,
+      "solved_instances": 23
+    },
+    "0x51de29B68bF7b43684070CB684F3588f8Cf89879": {
+      "created_instances": 25,
+      "solved_instances": 4
+    },
+    "0x050E6230252019e7162D487c4C889a1D5F340159": {
+      "created_instances": 27,
+      "solved_instances": 23
+    },
+    "0x8BbCd6004F3c223bD45A0e3786D29bDC551cd163": {
+      "created_instances": 2,
+      "solved_instances": 0
+    },
+    "0x65e94887216d166D7a21e253dC5C9ca44D654B6A": {
+      "created_instances": 1,
+      "solved_instances": 0
+    },
+    "0x32452FEa976A47bdaD8194E2a7470C83B1000213": {
+      "created_instances": 2,
+      "solved_instances": 2
+    },
+    "0xcB1f538E4f364ea515A1916259c1040840697988": {
+      "created_instances": 4,
+      "solved_instances": 3
+    },
+    "0x1E49F3f6ac9456fA34106A5157a3320A644Ddb43": {
+      "created_instances": 2,
+      "solved_instances": 1
+    },
+    "0x87fDa51E12fB83709ae8AA0533D9bB46B68a018A": {
+      "created_instances": 1,
+      "solved_instances": 0
+    },
+    "0x12847CE1721afd6cA5506dD43F7818Cb91484eBf": {
+      "created_instances": 3,
+      "solved_instances": 1
+    },
+    "0xC00b67413Ed01C8887E6b26B1849e8eca46AF16f": {
+      "created_instances": 2,
+      "solved_instances": 1
+    },
+    "0xf9020bDCc14D48bDA955d0ef2831Cbe902A23c85": {
+      "created_instances": 2,
+      "solved_instances": 0
+    },
+    "0xa84A87E30a73c7dbcC78a894444dee7a17DA1877": {
+      "created_instances": 30,
+      "solved_instances": 28
+    },
+    "0xEf8d327B3BF7dbf8637a5055CDaaC58e692b649F": {
+      "created_instances": 4,
+      "solved_instances": 3
+    },
+    "0x8720B43F3D33f73C8E5c2905BdD3f98D3BF3F0E3": {
+      "created_instances": 6,
+      "solved_instances": 3
+    },
+    "0x73722ACe1434128e30682edE69B876a0CFE76180": {
+      "created_instances": 6,
+      "solved_instances": 4
+    },
+    "0x61779F89ECA4091cB84E23D1101D2f23b04390f3": {
+      "created_instances": 24,
+      "solved_instances": 24
+    },
+    "0xBe92B95f2751F35945a17FF10eF72a3B5CE13096": {
+      "created_instances": 4,
+      "solved_instances": 3
+    },
+    "0xdcaE1CDC25e0b07B0ef62aF69715Cb66c55BD0e7": {
+      "created_instances": 9,
+      "solved_instances": 7
+    },
+    "0x6f0d6C6472bB7a6CA3D41A4f846661Acc388cd97": {
+      "created_instances": 9,
+      "solved_instances": 9
+    },
+    "0x83C81fFDA6797453D1976a16F114f74CFff71d4F": {
+      "created_instances": 5,
+      "solved_instances": 3
+    },
+    "0x721B93329063e8c4f6846c3cbF13C6bBF2d14B11": {
+      "created_instances": 1,
+      "solved_instances": 0
+    },
+    "0x01FD5115B365A9E161486938cadc323D4e8aF808": {
+      "created_instances": 2,
+      "solved_instances": 1
+    },
+    "0x43b9d8458782dAabB889996f94214857d18Cc22b": {
+      "created_instances": 1,
+      "solved_instances": 1
+    },
+    "0x26E35e9568bcfA684b1687483A1239bA3352B943": {
+      "created_instances": 5,
+      "solved_instances": 5
+    },
+    "0x251B630AdCfff9340bc07b1EC69c097EcbfB996C": {
+      "created_instances": 4,
+      "solved_instances": 2
+    },
+    "0xd7256654f8e0B5C964748524EBf84be27a6A1894": {
+      "created_instances": 5,
+      "solved_instances": 3
+    },
+    "0x18ce6fDfb37b288659AE9D7E3Da592CE280bF91f": {
+      "created_instances": 5,
+      "solved_instances": 5
+    },
+    "0xAaA7868B96BD9E640EAFFe1e0c9A058235C66389": {
+      "created_instances": 2,
+      "solved_instances": 0
+    },
+    "0x5D4cBeaF9C783eFF1740eA08e80E4158ecC5f9cb": {
+      "created_instances": 2,
+      "solved_instances": 2
+    },
+    "0xA3fD8b6d5530b788946fbD3E8A2f66cCbd35f482": {
+      "created_instances": 14,
+      "solved_instances": 11
+    },
+    "0x4650264Dd8Fb4e32A88168E6206e0779D11800c7": {
+      "created_instances": 13,
+      "solved_instances": 13
+    },
+    "0x5f2d21Bc72B8F190FD0d330F6cfdC0F8b7C3Fc8E": {
+      "created_instances": 3,
+      "solved_instances": 3
+    },
+    "0x3C94e8f4608F308D132023FdCC5274AB599293F1": {
+      "created_instances": 1,
+      "solved_instances": 1
+    },
+    "0x2A002098170FD6c9cd52FA849515Ca2F9144655A": {
+      "created_instances": 18,
+      "solved_instances": 16
+    },
+    "0x73Ad1335252449D28b3029d4d34473D795287ec5": {
+      "created_instances": 13,
+      "solved_instances": 7
+    },
+    "0x817e05f76F06f6cA6eCB72E31E1fB8AE98317F08": {
+      "created_instances": 2,
+      "solved_instances": 1
+    },
+    "0x31Feab5c6E76f159bBE2F93FDE4A59200813679c": {
+      "created_instances": 3,
+      "solved_instances": 3
+    },
+    "0xc646AC6A5Ed8bf20124ca96A4cd4A05947af8E47": {
+      "created_instances": 1,
+      "solved_instances": 1
+    },
+    "0xc59b351F1a2Ad29a5ad9536Ea2fa4Afe198C7145": {
+      "created_instances": 2,
+      "solved_instances": 1
+    },
+    "0x9dFfC1C946e22A1d5792B89C18157b7c1cB4D06b": {
+      "created_instances": 9,
+      "solved_instances": 5
+    },
+    "0xc69E4232E966F40C232F2f83c6222ada456c6Ba8": {
+      "created_instances": 14,
+      "solved_instances": 10
+    },
+    "0x818b9401779EA25383cd5f8458b8Cb84F7C17a2A": {
+      "created_instances": 1,
+      "solved_instances": 1
+    },
+    "0xc90786725282dfE0Fd41f8F8a903268D27c2E509": {
+      "created_instances": 1,
+      "solved_instances": 0
+    },
+    "0xCF4BA1ba3E3b4f7010b9aD25b5Caa9AD5817A748": {
+      "created_instances": 1,
+      "solved_instances": 1
+    },
+    "0xac3E7939FcaED56Ad5Bcd173C9A6e98aA246d3ae": {
+      "created_instances": 10,
+      "solved_instances": 9
+    },
+    "0x827AbB8b93272aC23ED2c9200B58Fc6c015e1783": {
+      "created_instances": 17,
+      "solved_instances": 14
+    },
+    "0xE8b72ec56DDde4eAa342394D6A5DD197fFa38e91": {
+      "created_instances": 1,
+      "solved_instances": 1
+    },
+    "0x3a69f366393F9A451C5ebFECFb85DdBB1465A3e0": {
+      "created_instances": 4,
+      "solved_instances": 1
+    },
+    "0xCa359d7084ba821EA80B769B6bB0ACf1A47d1F7e": {
+      "created_instances": 8,
+      "solved_instances": 6
+    },
+    "0x55Cc0292f53078D5bfad4caF582D6428c6622511": {
+      "created_instances": 6,
+      "solved_instances": 6
+    },
+    "0x7Ebd33D2e0707abD856c86C32D424122D400D9E9": {
+      "created_instances": 13,
+      "solved_instances": 10
+    },
+    "0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2": {
+      "created_instances": 1,
+      "solved_instances": 0
+    },
+    "0xBbEc025f750bbAbDcB0195B0207E7F6b194396D8": {
+      "created_instances": 5,
+      "solved_instances": 5
+    },
+    "0x1421B05F50F2C9742646fcd55c26e69B6756fD3A": {
+      "created_instances": 2,
+      "solved_instances": 0
+    },
+    "0xC9cc07F1dc7781120a7749DBA0079eA0282358c1": {
+      "created_instances": 1,
+      "solved_instances": 0
+    },
+    "0x312865e01A4994b03A171acDb0B4EEDDe24bE91F": {
+      "created_instances": 1,
+      "solved_instances": 0
+    },
+    "0x2739436abC8602a000E57C1e313001b0e742aaf1": {
+      "created_instances": 8,
+      "solved_instances": 3
+    },
+    "0xE71b17767531FD42BbbACB9eF1cFb55b24C528E8": {
+      "created_instances": 1,
+      "solved_instances": 0
+    },
+    "0x502be16aa82BAD01FDc3fEB3c5F8C431F8eeB8AE": {
+      "created_instances": 4,
+      "solved_instances": 3
+    },
+    "0x48a1ebb823ebA4940395ddCA05b6705b3EC8755b": {
+      "created_instances": 1,
+      "solved_instances": 0
+    },
+    "0x004eFb233c8D26ccC063061BEe54f0be9302e6ed": {
+      "created_instances": 2,
+      "solved_instances": 0
+    },
+    "0xbA5f79F2D6825f44aede54169a92BDA43c5f9017": {
+      "created_instances": 4,
+      "solved_instances": 3
+    },
+    "0x462B346D360845787a45c46f256A4dBE6cd80900": {
+      "created_instances": 1,
+      "solved_instances": 0
+    },
+    "0x2607E9Ac2ac51661A549114d6775cF770C9d5eB6": {
+      "created_instances": 1,
+      "solved_instances": 1
+    },
+    "0x607588B1b55a6BFC835757a9A2Ebc7AFbBA1E7c6": {
+      "created_instances": 1,
+      "solved_instances": 0
+    },
+    "0x171C21E76665BFd44CA3E77eb1422fBcd920DbD7": {
+      "created_instances": 2,
+      "solved_instances": 1
+    },
+    "0x35E9e2d76AD7F496eFb8DeB4a084B14cB9BC7Efd": {
+      "created_instances": 19,
+      "solved_instances": 10
+    },
+    "0x83B088D8fdaC4ef49BEce3801a227d2719bae641": {
+      "created_instances": 4,
+      "solved_instances": 2
+    },
+    "0x5F4907FB6E94b35EAc502DC4cAc4d65A10e2fA16": {
+      "created_instances": 4,
+      "solved_instances": 4
+    },
+    "0x4548029D5806a0F1c6d59906D53Ce8743daB4327": {
+      "created_instances": 3,
+      "solved_instances": 1
+    },
+    "0x3765DFeDf234Bf24f9df82715503B864236ddb48": {
+      "created_instances": 1,
+      "solved_instances": 0
+    },
+    "0xF8b82463CbA3E4730f8f94587B332b5c3A607182": {
+      "created_instances": 15,
+      "solved_instances": 3
+    }
+  }
+}

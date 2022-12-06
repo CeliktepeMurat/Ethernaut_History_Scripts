@@ -40,8 +40,8 @@ export const NETWORKS = {
     id: '11155111',
     url: `${process.env.SEPOLIA_HOST}`,
     privKey: `${process.env.PRIV_KEY}`,
-    from: 0,
-    to: 0,
+    from: 2033550,
+    to: 2306395,
   },
   OPTIMISM_GOERLI: {
     name: 'goerli-optimism',
@@ -61,9 +61,9 @@ export const NETWORKS = {
   },
 };
 
-// export const ACTIVE_NETWORK = NETWORKS.SEPOLIA
+export const ACTIVE_NETWORK = NETWORKS.SEPOLIA;
 // export const ACTIVE_NETWORK = NETWORKS.GOERLI
-export const ACTIVE_NETWORK = NETWORKS.MUMBAI;
+//export const ACTIVE_NETWORK = NETWORKS.MUMBAI;
 // export const ACTIVE_NETWORK = NETWORKS.OPTIMISM_GOERLI
 // export const ACTIVE_NETWORK = NETWORKS.ARBITRUM_GOERLI
 //export const ACTIVE_NETWORK = NETWORKS.LOCAL;
