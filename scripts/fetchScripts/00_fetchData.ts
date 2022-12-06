@@ -15,8 +15,8 @@ const getData = async () => {
   // For each time, script will fetch up to 10000 logs
   let logs = await web3.eth.getPastLogs({
     address: ETHERNAUT_CONTRACT,
-    fromBlock: 28218131,
-    toBlock: 29198563,
+    fromBlock: constants.ACTIVE_NETWORK.from,
+    toBlock: constants.ACTIVE_NETWORK.to,
   });
 
   for (const log of logs) {
