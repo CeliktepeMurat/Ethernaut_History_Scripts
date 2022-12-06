@@ -1,17 +1,30 @@
 import fs from 'fs';
 import Web3 from 'web3';
+import colors from 'colors';
 import dotenv from 'dotenv';
 import hardhat from 'hardhat';
+import HDWalletProvider from '@truffle/hdwallet-provider';
 import * as constants from './constant';
 
 const { ethers } = hardhat;
 dotenv.config();
 
-const web3 = new Web3(
-  new Web3.providers.HttpProvider(
-    'https://goerli.infura.io/v3/' + process.env.API_KEY
-  )
-);
+let provider;
+
+if (constants.ACTIVE_NETWORK === constants.NETWORKS.LOCAL) {
+  const providerUrl = `${constants.ACTIVE_NETWORK.url}:${constants.ACTIVE_NETWORK.port}`;
+  console.log(colors.gray(`connecting web3 to '${providerUrl}'...`));
+  provider = new Web3.providers.HttpProvider(providerUrl);
+} else {
+  console.log(
+    colors.gray(`connecting web3 to '${constants.ACTIVE_NETWORK.name}'...`)
+  );
+  provider = new HDWalletProvider(
+    constants.ACTIVE_NETWORK.privKey,
+    constants.ACTIVE_NETWORK.url
+  );
+}
+const web3 = new Web3(provider);
 
 const ETHERNAUT_CONTRACT = process.env.ETHERNAUT_CONTRACT as string;
 
@@ -64,7 +77,7 @@ export const getImpersonatedSigner = async (address: string) => {
       process.env.PRIV_KEY as string,
       new ethers.providers.AlchemyProvider(
         constants.ACTIVE_NETWORK.name,
-        process.env.API_KEY
+        process.env.ALCHEMY_API_KEY
       )
     );
     return signer;

@@ -15,6 +15,7 @@ export const NETWORKS = {
     id: '1337',
     url: 'http://localhost',
     port: 8545,
+    privKey: '0x' + '0'.repeat(64),
   },
   GOERLI: {
     name: 'goerli',
