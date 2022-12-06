@@ -22,12 +22,16 @@ export const NETWORKS = {
     id: '5',
     url: `${process.env.GOERLI_HOST}`,
     privKey: `${process.env.PRIV_KEY}`,
+    from: 7632928,
+    to: 7978269,
   },
   MUMBAI: {
     name: 'mumbai-polygon',
     id: '80001',
     url: `${process.env.MUMBAI_HOST}`,
     privKey: `${process.env.PRIV_KEY}`,
+    from: 27944454,
+    to: 29205207,
   },
   SEPOLIA: {
     name: 'sepolia',
