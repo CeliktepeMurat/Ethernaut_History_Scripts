@@ -5,8 +5,6 @@ import { FETCH_DATA, EVENT_TYPE_SIG } from '../../utils/interface';
 import * as constants from '../../utils/constants';
 dotenv.config();
 
-const NETWORK = process.env.ACTIVE_NETWORK as string;
-
 let ALL_DATA_PATH = `./data/${constants.ACTIVE_NETWORK.name}/all_data.json`;
 
 const ETHERNAUT_CONTRACT = process.env.ETHERNAUT_CONTRACT as string;
