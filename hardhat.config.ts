@@ -9,14 +9,19 @@ const config: HardhatUserConfig = {
   networks: {
     hardhat: {
       forking: {
-        url: 'https://eth-goerli.g.alchemy.com/v2/' + process.env.API_KEY,
+        url:
+          'https://eth-goerli.g.alchemy.com/v2/' + process.env.ALCHEMY_API_KEY,
       },
     },
     localhost: {
       timeout: 10000000,
     },
     goerli: {
-      url: 'https://eth-goerli.g.alchemy.com/v2/' + process.env.API_KEY,
+      url: 'https://eth-goerli.g.alchemy.com/v2/' + process.env.ALCHEMY_API_KEY,
+      accounts: [process.env.PRIV_KEY as string],
+    },
+    sepolia: {
+      url: 'https://sepolia.infura.io/v3/' + process.env.INFURA_API_KEY,
       accounts: [process.env.PRIV_KEY as string],
     },
   },
