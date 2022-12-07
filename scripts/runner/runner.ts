@@ -9,7 +9,7 @@ const web3 = getWeb3();
 let impersonatedSigner: any, statistics: any, props: any;
 
 const TOTAL_NO_OF_PLAYERS = 1891;
-const SMALL_BATCH = 10; 
+const BIG_BATCH = 100; 
 const STATUS_DIRECTORY = './data/Goerli/status.json';
 
 async function runFunctions() {
@@ -20,7 +20,7 @@ async function runFunctions() {
       'fixNoOfLevelsCompletedForPlayers',
       TOTAL_NO_OF_PLAYERS,
       start,
-      SMALL_BATCH
+      BIG_BATCH
     );
     saveFinishedStatus('fixNoOfLevelsCompletedForPlayers');
   }
