@@ -1,7 +1,13 @@
 {
   "fixNoOfLevelsCompletedForPlayers": {
     "isFinished": false,
-    "start": 0,
-    "txInfo": []
+    "start": 10,
+    "txInfo": [
+      {
+        "start": 0,
+        "end": 10,
+        "txHash": "0xabfb30b300ca01498d2643ac272998e914384557fd240d34b3d2c9f1a7d5f7c4"
+      }
+    ]
   }
 }
