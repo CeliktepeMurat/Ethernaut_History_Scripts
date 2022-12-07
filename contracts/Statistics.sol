@@ -205,7 +205,7 @@ contract Statistics is Initializable {
                 : 0;
     }
 
-    // Is a last instance of a level created completed by a specific player ?
+    // Is last instance of a level created completed by a specific player ?
     function isLevelInstanceCompleted(address player, address level)
         public
         view
