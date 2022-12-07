@@ -9,7 +9,9 @@ const web3 = getWeb3();
 
 let ALL_DATA_PATH = `./data/${constants.ACTIVE_NETWORK.name}/all_data.json`;
 
-const ETHERNAUT_CONTRACT = process.env.ETHERNAUT_CONTRACT as string;
+const ETHERNAUT_CONTRACT =
+  constants.ETHERNAUT_CONTRACT[constants.ACTIVE_NETWORK.name];
+
 let GAME_DATA: FETCH_DATA[] = [];
 
 const getData = async () => {
