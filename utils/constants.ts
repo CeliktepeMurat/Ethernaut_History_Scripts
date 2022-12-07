@@ -48,8 +48,8 @@ export const NETWORKS = {
     id: '420',
     url: `${process.env.OPTIMISM_GOERLI_HOST}`,
     privKey: `${process.env.PRIV_KEY}`,
-    from: 0,
-    to: 0,
+    from: 1888074,
+    to: 2750524,
   },
   ARBITRUM_GOERLI: {
     name: 'goerli-arbitrum',
@@ -61,9 +61,9 @@ export const NETWORKS = {
   },
 };
 
-export const ACTIVE_NETWORK = NETWORKS.SEPOLIA;
+// export const ACTIVE_NETWORK = NETWORKS.SEPOLIA;
 // export const ACTIVE_NETWORK = NETWORKS.GOERLI
-//export const ACTIVE_NETWORK = NETWORKS.MUMBAI;
-// export const ACTIVE_NETWORK = NETWORKS.OPTIMISM_GOERLI
+// export const ACTIVE_NETWORK = NETWORKS.MUMBAI;
+export const ACTIVE_NETWORK = NETWORKS.OPTIMISM_GOERLI;
 // export const ACTIVE_NETWORK = NETWORKS.ARBITRUM_GOERLI
-//export const ACTIVE_NETWORK = NETWORKS.LOCAL;
+// export const ACTIVE_NETWORK = NETWORKS.LOCAL;
