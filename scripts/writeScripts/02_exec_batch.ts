@@ -1,9 +1,8 @@
 import dotenv from 'dotenv';
 import { Contract } from 'ethers';
-import {
-  loadFetchedData,
-} from '../../utils/utils';
+import { getGasPrice, loadFetchedData } from '../../utils/utils';
 import { INSTANCE, PLAYER_METRICS } from '../../utils/interface';
+import Web3 from 'web3';
 dotenv.config();
 
 const PLAYER_METRICS_PATH = `./data/player_metrics.json`;
@@ -20,15 +19,19 @@ let timeCreated: number[][] = [];
 let totalSubmission: number[][][] = [];
 let levelFirstCompletedTime: number[][] = [];
 let levelFirstInstanceCreationTime: number[][] = [];
-let allData:any;
-let allPlayers:any;
+let allData: any;
+let allPlayers: any;
 
 export const updatePlayerStatsData = async (
   statistics: Contract,
-  props: { gasPrice: string },
+  web3: Web3,
   start: number,
   end: number
 ) => {
+  const props = {
+    gasPrice: await getGasPrice(web3),
+  };
+
   const tx = await statistics.updatePlayerStatsData(
     players.slice(start, end),
     levels.slice(start, end),
@@ -94,10 +97,14 @@ const fillPlayerStat = () => {
 
 export const updateNoOfLevelsCompletedByPlayers = async (
   statistics: Contract,
-  props: { gasPrice: string },
+  web3: Web3,
   start: number,
-  end:number
+  end: number
 ) => {
+  const props = {
+    gasPrice: await getGasPrice(web3),
+  };
+
   const levelsSolvedByPlayers = [];
   for (let player of allPlayers) {
     const levelsSolvedByPlayer = getLevelsSolvedByAPlayer(allData[player]);

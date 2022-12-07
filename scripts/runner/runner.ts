@@ -1,5 +1,5 @@
 import STATISTICS_ABI from '../../artifacts/contracts/Statistics.sol/Statistics.json';
-import { getGasPrice, getImpersonatedSigner, getWeb3 } from '../../utils/utils';
+import { getImpersonatedSigner, getWeb3 } from '../../utils/utils';
 import { ethers } from 'ethers';
 import {
   saveGlobalNumbers,
@@ -13,9 +13,10 @@ import {
 } from '../writeScripts/02_exec_batch';
 import * as constants from '../../utils/constants';
 import fs from 'fs';
+
 const web3 = getWeb3();
 
-let impersonatedSigner: any, statistics: any, props: any;
+let impersonatedSigner: any, statistics: any;
 
 const TOTAL_NO_OF_PLAYERS = 1891;
 const BIG_BATCH = 100;
@@ -23,7 +24,7 @@ const SMALL_BATCH = 10;
 
 async function runFunctions() {
   if (!isFinished('saveGlobalNumber')) {
-    const tx = await saveGlobalNumbers(statistics, props);
+    const tx = await saveGlobalNumbers(statistics, web3);
     console.log(tx.hash);
     console.log('');
     saveFinishedStatus('saveGlobalNumber', tx.hash);
@@ -31,7 +32,7 @@ async function runFunctions() {
   }
 
   if (!isFinished('saveLevelsData')) {
-    const tx = await saveLevelsData(statistics, props);
+    const tx = await saveLevelsData(statistics, web3);
     console.log(tx.hash);
     console.log('');
     saveFinishedStatus('saveLevelsData', tx.hash);
@@ -137,7 +138,7 @@ const runFunctionInBatches = async (
     const end = start + batchSize;
     if (end > total) {
       console.log(`Running from ${start} to ${total}`);
-      const tx = await fn(statistics, props, start, total);
+      const tx = await fn(statistics, web3, start, total);
       console.log(tx.hash);
       console.log('');
       saveFinishedStatus(fnName, {
@@ -149,7 +150,7 @@ const runFunctionInBatches = async (
       return;
     }
     console.log(`Running from ${start} to ${end}`);
-    const tx = await fn(statistics, props, start, end);
+    const tx = await fn(statistics, web3, start, end);
     console.log(tx.hash);
     console.log('');
     saveStartStatus(fnName, end, {
@@ -176,10 +177,6 @@ const initiate = async () => {
     STATISTICS_ABI.abi,
     impersonatedSigner
   );
-
-  props = {
-    gasPrice: await getGasPrice(web3),
-  };
 };
 
 async function run() {

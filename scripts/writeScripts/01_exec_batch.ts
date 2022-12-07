@@ -1,9 +1,8 @@
 import dotenv from 'dotenv';
-import {
-  loadFetchedData,
-} from '../../utils/utils';
+import { getGasPrice, loadFetchedData } from '../../utils/utils';
 import { Contract } from 'ethers';
 import { PLAYER_STAT } from '../../utils/interface';
+import Web3 from 'web3';
 dotenv.config();
 
 const PLAYER_STAT_PATH = `./data/player_stat.json`;
@@ -14,10 +13,14 @@ let noOfAdditionalInstancesCompletedByPlayer: number[] = [];
 
 export const updateAllPlayersGlobalData = async (
   statistics: Contract,
-  props: { gasPrice: string },
-  start:number,
-  end:number
+  web3: Web3,
+  start: number,
+  end: number
 ) => {
+  const props = {
+    gasPrice: await getGasPrice(web3),
+  };
+
   const tx = await statistics.updateAllPlayersGlobalData(
     players.slice(start, end),
     noOfAdditionalInstancesCreatedByPlayer.slice(start, end),
