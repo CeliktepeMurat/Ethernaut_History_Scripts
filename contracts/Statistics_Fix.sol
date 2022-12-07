@@ -328,13 +328,13 @@ contract Statistics_Fix is Initializable {
     }
     
     function fixNoOfLevelsCompletedForAPlayer(address _player) private {
-        uint256 totalNoOfLevelsSolved = 0;
+        uint256 totalNoOfLevelsCompletedByPlayer = 0;
         for(uint256 j = 0; j < levels.length; j++) {
             if(levelFirstCompletionTime[_player][levels[j]] != 0) {
-                totalNoOfLevelsSolved++;
+                totalNoOfLevelsCompletedByPlayer++;
             }
         }
-        globalNoOfLevelsCompletedByPlayer[_player] = totalNoOfLevelsSolved;
+        globalNoOfLevelsCompletedByPlayer[_player] = totalNoOfLevelsCompletedByPlayer;
     }
 
     /**

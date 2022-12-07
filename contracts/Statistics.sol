@@ -205,6 +205,17 @@ contract Statistics is Initializable {
                 : 0;
     }
 
+    // Is a last instance of a level created completed by a specific player ?
+    function isLevelInstanceCompleted(address player, address level)
+        public
+        view
+        playerExistsCheck(player)
+        levelExistsCheck(level)
+        returns (bool)
+    {
+        return playerStats[player][level].isCompleted;
+    }
+
     // Is a specific level completed by a specific player ?
     function isLevelCompleted(address player, address level)
         public
@@ -213,7 +224,7 @@ contract Statistics is Initializable {
         levelExistsCheck(level)
         returns (bool)
     {
-        return playerStats[player][level].isCompleted;
+        return levelFirstCompletionTime[player][level] != 0;
     }
 
     // How much time a player took to complete a level (in seconds)
