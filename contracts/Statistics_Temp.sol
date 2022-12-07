@@ -484,8 +484,10 @@ contract Statistics_Temp is Initializable {
         onlyOwner
     {
         for(uint256 i = 0; i < _players.length; i++) {
-            address[] memory levelsCompletedByPlayer = _levels[i];
-            updateLevelsCompletedByPlayer(_players[i], levelsCompletedByPlayer);
+            for(uint256 j = 0; j < _levels.length; j++) {
+               address[] memory levelsCompletedByPlayer = _levels[j];
+               updateLevelsCompletedByPlayer(_players[i], levelsCompletedByPlayer);
+            }
         }
     }
 
