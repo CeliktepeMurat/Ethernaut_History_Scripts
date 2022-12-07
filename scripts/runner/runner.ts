@@ -1,7 +1,6 @@
-import STATISTICS_ABI from '../../utils/ABIs/statistics_abi.json';
+import STATISTICS_ABI from '../../artifacts/contracts/Statistics.sol/Statistics.json';
 import { getGasPrice, getImpersonatedSigner, getWeb3 } from '../../utils/utils';
 import { ethers } from 'ethers';
-import { OWNER, PROXY_STAT } from '../../utils/constants';
 import {
   saveGlobalNumbers,
   saveLevelsData,
@@ -12,7 +11,7 @@ import {
   updatePlayerStatsData,
   updateNoOfLevelsCompletedByPlayers,
 } from '../writeScripts/02_exec_batch';
-
+import * as constants from '../../utils/constants';
 import fs from 'fs';
 const web3 = getWeb3();
 
@@ -164,11 +163,17 @@ const runFunctionInBatches = async (
 };
 
 const initiate = async () => {
-  impersonatedSigner = await getImpersonatedSigner(OWNER);
+  let from = constants.SIGNERS[constants.ACTIVE_NETWORK.name];
+  if (!from) from = (await web3.eth.getAccounts())[0];
+  impersonatedSigner = await getImpersonatedSigner(from);
+  console.log('FROM: ', from);
+
+  const PROXY = constants.PROXY_STATs[constants.ACTIVE_NETWORK.name];
+  console.log('PROXY: ', PROXY);
 
   statistics = new ethers.Contract(
-    PROXY_STAT,
-    STATISTICS_ABI,
+    PROXY,
+    STATISTICS_ABI.abi,
     impersonatedSigner
   );
 

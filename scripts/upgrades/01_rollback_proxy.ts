@@ -3,15 +3,22 @@ import colors from 'colors';
 import { getImpersonatedSigner } from '../../utils/utils';
 import { ethers } from 'hardhat';
 import {
-  OWNER,
-  PROXY_ADMIN,
-  PROXY_ADMIN_CONTRACT,
-  PROXY_STAT,
+  SIGNERS,
+  PROXY_STATs,
+  PROXY_ADMINs,
+  ACTIVE_NETWORK,
+  PROXY_ADMIN_CONTRACTs,
 } from '../../utils/constants';
 dotenv.config();
 
+let OWNER = SIGNERS[ACTIVE_NETWORK.name];
+let PROXY_ADMIN = PROXY_ADMINs[ACTIVE_NETWORK.name];
+let PROXY_STAT = PROXY_STATs[ACTIVE_NETWORK.name];
+let PROXY_ADMIN_CONTRACT = PROXY_ADMIN_CONTRACTs[ACTIVE_NETWORK.name];
+
 const upgradeProxy = async () => {
   const impersonatedProxyAdmin = await getImpersonatedSigner(PROXY_ADMIN);
+  console.log('Proxy Admin: ', PROXY_ADMIN);
 
   // Deploying Exact Version of Statistics Contract
   const STATISTICS = await deploy_statistic();
