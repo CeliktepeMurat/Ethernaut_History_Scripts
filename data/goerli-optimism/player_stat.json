@@ -1,0 +1,88 @@
+{
+  "player_stat": {
+    "0x09902A56d04a9446601a0d451E07459dC5aF0820": {
+      "created_instances": 1,
+      "solved_instances": 1
+    },
+    "0x0673A3B78cFe9433226206D78263a268634B4606": {
+      "created_instances": 12,
+      "solved_instances": 7
+    },
+    "0xc205beC975ff6e010f889f443199657caaD2a432": {
+      "created_instances": 2,
+      "solved_instances": 0
+    },
+    "0x417951eac37346576Fea698f75c5C9a07F0a47F2": {
+      "created_instances": 22,
+      "solved_instances": 13
+    },
+    "0xB86d959d566FD435056339efCf67b2010A13f604": {
+      "created_instances": 4,
+      "solved_instances": 3
+    },
+    "0xb8bd7Cd691686AE58f881ed21c4180936a367FDB": {
+      "created_instances": 4,
+      "solved_instances": 2
+    },
+    "0x64F7052D86e2026908C713E6c1b4Ef7908cDcEB6": {
+      "created_instances": 15,
+      "solved_instances": 10
+    },
+    "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266": {
+      "created_instances": 2,
+      "solved_instances": 0
+    },
+    "0xe7a6E4bAF0a025bFD4bb83544C9066D36c9f5C0C": {
+      "created_instances": 19,
+      "solved_instances": 6
+    },
+    "0x284880A97453992094350ecb8988DE0A3F7475e7": {
+      "created_instances": 20,
+      "solved_instances": 18
+    },
+    "0xa786D581183af074d3592c71D687C8C602c89693": {
+      "created_instances": 4,
+      "solved_instances": 2
+    },
+    "0x0C7C15e41fb7De8C96aB9d99E7934215eC9A5AB3": {
+      "created_instances": 1,
+      "solved_instances": 1
+    },
+    "0xB8c106F2155a793A0De11785a996cFF461a017e7": {
+      "created_instances": 13,
+      "solved_instances": 9
+    },
+    "0xe0FBe1BA0E07897De07a2d4AFDf2841d146480d7": {
+      "created_instances": 1,
+      "solved_instances": 1
+    },
+    "0xF580A030d2f0E9667aB3c5c8a51Da63f086Db564": {
+      "created_instances": 13,
+      "solved_instances": 13
+    },
+    "0x732253fa9C208F89180aA652f1081319e72f2fE8": {
+      "created_instances": 1,
+      "solved_instances": 0
+    },
+    "0x2Aa5A69aB8e3990C2F0dB3a2ab059551409D8408": {
+      "created_instances": 6,
+      "solved_instances": 2
+    },
+    "0xec618f470B4115bb9c91865FA66275203E6a471b": {
+      "created_instances": 1,
+      "solved_instances": 0
+    },
+    "0xF20EB7684d0f050d092Cd2A0636f07E2f8b14C94": {
+      "created_instances": 5,
+      "solved_instances": 4
+    },
+    "0xE61a3def0921b2585e60fD870264990646B30B5c": {
+      "created_instances": 2,
+      "solved_instances": 0
+    },
+    "0x01B6938265b7e8D0BDd579c29BD3bf5c0Fa19408": {
+      "created_instances": 11,
+      "solved_instances": 10
+    }
+  }
+}
