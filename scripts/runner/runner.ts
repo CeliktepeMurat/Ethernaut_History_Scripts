@@ -1,4 +1,4 @@
-import STATISTICS_ABI from '../../utils/ABIs/statistics_abi.json';
+import STATISTICS_ABI from '../../artifacts/contracts/Statistics_Fix.sol/Statistics_Fix.json';
 import { getGasPrice, getImpersonatedSigner, getWeb3 } from '../../utils/utils';
 import { ethers } from 'ethers';
 import { OWNER, PROXY_STAT } from '../../utils/constants';
@@ -10,6 +10,7 @@ let impersonatedSigner: any, statistics: any, props: any;
 
 const TOTAL_NO_OF_PLAYERS = 1891;
 const BIG_BATCH = 100; 
+const SMALL_BATCH = 10;
 const STATUS_DIRECTORY = './data/Goerli/status.json';
 
 async function runFunctions() {
@@ -20,7 +21,7 @@ async function runFunctions() {
       'fixNoOfLevelsCompletedForPlayers',
       TOTAL_NO_OF_PLAYERS,
       start,
-      BIG_BATCH
+      SMALL_BATCH
     );
     saveFinishedStatus('fixNoOfLevelsCompletedForPlayers');
   }
@@ -106,7 +107,7 @@ const initiate = async () => {
 
   statistics = new ethers.Contract(
     PROXY_STAT,
-    STATISTICS_ABI,
+    STATISTICS_ABI.abi,
     impersonatedSigner
   );
 

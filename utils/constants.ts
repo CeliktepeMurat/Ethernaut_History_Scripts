@@ -13,7 +13,7 @@ export const NETWORKS = {
   LOCAL: {
     name: 'local',
     id: '1337',
-    url: 'http://localhost',
+    url: 'http://127.0.0.1',
     port: 8545,
     privKey: '0x' + '0'.repeat(64),
     from: 0,
