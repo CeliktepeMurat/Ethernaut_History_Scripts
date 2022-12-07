@@ -9,8 +9,7 @@ const web3 = getWeb3();
 let impersonatedSigner: any, statistics: any, props: any;
 
 const TOTAL_NO_OF_PLAYERS = 1891;
-const BIG_BATCH = 100; 
-const SMALL_BATCH = 10;
+const BIG_BATCH = 10; 
 const STATUS_DIRECTORY = './data/Goerli/status.json';
 
 async function runFunctions() {
@@ -21,7 +20,7 @@ async function runFunctions() {
       'fixNoOfLevelsCompletedForPlayers',
       TOTAL_NO_OF_PLAYERS,
       start,
-      SMALL_BATCH
+      BIG_BATCH
     );
     saveFinishedStatus('fixNoOfLevelsCompletedForPlayers');
   }
@@ -91,13 +90,15 @@ const runFunctionInBatches = async (
     console.log(`Running from ${start} to ${end}`);
     const tx = await fn(statistics, props, start, end);
     console.log(tx.hash);
-    console.log('');
     saveStartStatus(fnName, end, {
       start,
       end,
       txHash: tx.hash,
     });
-    await tx.wait();
+    const receivedTxn= await tx.wait();
+    console.log('Gas Used -> ', receivedTxn.gasUsed.toString());
+    console.log('Gas price -> ', receivedTxn.effectiveGasPrice.toString());
+    console.log('');
     start = end;
   }
 };

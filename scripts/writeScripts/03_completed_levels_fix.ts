@@ -22,6 +22,7 @@ export const fixNoOfLevelsCompletedForPlayers = async (
   start: number,
   end:number
 ) => {
+  console.log(allPlayers.slice(start, end))
   const tx = await statistics.fixNoOfLevelsCompletedForPlayers(
     allPlayers.slice(start, end),
     props
