@@ -337,6 +337,17 @@ contract Statistics_Fix is Initializable {
         globalNoOfLevelsCompletedByPlayer[_player] = totalNoOfLevelsCompletedByPlayer;
     }
 
+    function getTotalNoOfLevelsSolvedByAPlayer(address _player) public view returns(uint256) {
+        uint256 totalNoOfLevelsCompletedByPlayer = 0;
+        for(uint256 j = 0; j < levels.length; j++) {
+            if(levelFirstCompletionTime[_player][levels[j]] != 0) {
+                totalNoOfLevelsCompletedByPlayer++;
+            }
+        }
+        return totalNoOfLevelsCompletedByPlayer;
+    }
+
+
     /**
      * @dev This empty reserved space is put in place to allow future versions to add new
      * variables without shifting down storage in the inheritance chain.
