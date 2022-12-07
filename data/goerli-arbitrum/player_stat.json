@@ -1,0 +1,32 @@
+{
+  "player_stat": {
+    "0x1287b5588B6d8B6caEBf55d6600E89589705DefB": {
+      "created_instances": 15,
+      "solved_instances": 11
+    },
+    "0x865f1EB534a48DDBC8457C63eAd1E898C7DfD70E": {
+      "created_instances": 1,
+      "solved_instances": 0
+    },
+    "0xF02a21FD28c8Ec1ea3a3631fB4Da7467BBcca1a0": {
+      "created_instances": 1,
+      "solved_instances": 0
+    },
+    "0x64F7052D86e2026908C713E6c1b4Ef7908cDcEB6": {
+      "created_instances": 1,
+      "solved_instances": 1
+    },
+    "0x7168165E3109BC12411fD2138c2a5d8968e51Af1": {
+      "created_instances": 1,
+      "solved_instances": 0
+    },
+    "0x4A10b1e56109ecEBd9E3D823BF47E7e88ebF3CAE": {
+      "created_instances": 28,
+      "solved_instances": 24
+    },
+    "0xCaA295131d74F1fD93dA2AA6CB43AEa06b4424Bb": {
+      "created_instances": 7,
+      "solved_instances": 3
+    }
+  }
+}
