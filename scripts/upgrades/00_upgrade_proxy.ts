@@ -14,7 +14,7 @@ const upgradeProxy = async () => {
   const impersonatedProxyAdmin = await getImpersonatedSigner(PROXY_ADMIN);
 
   // Deploying Temporary Statistics Contract
-  const STATISTICS = await deploy_temp_statistic();
+  const STATISTICS = await deploy_fix_statistic();
 
   const proxyAdmin = await getProxyAdmin();
 
@@ -23,22 +23,22 @@ const upgradeProxy = async () => {
     .connect(impersonatedProxyAdmin)
     .upgrade(PROXY_STAT, STATISTICS);
 
-  console.log(colors.bgBlue(`Proxy Upgraded to Temporary Version!`));
+  console.log(colors.bgBlue(`Proxy Upgraded to Fix Version!`));
   console.log(colors.green(`Txn Hash >>> ${res.hash}`));
 };
 
-const deploy_temp_statistic = async () => {
-  console.log('Deploying Temporary Statistics Contract...');
+const deploy_fix_statistic = async () => {
+  console.log('Deploying Fix Statistics Contract...');
   const impersonatedSigner = await getImpersonatedSigner(OWNER);
 
   const contract = await ethers.getContractFactory(
-    'Statistics_Temp',
+    'Statistics_Fix',
     impersonatedSigner
   );
   const instance = await contract.deploy();
   await instance.deployed();
   console.log(
-    colors.green(`Temporary Statistics Contract >>> ${instance.address}`)
+    colors.green(`Fix Statistics Contract >>> ${instance.address}`)
   );
 
   return instance.address;

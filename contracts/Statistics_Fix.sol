@@ -2,8 +2,7 @@
 pragma solidity ^0.8.0;
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 
-// ORIGINAL STATISTICS CONTRACT
-contract Statistics is Initializable {
+contract Statistics_Fix is Initializable {
     address public ethernaut;
     address[] public players;
     address[] public levels;
@@ -27,10 +26,8 @@ contract Statistics is Initializable {
     mapping(address => uint256) private globalNoOfInstancesCompletedByPlayer;
     mapping(address => uint256) private globalNoOfFailedSubmissionsByPlayer;
     mapping(address => Level) private levelStats;
-    mapping(address => mapping(address => uint256))
-        private levelFirstInstanceCreationTime;
-    mapping(address => mapping(address => uint256))
-        private levelFirstCompletionTime;
+    mapping(address => mapping(address => uint256)) private levelFirstInstanceCreationTime;
+    mapping(address => mapping(address => uint256)) private levelFirstCompletionTime;
     mapping(address => mapping(address => LevelInstance)) private playerStats;
     mapping(address => bool) private playerExists;
     mapping(address => bool) private levelExists;
@@ -38,6 +35,7 @@ contract Statistics is Initializable {
         require(doesLevelExist(level), "Level doesn't exist");
         _;
     }
+
     modifier levelDoesntExistCheck(address level) {
         require(!doesLevelExist(level), "Level already exists");
         _;
@@ -51,6 +49,10 @@ contract Statistics is Initializable {
             msg.sender == ethernaut,
             "Only Ethernaut can call this function"
         );
+        _;
+    }
+    modifier onlyOwner() {
+        require(msg.sender == 0x09902A56d04a9446601a0d451E07459dC5aF0820, "Only owner can call this function");
         _;
     }
 
@@ -69,7 +71,7 @@ contract Statistics is Initializable {
             playerExists[player] = true;
         }
         // If it is the first instance of the level
-        if (playerStats[player][level].instance == address(0)) {
+        if(playerStats[player][level].instance == address(0)) {
             levelFirstInstanceCreationTime[player][level] = block.timestamp;
         }
         playerStats[player][level] = LevelInstance(
@@ -85,7 +87,7 @@ contract Statistics is Initializable {
         globalNoOfInstancesCreated++;
         globalNoOfInstancesCreatedByPlayer[player]++;
     }
-
+    
     function submitSuccess(
         address instance,
         address level,
@@ -104,7 +106,7 @@ contract Statistics is Initializable {
             "Level already completed"
         );
         // If it is the first submission in the level
-        if (levelFirstCompletionTime[player][level] == 0) {
+        if(levelFirstCompletionTime[player][level] == 0) {
             globalNoOfLevelsCompletedByPlayer[player]++;
             levelFirstCompletionTime[player][level] = block.timestamp;
         }
@@ -205,7 +207,7 @@ contract Statistics is Initializable {
                 : 0;
     }
 
-    // Is last instance of a level created completed by a specific player ?
+    // Is a specific level completed by a specific player ?
     function isLevelCompleted(address player, address level)
         public
         view
@@ -224,13 +226,9 @@ contract Statistics is Initializable {
         levelExistsCheck(level)
         returns (uint256)
     {
-        require(
-            levelFirstCompletionTime[player][level] != 0,
-            "Level not completed"
-        );
+        require(levelFirstCompletionTime[player][level] != 0, "Level not completed");
         return
-            levelFirstCompletionTime[player][level] -
-            levelFirstInstanceCreationTime[player][level];
+            levelFirstCompletionTime[player][level] - levelFirstInstanceCreationTime[player][level];
     }
 
     // Get a specific submission time per level and player
@@ -271,11 +269,7 @@ contract Statistics is Initializable {
         return globalNoOfInstancesCreated;
     }
 
-    function getTotalNoOfLevelInstancesCompleted()
-        public
-        view
-        returns (uint256)
-    {
+    function getTotalNoOfLevelInstancesCompleted() public view returns (uint256) {
         return globalNoOfInstancesCompleted;
     }
 
@@ -324,9 +318,35 @@ contract Statistics is Initializable {
     }
 
     /**
+     * Function for fixing the levels solved by players
+     */
+
+    function fixNoOfLevelsCompletedForPlayers(address[] memory _players) external onlyOwner {
+        for(uint256 i = 0; i < _players.length; i++) {
+            fixNoOfLevelsCompletedForAPlayer(_players[i]);
+        }
+    }
+    
+    function fixNoOfLevelsCompletedForAPlayer(address _player) private {
+        uint256 totalNoOfLevelsCompletedByPlayer = 0;
+        for(uint256 j = 0; j < levels.length; j++) {
+            if(levelFirstCompletionTime[_player][levels[j]] != 0) {
+                totalNoOfLevelsCompletedByPlayer++;
+            }
+        }
+        globalNoOfLevelsCompletedByPlayer[_player] = totalNoOfLevelsCompletedByPlayer;
+    }
+
+    /**
      * @dev This empty reserved space is put in place to allow future versions to add new
      * variables without shifting down storage in the inheritance chain.
      * See https://docs.openzeppelin.com/contracts/4.x/upgradeable#storage_gaps
      */
     uint256[45] private __gap;
 }
+
+/**
+ * 1. Checkpoints
+ * 2. Runner function
+ * 3. See if functions can be optimized
+ */
