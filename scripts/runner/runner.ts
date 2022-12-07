@@ -14,6 +14,7 @@ import {
 } from '../writeScripts/02_exec_batch';
 
 import fs from 'fs';
+import { fixNoOfLevelsCompletedForPlayers } from '../writeScripts/03_completed_levels_fix';
 const web3 = getWeb3();
 
 let impersonatedSigner: any, statistics: any, props: any;
@@ -23,68 +24,80 @@ const BIG_BATCH = 100;
 const SMALL_BATCH = 10;
 
 async function runFunctions() {
-  if (!isFinished('saveGlobalNumber')) {
-    const tx = await saveGlobalNumbers(statistics, props);
-    console.log(tx.hash);
-    console.log('');
-    saveFinishedStatus('saveGlobalNumber', tx.hash);
-    await tx.wait();
-  }
+  // if (!isFinished('saveGlobalNumber')) {
+  //   const tx = await saveGlobalNumbers(statistics, props);
+  //   console.log(tx.hash);
+  //   console.log('');
+  //   saveFinishedStatus('saveGlobalNumber', tx.hash);
+  //   await tx.wait();
+  // }
 
-  if (!isFinished('saveLevelsData')) {
-    const tx = await saveLevelsData(statistics, props);
-    console.log(tx.hash);
-    console.log('');
-    saveFinishedStatus('saveLevelsData', tx.hash);
-    await tx.wait();
-  }
+  // if (!isFinished('saveLevelsData')) {
+  //   const tx = await saveLevelsData(statistics, props);
+  //   console.log(tx.hash);
+  //   console.log('');
+  //   saveFinishedStatus('saveLevelsData', tx.hash);
+  //   await tx.wait();
+  // }
 
-  if (!isFinished('savePlayers')) {
-    const start = getStart('savePlayers');
+  // if (!isFinished('savePlayers')) {
+  //   const start = getStart('savePlayers');
+  //   await runFunctionInBatches(
+  //     savePlayers,
+  //     'savePlayers',
+  //     TOTAL_NO_OF_PLAYERS,
+  //     start,
+  //     BIG_BATCH
+  //   );
+  //   saveFinishedStatus('savePlayers');
+  // }
+
+  // if (!isFinished('updateAllPlayersGlobalData')) {
+  //   const start = getStart('updateAllPlayersGlobalData');
+  //   await runFunctionInBatches(
+  //     updateAllPlayersGlobalData,
+  //     'updateAllPlayersGlobalData',
+  //     TOTAL_NO_OF_PLAYERS,
+  //     start,
+  //     BIG_BATCH
+  //   );
+  //   saveFinishedStatus('updateAllPlayersGlobalData');
+  // }
+
+  // if (!isFinished('updatePlayerStatsData')) {
+  //   const start = getStart('updatePlayerStatsData');
+  //   await runFunctionInBatches(
+  //     updatePlayerStatsData,
+  //     'updatePlayerStatsData',
+  //     TOTAL_NO_OF_PLAYERS,
+  //     start,
+  //     SMALL_BATCH
+  //   );
+  //   saveFinishedStatus('updatePlayerStatsData');
+  // }
+
+  // if (!isFinished('updateNoOfLevelsCompletedByPlayers')) {
+  //   const start = getStart('updateNoOfLevelsCompletedByPlayers');
+  //   await runFunctionInBatches(
+  //     updateNoOfLevelsCompletedByPlayers,
+  //     'updateNoOfLevelsCompletedByPlayers',
+  //     TOTAL_NO_OF_PLAYERS,
+  //     start,
+  //     SMALL_BATCH
+  //   );
+  //   saveFinishedStatus('updateNoOfLevelsCompletedByPlayers');
+  // }
+
+  if (!isFinished('fixNoOfLevelsCompletedForPlayers')) {
+    const start = getStart('fixNoOfLevelsCompletedForPlayers');
     await runFunctionInBatches(
-      savePlayers,
-      'savePlayers',
+      fixNoOfLevelsCompletedForPlayers,
+      'fixNoOfLevelsCompletedForPlayers',
       TOTAL_NO_OF_PLAYERS,
       start,
       BIG_BATCH
     );
-    saveFinishedStatus('savePlayers');
-  }
-
-  if (!isFinished('updateAllPlayersGlobalData')) {
-    const start = getStart('updateAllPlayersGlobalData');
-    await runFunctionInBatches(
-      updateAllPlayersGlobalData,
-      'updateAllPlayersGlobalData',
-      TOTAL_NO_OF_PLAYERS,
-      start,
-      BIG_BATCH
-    );
-    saveFinishedStatus('updateAllPlayersGlobalData');
-  }
-
-  if (!isFinished('updatePlayerStatsData')) {
-    const start = getStart('updatePlayerStatsData');
-    await runFunctionInBatches(
-      updatePlayerStatsData,
-      'updatePlayerStatsData',
-      TOTAL_NO_OF_PLAYERS,
-      start,
-      SMALL_BATCH
-    );
-    saveFinishedStatus('updatePlayerStatsData');
-  }
-
-  if (!isFinished('updateNoOfLevelsCompletedByPlayers')) {
-    const start = getStart('updateNoOfLevelsCompletedByPlayers');
-    await runFunctionInBatches(
-      updateNoOfLevelsCompletedByPlayers,
-      'updateNoOfLevelsCompletedByPlayers',
-      TOTAL_NO_OF_PLAYERS,
-      start,
-      SMALL_BATCH
-    );
-    saveFinishedStatus('updateNoOfLevelsCompletedByPlayers');
+    saveFinishedStatus('fixNoOfLevelsCompletedForPlayers');
   }
 }
 
