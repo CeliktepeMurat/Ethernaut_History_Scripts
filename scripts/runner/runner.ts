@@ -93,25 +93,27 @@ const runFunctionInBatches = async (
       console.log(`Running from ${start} to ${total}`);
       const tx = await fn(statistics, web3, start, total);
       console.log(tx.hash);
-      console.log('');
       saveFinishedStatus(fnName, {
         start,
         total,
         txHash: tx.hash,
       });
-      await tx.wait();
+      const receivedTxn = await tx.wait();
+      console.log('Gas Used -> ', receivedTxn.gasUsed.toString());
+      console.log('Gas price -> ', receivedTxn.effectiveGasPrice.toString());
       return;
     }
     console.log(`Running from ${start} to ${end}`);
     const tx = await fn(statistics, web3, start, end);
     console.log(tx.hash);
-    console.log('');
     saveStartStatus(fnName, end, {
       start,
       end,
       txHash: tx.hash,
     });
-    await tx.wait();
+    const receivedTxn = await tx.wait();
+    console.log('Gas Used -> ', receivedTxn.gasUsed.toString());
+    console.log('Gas price -> ', receivedTxn.effectiveGasPrice.toString());
     start = end;
   }
 };
