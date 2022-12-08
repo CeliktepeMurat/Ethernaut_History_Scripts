@@ -9,20 +9,23 @@ import {
 import { updateAllPlayersGlobalData } from '../writeScripts/01_exec_batch';
 import {
   updatePlayerStatsData,
-  updateNoOfLevelsCompletedByPlayers,
 } from '../writeScripts/02_exec_batch';
 import * as constants from '../../utils/constants';
 import fs from 'fs';
 import { ACTIVE_NETWORK } from '../../utils/constants';
+import { loadFetchedData } from '../../utils/utils';
 
 const web3 = getWeb3();
-
 let impersonatedSigner: any, statistics: any;
 
-const TOTAL_NO_OF_PLAYERS = 149;
+const DATA_PATH = `./data/${ACTIVE_NETWORK.name}`
+const ALL_PLAYERS_PATH = `${DATA_PATH}/all_player_list.json`;
+const players = loadFetchedData(ALL_PLAYERS_PATH).players;
+console.log(`Total no of players: ${players.length}`)
+const TOTAL_NO_OF_PLAYERS = players.length;
 const BIG_BATCH = 100;
 const SMALL_BATCH = 10;
-const STATUS_FILE_PATH = `./data/${ACTIVE_NETWORK.name}/status.json`
+const STATUS_FILE_PATH = `${DATA_PATH}/status.json`
 
 async function runFunctions() {
   if (!isFinished('saveGlobalNumber')) {
@@ -75,18 +78,6 @@ async function runFunctions() {
       SMALL_BATCH
     );
     saveFinishedStatus('updatePlayerStatsData');
-  }
-
-  if (!isFinished('updateNoOfLevelsCompletedByPlayers')) {
-    const start = getStart('updateNoOfLevelsCompletedByPlayers');
-    await runFunctionInBatches(
-      updateNoOfLevelsCompletedByPlayers,
-      'updateNoOfLevelsCompletedByPlayers',
-      TOTAL_NO_OF_PLAYERS,
-      start,
-      SMALL_BATCH
-    );
-    saveFinishedStatus('updateNoOfLevelsCompletedByPlayers');
   }
 }
 
