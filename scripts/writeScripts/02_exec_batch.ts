@@ -3,9 +3,11 @@ import { Contract } from 'ethers';
 import { getGasPrice, loadFetchedData } from '../../utils/utils';
 import { INSTANCE, PLAYER_METRICS } from '../../utils/interface';
 import Web3 from 'web3';
+import { ACTIVE_NETWORK } from "../../utils/constants"
 dotenv.config();
 
-const PLAYER_METRICS_PATH = `./data/player_metrics.json`;
+const DATA_PATH = `data/${ACTIVE_NETWORK.name}`
+const PLAYER_METRICS_PATH = `${DATA_PATH}/player_metrics.json`;
 const playerMetrics: PLAYER_METRICS =
   loadFetchedData(PLAYER_METRICS_PATH).player_metrics;
 
@@ -31,7 +33,6 @@ export const updatePlayerStatsData = async (
   const props = {
     gasPrice: await getGasPrice(web3),
   };
-
   const tx = await statistics.updatePlayerStatsData(
     players.slice(start, end),
     levels.slice(start, end),
@@ -94,50 +95,5 @@ const fillPlayerStat = () => {
     }
   }
 };
-
-export const updateNoOfLevelsCompletedByPlayers = async (
-  statistics: Contract,
-  web3: Web3,
-  start: number,
-  end: number
-) => {
-  const props = {
-    gasPrice: await getGasPrice(web3),
-  };
-
-  const levelsSolvedByPlayers = [];
-  for (let player of allPlayers) {
-    const levelsSolvedByPlayer = getLevelsSolvedByAPlayer(allData[player]);
-    levelsSolvedByPlayers.push(levelsSolvedByPlayer);
-  }
-  const tx = await statistics.updateLevelsCompletedByPlayers(
-    allPlayers.slice(start, end),
-    levelsSolvedByPlayers.slice(start, end),
-    props
-  );
-  return tx;
-};
-
-const getLevelsSolvedByAPlayer = (levelsCreatedByPlayer: string[]) => {
-  const levelAddresses = Object.keys(levelsCreatedByPlayer);
-  const levelsSolvedByPlayer = [];
-  let levelAddress: any;
-  for (levelAddress of levelAddresses) {
-    const instancesSolvedByPlayer = levelsCreatedByPlayer[levelAddress];
-    if (isAnyInstanceSolvedByPlayer(instancesSolvedByPlayer)) {
-      levelsSolvedByPlayer.push(levelAddress);
-    }
-  }
-  return levelsSolvedByPlayer;
-};
-
-function isAnyInstanceSolvedByPlayer(instances: any) {
-  for (const instance of instances) {
-    if (instance.isCompleted) {
-      return true;
-    }
-  }
-  return false;
-}
 
 fillPlayerStat();

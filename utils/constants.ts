@@ -4,7 +4,7 @@ export const NETWORKS = {
   LOCAL: {
     name: 'local',
     id: '1337',
-    url: 'http://localhost',
+    url: 'http://127.0.0.1',
     port: 8545,
     privKey: '0x' + '0'.repeat(64),
     from: 0,
@@ -97,9 +97,9 @@ export const PROXY_ADMIN_CONTRACTs = {
   [NETWORKS.ARBITRUM_GOERLI.name]: '0x545d848827bD9e0E30794a9E53f5ab04EA71d78a',
 };
 
-// export const ACTIVE_NETWORK = NETWORKS.SEPOLIA;
+export const ACTIVE_NETWORK = NETWORKS.SEPOLIA;
 // export const ACTIVE_NETWORK = NETWORKS.GOERLI
 // export const ACTIVE_NETWORK = NETWORKS.MUMBAI;
 // export const ACTIVE_NETWORK = NETWORKS.OPTIMISM_GOERLI;
-export const ACTIVE_NETWORK = NETWORKS.ARBITRUM_GOERLI;
+// export const ACTIVE_NETWORK = NETWORKS.ARBITRUM_GOERLI;
 // export const ACTIVE_NETWORK = NETWORKS.LOCAL;

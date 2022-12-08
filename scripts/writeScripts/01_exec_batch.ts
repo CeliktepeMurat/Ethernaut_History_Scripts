@@ -3,9 +3,12 @@ import { getGasPrice, loadFetchedData } from '../../utils/utils';
 import { Contract } from 'ethers';
 import { PLAYER_STAT } from '../../utils/interface';
 import Web3 from 'web3';
+import { ACTIVE_NETWORK } from "../../utils/constants"
+
 dotenv.config();
 
-const PLAYER_STAT_PATH = `./data/player_stat.json`;
+const DATA_PATH = `data/${ACTIVE_NETWORK.name}`
+const PLAYER_STAT_PATH = `${DATA_PATH}/player_stat.json`;
 
 let players: string[] = [];
 let noOfAdditionalInstancesCreatedByPlayer: number[] = [];

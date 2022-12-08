@@ -422,19 +422,17 @@ contract Statistics_Temp is Initializable {
         uint256[] memory _levelFirstInstanceCreationTime
     ) private {
         for(uint256 j = 0; j < _levels.length; j++) {
-            if(playerStats[_player][_levels[j]].instance == address(0)) {
-                updatePlayerStatsDataForALevel(
-                    _player,
-                    _levels[j],
-                    _instances[j],
-                    _isCompleted[j],
-                    _timeCompleted[j],
-                    _timeCreated[j],
-                    _timeSubmitted[j],
-                    _levelFirstCompletedTime[j],
-                    _levelFirstInstanceCreationTime[j]
-                );
-            }
+            updatePlayerStatsDataForALevel(
+                _player,
+                _levels[j],
+                _instances[j],
+                _isCompleted[j],
+                _timeCompleted[j],
+                _timeCreated[j],
+                _timeSubmitted[j],
+                _levelFirstCompletedTime[j],
+                _levelFirstInstanceCreationTime[j]
+            );
         }
     }
 
@@ -464,28 +462,13 @@ contract Statistics_Temp is Initializable {
         // we need to update the level first completed time and level first instance creation time
         // because these values are earlier than the ones present in the contract
         if(_levelFirstCompletedTime != 0) {
+            if(levelFirstCompletionTime[_player][_level] == 0) {
+                globalNoOfLevelsCompletedByPlayer[_player]++;
+            }
             levelFirstCompletionTime[_player][_level] = _levelFirstCompletedTime;
         }
         if(_levelFirstInstanceCreationTime != 0) {
             levelFirstInstanceCreationTime[_player][_level] = _levelFirstInstanceCreationTime;
-        }
-    }
-
-    function updateLevelsCompletedByPlayer(address _player, address[] memory _levels) private {
-        for(uint256 i = 0; i < _levels.length; i++) {
-            if(levelFirstCompletionTime[_player][_levels[i]] == 0) {
-                globalNoOfLevelsCompletedByPlayer[_player]++;
-            }
-        }
-    }
-
-    function updateLevelsCompletedByPlayers(address[] memory _players, address[][] memory _levels) 
-        public 
-        onlyOwner
-    {
-        for(uint256 i = 0; i < _players.length; i++) {
-            address[] memory levelsCompletedByPlayer = _levels[i];
-            updateLevelsCompletedByPlayer(_players[i], levelsCompletedByPlayer);
         }
     }
 
