@@ -19,10 +19,5 @@
     "isFinished": false,
     "start": 0,
     "txInfo": []
-  },
-  "updateNoOfLevelsCompletedByPlayers": {
-    "isFinished": false,
-    "start": 0,
-    "txInfo": []
   }
 }
