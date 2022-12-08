@@ -2,7 +2,7 @@
 export const NETWORKS = {
   UNDEFINED: undefined,
   LOCAL: {
-    name: 'sepolia',
+    name: 'local',
     id: '1337',
     url: 'http://127.0.0.1',
     port: 8545,
