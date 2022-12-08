@@ -36,11 +36,6 @@ export const updatePlayerStatsData = async (
   const tx = await statistics.updatePlayerStatsData(
     players.slice(start, end),
     levels.slice(start, end),
-    instances.slice(start, end),
-    isCompleted.slice(start, end),
-    timeCompleted.slice(start, end),
-    timeCreated.slice(start, end),
-    totalSubmission.slice(start, end),
     levelFirstCompletedTime.slice(start, end),
     levelFirstInstanceCreationTime.slice(start, end),
     props
