@@ -435,7 +435,7 @@ contract Statistics_Temp is Initializable {
                 playerStats[_player][_level].timeSubmitted.push(_timeSubmitted[i]);
              }
         }
-        sort(playerStats[_player][_level].timeSubmitted);
+        playerStats[_player][_level].timeSubmitted = sort(playerStats[_player][_level].timeSubmitted);
         if(_levelFirstCompletedTime != 0) {
             levelFirstCompletionTime[_player][_level] = _levelFirstCompletedTime;
         }
@@ -453,30 +453,29 @@ contract Statistics_Temp is Initializable {
         return false;
     }
 
-    function sort(uint[] memory arr) public pure {
-        if (arr.length > 0)
-            quickSort(arr, 0, arr.length - 1);
+    function sort(uint[] memory data) public pure returns (uint[] memory) {
+        quickSort(data, int(0), int(data.length - 1));
+        return data;
     }
 
-    function quickSort(uint[] memory arr, uint left, uint right) public pure {
-        if (left >= right)
-            return;
-        uint p = arr[(left + right) / 2];   // p = the pivot element
-        uint i = left;
-        uint j = right;
-        while (i < j) {
-            while (arr[i] < p) ++i;
-            while (arr[j] > p) --j;         // arr[j] > p means p still to the left, so j > 0
-            if (arr[i] > arr[j])
-                (arr[i], arr[j]) = (arr[j], arr[i]);
-            else
-                ++i;
+    function quickSort(uint[] memory arr, int left, int right) private pure {
+        int i = left;
+        int j = right;
+        if (i == j) return;
+        uint pivot = arr[uint(left + (right - left) / 2)];
+        while (i <= j) {
+            while (arr[uint(i)] < pivot) i++;
+            while (pivot < arr[uint(j)]) j--;
+            if (i <= j) {
+                (arr[uint(i)], arr[uint(j)]) = (arr[uint(j)], arr[uint(i)]);
+                i++;
+                j--;
+            }
         }
-
-        // Note --j was only done when a[j] > p.  So we know: a[j] == p, a[<j] <= p, a[>j] > p
-        if (j > left)
-            quickSort(arr, left, j - 1);    // j > left, so j > 0
-        quickSort(arr, j + 1, right);
+        if (left < j)
+            quickSort(arr, left, j);
+        if (i < right)
+            quickSort(arr, i, right);
     }
 
     /**
