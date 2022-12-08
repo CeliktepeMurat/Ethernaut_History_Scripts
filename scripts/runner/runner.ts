@@ -35,7 +35,7 @@ async function runFunctions() {
       'updatePlayerStatsData',
       TOTAL_NO_OF_PLAYERS,
       start,
-      SMALL_BATCH
+      BIG_BATCH
     );
     saveFinishedStatus('updatePlayerStatsData');
   }
