@@ -33,10 +33,6 @@ export const updatePlayerStatsData = async (
   const props = {
     gasPrice: await getGasPrice(web3),
   };
-  console.log("Players")
-  console.log(players.slice(start, end))
-  console.log("Levels")
-  console.log(levels.slice(start, end))
   const tx = await statistics.updatePlayerStatsData(
     players.slice(start, end),
     levels.slice(start, end),
