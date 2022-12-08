@@ -34,11 +34,9 @@ export const savePlayers = async (
   const ALL_PLAYERS_PATH = `${DATA_PATH}/all_player_list.json`;
   const players = loadFetchedData(ALL_PLAYERS_PATH).players;
   let txn;
-
   const props = {
     gasPrice: await getGasPrice(web3),
   };
-  console.log(players.slice(start, end))
   txn = await statistics.updatePlayers(players.slice(start, end), props);
   return txn;
 };

@@ -106,40 +106,11 @@ export const updateNoOfLevelsCompletedByPlayers = async (
   const props = {
     gasPrice: await getGasPrice(web3),
   };
-
-  const levelsSolvedByPlayers = [];
-  for (let player of allPlayers) {
-    const levelsSolvedByPlayer = getLevelsSolvedByAPlayer(allData[player]);
-    levelsSolvedByPlayers.push(levelsSolvedByPlayer);
-  }
   const tx = await statistics.updateLevelsCompletedByPlayers(
     allPlayers.slice(start, end),
-    levelsSolvedByPlayers.slice(start, end),
     props
   );
   return tx;
 };
-
-const getLevelsSolvedByAPlayer = (levelsCreatedByPlayer: string[]) => {
-  const levelAddresses = Object.keys(levelsCreatedByPlayer);
-  const levelsSolvedByPlayer = [];
-  let levelAddress: any;
-  for (levelAddress of levelAddresses) {
-    const instancesSolvedByPlayer = levelsCreatedByPlayer[levelAddress];
-    if (isAnyInstanceSolvedByPlayer(instancesSolvedByPlayer)) {
-      levelsSolvedByPlayer.push(levelAddress);
-    }
-  }
-  return levelsSolvedByPlayer;
-};
-
-function isAnyInstanceSolvedByPlayer(instances: any) {
-  for (const instance of instances) {
-    if (instance.isCompleted) {
-      return true;
-    }
-  }
-  return false;
-}
 
 fillPlayerStat();

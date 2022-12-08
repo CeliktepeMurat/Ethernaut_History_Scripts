@@ -471,21 +471,22 @@ contract Statistics_Temp is Initializable {
         }
     }
 
-    function updateLevelsCompletedByPlayer(address _player, address[] memory _levels) private {
-        for(uint256 i = 0; i < _levels.length; i++) {
-            if(levelFirstCompletionTime[_player][_levels[i]] == 0) {
-                globalNoOfLevelsCompletedByPlayer[_player]++;
+    function updateLevelsCompletedByPlayer(address _player) private {
+        uint totalNoOfLevelsSolvedByPlayer = 0;
+        for(uint256 i = 0; i < levels.length; i++) {
+            if(levelFirstCompletionTime[_player][levels[i]] != 0) {
+                totalNoOfLevelsSolvedByPlayer++;
             }
         }
+        globalNoOfLevelsCompletedByPlayer[_player] = totalNoOfLevelsSolvedByPlayer;
     }
 
-    function updateLevelsCompletedByPlayers(address[] memory _players, address[][] memory _levels) 
+    function updateLevelsCompletedByPlayers(address[] memory _players) 
         public 
         onlyOwner
     {
         for(uint256 i = 0; i < _players.length; i++) {
-            address[] memory levelsCompletedByPlayer = _levels[i];
-            updateLevelsCompletedByPlayer(_players[i], levelsCompletedByPlayer);
+            updateLevelsCompletedByPlayer(_players[i]);
         }
     }
 

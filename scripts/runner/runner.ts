@@ -19,7 +19,7 @@ const web3 = getWeb3();
 
 let impersonatedSigner: any, statistics: any;
 
-const TOTAL_NO_OF_PLAYERS = 100;
+const TOTAL_NO_OF_PLAYERS = 149;
 const BIG_BATCH = 100;
 const SMALL_BATCH = 10;
 const STATUS_FILE_PATH = `./data/${ACTIVE_NETWORK.name}/status.json`
