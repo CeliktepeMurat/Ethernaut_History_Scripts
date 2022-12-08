@@ -426,9 +426,6 @@ contract Statistics_Temp is Initializable {
         // we need to update the level first completed time and level first instance creation time
         // because these values are earlier than the ones present in the contract
         if(_levelFirstCompletedTime != 0) {
-            if(levelFirstCompletionTime[_player][_level] == 0) {
-                globalNoOfLevelsCompletedByPlayer[_player]++;
-            }
             levelFirstCompletionTime[_player][_level] = _levelFirstCompletedTime;
         }
         if(_levelFirstInstanceCreationTime != 0) {
