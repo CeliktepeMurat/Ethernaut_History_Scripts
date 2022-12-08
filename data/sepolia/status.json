@@ -1,54 +1,28 @@
 {
   "saveGlobalNumber": {
-    "isFinished": true,
-    "txInfo": "0x831910f33312427477b00b11bb3ae81fb08df3fc3a6b1d8895201ea387d7cab5"
+    "isFinished": false
   },
   "saveLevelsData": {
-    "isFinished": true,
-    "txInfo": "0xf64e6ea4faea868d08a45e1d7211092234ae98a235d690fbd6e64eec91a6f268"
+    "isFinished": false
   },
   "savePlayers": {
-    "isFinished": true,
+    "isFinished": false,
     "start": 0,
-    "txInfo": [
-      {
-        "start": 0,
-        "total": 10,
-        "txHash": "0x6de7571bc187d8aa9e1f96b3fc4c953237bcde251272c9e3f9a4aa89d1dc4efa"
-      }
-    ]
+    "txInfo": []
   },
   "updateAllPlayersGlobalData": {
-    "isFinished": true,
+    "isFinished": false,
     "start": 0,
-    "txInfo": [
-      {
-        "start": 0,
-        "total": 10,
-        "txHash": "0x10bcf69ba8756dbf7463bf79f79b5e477c149077db4f4cd37a14e28f4bf3ce93"
-      }
-    ]
+    "txInfo": []
   },
   "updatePlayerStatsData": {
-    "isFinished": true,
-    "start": 10,
-    "txInfo": [
-      {
-        "start": 0,
-        "end": 10,
-        "txHash": "0x4bd2e5fa2bbd35972273d1529f6f5103d58221cc17f47f0e47a664846b8f8584"
-      }
-    ]
+    "isFinished": false,
+    "start": 0,
+    "txInfo": []
   },
   "updateNoOfLevelsCompletedByPlayers": {
-    "isFinished": true,
-    "start": 10,
-    "txInfo": [
-      {
-        "start": 0,
-        "end": 10,
-        "txHash": "0xf0eca7466f93ab40006f8324671619462dfc5257641cd9f99f7e85fe88fd9574"
-      }
-    ]
+    "isFinished": false,
+    "start": 0,
+    "txInfo": []
   }
 }
