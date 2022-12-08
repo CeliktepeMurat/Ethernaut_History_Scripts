@@ -1,6 +1,7 @@
 {
   "saveGlobalNumber": {
-    "isFinished": false
+    "isFinished": true,
+    "txInfo": "0x2b70b25238ff4bba937f340286382f88b773fa57eaa882aa83a8ce4c88dfcf1c"
   },
   "saveLevelsData": {
     "isFinished": false

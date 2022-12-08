@@ -1,4 +1,4 @@
-import STATISTICS_ABI from '../../artifacts/contracts/Statistics.sol/Statistics.json';
+import STATISTICS_ABI from '../../artifacts/contracts/Statistics_Temp.sol/Statistics_Temp.json';
 import { getImpersonatedSigner, getWeb3 } from '../../utils/utils';
 import { ethers } from 'ethers';
 import {
@@ -13,14 +13,16 @@ import {
 } from '../writeScripts/02_exec_batch';
 import * as constants from '../../utils/constants';
 import fs from 'fs';
+import { ACTIVE_NETWORK } from '../../utils/constants';
 
 const web3 = getWeb3();
 
 let impersonatedSigner: any, statistics: any;
 
-const TOTAL_NO_OF_PLAYERS = 1891;
+const TOTAL_NO_OF_PLAYERS = 100;
 const BIG_BATCH = 100;
 const SMALL_BATCH = 10;
+const STATUS_FILE_PATH = `./data/${ACTIVE_NETWORK.name}/status.json`
 
 async function runFunctions() {
   if (!isFinished('saveGlobalNumber')) {
@@ -89,7 +91,7 @@ async function runFunctions() {
 }
 
 const isFinished = (fnName: string) => {
-  const status = JSON.parse(fs.readFileSync(`./data/status.json`).toString());
+  const status = JSON.parse(fs.readFileSync(STATUS_FILE_PATH).toString());
   if (!status[fnName].isFinished) {
     console.log(`Running ${fnName}`);
   }
@@ -97,10 +99,10 @@ const isFinished = (fnName: string) => {
 };
 
 const saveFinishedStatus = (fnName: string, txInfo?: any) => {
-  const status = JSON.parse(fs.readFileSync(`./data/status.json`).toString());
+  const status = JSON.parse(fs.readFileSync(STATUS_FILE_PATH).toString());
   status[fnName].isFinished = true;
   status[fnName] = getUpdatedFnInfo(txInfo, status[fnName]);
-  fs.writeFileSync(`./data/status.json`, JSON.stringify(status, null, 2));
+  fs.writeFileSync(STATUS_FILE_PATH, JSON.stringify(status, null, 2));
 };
 
 const getUpdatedFnInfo = (txInfo: any, fnStatus: any) => {
@@ -116,14 +118,14 @@ const getUpdatedFnInfo = (txInfo: any, fnStatus: any) => {
 };
 
 const saveStartStatus = (fnName: string, start: number, txData: any) => {
-  const status = JSON.parse(fs.readFileSync(`./data/status.json`).toString());
+  const status = JSON.parse(fs.readFileSync(STATUS_FILE_PATH).toString());
   status[fnName].start = start;
   status[fnName] = getUpdatedFnInfo(txData, status[fnName]);
-  fs.writeFileSync(`./data/status.json`, JSON.stringify(status, null, 2));
+  fs.writeFileSync(STATUS_FILE_PATH, JSON.stringify(status, null, 2));
 };
 
 const getStart = (fnName: string) => {
-  const status = JSON.parse(fs.readFileSync(`./data/status.json`).toString());
+  const status = JSON.parse(fs.readFileSync(STATUS_FILE_PATH).toString());
   return status[fnName].start;
 };
 

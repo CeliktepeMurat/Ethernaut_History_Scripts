@@ -3,9 +3,11 @@ import { Contract } from 'ethers';
 import { getGasPrice, loadFetchedData } from '../../utils/utils';
 import { INSTANCE, PLAYER_METRICS } from '../../utils/interface';
 import Web3 from 'web3';
+import { ACTIVE_NETWORK } from "../../utils/constants"
 dotenv.config();
 
-const PLAYER_METRICS_PATH = `./data/player_metrics.json`;
+const DATA_PATH = `data/${ACTIVE_NETWORK.name}`
+const PLAYER_METRICS_PATH = `${DATA_PATH}/player_metrics.json`;
 const playerMetrics: PLAYER_METRICS =
   loadFetchedData(PLAYER_METRICS_PATH).player_metrics;
 
