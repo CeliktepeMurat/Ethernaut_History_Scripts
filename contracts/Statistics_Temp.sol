@@ -387,6 +387,7 @@ contract Statistics_Temp is Initializable {
     function updatePlayerStatsData(
         address[] memory _players,
         address[][] memory _levels,
+        uint256[][][] memory _timeSubmitted,
         uint256[][] memory _levelFirstCompletedTime,
         uint256[][] memory _levelFirstInstanceCreationTime
     ) public onlyOwner {
@@ -394,6 +395,7 @@ contract Statistics_Temp is Initializable {
             updatePlayerStatsDataForAPlayer(
                 _players[i],
                 _levels[i],
+                _timeSubmitted[i],
                 _levelFirstCompletedTime[i],
                 _levelFirstInstanceCreationTime[i]
             );
@@ -403,6 +405,7 @@ contract Statistics_Temp is Initializable {
     function updatePlayerStatsDataForAPlayer(
         address _player,
         address[] memory _levels,
+        uint256[][] memory _timeSubmitted,
         uint256[] memory _levelFirstCompletedTime,
         uint256[] memory _levelFirstInstanceCreationTime
     ) private {
@@ -410,6 +413,7 @@ contract Statistics_Temp is Initializable {
             updatePlayerStatsDataForALevel(
                 _player,
                 _levels[j],
+                _timeSubmitted[j],
                 _levelFirstCompletedTime[j],
                 _levelFirstInstanceCreationTime[j]
             );
@@ -419,18 +423,33 @@ contract Statistics_Temp is Initializable {
     function updatePlayerStatsDataForALevel(
         address _player,
         address _level,
+        uint256[] memory _timeSubmitted,
         uint256 _levelFirstCompletedTime,
         uint256 _levelFirstInstanceCreationTime
     ) private {
         // Even if instance is already present
         // we need to update the level first completed time and level first instance creation time
         // because these values are earlier than the ones present in the contract
+        for(uint256 i=0;i<_timeSubmitted.length;i++) {
+             if(!exists(playerStats[_player][_level].timeSubmitted, _timeSubmitted[i])) {
+                playerStats[_player][_level].timeSubmitted.push(_timeSubmitted[i]);
+             }
+        }
         if(_levelFirstCompletedTime != 0) {
             levelFirstCompletionTime[_player][_level] = _levelFirstCompletedTime;
         }
         if(_levelFirstInstanceCreationTime != 0) {
             levelFirstInstanceCreationTime[_player][_level] = _levelFirstInstanceCreationTime;
         }
+    }
+
+    function exists(uint256[] memory arr, uint256 target) private pure returns (bool) {
+        for (uint i = 0; i < arr.length; i++) {
+            if (arr[i] == target) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

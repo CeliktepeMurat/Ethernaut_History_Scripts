@@ -1,7 +1,28 @@
 {
   "updatePlayerStatsData": {
     "isFinished": false,
-    "start": 0,
-    "txInfo": []
+    "start": 40,
+    "txInfo": [
+      {
+        "start": 0,
+        "end": 10,
+        "txHash": "0xdb0f8210d2a2c899ed2575f5c48a537910be7446e65d6a58c247686cd42b2e83"
+      },
+      {
+        "start": 10,
+        "end": 20,
+        "txHash": "0xf09eb05b88deef2e96b48dd029bf9aefcf530cc7e0a2146f0a387688ee291cf8"
+      },
+      {
+        "start": 20,
+        "end": 30,
+        "txHash": "0xfefe5e3610976216d37d5b4bddd945d4ab94d8ad847a40c006f54b55105b703d"
+      },
+      {
+        "start": 30,
+        "end": 40,
+        "txHash": "0xcd37ed92a2b1784fd317ed04d74aced58f541cfe608a892b3c4d8fa3134830d1"
+      }
+    ]
   }
 }
