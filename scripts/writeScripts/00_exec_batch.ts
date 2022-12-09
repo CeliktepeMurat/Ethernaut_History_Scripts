@@ -7,7 +7,7 @@ import { ACTIVE_NETWORK } from '../../utils/constants';
 
 dotenv.config();
 
-const DATA_PATH = `data/${ACTIVE_NETWORK.name}`
+const DATA_PATH = `data/${ACTIVE_NETWORK.name}`;
 
 export const saveGlobalNumbers = async (statistics: Contract, web3: Web3) => {
   const TOTAL_NUMBERS_PATH = `${DATA_PATH}/total_instance_numbers.json`;
@@ -29,7 +29,8 @@ export const savePlayers = async (
   statistics: Contract,
   web3: Web3,
   start: number,
-  end: number
+  end: number,
+  player_list?: string[]
 ) => {
   const ALL_PLAYERS_PATH = `${DATA_PATH}/all_player_list.json`;
   const players = loadFetchedData(ALL_PLAYERS_PATH).players;
@@ -37,7 +38,10 @@ export const savePlayers = async (
   const props = {
     gasPrice: await getGasPrice(web3),
   };
-  txn = await statistics.updatePlayers(players.slice(start, end), props);
+
+  txn = player_list
+    ? await statistics.updatePlayers(player_list, props)
+    : await statistics.updatePlayers(players.slice(start, end), props);
   return txn;
 };
 
