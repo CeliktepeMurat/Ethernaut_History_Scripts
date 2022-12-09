@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 import { getGasPrice, loadFetchedData } from '../../utils/utils';
 import { Contract } from 'ethers';
-import { TOTAL_NUMBERS_STAT } from '../../utils/interface';
+import { LEVEL_FACTORY_STAT, TOTAL_NUMBERS_STAT } from '../../utils/interface';
 import Web3 from 'web3';
 import { ACTIVE_NETWORK } from '../../utils/constants';
 
@@ -52,13 +52,22 @@ export const savePlayers = async (
   return txn;
 };
 
-export const saveLevelsData = async (statistics: Contract, web3: Web3) => {
+export const saveLevelsData = async (
+  statistics: Contract,
+  web3: Web3,
+  level_stat_opt?: any
+) => {
   const LEVEL_STATS_PATH = `${DATA_PATH}/level_stat.json`;
-  const level_stats = loadFetchedData(LEVEL_STATS_PATH).level_stat;
+
+  let txn;
 
   const props = {
     gasPrice: await getGasPrice(web3),
   };
+
+  const level_stats = level_stat_opt
+    ? level_stat_opt.level_stats
+    : loadFetchedData(LEVEL_STATS_PATH).level_stat;
 
   const levelAddresses = Object.keys(level_stats);
 
@@ -71,12 +80,13 @@ export const saveLevelsData = async (statistics: Contract, web3: Web3) => {
     noOfCreatedInstances.push(level_stats[levelAddresses[i]].created_instances);
     noOfSolvedInstances.push(level_stats[levelAddresses[i]].solved_instances);
   }
-  let txn;
+
   txn = await statistics.updateAllLevelData(
     levelAddressesNew,
     noOfCreatedInstances,
     noOfSolvedInstances,
     props
   );
+
   return txn;
 };
