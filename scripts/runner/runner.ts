@@ -37,7 +37,7 @@ async function runFunctions() {
       start,
       SMALL_BATCH
     );
-    // saveFinishedStatus('updatePlayerStatsData');
+    saveFinishedStatus('updatePlayerStatsData');
   }
 }
 

@@ -72,12 +72,6 @@ const parseData = (dataFromContract: any, historicalData:any) => {
 const combine = (dataFromContract: any, historicalData: any) => { 
   const dataFromContractConverted = dataFromContract.map((i: any) => i.toNumber()).filter(Boolean)
   const combinedData = new Set([...historicalData, ...dataFromContractConverted]) 
-  console.log("Historical")
-  console.log(historicalData)
-  console.log("From contract")
-  console.log(dataFromContractConverted)
-  console.log("Combined")
-  console.log(combinedData)
   return Array.from(combinedData).sort()
 }
 
