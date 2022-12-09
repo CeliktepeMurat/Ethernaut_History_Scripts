@@ -3,12 +3,12 @@ import { Contract } from 'ethers';
 import { getGasPrice, loadFetchedData } from '../../utils/utils';
 import { INSTANCE, PLAYER_METRICS } from '../../utils/interface';
 import Web3 from 'web3';
-import { ACTIVE_NETWORK } from "../../utils/constants"
+import { ACTIVE_NETWORK } from '../../utils/constants';
 dotenv.config();
 
-const DATA_PATH = `data/${ACTIVE_NETWORK.name}`
+const DATA_PATH = `data/${ACTIVE_NETWORK.name}`;
 const PLAYER_METRICS_PATH = `${DATA_PATH}/player_metrics.json`;
-const playerMetrics: PLAYER_METRICS =
+let playerMetrics: PLAYER_METRICS =
   loadFetchedData(PLAYER_METRICS_PATH).player_metrics;
 
 // PARAMS
@@ -28,11 +28,15 @@ export const updatePlayerStatsData = async (
   statistics: Contract,
   web3: Web3,
   start: number,
-  end: number
+  end: number,
+  metrics?: PLAYER_METRICS
 ) => {
   const props = {
     gasPrice: await getGasPrice(web3),
   };
+  // fill the arrays with data
+  fillPlayerStat(metrics);
+
   const tx = await statistics.updatePlayerStatsData(
     players.slice(start, end),
     levels.slice(start, end),
@@ -48,7 +52,9 @@ export const updatePlayerStatsData = async (
   return tx;
 };
 
-const fillPlayerStat = () => {
+const fillPlayerStat = (metrics?: PLAYER_METRICS) => {
+  metrics ? (playerMetrics = metrics) : (playerMetrics = playerMetrics);
+
   let player_metrics = Object.keys(playerMetrics);
   let level_metrics = Object.values(playerMetrics);
   allData = loadFetchedData(PLAYER_METRICS_PATH).player_metrics;
@@ -95,7 +101,7 @@ const fillPlayerStat = () => {
     }
   }
   // remove zeroes in total submission
-  totalSubmission = totalSubmission.map(a=>a.map(b=>b.filter(c=>c!=0)))
+  totalSubmission = totalSubmission.map((a) =>
+    a.map((b) => b.filter((c) => c != 0))
+  );
 };
-
-fillPlayerStat();
