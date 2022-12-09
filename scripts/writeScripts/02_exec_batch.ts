@@ -33,11 +33,15 @@ export const updatePlayerStatsData = async (
   const props = {
     gasPrice: await getGasPrice(web3),
   };
-  const data = await statistics.getSubmittedTimeForAllPlayersAndLevels(
+  let dataFromContract = await statistics.getSubmittedTimeForAllPlayersAndLevels(
     players.slice(start, end),
     levels.slice(start, end)
   )
-  console.log(data)
+  totalSubmission = totalSubmission.slice(start, end).map(a=>a.map(b=>b.filter(c=>c!=0)))
+  const result = parseData(dataFromContract, totalSubmission)
+  console.log(result)
+  // console.log(data)
+  // console.log(totalSubmission.slice(start, end))
   // const tx = await statistics.updatePlayerStatsData(
   //   players.slice(start, end),
   //   levels.slice(start, end),
@@ -52,6 +56,24 @@ export const updatePlayerStatsData = async (
   // );
   // return tx;
 };
+
+const parseData = (dataFromContract: any, historicalData:any) => { 
+  for (let i = 0; i < dataFromContract.length; i++) { 
+    for (let j = 0; j < dataFromContract[i].length; j++) { 
+      historicalData[i][j] = combine(
+        dataFromContract[i][j],
+        historicalData[i][j]
+      )
+    }
+  }
+  return historicalData
+}
+
+const combine = (dataFromContract: any, historicalData: any) => { 
+  const dataFromContractConverted = dataFromContract.map((i: any) => i.toNumber()).filter(Boolean)
+  const combinedData = new Set([...historicalData, ...dataFromContractConverted]) 
+  return Array.from(combinedData).sort()
+}
 
 const fillPlayerStat = () => {
   let player_metrics = Object.keys(playerMetrics);
