@@ -43,7 +43,7 @@ export const updatePlayerStatsData = async (
   )
   // console.log("From contract")
   // console.log(dataFromContract)
-  const correctedData = parseData(dataFromContract, totalSubmission.slice(start, end))
+  const correctedData = correctData(dataFromContract, totalSubmission.slice(start, end))
   // console.log("From data")
   // console.log(totalSubmission.slice(start, end))
   // console.log("Corrected")
@@ -57,7 +57,7 @@ export const updatePlayerStatsData = async (
   return tx;
 };
 
-const parseData = (dataFromContract: any, historicalData:any) => { 
+const correctData = (dataFromContract: any, historicalData:any) => { 
   for (let i = 0; i < dataFromContract.length; i++) { 
     for (let j = 0; j < dataFromContract[i].length; j++) { 
       historicalData[i][j] = combine(
