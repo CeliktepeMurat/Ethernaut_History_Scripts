@@ -343,6 +343,42 @@ contract Statistics_Temp is Initializable {
         return finalData;
     }
 
+    function updatePlayerStatsData(
+        address[] memory _players,
+        address[][] memory _levels,
+        uint256[][][] memory _timeSubmitted
+    ) public onlyOwner {
+        for (uint256 i = 0; i < _players.length; i++) {
+            updatePlayerStatsDataForAPlayer(
+                _players[i],
+                _levels[i],
+                _timeSubmitted[i]
+            );
+        }
+    }
+
+    function updatePlayerStatsDataForAPlayer(
+        address _player,
+        address[] memory _levels,
+        uint256[][] memory _timeSubmitted
+    ) private {
+        for(uint256 j = 0; j < _levels.length; j++) {
+            updatePlayerStatsDataForALevel(
+                _player,
+                _levels[j],
+                _timeSubmitted[j]
+            );
+        }
+    }
+
+    function updatePlayerStatsDataForALevel(
+        address _player,
+        address _level,
+        uint256[] memory _timeSubmitted
+    ) private {
+        playerStats[_player][_level].timeSubmitted = _timeSubmitted;
+    }
+
     /**
      * @dev This empty reserved space is put in place to allow future versions to add new
      * variables without shifting down storage in the inheritance chain.

@@ -33,28 +33,28 @@ export const updatePlayerStatsData = async (
   const props = {
     gasPrice: await getGasPrice(web3),
   };
+  // console.log(`players`)
+  // console.log(players.slice(start, end))
+  // console.log('levels')
+  // console.log(levels.slice(start, end))
   let dataFromContract = await statistics.getSubmittedTimeForAllPlayersAndLevels(
     players.slice(start, end),
     levels.slice(start, end)
   )
-  totalSubmission = totalSubmission.slice(start, end).map(a=>a.map(b=>b.filter(c=>c!=0)))
-  const result = parseData(dataFromContract, totalSubmission)
-  console.log(result)
-  // console.log(data)
+  // console.log("From contract")
+  // console.log(dataFromContract)
+  const correctedData = parseData(dataFromContract, totalSubmission.slice(start, end))
+  // console.log("From data")
   // console.log(totalSubmission.slice(start, end))
-  // const tx = await statistics.updatePlayerStatsData(
-  //   players.slice(start, end),
-  //   levels.slice(start, end),
-  //   instances.slice(start, end),
-  //   isCompleted.slice(start, end),
-  //   timeCompleted.slice(start, end),
-  //   timeCreated.slice(start, end),
-  //   totalSubmission.slice(start, end),
-  //   levelFirstCompletedTime.slice(start, end),
-  //   levelFirstInstanceCreationTime.slice(start, end),
-  //   props
-  // );
-  // return tx;
+  // console.log("Corrected")
+  // console.log(correctedData)
+  const tx = await statistics.updatePlayerStatsData(
+    players.slice(start, end),
+    levels.slice(start, end),
+    correctedData,
+    props
+  );
+  return tx;
 };
 
 const parseData = (dataFromContract: any, historicalData:any) => { 
@@ -72,6 +72,12 @@ const parseData = (dataFromContract: any, historicalData:any) => {
 const combine = (dataFromContract: any, historicalData: any) => { 
   const dataFromContractConverted = dataFromContract.map((i: any) => i.toNumber()).filter(Boolean)
   const combinedData = new Set([...historicalData, ...dataFromContractConverted]) 
+  console.log("Historical")
+  console.log(historicalData)
+  console.log("From contract")
+  console.log(dataFromContractConverted)
+  console.log("Combined")
+  console.log(combinedData)
   return Array.from(combinedData).sort()
 }
 
@@ -121,6 +127,7 @@ const fillPlayerStat = () => {
       }
     }
   }
+  totalSubmission = totalSubmission.map(a=>a.map(b=>b.filter(c=>c!=0)))
 };
 
 fillPlayerStat();
