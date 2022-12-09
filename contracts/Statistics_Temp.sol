@@ -452,15 +452,16 @@ contract Statistics_Temp is Initializable {
             playerStats[_player][_level].isCompleted = _isCompleted;
             playerStats[_player][_level].timeCompleted = _timeCompleted;
             playerStats[_player][_level].timeCreated = _timeCreated;
-            if(_timeSubmitted.length > 0) {
-                for(uint256 i = 0; i < _timeSubmitted.length; i++) {
+        }
+        // Even if instance is already present
+        // we need to update the level first completed time, level first instance creation time, time submitted
+        if(_timeSubmitted.length > 0) {
+            for(uint256 i = 0; i < _timeSubmitted.length; i++) {
+                if(_timeSubmitted[i]!=0) {
                     playerStats[_player][_level].timeSubmitted.push(_timeSubmitted[i]);
                 }
             }
         }
-        // Even if instance is already present
-        // we need to update the level first completed time and level first instance creation time
-        // because these values are earlier than the ones present in the contract
         if(_levelFirstCompletedTime != 0) {
             if(levelFirstCompletionTime[_player][_level] == 0) {
                 globalNoOfLevelsCompletedByPlayer[_player]++;
