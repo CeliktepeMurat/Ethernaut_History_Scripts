@@ -9,7 +9,11 @@ dotenv.config();
 
 const DATA_PATH = `data/${ACTIVE_NETWORK.name}`;
 
-export const saveGlobalNumbers = async (statistics: Contract, web3: Web3) => {
+export const saveGlobalNumbers = async (
+  statistics: Contract,
+  web3: Web3,
+  numbers?: number[]
+) => {
   const TOTAL_NUMBERS_PATH = `${DATA_PATH}/total_instance_numbers.json`;
   const total_numbers: TOTAL_NUMBERS_STAT =
     loadFetchedData(TOTAL_NUMBERS_PATH).total_stats;
@@ -17,11 +21,14 @@ export const saveGlobalNumbers = async (statistics: Contract, web3: Web3) => {
   const props = {
     gasPrice: await getGasPrice(web3),
   };
-  txn = await statistics.updateGlobalData(
-    total_numbers.Total_Number_Of_Instances_Created,
-    total_numbers.Total_Number_Of_Instance_Solved,
-    props
-  );
+
+  txn = numbers
+    ? await statistics.updateGlobalData(...numbers, props)
+    : await statistics.updateGlobalData(
+        total_numbers.Total_Number_Of_Instances_Created,
+        total_numbers.Total_Number_Of_Instance_Solved,
+        props
+      );
   return txn;
 };
 
