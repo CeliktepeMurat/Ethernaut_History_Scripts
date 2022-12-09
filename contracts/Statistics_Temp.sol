@@ -321,11 +321,11 @@ contract Statistics_Temp is Initializable {
      * Functions for fixing
      */
 
-    function getSubmittedTimeForPlayerAndLevel(address _player, address _level) public view returns(uint256[] memory) {
+    function getSubmittedTimeForPlayerAndLevel(address _player, address _level) private view returns(uint256[] memory) {
         return playerStats[_player][_level].timeSubmitted;
     }
 
-    function getSubmittedTimeForLevels(address _player, address[] memory _levels) public view returns(uint256[][] memory) {
+    function getSubmittedTimeForLevels(address _player, address[] memory _levels) private view returns(uint256[][] memory) {
         uint256[][] memory submittedTimesForMultipleLevels = new uint256[][](_levels.length);
         for(uint i=0;i<_levels.length;i++) {
             uint256[] memory submittedTimeForPlayerAndLevel = getSubmittedTimeForPlayerAndLevel(_player, _levels[i]);
