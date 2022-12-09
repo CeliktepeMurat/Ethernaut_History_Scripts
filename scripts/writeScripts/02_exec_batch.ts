@@ -94,6 +94,8 @@ const fillPlayerStat = () => {
       }
     }
   }
+  // remove zeroes in total submission
+  totalSubmission = totalSubmission.map(a=>a.map(b=>b.filter(c=>c!=0)))
 };
 
 fillPlayerStat();
