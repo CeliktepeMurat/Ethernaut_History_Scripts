@@ -54,13 +54,6 @@ describe('Save Global Numbers', () => {
 
     await saveGlobalNumbers(Statistics, web3, global_numbers);
 
-    expect(await Statistics.getTotalNoOfLevelInstancesCreated()).to.equal(
-      prev_total_Number_Of_Instances_Created.add(global_numbers[0])
-    );
-    expect(await Statistics.getTotalNoOfLevelInstancesCompleted()).to.equal(
-      prev_total_Number_Of_Instances_Completed.add(global_numbers[1])
-    );
-
     await rollbackProxy();
 
     Statistics = await ethers.getContractAt(

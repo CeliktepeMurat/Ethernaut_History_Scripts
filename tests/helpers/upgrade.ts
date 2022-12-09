@@ -1,6 +1,4 @@
 import dotenv from 'dotenv';
-import colors from 'colors';
-import { getImpersonatedSigner } from '../../utils/utils';
 import { ethers } from 'hardhat';
 import {
   SIGNERS,

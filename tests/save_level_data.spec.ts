@@ -5,7 +5,6 @@ import STATISTICS_TEMP_ABI from '../artifacts/contracts/Statistics_Temp.sol/Stat
 import STATISTICS_ABI from '../artifacts/contracts/Statistics_Temp.sol/Statistics_Temp.json';
 import { saveLevelsData } from '../scripts/writeScripts/00_exec_batch';
 import { ACTIVE_NETWORK, PROXY_STATs, SIGNERS } from '../utils/constants';
-import { LEVEL_FACTORY_STAT } from '../utils/interface';
 import { rollbackProxy } from './helpers/rollback';
 import { upgradeProxy } from './helpers/upgrade';
 
