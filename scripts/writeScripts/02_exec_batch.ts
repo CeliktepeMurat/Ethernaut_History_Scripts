@@ -33,19 +33,24 @@ export const updatePlayerStatsData = async (
   const props = {
     gasPrice: await getGasPrice(web3),
   };
-  const tx = await statistics.updatePlayerStatsData(
+  const data = await statistics.getSubmittedTimeForAllPlayersAndLevels(
     players.slice(start, end),
-    levels.slice(start, end),
-    instances.slice(start, end),
-    isCompleted.slice(start, end),
-    timeCompleted.slice(start, end),
-    timeCreated.slice(start, end),
-    totalSubmission.slice(start, end),
-    levelFirstCompletedTime.slice(start, end),
-    levelFirstInstanceCreationTime.slice(start, end),
-    props
-  );
-  return tx;
+    levels.slice(start, end)
+  )
+  console.log(data)
+  // const tx = await statistics.updatePlayerStatsData(
+  //   players.slice(start, end),
+  //   levels.slice(start, end),
+  //   instances.slice(start, end),
+  //   isCompleted.slice(start, end),
+  //   timeCompleted.slice(start, end),
+  //   timeCreated.slice(start, end),
+  //   totalSubmission.slice(start, end),
+  //   levelFirstCompletedTime.slice(start, end),
+  //   levelFirstInstanceCreationTime.slice(start, end),
+  //   props
+  // );
+  // return tx;
 };
 
 const fillPlayerStat = () => {
