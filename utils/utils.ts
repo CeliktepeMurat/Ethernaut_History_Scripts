@@ -49,7 +49,10 @@ export const getGasPrice = async (web3: Web3) => {
 };
 
 export const getImpersonatedSigner = async (address: string) => {
-  if (constants.ACTIVE_NETWORK === constants.NETWORKS.LOCAL) {
+  if (
+    constants.ACTIVE_NETWORK === constants.NETWORKS.LOCAL ||
+    constants.IsForked
+  ) {
     const impersonatedSigner = await ethers.getImpersonatedSigner(address);
     return impersonatedSigner;
   } else {

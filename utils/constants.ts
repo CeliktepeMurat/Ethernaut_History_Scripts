@@ -103,3 +103,5 @@ export const ACTIVE_NETWORK = NETWORKS.GOERLI;
 // export const ACTIVE_NETWORK = NETWORKS.OPTIMISM_GOERLI;
 // export const ACTIVE_NETWORK = NETWORKS.ARBITRUM_GOERLI;
 // export const ACTIVE_NETWORK = NETWORKS.LOCAL;
+
+export const IsForked = true;
