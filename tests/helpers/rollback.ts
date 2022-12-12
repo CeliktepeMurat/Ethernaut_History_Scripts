@@ -27,9 +27,11 @@ export const rollbackProxy = async () => {
   const proxyAdmin = await getProxyAdmin();
 
   // Upgrade proxy
-  const res = await proxyAdmin
+  await proxyAdmin
     .connect(impersonatedProxyAdmin)
     .upgrade(PROXY_STAT, STATISTICS);
+
+  console.log(`Proxy Upgraded to Exact Version!`);
 };
 
 const deploy_statistic = async () => {

@@ -28,6 +28,8 @@ export const upgradeProxy = async () => {
   await proxyAdminContract
     .connect(impersonatedProxyAdmin)
     .upgrade(PROXY_STAT, STATISTICS);
+
+  console.log('Proxy Upgraded to Temporary Version!');
 };
 
 const deploy_temp_statistic = async () => {
