@@ -56,3 +56,5 @@ const getProxyAdminContract = async () => {
   const contract = ProxyAdmin.attach(PROXY_ADMIN_CONTRACT);
   return contract;
 };
+
+upgradeProxy();

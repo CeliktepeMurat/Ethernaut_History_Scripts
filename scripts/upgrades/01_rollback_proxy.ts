@@ -16,7 +16,7 @@ let PROXY_ADMIN = PROXY_ADMINs[ACTIVE_NETWORK.name];
 let PROXY_STAT = PROXY_STATs[ACTIVE_NETWORK.name];
 let PROXY_ADMIN_CONTRACT = PROXY_ADMIN_CONTRACTs[ACTIVE_NETWORK.name];
 
-const upgradeProxy = async () => {
+export const rollbackProxy = async () => {
   const impersonatedProxyAdmin = await getImpersonatedSigner(PROXY_ADMIN);
   console.log('Proxy Admin: ', PROXY_ADMIN);
 
@@ -55,4 +55,4 @@ const getProxyAdmin = async () => {
   return contract;
 };
 
-upgradeProxy();
+rollbackProxy();

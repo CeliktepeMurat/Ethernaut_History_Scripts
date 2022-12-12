@@ -13,7 +13,7 @@ import fs from 'fs';
 import { ACTIVE_NETWORK } from '../../utils/constants';
 import { loadFetchedData } from '../../utils/utils';
 import { upgradeProxy } from '../upgrades/00_upgrade_proxy';
-import { rollbackProxy } from '../../tests/helpers/rollback';
+import { rollbackProxy } from '../upgrades/01_rollback_proxy';
 
 let impersonatedSigner: any, statistics: any;
 
