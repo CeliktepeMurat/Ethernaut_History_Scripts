@@ -16,7 +16,6 @@ let noOfAdditionalInstancesCompletedByPlayer: number[] = [];
 
 export const updateAllPlayersGlobalData = async (
   statistics: Contract,
-  web3: Web3,
   start: number,
   end: number,
   player_stats_opt?: any
@@ -24,7 +23,7 @@ export const updateAllPlayersGlobalData = async (
   let tx;
 
   const props = {
-    gasPrice: await getGasPrice(web3),
+    gasPrice: await getGasPrice(),
   };
 
   player_stats_opt // for testing purpose

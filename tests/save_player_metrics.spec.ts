@@ -63,9 +63,9 @@ describe('Save Player Metrics', () => {
       [levels[1]]: [
         {
           instance: instances[2],
-          isCompleted: false,
+          isCompleted: true,
           timeCreated: 1665399084,
-          timeCompleted: 0,
+          timeCompleted: 1665399094,
         },
       ],
     },
@@ -83,7 +83,7 @@ describe('Save Player Metrics', () => {
       impersonatedSigner
     );
 
-    await savePlayers(Statistics, web3, 0, 2, players);
+    await savePlayers(Statistics, 0, 2, players);
   });
 
   it('should return levels as completed', async () => {
@@ -94,10 +94,21 @@ describe('Save Player Metrics', () => {
 
     expect(prev_IsLevelCompleted).to.equal(false);
 
-    await updatePlayerStatsData(Statistics, web3, 0, 4, player_metrics);
+    await updatePlayerStatsData(Statistics, 0, 4, player_metrics);
 
     expect(await Statistics.isLevelCompleted(players[0], levels[0])).to.equal(
       true
     );
+  });
+
+  it('should return timestamp of instance submission', async () => {
+    await updatePlayerStatsData(Statistics, 0, 2, player_metrics);
+    let level_array = Object.values(player_metrics);
+    let instances = Object.values(level_array[1]);
+    const timeCompleted = instances[0][0].timeCompleted;
+
+    expect(
+      await Statistics.getSubmissionsForLevelByPlayer(players[1], levels[0], 0)
+    ).to.equal(timeCompleted);
   });
 });

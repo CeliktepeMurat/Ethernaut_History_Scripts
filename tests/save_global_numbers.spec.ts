@@ -36,7 +36,7 @@ describe('Save Global Numbers', () => {
     const prev_total_Number_Of_Instances_Completed =
       await Statistics.getTotalNoOfLevelInstancesCompleted();
 
-    await saveGlobalNumbers(Statistics, web3, global_numbers);
+    await saveGlobalNumbers(Statistics, global_numbers);
 
     expect(await Statistics.getTotalNoOfLevelInstancesCreated()).to.equal(
       prev_total_Number_Of_Instances_Created.add(global_numbers[0])
@@ -52,7 +52,7 @@ describe('Save Global Numbers', () => {
     const prev_total_Number_Of_Instances_Completed =
       await Statistics.getTotalNoOfLevelInstancesCompleted();
 
-    await saveGlobalNumbers(Statistics, web3, global_numbers);
+    await saveGlobalNumbers(Statistics, global_numbers);
 
     await rollbackProxy();
 

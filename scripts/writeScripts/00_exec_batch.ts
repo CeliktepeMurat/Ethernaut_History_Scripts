@@ -11,15 +11,15 @@ const DATA_PATH = `data/${ACTIVE_NETWORK.name}`;
 
 export const saveGlobalNumbers = async (
   statistics: Contract,
-  web3: Web3,
   numbers?: number[]
 ) => {
   const TOTAL_NUMBERS_PATH = `${DATA_PATH}/total_instance_numbers.json`;
   const total_numbers: TOTAL_NUMBERS_STAT =
     loadFetchedData(TOTAL_NUMBERS_PATH).total_stats;
   let txn;
+
   const props = {
-    gasPrice: await getGasPrice(web3),
+    gasPrice: await getGasPrice(),
   };
 
   txn = numbers
@@ -34,7 +34,6 @@ export const saveGlobalNumbers = async (
 
 export const savePlayers = async (
   statistics: Contract,
-  web3: Web3,
   start: number,
   end: number,
   player_list?: string[]
@@ -43,7 +42,7 @@ export const savePlayers = async (
   const players = loadFetchedData(ALL_PLAYERS_PATH).players;
   let txn;
   const props = {
-    gasPrice: await getGasPrice(web3),
+    gasPrice: await getGasPrice(),
   };
 
   txn = player_list
@@ -54,7 +53,6 @@ export const savePlayers = async (
 
 export const saveLevelsData = async (
   statistics: Contract,
-  web3: Web3,
   level_stat_opt?: any
 ) => {
   const LEVEL_STATS_PATH = `${DATA_PATH}/level_stat.json`;
@@ -62,7 +60,7 @@ export const saveLevelsData = async (
   let txn;
 
   const props = {
-    gasPrice: await getGasPrice(web3),
+    gasPrice: await getGasPrice(),
   };
 
   const level_stats = level_stat_opt

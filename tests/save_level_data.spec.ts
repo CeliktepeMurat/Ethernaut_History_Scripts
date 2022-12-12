@@ -46,7 +46,7 @@ describe('Save Levels Data', () => {
     const prev_Number_Of_Instances_Completed =
       await Statistics.getNoOfCompletedSubmissionsForLevel(level);
 
-    await saveLevelsData(Statistics, web3, level_stat);
+    await saveLevelsData(Statistics, level_stat);
 
     expect(await Statistics.getNoOfInstancesForLevel(level)).to.equal(
       prev_Number_Of_Instances_Created.add(values.created_instances)
@@ -65,7 +65,7 @@ describe('Save Levels Data', () => {
     const prev_Number_Of_Instances_Completed =
       await Statistics.getNoOfCompletedSubmissionsForLevel(level);
 
-    await saveLevelsData(Statistics, web3, level_stat);
+    await saveLevelsData(Statistics, level_stat);
 
     await rollbackProxy();
 

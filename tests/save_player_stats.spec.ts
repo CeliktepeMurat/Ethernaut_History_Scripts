@@ -42,7 +42,7 @@ describe('Save Player Stats', () => {
       impersonatedSigner
     );
 
-    await savePlayers(Statistics, web3, 0, 1, players);
+    await savePlayers(Statistics, 0, 1, players);
   });
 
   it("should save level's data", async () => {
@@ -57,7 +57,7 @@ describe('Save Player Stats', () => {
     const prev_Number_Of_Instances_Completed =
       await Statistics.getTotalNoOfLevelInstancesCompletedByPlayer(players[0]);
 
-    await updateAllPlayersGlobalData(Statistics, web3, 0, 1, [
+    await updateAllPlayersGlobalData(Statistics, 0, 1, [
       players,
       no_of_instances_created,
       no_of_instances_solved,
@@ -87,7 +87,7 @@ describe('Save Player Stats', () => {
     const prev_Number_Of_Instances_Completed =
       await Statistics.getTotalNoOfLevelInstancesCompletedByPlayer(players[0]);
 
-    await updateAllPlayersGlobalData(Statistics, web3, 0, 1, [
+    await updateAllPlayersGlobalData(Statistics, 0, 1, [
       players,
       no_of_instances_created,
       no_of_instances_solved,

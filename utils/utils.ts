@@ -5,14 +5,16 @@ import dotenv from 'dotenv';
 import hardhat from 'hardhat';
 import HDWalletProvider from '@truffle/hdwallet-provider';
 import * as constants from './constants';
-
 const { ethers } = hardhat;
 dotenv.config();
 
 export const getWeb3 = () => {
   let provider;
 
-  if (constants.ACTIVE_NETWORK === constants.NETWORKS.LOCAL) {
+  if (
+    constants.ACTIVE_NETWORK === constants.NETWORKS.LOCAL ||
+    constants.IsForked
+  ) {
     // @ts-ignore
     const providerUrl = `${constants.ACTIVE_NETWORK.url}:${constants.ACTIVE_NETWORK.port}`;
     console.log(colors.gray(`connecting web3 to '${providerUrl}'...`));
@@ -42,8 +44,8 @@ export const storeData = (path: string, data: {}) => {
   fs.writeFileSync(path, JSON.stringify(data, null, 2));
 };
 
-export const getGasPrice = async (web3: Web3) => {
-  const gasPrice = await web3.eth.getGasPrice();
+export const getGasPrice = async () => {
+  const gasPrice = await ethers.provider.getGasPrice();
 
   return gasPrice;
 };

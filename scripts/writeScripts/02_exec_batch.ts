@@ -26,13 +26,12 @@ let allPlayers: any;
 
 export const updatePlayerStatsData = async (
   statistics: Contract,
-  web3: Web3,
   start: number,
   end: number,
   metrics?: PLAYER_METRICS
 ) => {
   const props = {
-    gasPrice: await getGasPrice(web3),
+    gasPrice: await getGasPrice(),
   };
   // fill the arrays with data
   fillPlayerStat(metrics);

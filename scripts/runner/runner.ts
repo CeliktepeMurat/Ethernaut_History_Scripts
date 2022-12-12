@@ -7,29 +7,32 @@ import {
   savePlayers,
 } from '../writeScripts/00_exec_batch';
 import { updateAllPlayersGlobalData } from '../writeScripts/01_exec_batch';
-import {
-  updatePlayerStatsData,
-} from '../writeScripts/02_exec_batch';
+import { updatePlayerStatsData } from '../writeScripts/02_exec_batch';
 import * as constants from '../../utils/constants';
 import fs from 'fs';
 import { ACTIVE_NETWORK } from '../../utils/constants';
 import { loadFetchedData } from '../../utils/utils';
+import { upgradeProxy } from '../upgrades/00_upgrade_proxy';
+import { rollbackProxy } from '../../tests/helpers/rollback';
 
-const web3 = getWeb3();
 let impersonatedSigner: any, statistics: any;
 
-const DATA_PATH = `./data/${ACTIVE_NETWORK.name}`
+const DATA_PATH = `./data/${ACTIVE_NETWORK.name}`;
 const ALL_PLAYERS_PATH = `${DATA_PATH}/all_player_list.json`;
 const players = loadFetchedData(ALL_PLAYERS_PATH).players;
-console.log(`Total no of players: ${players.length}`)
+console.log(`Total no of players: ${players.length}`);
 const TOTAL_NO_OF_PLAYERS = players.length;
 const BIG_BATCH = 100;
 const SMALL_BATCH = 10;
-const STATUS_FILE_PATH = `${DATA_PATH}/status.json`
+const STATUS_FILE_PATH = `${DATA_PATH}/status.json`;
 
 async function runFunctions() {
+  if (constants.ACTIVE_NETWORK.name === 'local' || constants.IsForked) {
+    await upgradeProxy();
+  }
+
   if (!isFinished('saveGlobalNumber')) {
-    const tx = await saveGlobalNumbers(statistics, web3);
+    const tx = await saveGlobalNumbers(statistics);
     console.log(tx.hash);
     console.log('');
     saveFinishedStatus('saveGlobalNumber', tx.hash);
@@ -37,7 +40,7 @@ async function runFunctions() {
   }
 
   if (!isFinished('saveLevelsData')) {
-    const tx = await saveLevelsData(statistics, web3);
+    const tx = await saveLevelsData(statistics);
     console.log(tx.hash);
     console.log('');
     saveFinishedStatus('saveLevelsData', tx.hash);
@@ -78,6 +81,10 @@ async function runFunctions() {
       SMALL_BATCH
     );
     saveFinishedStatus('updatePlayerStatsData');
+  }
+
+  if (constants.ACTIVE_NETWORK.name === 'local' || constants.IsForked) {
+    await rollbackProxy();
   }
 }
 
@@ -131,7 +138,7 @@ const runFunctionInBatches = async (
     const end = start + batchSize;
     if (end > total) {
       console.log(`Running from ${start} to ${total}`);
-      const tx = await fn(statistics, web3, start, total);
+      const tx = await fn(statistics, start, total);
       console.log(tx.hash);
       console.log('');
       saveFinishedStatus(fnName, {
@@ -143,7 +150,7 @@ const runFunctionInBatches = async (
       return;
     }
     console.log(`Running from ${start} to ${end}`);
-    const tx = await fn(statistics, web3, start, end);
+    const tx = await fn(statistics, start, end);
     console.log(tx.hash);
     console.log('');
     saveStartStatus(fnName, end, {
@@ -158,7 +165,7 @@ const runFunctionInBatches = async (
 
 const initiate = async () => {
   let from = constants.SIGNERS[constants.ACTIVE_NETWORK.name];
-  if (!from) from = (await web3.eth.getAccounts())[0];
+  //if (!from) from = (await web3.eth.getAccounts())[0];
   impersonatedSigner = await getImpersonatedSigner(from);
   console.log('FROM: ', from);
 

@@ -34,7 +34,7 @@ describe('Save Players', () => {
   });
 
   it('Should save players', async () => {
-    await savePlayers(Statistics, web3, 0, 2, players);
+    await savePlayers(Statistics, 0, 2, players);
 
     const player1 = await Statistics.doesPlayerExist(players[0]);
     const player2 = await Statistics.doesPlayerExist(players[1]);
@@ -43,7 +43,7 @@ describe('Save Players', () => {
   });
 
   it('Should keep players after rollback', async () => {
-    await savePlayers(Statistics, web3, 0, 2, players);
+    await savePlayers(Statistics, 0, 2, players);
 
     await rollbackProxy();
 
