@@ -1,11 +1,9 @@
 {
   "saveGlobalNumber": {
-    "isFinished": true,
-    "txInfo": "0x6aa1c3e726ce5ccccc51581cd438b36cfa6d9a28d9c2e10e90b209d9e024e7ce"
+    "isFinished": false
   },
   "saveLevelsData": {
-    "isFinished": true,
-    "txInfo": "0x70f8fdb66f4b86ed5005dcc4364a98416708f9e65f22ed69b749ed854a44852f"
+    "isFinished": false
   },
   "savePlayers": {
     "isFinished": false,

@@ -101,7 +101,7 @@ describe('Save Player Metrics', () => {
     );
   });
 
-  it('should return timestamp of instance submission', async () => {
+  it('should return timestamp of successfull instance submission', async () => {
     await updatePlayerStatsData(Statistics, 0, 2, player_metrics);
     let level_array = Object.values(player_metrics);
     let instances = Object.values(level_array[1]);
