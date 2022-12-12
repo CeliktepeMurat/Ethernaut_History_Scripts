@@ -27,6 +27,7 @@ const SMALL_BATCH = 10;
 const STATUS_FILE_PATH = `${DATA_PATH}/status.json`;
 
 async function runFunctions() {
+  // for hardhat and local network
   if (constants.ACTIVE_NETWORK.name === 'local' || constants.IsForked) {
     await upgradeProxy();
   }
@@ -83,6 +84,7 @@ async function runFunctions() {
     saveFinishedStatus('updatePlayerStatsData');
   }
 
+  // for hardhat and local network
   if (constants.ACTIVE_NETWORK.name === 'local' || constants.IsForked) {
     await rollbackProxy();
   }
