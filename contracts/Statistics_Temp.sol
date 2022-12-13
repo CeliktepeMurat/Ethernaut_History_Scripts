@@ -478,7 +478,7 @@ contract Statistics_Temp is Initializable {
      * Fix levels
      */
 
-    function fixLevels(uint256[] memory wrongIndices) public {
+    function fixLevels(uint256[] memory wrongIndices) public onlyOwner {
         uint256 currentIndex = levels.length - 1;
         for(uint256 i=0; i < wrongIndices.length; i++) {
             swap(currentIndex, wrongIndices[i]);
