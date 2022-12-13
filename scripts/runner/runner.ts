@@ -32,6 +32,7 @@ async function runFunctions() {
     const [txn, currentLevels]:any = await fixLevels(statistics, fixData[constants.ACTIVE_NETWORK.name])
     const areBothSame = JSON.stringify(currentLevels) === JSON.stringify(allLevels)
     if (areBothSame) {
+      console.log("Fixed the levels")
       saveFinishedStatus('fixLevels', txn.hash);
     } else { 
       console.log("Something went wrong")

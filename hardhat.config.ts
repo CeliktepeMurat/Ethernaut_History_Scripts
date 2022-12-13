@@ -11,7 +11,7 @@ const config: HardhatUserConfig = {
     hardhat: {
       forking: {
         url:
-          'https://eth-goerli.g.alchemy.com/v2/' + process.env.ALCHEMY_API_KEY,
+          'https://sepolia.infura.io/v3/866cd7f20d8846169cecdd5aa0142df1',
       },
     },
     localhost: {
