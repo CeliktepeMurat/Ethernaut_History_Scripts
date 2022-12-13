@@ -4,7 +4,6 @@ import { ethers } from 'ethers';
 import * as constants from '../../utils/constants';
 import fs from 'fs';
 import { ACTIVE_NETWORK } from '../../utils/constants';
-import { loadFetchedData } from '../../utils/utils';
 import { upgradeProxy } from '../../tests/helpers/upgrade';
 import { rollbackProxy } from '../../tests/helpers/rollback';
 import { fixLevels } from '../writeScripts/03_fix_levels';
@@ -13,6 +12,8 @@ let impersonatedSigner: any, statistics: any;
 
 const DATA_PATH = `./data/${ACTIVE_NETWORK.name}`;
 const STATUS_FILE_PATH = `${DATA_PATH}/status.json`;
+const ALL_LEVELS_PATH = `${DATA_PATH}/all_level_list.json`
+const allLevels = JSON.parse(fs.readFileSync(ALL_LEVELS_PATH).toString()).levels.sort()
 
 async function runFunctions() {
   // for hardhat and local network
@@ -21,9 +22,13 @@ async function runFunctions() {
   }
 
   if (!isFinished('fixLevels')) {
-    const tx = await fixLevels(statistics, [2,3])
-    // await tx.wait();
-    // console.log("Updated")
+    const currentLevels = await fixLevels(statistics, [2,3])
+    const areBothSame = JSON.stringify(currentLevels) === JSON.stringify(allLevels)
+    if (areBothSame) {
+      console.log("Fixed successfully")
+    } else { 
+      console.log("Something went wrong")
+    }
   }
 
   // for hardhat and local network
