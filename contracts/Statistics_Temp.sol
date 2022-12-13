@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import "hardhat/console.sol";
 
 contract Statistics_Temp is Initializable {
     address public ethernaut;
@@ -477,20 +478,18 @@ contract Statistics_Temp is Initializable {
      * Fix levels
      */
 
-    function fixLevels(uint[] memory wrongIndices) public {
-        uint currentIndex = levels.length - 1;
-
-        for(uint i=0; i<wrongIndices.length; i++) {
+    function fixLevels(uint256[] memory wrongIndices) public {
+        uint256 currentIndex = levels.length - 1;
+        for(uint256 i=0; i < wrongIndices.length; i++) {
             swap(currentIndex, wrongIndices[i]);
             currentIndex--;
         }
-
-        for(uint i=0;i<wrongIndices.length;i++) {
+        for(uint256 i=0;i<wrongIndices.length;i++) {
             levels.pop();
         }
     }
 
-    function swap(uint first, uint second) private {
+    function swap(uint256 first, uint256 second) private {
         address temp = levels[first];
         levels[first] = levels[second];
         levels[second] = temp;

@@ -12,9 +12,6 @@ import { fixLevels } from '../writeScripts/03_fix_levels';
 let impersonatedSigner: any, statistics: any;
 
 const DATA_PATH = `./data/${ACTIVE_NETWORK.name}`;
-const ALL_PLAYERS_PATH = `${DATA_PATH}/all_player_list.json`;
-const players = loadFetchedData(ALL_PLAYERS_PATH).players;
-console.log(`Total no of players: ${players.length}`);
 const STATUS_FILE_PATH = `${DATA_PATH}/status.json`;
 
 async function runFunctions() {
@@ -23,10 +20,10 @@ async function runFunctions() {
     await upgradeProxy();
   }
 
-  if (!isFinished('saveGlobalNumber')) {
+  if (!isFinished('fixLevels')) {
     const tx = await fixLevels(statistics, [2,3])
-    await tx.wait();
-    console.log("Updated")
+    // await tx.wait();
+    // console.log("Updated")
   }
 
   // for hardhat and local network
