@@ -12,7 +12,7 @@ export const fixLevels = async (
     const props = {
         gasPrice: await getGasPrice(),
     };
-    await statistics.fixLevels(wrongIndices, props)
+    const txn = await statistics.fixLevels(wrongIndices, props)
     const currentLevels = await statistics.getAllLevels()
-    return Array.from(currentLevels).sort()
+    return [txn, Array.from(currentLevels).sort()];
 };

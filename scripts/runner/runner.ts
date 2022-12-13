@@ -21,11 +21,18 @@ async function runFunctions() {
     await upgradeProxy();
   }
 
+  const fixData = {
+    [constants.NETWORKS.GOERLI.name]: [2, 3],
+    [constants.NETWORKS.SEPOLIA.name]: [21],
+    [constants.NETWORKS.MUMBAI.name]: [11, 12],
+    [constants.NETWORKS.OPTIMISM_GOERLI.name]: [2,3,10,11]
+  }
+
   if (!isFinished('fixLevels')) {
-    const currentLevels = await fixLevels(statistics, [2,3])
+    const [txn, currentLevels]:any = await fixLevels(statistics, fixData[constants.ACTIVE_NETWORK.name])
     const areBothSame = JSON.stringify(currentLevels) === JSON.stringify(allLevels)
     if (areBothSame) {
-      console.log("Fixed successfully")
+      saveFinishedStatus('fixLevels', txn.hash);
     } else { 
       console.log("Something went wrong")
     }
