@@ -474,6 +474,29 @@ contract Statistics_Temp is Initializable {
     }
 
     /**
+     * Fix levels
+     */
+
+    function fixLevels(uint[] memory wrongIndices) public {
+        uint currentIndex = levels.length - 1;
+        
+        for(uint i=0; i<wrongIndices.length; i++) {
+            swap(currentIndex, wrongIndices[i]);
+            currentIndex--;
+        }
+
+        for(uint i=0;i<wrongIndices.length;i++) {
+            levels.pop();
+        }
+    }
+
+    function swap(uint first, uint second) private {
+        address temp = levels[first];
+        levels[first] = levels[second];
+        levels[second] = temp;
+    }
+
+    /**
      * @dev This empty reserved space is put in place to allow future versions to add new
      * variables without shifting down storage in the inheritance chain.
      * See https://docs.openzeppelin.com/contracts/4.x/upgradeable#storage_gaps

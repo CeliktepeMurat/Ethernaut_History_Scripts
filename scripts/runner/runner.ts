@@ -32,57 +32,7 @@ async function runFunctions() {
     await upgradeProxy();
   }
 
-  if (!isFinished('saveGlobalNumber')) {
-    const tx = await saveGlobalNumbers(statistics);
-    console.log(tx.hash);
-    console.log('');
-    saveFinishedStatus('saveGlobalNumber', tx.hash);
-    await tx.wait();
-  }
-
-  if (!isFinished('saveLevelsData')) {
-    const tx = await saveLevelsData(statistics);
-    console.log(tx.hash);
-    console.log('');
-    saveFinishedStatus('saveLevelsData', tx.hash);
-    await tx.wait();
-  }
-
-  if (!isFinished('savePlayers')) {
-    const start = getStart('savePlayers');
-    await runFunctionInBatches(
-      savePlayers,
-      'savePlayers',
-      TOTAL_NO_OF_PLAYERS,
-      start,
-      BIG_BATCH
-    );
-    saveFinishedStatus('savePlayers');
-  }
-
-  if (!isFinished('updateAllPlayersGlobalData')) {
-    const start = getStart('updateAllPlayersGlobalData');
-    await runFunctionInBatches(
-      updateAllPlayersGlobalData,
-      'updateAllPlayersGlobalData',
-      TOTAL_NO_OF_PLAYERS,
-      start,
-      BIG_BATCH
-    );
-    saveFinishedStatus('updateAllPlayersGlobalData');
-  }
-
-  if (!isFinished('updatePlayerStatsData')) {
-    const start = getStart('updatePlayerStatsData');
-    await runFunctionInBatches(
-      updatePlayerStatsData,
-      'updatePlayerStatsData',
-      TOTAL_NO_OF_PLAYERS,
-      start,
-      SMALL_BATCH
-    );
-    saveFinishedStatus('updatePlayerStatsData');
-  }
+  
 
   // for hardhat and local network
   if (constants.ACTIVE_NETWORK.name === 'local' || constants.IsForked) {
