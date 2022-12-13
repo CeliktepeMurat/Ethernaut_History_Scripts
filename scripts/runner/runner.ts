@@ -1,19 +1,13 @@
 import STATISTICS_ABI from '../../artifacts/contracts/Statistics_Temp.sol/Statistics_Temp.json';
-import { getImpersonatedSigner, getWeb3 } from '../../utils/utils';
+import { getImpersonatedSigner } from '../../utils/utils';
 import { ethers } from 'ethers';
-import {
-  saveGlobalNumbers,
-  saveLevelsData,
-  savePlayers,
-} from '../writeScripts/00_exec_batch';
-import { updateAllPlayersGlobalData } from '../writeScripts/01_exec_batch';
-import { updatePlayerStatsData } from '../writeScripts/02_exec_batch';
 import * as constants from '../../utils/constants';
 import fs from 'fs';
 import { ACTIVE_NETWORK } from '../../utils/constants';
 import { loadFetchedData } from '../../utils/utils';
 import { upgradeProxy } from '../../tests/helpers/upgrade';
 import { rollbackProxy } from '../../tests/helpers/rollback';
+import { fixLevels } from '../writeScripts/03_fix_levels';
 
 let impersonatedSigner: any, statistics: any;
 
@@ -21,9 +15,6 @@ const DATA_PATH = `./data/${ACTIVE_NETWORK.name}`;
 const ALL_PLAYERS_PATH = `${DATA_PATH}/all_player_list.json`;
 const players = loadFetchedData(ALL_PLAYERS_PATH).players;
 console.log(`Total no of players: ${players.length}`);
-const TOTAL_NO_OF_PLAYERS = players.length;
-const BIG_BATCH = 100;
-const SMALL_BATCH = 10;
 const STATUS_FILE_PATH = `${DATA_PATH}/status.json`;
 
 async function runFunctions() {
@@ -32,7 +23,11 @@ async function runFunctions() {
     await upgradeProxy();
   }
 
-  
+  if (!isFinished('saveGlobalNumber')) {
+    const tx = await fixLevels(statistics, [2,3])
+    await tx.wait();
+    console.log("Updated")
+  }
 
   // for hardhat and local network
   if (constants.ACTIVE_NETWORK.name === 'local' || constants.IsForked) {

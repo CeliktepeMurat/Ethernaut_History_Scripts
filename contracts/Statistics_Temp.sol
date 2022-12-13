@@ -479,7 +479,7 @@ contract Statistics_Temp is Initializable {
 
     function fixLevels(uint[] memory wrongIndices) public {
         uint currentIndex = levels.length - 1;
-        
+
         for(uint i=0; i<wrongIndices.length; i++) {
             swap(currentIndex, wrongIndices[i]);
             currentIndex--;
@@ -494,6 +494,10 @@ contract Statistics_Temp is Initializable {
         address temp = levels[first];
         levels[first] = levels[second];
         levels[second] = temp;
+    }
+
+    function getAllLevels() public view returns(address[] memory) {
+        return levels; 
     }
 
     /**
