@@ -350,7 +350,7 @@ contract Statistics_Temp is Initializable {
         return averageTimeTakenToCompleteLevels[player];
     }
 
-    function updateAverageTimeForPlayers(uint start, uint end) private onlyOwner {
+    function updateAverageTimeForPlayers(uint start, uint end) public onlyOwner {
         for(uint i=start;i<end;i++) {
             uint totalTime;
             uint totalNo;
