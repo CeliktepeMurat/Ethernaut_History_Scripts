@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "hardhat/console.sol";
 
-contract Statistics is Initializable {
+contract Statistics_Temp is Initializable {
     address public ethernaut;
     address[] public players;
     address[] public levels;
@@ -348,20 +348,23 @@ contract Statistics is Initializable {
 
     function updateAverageTimeForPlayers(uint start, uint end) public {
         for(uint i=start;i<end;i++) {
-            averageTimeTakenToCompleteLevels[players[start]] = calculateAverageTimeForPlayer(players[i]);
+            uint totalTime;
+            uint totalNo;
+            for(uint j=0;j<levels.length;j++) {  
+                if(levelFirstCompletionTime[players[i]][levels[j]] != 0) {
+                    totalTime = totalTime + levelFirstCompletionTime[players[i]][levels[j]];
+                    totalNo++;
+                }
+            }
+            if(totalNo!=0 && totalTime!=0) {
+                averageTimeTakenToCompleteLevels[players[i]] = totalTime / totalNo;
+            }
         }
     }
 
-    function calculateAverageTimeForPlayer(address player) private view returns(uint256) {
-        uint totalTime;
-        uint totalNo;
-        for(uint i=0;i<levels.length;i++) {
-            if(levelFirstCompletionTime[player][levels[i]] != 0) {
-                totalTime = totalTime + levelFirstCompletionTime[player][levels[i]];
-                totalNo++;
-            }
-        }
-        return totalTime / totalNo;
+
+    function getPlayersLength() public view returns(uint) {
+        return players.length;
     }
     
     /**

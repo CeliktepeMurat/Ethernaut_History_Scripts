@@ -1,7 +1,28 @@
 {
-  "updateNoOfLevelsCompletedByPlayers": {
+  "updateAverageTime": {
     "isFinished": false,
-    "start": 0,
-    "txInfo": []
+    "start": 40,
+    "txInfo": [
+      {
+        "start": 0,
+        "end": 10,
+        "txHash": "0x2e946731794a7bb7a87acc8516c43928993afa08fc66d1e6e3555be077082ea8"
+      },
+      {
+        "start": 10,
+        "end": 20,
+        "txHash": "0x65b28a8b2d05ef1662dd598a5d1f33579d008fafe59a1990d499bd77c631c5da"
+      },
+      {
+        "start": 20,
+        "end": 30,
+        "txHash": "0x035082fd34e2d9bf3383fc34b216a64ec6235860b2454866cd9a4b8d5e152db6"
+      },
+      {
+        "start": 30,
+        "end": 40,
+        "txHash": "0x59bd58659e798253e12cab107458383a2e390384f2f27472ef22d88d7290e6c3"
+      }
+    ]
   }
 }

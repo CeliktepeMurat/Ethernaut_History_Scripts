@@ -105,4 +105,4 @@ export const ACTIVE_NETWORK = NETWORKS.GOERLI;
 // export const ACTIVE_NETWORK = NETWORKS.LOCAL;
 
 // For Hardhat Network
-export const IsForked = false;
+export const IsForked = true;

@@ -1,17 +1,9 @@
 import STATISTICS_ABI from '../../artifacts/contracts/Statistics_Temp.sol/Statistics_Temp.json';
-import { getImpersonatedSigner, getWeb3 } from '../../utils/utils';
+import { getImpersonatedSigner } from '../../utils/utils';
 import { ethers } from 'ethers';
-import {
-  saveGlobalNumbers,
-  saveLevelsData,
-  savePlayers,
-} from '../writeScripts/00_exec_batch';
-import { updateAllPlayersGlobalData } from '../writeScripts/01_exec_batch';
-import { updatePlayerStatsData } from '../writeScripts/02_exec_batch';
 import * as constants from '../../utils/constants';
 import fs from 'fs';
 import { ACTIVE_NETWORK } from '../../utils/constants';
-import { loadFetchedData } from '../../utils/utils';
 import { upgradeProxy } from '../../tests/helpers/upgrade';
 import { rollbackProxy } from '../../tests/helpers/rollback';
 import { getTotalNoOfPlayers, updateAverageTime } from '../writeScripts/03_average_time';
@@ -91,6 +83,7 @@ const runFunctionInBatches = async (
   batchSize: number
 ) => {
   const total = await getTotalNoOfPlayers(statistics);
+  console.log(`total players - ${total}`)
   while (start < total) {
     const end = start + batchSize;
     if (end > total) {
@@ -116,7 +109,7 @@ const runFunctionInBatches = async (
       txHash: tx.hash,
     });
     await tx.wait();
-    start = end + 1;
+    start = end;
   }
 };
 
