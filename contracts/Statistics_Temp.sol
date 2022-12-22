@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-import "hardhat/console.sol";
 
 contract Statistics_Temp is Initializable {
     address public ethernaut;
@@ -53,6 +52,11 @@ contract Statistics_Temp is Initializable {
             msg.sender == ethernaut,
             "Only Ethernaut can call this function"
         );
+        _;
+    }
+
+    modifier onlyOwner() {
+        require(msg.sender == 0x09902A56d04a9446601a0d451E07459dC5aF0820);
         _;
     }
 
@@ -346,7 +350,7 @@ contract Statistics_Temp is Initializable {
         return averageTimeTakenToCompleteLevels[player];
     }
 
-    function updateAverageTimeForPlayers(uint start, uint end) public {
+    function updateAverageTimeForPlayers(uint start, uint end) private onlyOwner {
         for(uint i=start;i<end;i++) {
             uint totalTime;
             uint totalNo;
