@@ -1,8 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import "hardhat/console.sol";
 
-contract Statistics_Temp is Initializable {
+contract Statistics is Initializable {
     address public ethernaut;
     address[] public players;
     address[] public levels;
@@ -31,11 +32,14 @@ contract Statistics_Temp is Initializable {
     mapping(address => mapping(address => LevelInstance)) private playerStats;
     mapping(address => bool) private playerExists;
     mapping(address => bool) private levelExists;
+    mapping(address => uint256) private averageTimeTakenToCompleteLevels;
+
+    event playerScoreProfile(address indexed player, uint256 indexed averageCompletionTime, uint256 indexed globalLevelsCompleted);
+
     modifier levelExistsCheck(address level) {
         require(doesLevelExist(level), "Level doesn't exist");
         _;
     }
-
     modifier levelDoesntExistCheck(address level) {
         require(!doesLevelExist(level), "Level already exists");
         _;
@@ -49,10 +53,6 @@ contract Statistics_Temp is Initializable {
             msg.sender == ethernaut,
             "Only Ethernaut can call this function"
         );
-        _;
-    }
-    modifier onlyOwner() {
-        require(msg.sender == 0x09902A56d04a9446601a0d451E07459dC5aF0820, "Only owner can call this function");
         _;
     }
 
@@ -87,7 +87,7 @@ contract Statistics_Temp is Initializable {
         globalNoOfInstancesCreated++;
         globalNoOfInstancesCreatedByPlayer[player]++;
     }
-    
+
     function submitSuccess(
         address instance,
         address level,
@@ -110,12 +110,18 @@ contract Statistics_Temp is Initializable {
             globalNoOfLevelsCompletedByPlayer[player]++;
             levelFirstCompletionTime[player][level] = block.timestamp;
         }
+        uint256 averageCompletionTimeByPlayer;
+        uint256 globalLevelsSolvedByPlayer;
         playerStats[player][level].timeSubmitted.push(block.timestamp);
         playerStats[player][level].timeCompleted = block.timestamp;
         playerStats[player][level].isCompleted = true;
         levelStats[level].noOfInstancesSubmitted_Success++;
         globalNoOfInstancesCompleted++;
         globalNoOfInstancesCompletedByPlayer[player]++;
+        updateAverageTimeTakenToCompleteLevelsByPlayer(player, level);
+        averageCompletionTimeByPlayer = getAverageTimeTakenToCompleteLevels(player);
+        globalLevelsSolvedByPlayer = getTotalNoOfLevelsCompletedByPlayer(player);
+        emit playerScoreProfile(player, averageCompletionTimeByPlayer, globalLevelsSolvedByPlayer);
     }
 
     function submitFailure(
@@ -264,6 +270,21 @@ contract Statistics_Temp is Initializable {
             levels.length;
     }
 
+    // Function to update the average time elapsed for all player's completed levels on first successful submission
+    function updateAverageTimeTakenToCompleteLevelsByPlayer(address player, address level) private {
+        uint256 lastAverageTime = averageTimeTakenToCompleteLevels[player];
+        uint256 newAverageTimeTakenToCompleteLevels;
+        uint256 timeTakenForThisSuccessfulSubmission;
+        timeTakenForThisSuccessfulSubmission = levelFirstCompletionTime[player][level] - levelFirstInstanceCreationTime[player][level];
+        //now, set the average time value in the mapping via evaluating its current value;
+        if (averageTimeTakenToCompleteLevels[player] == 0) {
+            averageTimeTakenToCompleteLevels[player] = timeTakenForThisSuccessfulSubmission;
+        } else {
+            newAverageTimeTakenToCompleteLevels = ((lastAverageTime * (getTotalNoOfLevelsCompletedByPlayer(player)-1)) + timeTakenForThisSuccessfulSubmission)/getTotalNoOfLevelsCompletedByPlayer(player);
+            averageTimeTakenToCompleteLevels[player] = newAverageTimeTakenToCompleteLevels;
+        }
+    }
+
     // Game specific metrics
     function getTotalNoOfLevelInstancesCreated() public view returns (uint256) {
         return globalNoOfInstancesCreated;
@@ -317,162 +338,32 @@ contract Statistics_Temp is Initializable {
         return playerExists[player];
     }
 
-    /**
-     * Functions for filling data to the contract
-     */
+    function getTotalNoOfEthernautLevels() public view returns(uint256) {
+        return levels.length;
+    }
 
-    function updatePlayers(address[] memory _players) public onlyOwner {
-        for (uint256 i = 0; i < _players.length; i++) {
-            if(!playerExists[_players[i]]) {
-                playerExists[_players[i]] = true;
-                players.push(_players[i]);
+    function getAverageTimeTakenToCompleteLevels(address player) public view returns(uint256) {
+        return averageTimeTakenToCompleteLevels[player];
+    }
+
+    function updateAverageTimeForPlayers(uint start, uint end) public {
+        for(uint i=start;i<end;i++) {
+            averageTimeTakenToCompleteLevels[players[start]] = calculateAverageTimeForPlayer(players[i]);
+        }
+    }
+
+    function calculateAverageTimeForPlayer(address player) private view returns(uint256) {
+        uint totalTime;
+        uint totalNo;
+        for(uint i=0;i<levels.length;i++) {
+            if(levelFirstCompletionTime[player][levels[i]] != 0) {
+                totalTime = totalTime + levelFirstCompletionTime[player][levels[i]];
+                totalNo++;
             }
         }
+        return totalTime / totalNo;
     }
-
-    function updateGlobalData(
-        uint256 _noOfAdditionalInstancesCreatedGlobally,
-        uint256 _noOfAdditionalInstancesCompletedGlobally
-    ) public onlyOwner {
-        globalNoOfInstancesCreated += _noOfAdditionalInstancesCreatedGlobally;
-        globalNoOfInstancesCompleted += _noOfAdditionalInstancesCompletedGlobally;
-    }
-
-    function updateSinglePlayerGlobalData(
-        address _player,
-        uint256 _noOfAdditionalInstancesCreatedByPlayer,
-        uint256 _noOfAdditionalInstancesCompletedByPlayer
-    ) private {
-        globalNoOfInstancesCreatedByPlayer[_player] += _noOfAdditionalInstancesCreatedByPlayer;
-        globalNoOfInstancesCompletedByPlayer[_player] += _noOfAdditionalInstancesCompletedByPlayer;
-    }
-
-    function updateAllPlayersGlobalData(
-        address[] memory _players,
-        uint256[] memory _noOfAdditionalInstancesCreatedByPlayer,
-        uint256[] memory _noOfAdditionalInstancesCompletedByPlayer
-    ) public onlyOwner {
-        for (uint256 i = 0; i < _players.length; i++) {
-            updateSinglePlayerGlobalData(
-                _players[i],
-                _noOfAdditionalInstancesCreatedByPlayer[i],
-                _noOfAdditionalInstancesCompletedByPlayer[i]
-            );
-        }
-    }
-
-    function updateSingleLevelData(
-        address _level,
-        uint256 _noOfAdditionalInstancesCreated,
-        uint256 _noOfAdditionalInstancesCompleted
-    ) private {
-        levelStats[_level].noOfInstancesCreated += _noOfAdditionalInstancesCreated;
-        levelStats[_level].noOfInstancesSubmitted_Success += _noOfAdditionalInstancesCompleted;
-    }
-
-    function updateAllLevelData(
-        address[] memory _levels,
-        uint256[] memory _noOfAdditionalInstancesCreated,
-        uint256[] memory _noOfAdditionalInstancesCompleted
-    ) public onlyOwner {
-        for (uint256 i = 0; i < _levels.length; i++) {
-            updateSingleLevelData(
-                _levels[i],
-                _noOfAdditionalInstancesCreated[i],
-                _noOfAdditionalInstancesCompleted[i]
-            );
-        }
-    }
-
-    function updatePlayerStatsData(
-        address[] memory _players,
-        address[][] memory _levels,
-        address[][] memory _instances,
-        bool[][] memory _isCompleted,
-        uint256[][] memory _timeCompleted,
-        uint256[][] memory _timeCreated,
-        uint256[][][] memory _timeSubmitted,
-        uint256[][] memory _levelFirstCompletedTime,
-        uint256[][] memory _levelFirstInstanceCreationTime
-    ) public onlyOwner {
-        for (uint256 i = 0; i < _players.length; i++) {
-            updatePlayerStatsDataForAPlayer(
-                _players[i],
-                _levels[i],
-                _instances[i],
-                _isCompleted[i],
-                _timeCompleted[i],
-                _timeCreated[i],
-                _timeSubmitted[i],
-                _levelFirstCompletedTime[i],
-                _levelFirstInstanceCreationTime[i]
-            );
-        }
-    }
-
-    function updatePlayerStatsDataForAPlayer(
-        address _player,
-        address[] memory _levels,
-        address[] memory _instances,
-        bool[] memory _isCompleted,
-        uint256[] memory _timeCompleted,
-        uint256[] memory _timeCreated,
-        uint256[][] memory _timeSubmitted,
-        uint256[] memory _levelFirstCompletedTime,
-        uint256[] memory _levelFirstInstanceCreationTime
-    ) private {
-        for(uint256 j = 0; j < _levels.length; j++) {
-            updatePlayerStatsDataForALevel(
-                _player,
-                _levels[j],
-                _instances[j],
-                _isCompleted[j],
-                _timeCompleted[j],
-                _timeCreated[j],
-                _timeSubmitted[j],
-                _levelFirstCompletedTime[j],
-                _levelFirstInstanceCreationTime[j]
-            );
-        }
-    }
-
-    function updatePlayerStatsDataForALevel(
-        address _player,
-        address _level,
-        address _instance,
-        bool _isCompleted,
-        uint256 _timeCompleted,
-        uint256 _timeCreated,
-        uint256[] memory _timeSubmitted,
-        uint256 _levelFirstCompletedTime,
-        uint256 _levelFirstInstanceCreationTime
-    ) private {
-        if(playerStats[_player][_level].instance == address(0)) {
-            playerStats[_player][_level].instance = _instance;
-            playerStats[_player][_level].isCompleted = _isCompleted;
-            playerStats[_player][_level].timeCompleted = _timeCompleted;
-            playerStats[_player][_level].timeCreated = _timeCreated;
-        }
-        // Even if instance is already present
-        // we need to update the level first completed time, level first instance creation time, time submitted
-        if(_timeSubmitted.length > 0) {
-            for(uint256 i = 0; i < _timeSubmitted.length; i++) {
-                if(_timeSubmitted[i]!=0) {
-                    playerStats[_player][_level].timeSubmitted.push(_timeSubmitted[i]);
-                }
-            }
-        }
-        if(_levelFirstCompletedTime != 0) {
-            if(levelFirstCompletionTime[_player][_level] == 0) {
-                globalNoOfLevelsCompletedByPlayer[_player]++;
-            }
-            levelFirstCompletionTime[_player][_level] = _levelFirstCompletedTime;
-        }
-        if(_levelFirstInstanceCreationTime != 0) {
-            levelFirstInstanceCreationTime[_player][_level] = _levelFirstInstanceCreationTime;
-        }
-    }
-
+    
     /**
      * @dev This empty reserved space is put in place to allow future versions to add new
      * variables without shifting down storage in the inheritance chain.
@@ -480,9 +371,3 @@ contract Statistics_Temp is Initializable {
      */
     uint256[45] private __gap;
 }
-
-/**
- * 1. Checkpoints
- * 2. Runner function
- * 3. See if functions can be optimized
- */

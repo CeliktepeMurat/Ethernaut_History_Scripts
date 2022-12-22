@@ -14,15 +14,11 @@ import { ACTIVE_NETWORK } from '../../utils/constants';
 import { loadFetchedData } from '../../utils/utils';
 import { upgradeProxy } from '../../tests/helpers/upgrade';
 import { rollbackProxy } from '../../tests/helpers/rollback';
+import { getTotalNoOfPlayers, updateAverageTime } from '../writeScripts/03_average_time';
 
 let impersonatedSigner: any, statistics: any;
 
 const DATA_PATH = `./data/${ACTIVE_NETWORK.name}`;
-const ALL_PLAYERS_PATH = `${DATA_PATH}/all_player_list.json`;
-const players = loadFetchedData(ALL_PLAYERS_PATH).players;
-console.log(`Total no of players: ${players.length}`);
-const TOTAL_NO_OF_PLAYERS = players.length;
-const BIG_BATCH = 100;
 const SMALL_BATCH = 10;
 const STATUS_FILE_PATH = `${DATA_PATH}/status.json`;
 
@@ -32,56 +28,15 @@ async function runFunctions() {
     await upgradeProxy();
   }
 
-  if (!isFinished('saveGlobalNumber')) {
-    const tx = await saveGlobalNumbers(statistics);
-    console.log(tx.hash);
-    console.log('');
-    saveFinishedStatus('saveGlobalNumber', tx.hash);
-    await tx.wait();
-  }
-
-  if (!isFinished('saveLevelsData')) {
-    const tx = await saveLevelsData(statistics);
-    console.log(tx.hash);
-    console.log('');
-    saveFinishedStatus('saveLevelsData', tx.hash);
-    await tx.wait();
-  }
-
-  if (!isFinished('savePlayers')) {
-    const start = getStart('savePlayers');
+  if (!isFinished('updateAverageTime')) {
+    const start = getStart('updateAverageTime');
     await runFunctionInBatches(
-      savePlayers,
-      'savePlayers',
-      TOTAL_NO_OF_PLAYERS,
-      start,
-      BIG_BATCH
-    );
-    saveFinishedStatus('savePlayers');
-  }
-
-  if (!isFinished('updateAllPlayersGlobalData')) {
-    const start = getStart('updateAllPlayersGlobalData');
-    await runFunctionInBatches(
-      updateAllPlayersGlobalData,
-      'updateAllPlayersGlobalData',
-      TOTAL_NO_OF_PLAYERS,
-      start,
-      BIG_BATCH
-    );
-    saveFinishedStatus('updateAllPlayersGlobalData');
-  }
-
-  if (!isFinished('updatePlayerStatsData')) {
-    const start = getStart('updatePlayerStatsData');
-    await runFunctionInBatches(
-      updatePlayerStatsData,
-      'updatePlayerStatsData',
-      TOTAL_NO_OF_PLAYERS,
+      updateAverageTime,
+      'updateAverageTime',
       start,
       SMALL_BATCH
     );
-    saveFinishedStatus('updatePlayerStatsData');
+    saveFinishedStatus('updateAverageTime');
   }
 
   // for hardhat and local network
@@ -132,10 +87,10 @@ const getStart = (fnName: string) => {
 const runFunctionInBatches = async (
   fn: Function,
   fnName: string,
-  total: number,
   start: number,
   batchSize: number
 ) => {
+  const total = await getTotalNoOfPlayers(statistics);
   while (start < total) {
     const end = start + batchSize;
     if (end > total) {
@@ -161,7 +116,7 @@ const runFunctionInBatches = async (
       txHash: tx.hash,
     });
     await tx.wait();
-    start = end;
+    start = end + 1;
   }
 };
 
