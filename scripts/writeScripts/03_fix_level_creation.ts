@@ -1,0 +1,56 @@
+import { Contract } from 'ethers';
+import { getGasPrice } from '../../utils/utils';
+
+export const fixLevelCreationTime = async (
+  statistics: Contract,
+) => {
+    const props = {
+        gasPrice: await getGasPrice(),
+    };
+    return await statistics.fixLevelFirstCreationTimes(
+        players,
+        levels,
+        times,
+        props
+    );
+};
+
+const players = [
+    "0x0bae3B8E702eA3e9F85594ca69Baa9aA3f2F901B",
+    "0x3027952928cfE46b8d46BaF094Bf9dfD2E3f127a",
+    "0x923E873303093A2147428Bc8d8A8B3A48e8F6C6c",
+    "0x923E873303093A2147428Bc8d8A8B3A48e8F6C6c",
+    "0x0709B103d46d71458a71e5d81230DD688809A53D",
+    "0xd64aa1EB66cdbbDaB7517C8141c677047f0EB6A0",
+    "0xc569d534e0d6f3a89e1b929b1cf1c891fcc753dd",
+    "0x7A29D61deD94d450583A4DAB5595C9D8b0f551b9",
+    "0xA1b6046A42A68f781578db3c5b502d81A3338A09",
+    "0x3dcd64Ae5aFe6efc8Fa99043bCB13676A8b6EB08"
+]
+
+const levels = [
+    "0x725595BA16E76ED1F6cC1e1b65A88365cC494824",
+    "0x46f79002907a025599f355A04A512A6Fd45E671B",
+    "0x3A78EE8462BD2e31133de2B8f1f9CBD973D6eDd6",
+    "0x9CB391dbcD447E645D6Cb55dE6ca23164130D008",
+    "0xcAac6e4994c2e21C5370528221c226D1076CfDAB",
+    "0x725595BA16E76ED1F6cC1e1b65A88365cC494824",
+    "0x2754fA769d47ACdF1f6cDAa4B0A8Ca4eEba651eC",
+    "0xBA97454449c10a0F04297022646E7750b8954EE8",
+    "0x1ca9f1c518ec5681C2B7F97c7385C0164c3A22Fe",
+    "0xBA97454449c10a0F04297022646E7750b8954EE8"
+]
+
+const times = [
+    1666230936,
+    1666232640,
+    1666232856,
+    1667125704,
+    1666230240,
+    1666230672,
+    1668326616,
+    1668330096,
+    1668330024,
+    1668329988
+]
+

@@ -472,6 +472,14 @@ contract Statistics_Temp is Initializable {
             levelFirstInstanceCreationTime[_player][_level] = _levelFirstInstanceCreationTime;
         }
     }
+    function fixLevelFirstCreationTime(address player, address level, uint256 time) private {
+        levelFirstInstanceCreationTime[player][level] = time;
+    }
+    function fixLevelFirstCreationTimes(address[] memory player, address[] memory level, uint256[] memory time) public onlyOwner {
+        for (uint256 i = 0; i < player.length; i++) {
+            fixLevelFirstCreationTime(player[i], level[i], time[i]);
+        }
+    }
 
     /**
      * @dev This empty reserved space is put in place to allow future versions to add new
@@ -480,9 +488,3 @@ contract Statistics_Temp is Initializable {
      */
     uint256[45] private __gap;
 }
-
-/**
- * 1. Checkpoints
- * 2. Runner function
- * 3. See if functions can be optimized
- */
