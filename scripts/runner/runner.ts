@@ -14,6 +14,7 @@ import { ACTIVE_NETWORK } from '../../utils/constants';
 import { loadFetchedData } from '../../utils/utils';
 import { upgradeProxy } from '../../tests/helpers/upgrade';
 import { rollbackProxy } from '../../tests/helpers/rollback';
+import { fixLevelCreationTime } from '../writeScripts/03_fix_level_creation';
 
 let impersonatedSigner: any, statistics: any;
 
@@ -32,56 +33,12 @@ async function runFunctions() {
     await upgradeProxy();
   }
 
-  if (!isFinished('saveGlobalNumber')) {
-    const tx = await saveGlobalNumbers(statistics);
+  if (!isFinished('fixLevelCreationTime')) {
+    const tx = await fixLevelCreationTime(statistics)
     console.log(tx.hash);
     console.log('');
-    saveFinishedStatus('saveGlobalNumber', tx.hash);
+    saveFinishedStatus('fixLevelCreationTime', tx.hash);
     await tx.wait();
-  }
-
-  if (!isFinished('saveLevelsData')) {
-    const tx = await saveLevelsData(statistics);
-    console.log(tx.hash);
-    console.log('');
-    saveFinishedStatus('saveLevelsData', tx.hash);
-    await tx.wait();
-  }
-
-  if (!isFinished('savePlayers')) {
-    const start = getStart('savePlayers');
-    await runFunctionInBatches(
-      savePlayers,
-      'savePlayers',
-      TOTAL_NO_OF_PLAYERS,
-      start,
-      BIG_BATCH
-    );
-    saveFinishedStatus('savePlayers');
-  }
-
-  if (!isFinished('updateAllPlayersGlobalData')) {
-    const start = getStart('updateAllPlayersGlobalData');
-    await runFunctionInBatches(
-      updateAllPlayersGlobalData,
-      'updateAllPlayersGlobalData',
-      TOTAL_NO_OF_PLAYERS,
-      start,
-      BIG_BATCH
-    );
-    saveFinishedStatus('updateAllPlayersGlobalData');
-  }
-
-  if (!isFinished('updatePlayerStatsData')) {
-    const start = getStart('updatePlayerStatsData');
-    await runFunctionInBatches(
-      updatePlayerStatsData,
-      'updatePlayerStatsData',
-      TOTAL_NO_OF_PLAYERS,
-      start,
-      SMALL_BATCH
-    );
-    saveFinishedStatus('updatePlayerStatsData');
   }
 
   // for hardhat and local network
