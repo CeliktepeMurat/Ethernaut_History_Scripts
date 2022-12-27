@@ -350,7 +350,10 @@ contract Statistics_Temp is Initializable {
         return averageTimeTakenToCompleteLevels[player];
     }
 
-    function updateAverageTimeForPlayers(uint start, uint end) public onlyOwner {
+    function updateAverageTimeForPlayers(uint start, uint end) public onlyOwner returns(address[] memory, uint256[] memory) {
+        address[] memory _players = new address[](end-start);
+        uint256[] memory _averageTimeTakenToCompleteLevels = new uint256[](end-start);
+        uint256 index;
         for(uint i=start;i<end;i++) {
             uint totalTime;
             uint totalNo;
@@ -361,9 +364,12 @@ contract Statistics_Temp is Initializable {
                 }
             }
             if(totalNo!=0 && totalTime!=0) {
-                averageTimeTakenToCompleteLevels[players[i]] = totalTime / totalNo;
+                _averageTimeTakenToCompleteLevels[index] = totalTime / totalNo;
             }
+            _players[index] = players[i];
+            index++;
         }
+        return (_players, _averageTimeTakenToCompleteLevels);
     }
 
 
