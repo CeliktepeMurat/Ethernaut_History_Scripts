@@ -355,7 +355,8 @@ contract Statistics_Temp is Initializable {
             uint totalTime;
             uint totalNo;
             for(uint j=0;j<levels.length;j++) {  
-                if(levelFirstCompletionTime[players[i]][levels[j]] != 0) {
+                bool _isLevelCompleted = isLevelCompleted(players[i], levels[j]);  
+                if(_isLevelCompleted) {
                     totalTime = totalTime + getTimeElapsedForCompletionOfLevel(players[i], levels[j]);
                     totalNo++;
                 }
