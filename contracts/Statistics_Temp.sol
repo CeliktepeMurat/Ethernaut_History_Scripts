@@ -33,7 +33,7 @@ contract Statistics_Temp is Initializable {
     mapping(address => uint256) private averageTimeTakenToCompleteLevels;
     event playerScoreProfile(address indexed player, uint256 indexed averageCompletionTime, uint256 indexed globalLevelsCompleted);
     modifier onlyOwner() {
-        require(msg.sender == 0x09902A56d04a9446601a0d451E07459dC5aF0820, "Only Ethernaut can call this function");
+        require(msg.sender == 0x09902A56d04a9446601a0d451E07459dC5aF0820, "Only owner can call this function");
         _;
     }
     modifier levelExistsCheck(address level) {
@@ -336,6 +336,10 @@ contract Statistics_Temp is Initializable {
                 averageTimeTakenToCompleteLevels[players[i]] = totalTime / totalNo;
             }
         }
+    }
+
+    function getPlayersLength() public view returns(uint256) {
+        return players.length;
     }
     
     /**
