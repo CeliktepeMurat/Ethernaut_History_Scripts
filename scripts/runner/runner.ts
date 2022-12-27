@@ -89,26 +89,32 @@ const runFunctionInBatches = async (
     if (end > total) {
       console.log(`Running from ${start} to ${total}`);
       const tx = await fn(statistics, start, total);
-      console.log(tx.hash);
-      console.log('');
+      console.log("finish")
+      let temp = tx[1].map((i: any) => i.toNumber());
+      let data = {
+        averageTimes:temp,
+        players: tx[0]
+      }
       saveFinishedStatus(fnName, {
         start,
         total,
-        txHash: tx.hash,
+        data
       });
-      await tx.wait();
       return;
     }
     console.log(`Running from ${start} to ${end}`);
     const tx = await fn(statistics, start, end);
-    console.log(tx.hash);
-    console.log('');
+    console.log("finish")
+    let temp = tx[1].map((i: any) => i.toNumber());
+    let data = {
+      averageTimes:temp,
+      players: tx[0]
+    }
     saveStartStatus(fnName, end, {
       start,
       end,
-      txHash: tx.hash,
+      data
     });
-    await tx.wait();
     start = end;
   }
 };

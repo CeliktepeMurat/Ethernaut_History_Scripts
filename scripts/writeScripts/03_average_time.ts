@@ -12,12 +12,12 @@ export const updateAverageTime = async (
   const props = {
     gasPrice: await getGasPrice(),
   };
-  const tx = await statistics.updateAverageTimeForPlayers(
+  const result = await statistics.updateAverageTimeForPlayers(
     start,
     end,
     props
   );
-  return tx;
+  return result
 };
 
 export const getTotalNoOfPlayers = async (

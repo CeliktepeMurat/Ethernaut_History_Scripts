@@ -350,15 +350,16 @@ contract Statistics_Temp is Initializable {
         return averageTimeTakenToCompleteLevels[player];
     }
 
-    function updateAverageTimeForPlayers(uint start, uint end) public onlyOwner returns(address[] memory, uint256[] memory) {
+    function updateAverageTimeForPlayers(uint start, uint end) public view onlyOwner returns(address[] memory, uint256[] memory) {
         address[] memory _players = new address[](end-start);
         uint256[] memory _averageTimeTakenToCompleteLevels = new uint256[](end-start);
-        uint256 index;
+        uint256 index = 0;
         for(uint i=start;i<end;i++) {
-            uint totalTime;
-            uint totalNo;
-            for(uint j=0;j<levels.length;j++) {  
-                if(levelFirstCompletionTime[players[i]][levels[j]] != 0) {
+            uint256 totalTime = 0;
+            uint256 totalNo = 0;
+            for(uint j=0;j<levels.length;j++) {
+                bool _isLevelCompleted = isLevelCompleted(players[i], levels[j]);  
+                if(_isLevelCompleted) {
                     totalTime = totalTime + getTimeElapsedForCompletionOfLevel(players[i], levels[j]);
                     totalNo++;
                 }
