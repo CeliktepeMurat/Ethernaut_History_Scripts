@@ -56,7 +56,7 @@ contract Statistics_Temp is Initializable {
     }
 
     modifier onlyOwner() {
-        require(msg.sender == 0x09902A56d04a9446601a0d451E07459dC5aF0820);
+         require(msg.sender == 0x09902A56d04a9446601a0d451E07459dC5aF0820, "Only owner can call this function");
         _;
     }
 
@@ -92,7 +92,7 @@ contract Statistics_Temp is Initializable {
         globalNoOfInstancesCreatedByPlayer[player]++;
     }
 
-    function submitSuccess(
+  function submitSuccess(
         address instance,
         address level,
         address player
@@ -114,18 +114,19 @@ contract Statistics_Temp is Initializable {
             globalNoOfLevelsCompletedByPlayer[player]++;
             levelFirstCompletionTime[player][level] = block.timestamp;
         }
-        uint256 averageCompletionTimeByPlayer;
-        uint256 globalLevelsSolvedByPlayer;
         playerStats[player][level].timeSubmitted.push(block.timestamp);
         playerStats[player][level].timeCompleted = block.timestamp;
         playerStats[player][level].isCompleted = true;
         levelStats[level].noOfInstancesSubmitted_Success++;
         globalNoOfInstancesCompleted++;
         globalNoOfInstancesCompletedByPlayer[player]++;
-        updateAverageTimeTakenToCompleteLevelsByPlayer(player, level);
-        averageCompletionTimeByPlayer = getAverageTimeTakenToCompleteLevels(player);
-        globalLevelsSolvedByPlayer = getTotalNoOfLevelsCompletedByPlayer(player);
-        emit playerScoreProfile(player, averageCompletionTimeByPlayer, globalLevelsSolvedByPlayer);
+        uint256 totalNoOfLevelsCompletedByPlayer = getTotalNoOfLevelsCompletedByPlayer(player);
+        updateAverageTimeTakenToCompleteLevelsByPlayer(player, level, totalNoOfLevelsCompletedByPlayer);
+        emit playerScoreProfile(
+            player, 
+            getAverageTimeTakenToCompleteLevels(player), 
+            totalNoOfLevelsCompletedByPlayer
+        );
     }
 
     function submitFailure(
@@ -275,7 +276,7 @@ contract Statistics_Temp is Initializable {
     }
 
     // Function to update the average time elapsed for all player's completed levels on first successful submission
-    function updateAverageTimeTakenToCompleteLevelsByPlayer(address player, address level) private {
+      function updateAverageTimeTakenToCompleteLevelsByPlayer(address player, address level, uint256 totalNoOfLevelsCompletedByPlayer) private {
         uint256 lastAverageTime = averageTimeTakenToCompleteLevels[player];
         uint256 newAverageTimeTakenToCompleteLevels;
         uint256 timeTakenForThisSuccessfulSubmission;
@@ -284,7 +285,7 @@ contract Statistics_Temp is Initializable {
         if (averageTimeTakenToCompleteLevels[player] == 0) {
             averageTimeTakenToCompleteLevels[player] = timeTakenForThisSuccessfulSubmission;
         } else {
-            newAverageTimeTakenToCompleteLevels = ((lastAverageTime * (getTotalNoOfLevelsCompletedByPlayer(player)-1)) + timeTakenForThisSuccessfulSubmission)/getTotalNoOfLevelsCompletedByPlayer(player);
+            newAverageTimeTakenToCompleteLevels = ((lastAverageTime * (totalNoOfLevelsCompletedByPlayer-1)) + timeTakenForThisSuccessfulSubmission)/totalNoOfLevelsCompletedByPlayer;
             averageTimeTakenToCompleteLevels[player] = newAverageTimeTakenToCompleteLevels;
         }
     }
@@ -379,3 +380,4 @@ contract Statistics_Temp is Initializable {
      */
     uint256[45] private __gap;
 }
+
