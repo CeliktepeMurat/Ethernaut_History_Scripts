@@ -11,7 +11,7 @@ import { getTotalNoOfPlayers, updateAverageTime } from '../writeScripts/03_avera
 let impersonatedSigner: any, statistics: any;
 
 const DATA_PATH = `./data/${ACTIVE_NETWORK.name}`;
-const BATCH = 10;
+const BATCH = 100;
 const STATUS_FILE_PATH = `${DATA_PATH}/status.json`;
 
 async function runFunctions() {
