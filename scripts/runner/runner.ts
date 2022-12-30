@@ -1,29 +1,17 @@
 import STATISTICS_ABI from '../../artifacts/contracts/Statistics_Temp.sol/Statistics_Temp.json';
-import { getImpersonatedSigner, getWeb3 } from '../../utils/utils';
+import { getImpersonatedSigner } from '../../utils/utils';
 import { ethers } from 'ethers';
-import {
-  saveGlobalNumbers,
-  saveLevelsData,
-  savePlayers,
-} from '../writeScripts/00_exec_batch';
-import { updateAllPlayersGlobalData } from '../writeScripts/01_exec_batch';
-import { updatePlayerStatsData } from '../writeScripts/02_exec_batch';
 import * as constants from '../../utils/constants';
 import fs from 'fs';
 import { ACTIVE_NETWORK } from '../../utils/constants';
-import { loadFetchedData } from '../../utils/utils';
 import { upgradeProxy } from '../../tests/helpers/upgrade';
 import { rollbackProxy } from '../../tests/helpers/rollback';
+import { getTotalNoOfPlayers, updateAverageTime } from '../writeScripts/03_average_time';
 
 let impersonatedSigner: any, statistics: any;
 
 const DATA_PATH = `./data/${ACTIVE_NETWORK.name}`;
-const ALL_PLAYERS_PATH = `${DATA_PATH}/all_player_list.json`;
-const players = loadFetchedData(ALL_PLAYERS_PATH).players;
-console.log(`Total no of players: ${players.length}`);
-const TOTAL_NO_OF_PLAYERS = players.length;
-const BIG_BATCH = 100;
-const SMALL_BATCH = 10;
+const BATCH = 100;
 const STATUS_FILE_PATH = `${DATA_PATH}/status.json`;
 
 async function runFunctions() {
@@ -32,56 +20,15 @@ async function runFunctions() {
     await upgradeProxy();
   }
 
-  if (!isFinished('saveGlobalNumber')) {
-    const tx = await saveGlobalNumbers(statistics);
-    console.log(tx.hash);
-    console.log('');
-    saveFinishedStatus('saveGlobalNumber', tx.hash);
-    await tx.wait();
-  }
-
-  if (!isFinished('saveLevelsData')) {
-    const tx = await saveLevelsData(statistics);
-    console.log(tx.hash);
-    console.log('');
-    saveFinishedStatus('saveLevelsData', tx.hash);
-    await tx.wait();
-  }
-
-  if (!isFinished('savePlayers')) {
-    const start = getStart('savePlayers');
+  if (!isFinished('updateAverageTime')) {
+    const start = getStart('updateAverageTime');
     await runFunctionInBatches(
-      savePlayers,
-      'savePlayers',
-      TOTAL_NO_OF_PLAYERS,
+      updateAverageTime,
+      'updateAverageTime',
       start,
-      BIG_BATCH
+      BATCH
     );
-    saveFinishedStatus('savePlayers');
-  }
-
-  if (!isFinished('updateAllPlayersGlobalData')) {
-    const start = getStart('updateAllPlayersGlobalData');
-    await runFunctionInBatches(
-      updateAllPlayersGlobalData,
-      'updateAllPlayersGlobalData',
-      TOTAL_NO_OF_PLAYERS,
-      start,
-      BIG_BATCH
-    );
-    saveFinishedStatus('updateAllPlayersGlobalData');
-  }
-
-  if (!isFinished('updatePlayerStatsData')) {
-    const start = getStart('updatePlayerStatsData');
-    await runFunctionInBatches(
-      updatePlayerStatsData,
-      'updatePlayerStatsData',
-      TOTAL_NO_OF_PLAYERS,
-      start,
-      SMALL_BATCH
-    );
-    saveFinishedStatus('updatePlayerStatsData');
+    saveFinishedStatus('updateAverageTime');
   }
 
   // for hardhat and local network
@@ -132,10 +79,11 @@ const getStart = (fnName: string) => {
 const runFunctionInBatches = async (
   fn: Function,
   fnName: string,
-  total: number,
   start: number,
   batchSize: number
 ) => {
+  const total = await getTotalNoOfPlayers(statistics);
+  console.log(`total players - ${total}`)
   while (start < total) {
     const end = start + batchSize;
     if (end > total) {
